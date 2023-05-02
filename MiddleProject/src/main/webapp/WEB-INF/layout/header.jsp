@@ -8,13 +8,13 @@
             <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
               <form action="" class="site-block-top-search">
                 <span class="icon icon-search2"></span>
-                <input type="text" class="form-control border-0" placeholder="Search">
+                <input type="text" class="form-control border-0" placeholder="검색">
               </form>
             </div>
 
             <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
               <div class="site-logo">
-                <a href="index.html" class="js-logo-clone">Shoppers</a>
+                <a href="index.html" class="js-logo-clone">크림발라드림</a>
               </div>
             </div>
 
@@ -41,7 +41,7 @@
         <div class="container">
           <ul class="site-menu js-clone-nav d-none d-md-block">
             <li class="has-children active">
-              <a href="index.html">Home</a>
+              <a href="index.html">Main</a>
               <ul class="dropdown">
                 <li><a href="#">Menu One</a></li>
                 <li><a href="#">Menu Two</a></li>
@@ -65,9 +65,11 @@
               </ul>
             </li>
             <li><a href="shop.html">Shop</a></li>
-            <li><a href="#">Catalogue</a></li>
-            <li><a href="#">New Arrivals</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#">Ranking</a></li>
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            <li><a href="contact.html">Login</a></li>
           </ul>
         </div>
       </nav>
