@@ -2,3 +2,4 @@
     pageEncoding="UTF-8"%>
 <jsp:forward page="main.do"></jsp:forward>
 <p> test </p>
+<p> test2 (내가 추가함) </p>
