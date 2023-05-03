@@ -2,6 +2,7 @@ package com.yedam.user.controll;
 
 import java.io.IOException;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,7 +27,7 @@ public class LoginControl implements Control {
             HttpSession session = req.getSession();    
             session.setAttribute("id", vo.getUserId());
             
-            return "noticeList.do";
+            return "main.do";
         } else {
             return "loginForm.do";
         }

@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
 
-public class LoginFormControl implements Control {
+public class SignUpControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		return "users/loginForm.tiles";
+		return "user/signUp.tiles";
 	}
 
 }

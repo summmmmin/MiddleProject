@@ -8,12 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.yedam.common.Control;
-import com.yedam.member.domain.MemberVO;
-import com.yedam.member.service.MemberService;
-import com.yedam.member.service.MemberServiceImpl;
 import com.yedam.user.domain.UserVO;
 import com.yedam.user.service.UserService;
-import com.yedam.user.service.UserServiceImpl;
 
 public class ModifyUserControl implements Control {
 
@@ -30,10 +26,10 @@ public class ModifyUserControl implements Control {
 		String phone = req.getParameter("phone");
 		String address = req.getParameter("address");
 
-		UserService service = UserServiceImpl.getInstance();
+		UserService service = UsersServiceImpl.getInstance();
 		UserVO vo = new UserVO();
 
-		UserVO vo = (UserVO) session.getAttribute("member");
+		MemberVO vo = (MemberVO) session.getAttribute("member");
 		System.out.println(vo);
 		
 
@@ -48,13 +44,13 @@ public class ModifyUserControl implements Control {
 			System.out.println("-----------------------로그 구분용-----------------------------");
 			if (result) {
 				session.setAttribute("users", vo);
-				return "noticeList.do";
+				return "main.do";
 			} else {
 				req.setAttribute("users", vo);
-				return "users/modifyUsers.tiles";
+				return "user/modifyUser.tiles";
 			}
 		} else {
-			return "users/modifyMember.tiles";
+			return "user/modifyUser.tiles";
 		}
 	}
 
