@@ -59,7 +59,7 @@
                   <div class="col-md-6">
                     <br>
                     <label for="space" class="text-black"></label>
-                    <button type="submit" class="btn btn-primary mb-2">이메일 인증</button>
+                    <button type="submit" class="btn btn-primary mb-2">인증번호 받기</button>
                   </div>
                 </div>
 
