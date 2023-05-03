@@ -36,8 +36,6 @@ public class FrontController extends HttpServlet{
 		
 		
 		map.put("/signUp.do", new SignUpControl());
-		
-		
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

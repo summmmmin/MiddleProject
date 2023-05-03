@@ -1,5 +1,7 @@
 package com.yedam.buy.service;
 
-public interface BuyService {
+import com.yedam.buy.domain.BuyVO;
 
+public interface BuyService {
+	public BuyVO getBuyPrice(BuyVO vo);
 }

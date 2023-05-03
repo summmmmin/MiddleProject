@@ -10,7 +10,10 @@ public class BuyVO {
 	private int pdtId;			//상품번호
 	private int sizeId;			//사이즈번호
 	private String buyDate;		//주문일자
-	private int buyPrice;		//주문가격
+	private int buyPrice;		//상품가격
 	private String buyDlvy;		//주문배송
 	private String buyCancel;	//주문취소
+	private int buyFincost;		//결제금액
+	private int buyPoint;		//사용포인트
+	private String buyPay;		//결제상태
 }
