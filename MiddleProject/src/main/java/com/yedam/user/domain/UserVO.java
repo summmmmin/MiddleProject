@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @Data
 
-public class UsersVO {
+public class UserVO {
 	private String userId;		//user_id
 	private String userPw;		//user_pw
 	private String userNm;		//user_nm(이름)
