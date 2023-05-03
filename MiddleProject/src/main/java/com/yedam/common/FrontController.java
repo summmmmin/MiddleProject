@@ -1,7 +1,6 @@
 package com.yedam.common;
 
 import java.io.IOException;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,11 +32,10 @@ public class FrontController extends HttpServlet{
 		map.put("/getQna.do", new GetQnaControl());
 		//product
 		map.put("/prodList.do", new ProdListControl());
-
 		
-
+		
+		
 		map.put("/signUp.do", new SignUpControl());
-		
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
