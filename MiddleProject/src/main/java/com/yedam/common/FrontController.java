@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yedam.qna.control.GetQnaControl;
+import com.yedam.qna.control.QnaListControl;
+
 public class FrontController extends HttpServlet{
 	private Map<String, Control> map;
 	String encoding;
@@ -22,6 +25,11 @@ public class FrontController extends HttpServlet{
 		encoding = config.getInitParameter("enc");
 		// 첫페이지
 		map.put("/main.do", new MainControl());
+		//qna
+		map.put("/qnaList.do", new QnaListControl());
+		map.put("/getQna.do", new GetQnaControl());
+		
+		
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
