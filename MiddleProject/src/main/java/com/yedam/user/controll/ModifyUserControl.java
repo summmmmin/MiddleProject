@@ -11,9 +11,9 @@ import com.yedam.common.Control;
 import com.yedam.member.domain.MemberVO;
 import com.yedam.member.service.MemberService;
 import com.yedam.member.service.MemberServiceImpl;
-import com.yedam.user.domain.UsersVO;
-import com.yedam.user.service.UsersService;
-import com.yedam.user.service.UsersServiceImpl;
+import com.yedam.user.domain.UserVO;
+import com.yedam.user.service.UserService;
+import com.yedam.user.service.UserServiceImpl;
 
 public class ModifyUserControl implements Control {
 
@@ -30,10 +30,10 @@ public class ModifyUserControl implements Control {
 		String phone = req.getParameter("phone");
 		String address = req.getParameter("address");
 
-		//UsersService service = UsersServiceImpl.getInstance();
-		UsersVO vo = new UsersVO();
+		UserService service = UserServiceImpl.getInstance();
+		UserVO vo = new UserVO();
 
-		//MemberVO vo = (MemberVO) session.getAttribute("member");
+		UserVO vo = (UserVO) session.getAttribute("member");
 		System.out.println(vo);
 		
 

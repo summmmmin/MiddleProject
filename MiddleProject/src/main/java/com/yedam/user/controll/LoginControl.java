@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.yedam.common.Control;
-import com.yedam.user.domain.UsersVO;
-import com.yedam.user.service.UsersService;
-import com.yedam.user.service.UsersServiceImpl;
+import com.yedam.user.domain.UserVO;
+import com.yedam.user.service.UserService;
+import com.yedam.user.service.UserServiceImpl;
 
 public class LoginControl implements Control {
     @Override
@@ -19,8 +19,8 @@ public class LoginControl implements Control {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
-        UsersService service = UsersServiceImpl.getInstance();
-        UsersVO vo = service.loginCheck(email, password);
+        UserService service = UserServiceImpl.getInstance();
+        UserVO vo = service.loginCheck(email, password);
         
         if (vo != null) {
             HttpSession session = req.getSession();    
