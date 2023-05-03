@@ -57,7 +57,7 @@
               </ul>
             </li>
             <li class="has-children">
-              <a href="about.html">About</a>
+              <a href="about.html">Ranking</a>
               <ul class="dropdown">
                 <li><a href="#">Menu One</a></li>
                 <li><a href="#">Menu Two</a></li>
@@ -65,7 +65,7 @@
               </ul>
             </li>
             <li><a href="shop.html">Shop</a></li>
-            <li><a href="#">Ranking</a></li>
+            <li><a href="#">Q&A</a></li>
             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
