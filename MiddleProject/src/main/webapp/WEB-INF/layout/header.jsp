@@ -37,7 +37,7 @@
           </div>
         </div>
       </div> 
-      <nav class="site-navigation text-right text-md-center" role="navigation">
+      <nav class="site-navigation text-right text-md-left" role="navigation">
         <div class="container">
           <ul class="site-menu js-clone-nav d-none d-md-block">
             <li class="has-children active">
@@ -65,11 +65,8 @@
               </ul>
             </li>
             <li><a href="shop.html">Shop</a></li>
-            <li><a href="#">Ranking</a></li>
-            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-            <li><a href="contact.html">Login</a></li>
+            <li><a href="#">Ranking</a></li> 
+            <li id="fright"><a href="contact.html">Login</a></li>
           </ul>
         </div>
       </nav>
