@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.qna.mapper.QnaMapper">
+  <!-- QNA목록. -->
+  <select id="qnaList" resultType="qna">
+  	select * from qna_post order by 1 desc
+  </select>
+   
+  <!-- QNA목록페이지. -->
+  <select id="qnaWithPage" resultType="qna">
+  	<![CDATA[
+  	select b.* 
+  	from(select rownum rn, a.*
+       	 from (select * from qna_post
+             order by 1 desc) a
+      	 where rownum <= #{page}*10 )b
+  	where b.rn > (#{page} - 1) * 10
+  	]]>
+  </select>
+  
+  <!-- QNA추가. -->
+  <insert id="insertQna" parameterType="qna">
+  insert  into qna_post(post_id,user_id,post-title,post_ct,post_date)
+  	values(qna_seq.nextval, #{UId}, #{qTitle}, #{qCT}, sysdate)
+  </insert>
+  
+  <!-- QNA수정. -->
+  <update id="updateQna" parameterType="qna">
+  update qna_post
+  	set	post-title=#{qTitle}
+  		post_ct= #{qCT}
+  where user_id= #{UId}
+  </update>
+  
+  <!-- QNA상세조회. -->
+  <select id="searchQna" resultType="qna" parameterType="int">
+  	select * from qna_post where post_id_id=#{qId}
+  </select>
+  
+  <!-- QNA 총 개수. -->
+  <select id="getQnaCount" resultType="int">
+  	select count(*) from qna_post
+  </select>
+  </mapper>
+  
