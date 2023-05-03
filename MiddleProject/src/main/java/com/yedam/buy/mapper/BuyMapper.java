@@ -1,5 +1,7 @@
 package com.yedam.buy.mapper;
 
-public interface BuyMapper {
+import com.yedam.buy.domain.BuyVO;
 
+public interface BuyMapper {
+	public BuyVO selectBuyPrice(BuyVO vo);
 }

@@ -3,11 +3,16 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yedam.buy.mapper.BuyMapper">
-	<select id="selectProductList" resultType="prod">
-		select * from tbl_product
+	<select id="selectBuyList" resultType="buy">
+		select * from buy
 	</select>
 	<insert id="insertBuy" parameterType="int">
-		insert into Buy( ) 
-		values()
+		insert into Buy(BUY_ID, USER_ID, SELL_ID, PDT_ID, SIZE_ID, BUY_PRICE, BUY_FINCOST, BUY_POINT, BUY_PAY) 
+		values(buy_id_seq.nextval, #{userId}, #{sellId}, #{pdtId}, #{sizeId}, #{buyPrice}, #{buyFincost}, #{buyPoint}, '결제완료')
 	</insert>
+	<select id="selectBuyPrice">
+		select * from buy
+		where pdt_id=#{pdtId} and size_id=#{sizeId} and sell_id is null and rownum=1
+		order by 7, 6
+	</select>
 </mapper>
