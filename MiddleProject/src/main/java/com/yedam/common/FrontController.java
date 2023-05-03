@@ -1,7 +1,6 @@
 package com.yedam.common;
 
 import java.io.IOException;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.yedam.product.control.ProdListControl;
 import com.yedam.qna.control.GetQnaControl;
 import com.yedam.qna.control.QnaListControl;
-import com.yedam.user.control.SignUpControl;
 
 public class FrontController extends HttpServlet{
 	private Map<String, Control> map;
@@ -33,10 +31,7 @@ public class FrontController extends HttpServlet{
 		map.put("/getQna.do", new GetQnaControl());
 		//product
 		map.put("/prodList.do", new ProdListControl());
-
 		
-
-		map.put("/signUp.do", new SignUpControl());
 		
 	}
 	@Override
