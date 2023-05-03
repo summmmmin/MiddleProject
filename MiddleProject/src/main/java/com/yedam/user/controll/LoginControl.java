@@ -17,11 +17,11 @@ public class LoginControl implements Control {
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	
-        String email = req.getParameter("email");
-        String password = req.getParameter("password");
+        String userId = req.getParameter("userId");
+        String userPw = req.getParameter("userPw");
 
         UserService service = UserServiceImpl.getInstance();
-        UserVO vo = service.loginCheck(email, password);
+        UserVO vo = service.loginCheck(userId, userPw);
         
         if (vo != null) {
             HttpSession session = req.getSession();    
