@@ -64,7 +64,7 @@
                 <li><a href="#">Menu Three</a></li>
               </ul>
             </li>
-            <li><a href="shop.html">Shop</a></li>
+            <li><a href="prodList.do">Shop</a></li>
             <li><a href="qnaList.do">Q&A</a></li>
 	    	<li id="fright"><a href="signUp.do">Login</a></li>
           </ul>
