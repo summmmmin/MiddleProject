@@ -66,10 +66,7 @@
             </li>
             <li><a href="shop.html">Shop</a></li>
             <li><a href="#">Q&A</a></li>
-            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-            <li><a href="contact.html">Login</a></li>
+	    <li id="fright"><a href="contact.html">Login</a></li>
           </ul>
         </div>
       </nav>
