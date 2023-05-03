@@ -1,9 +1,8 @@
 package com.yedam.user.service;
 
-import java.util.Map;
-
 import com.yedam.user.domain.UserVO;
 
-public class UserService {
+public interface UserService {
+    public UserVO loginCheck(String userId, String userPw);
 
 }
