@@ -93,7 +93,7 @@
               <div class="form-group row">
                 <div class="col-md-6">
                   <label for="c_phone" class="text-black">전화번호 </label>
-                  <input type="text" class="form-control" id="c_phone" name="c_phone" onkeyup="formatPhoneNumber(this)">
+                  <input type="text" class="form-control" id="c_phone" name="c_phone" onkeyup="formatPhoneNumber(this)" maxlength="13">
                 </div>
               </div>
               <div class="form-group row">
