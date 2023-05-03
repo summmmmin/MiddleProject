@@ -37,11 +37,9 @@
 
     <div class="site-section">
       <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h2 class="h3 mb-3 text-black">회원가입</h2>
-          </div>
+        <div class="row justify-content-md-center">
           <div class="col-md-7">
+            <h2 class="h3 mb-3 text-black">회원가입</h2>
 
             <form action="#" method="post">
 
