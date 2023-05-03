@@ -1,4 +1,4 @@
-package com.yedam.users.domain;
+package com.yedam.user.domain;
 
 import java.util.Date;
 

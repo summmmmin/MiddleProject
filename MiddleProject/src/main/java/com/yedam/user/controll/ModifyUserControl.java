@@ -1,4 +1,4 @@
-package com.yedam.users.controll;
+package com.yedam.user.controll;
 
 import java.io.IOException;
 
@@ -11,8 +11,11 @@ import com.yedam.common.Control;
 import com.yedam.member.domain.MemberVO;
 import com.yedam.member.service.MemberService;
 import com.yedam.member.service.MemberServiceImpl;
+import com.yedam.user.domain.UsersVO;
+import com.yedam.user.service.UsersService;
+import com.yedam.user.service.UsersServiceImpl;
 
-public class ModifyMemberControl implements Control {
+public class ModifyUserControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -27,31 +30,31 @@ public class ModifyMemberControl implements Control {
 		String phone = req.getParameter("phone");
 		String address = req.getParameter("address");
 
-		MemberService service = MemberServiceImpl.getInstance();
-		MemberVO vo = new MemberVO();
+		//UsersService service = UsersServiceImpl.getInstance();
+		UsersVO vo = new UsersVO();
 
 		//MemberVO vo = (MemberVO) session.getAttribute("member");
 		System.out.println(vo);
 		
 
 		if (vo != null) {
-			vo.setPassword(password);
-			vo.setPhone(phone);
-			vo.setAddress(address);
+			vo.setUserPw(password);
+			vo.setUserPh(phone);
+			vo.setUserAddr(address);
 
-			boolean result = service.modifyMember(vo);
+			boolean result = service.modifyUser(vo);
 			System.out.println(vo);
 
 			System.out.println("-----------------------로그 구분용-----------------------------");
 			if (result) {
-				session.setAttribute("member", vo);
+				session.setAttribute("users", vo);
 				return "noticeList.do";
 			} else {
-				req.setAttribute("member", vo);
-				return "member/modifyMember.tiles";
+				req.setAttribute("users", vo);
+				return "users/modifyUsers.tiles";
 			}
 		} else {
-			return "member/modifyMember.tiles";
+			return "users/modifyMember.tiles";
 		}
 	}
 
