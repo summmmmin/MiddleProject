@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+
 <head>
   <title>Shoppers &mdash; Colorlib e-Commerce Template</title>
   <meta charset="utf-8">
@@ -59,25 +60,28 @@
                   <div class="col-md-6">
                     <br>
                     <label for="space" class="text-black"></label>
-                    <button type="submit" class="btn btn-primary mb-2">인증번호 받기</button>
+                    <button type="submit" class="btn btn-primary mb-2" onclick="sendVerification()" >인증번호 받기</button>
                   </div>
                 </div>
 
               <div class="form-group row">
                 <div class="col-md-6">
                   <label for="c_pw" class="text-black">비밀번호 <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_pw" name="c_pw" placeholder="8자 이상입력해주세요">
+                  <input type="password" class="form-control" id="c_pw" name="c_pw" placeholder="8자 이상입력해주세요">
+                  <i class="fa fa-eye fa-lg"></i>
+                  
                 </div>
                 <div class="col-md-6">
                   <label for="c_pw2" class="text-black">비밀번호 확인 <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_pw2" name="c_pw2">
+                  <input type="password" class="form-control" id="c_pw2" name="c_pw2">
+                  
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="col-md-6">
                   <label for="c_name" class="text-black">이름 </label>
-                  <input type="text" class="form-control" id="c_name" name="c_name">
+                  <input type="password" class="form-control" id="c_name" name="c_name">
                 </div>
               </div>
               <div class="form-group row">
@@ -113,6 +117,15 @@
   <script src="js/aos.js"></script>
 
   <script src="js/main.js"></script>
+  <script>
+  
+  function sendVerification() {
+	  // 인증번호 발송 구현하기
+
+	  // 알림 띄우기
+	  alert("인증번호가 발송되었습니다.");
+	}
+  </script>
 
 </body>
 
