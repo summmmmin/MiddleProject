@@ -9,7 +9,7 @@
 		<setting name="jdbcTypeForNull" value="NULL"/>
 	</settings>
 	<typeAliases>
-		<typeAlias alias=" 55 " type="com.yedam.domain.  " />
+		<typeAlias alias="qna" type="com.yedam.qna.domain.QnaVO" />
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -23,7 +23,7 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="com/yedam/  /mapper/  .xml" />
+		<mapper resource="com/yedam/qna/mapper/QnaMapper.xml" />
 		
 	</mappers>
 </configuration>
