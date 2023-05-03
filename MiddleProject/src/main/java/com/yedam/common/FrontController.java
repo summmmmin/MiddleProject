@@ -11,9 +11,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yedam.product.control.ProdListControl;
 import com.yedam.qna.control.GetQnaControl;
 import com.yedam.qna.control.QnaListControl;
+<<<<<<< HEAD
 import com.yedam.qna.control.QnaListControl;
+=======
+>>>>>>> branch 'sub' of https://github.com/summmmmin/MiddleProject.git
 import com.yedam.user.control.SignUpControl;
 
 public class FrontController extends HttpServlet{
@@ -32,6 +36,13 @@ public class FrontController extends HttpServlet{
 		map.put("/getQna.do", new GetQnaControl());
 		//product
 		map.put("/prodList.do", new ProdListControl());
+<<<<<<< HEAD
+=======
+		
+		
+		
+		map.put("/signUp.do", new SignUpControl());
+>>>>>>> branch 'sub' of https://github.com/summmmmin/MiddleProject.git
 		
 		
 		
