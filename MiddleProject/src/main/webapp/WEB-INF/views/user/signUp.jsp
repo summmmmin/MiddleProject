@@ -81,7 +81,7 @@
               <div class="form-group row">
                 <div class="col-md-6">
                   <label for="c_name" class="text-black">이름 </label>
-                  <input type="password" class="form-control" id="c_name" name="c_name">
+                  <input type="text" class="form-control" id="c_name" name="c_name">
                 </div>
               </div>
               <div class="form-group row">
