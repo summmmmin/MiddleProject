@@ -93,7 +93,7 @@
               <div class="form-group row">
                 <div class="col-md-6">
                   <label for="c_phone" class="text-black">전화번호 </label>
-                  <input type="text" class="form-control" id="c_phone" name="c_phone">
+                  <input type="text" class="form-control" id="c_phone" name="c_phone" onkeyup="formatPhoneNumber(this)">
                 </div>
               </div>
               <div class="form-group row">
@@ -115,10 +115,10 @@
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/aos.js"></script>
-
   <script src="js/main.js"></script>
-  <script>
   
+  <!-- 이메일 인증 발송관련 스크립트 -->
+  <script>
   function sendVerification() {
 	  // 인증번호 발송 구현하기
 
@@ -126,6 +126,24 @@
 	  alert("인증번호가 발송되었습니다.");
 	}
   </script>
+  <!-- 회원가입 전화번호탭 하이픈 정규식 -->
+  <script>
+function formatPhoneNumber(input) {
+  // 전화번호 포맷팅을 위한 정규식 패턴
+  const pattern1 = /^(\d{0,3})(\d{0,4})(\d{0,4})$/g;
+  const pattern2 = /^(\d{0,2})(\d{0,3})(\d{0,4})$/g;
+
+  // 입력된 전화번호에서 숫자만 추출
+  const phoneNumber = input.value.replace(/[^\d]/g, "");
+
+  // 숫자만 추출한 전화번호에 따라 포맷팅 처리
+  if (phoneNumber.length > 10) {
+    input.value = phoneNumber.replace(pattern1, "$1-$2-$3").replace(/\-{1,2}$/g, "");
+  } else {
+    input.value = phoneNumber.replace(pattern2, "$1-$2-$3").replace(/\-{1,2}$/g, "");
+  }
+}
+</script>
 
 </body>
 
