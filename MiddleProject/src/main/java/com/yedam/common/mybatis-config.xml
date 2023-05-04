@@ -13,7 +13,7 @@
 		<typeAlias alias="product" type="com.yedam.product.domain.ProdVO" />
 		<typeAlias alias="size" type="com.yedam.size.domain.SizeVO" />
         <typeAlias alias="buy" type="com.yedam.buy.domain.BuyVO" />
-        <typeAlias alias="sell" type="com.yedam.sell.domain.SellVO" />
+<!--    <typeAlias alias="sell" type="com.yedam.sell.domain.SellVO" />  --> 
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -31,6 +31,6 @@
 		<mapper resource="com/yedam/product/mapper/ProdMapper.xml" />
 		<mapper resource="com/yedam/size/mapper/SizeMapper.xml" />
         <mapper resource="com/yedam/buy/mapper/BuyMapper.xml" />
-        <mapper resource="com/yedam/sell/mapper/SellMapper.xml" />
+<!--    <mapper resource="com/yedam/sell/mapper/SellMapper.xml" />  --> 
 	</mappers>
 </configuration>
