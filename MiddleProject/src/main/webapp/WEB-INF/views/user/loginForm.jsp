@@ -54,13 +54,13 @@
                     <div class="form-group">
                       <label class="text-muted" for="exampleInputEmail1">아이디</label>
                       <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="" name="UserId">
+                        placeholder="" name="user_id">
                       <small id="emailHelp" class="form-text text-muted">아이디는 이메일 형식입니다</small>
 
                     </div>
                     <div class="form-group">
                       <label class="text-muted" for="exampleInputPassword1">비밀번호</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="" name="UserPw">
+                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="" name="user_pw">
 
                     </div>
                     <div id="login-buttons">
