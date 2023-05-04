@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    
+
 
 <html>
 
@@ -26,10 +26,11 @@
       display: flex;
       justify-content: center;
       margin-top: 10px;
+      margin-right: 10px;
     }
 
 
-    .login-buttons button {
+    #login-buttons button {
       margin-right: 10px;
     }
   </style>
@@ -46,9 +47,9 @@
                 <div class="card-header"><strong>로그인</strong></div>
                 <div class="card-body">
                   <% if (request.getAttribute("errorMessage") != null) { %>
-                    <script>
-                      alert("아이디 또는 비밀번호가 잘못되었습니다.");
-                    </script>
+                  <script>
+                    alert("아이디 또는 비밀번호가 잘못되었습니다.");
+                  </script>
                   <% } %>
                   <form action="login.do" method="post">
                     <div class="form-group">
@@ -60,10 +61,12 @@
                     </div>
                     <div class="form-group">
                       <label class="text-muted" for="exampleInputPassword1">비밀번호</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="" name="user_pw">
+                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder=""
+                        name="user_pw">
 
                     </div>
                     <div id="login-buttons">
+                      <span><button type="submit" class="btn btn-primary">회원가입</button></span>
                       <button type="submit" class="btn btn-primary">로그인</button>
                     </div>
                   </form>
@@ -73,9 +76,9 @@
                       <a href="http://developers.kakao.com/logout"></a>
                       <script type='text/javascript'>
                         //<![CDATA[
-                        // 사용할 앱의 JavaScript 키를 설정해 주세요.
+                        // 사용할 앱의 JavaScript 키
                         Kakao.init('bad00d675e508815a17b7c361b884556');
-                        // 카카오 로그인 버튼을 생성합니다.
+                        // 카카오 로그인 버튼생성
                         Kakao.Auth.createLoginButton({
                           container: '#kakao-login-btn',
                           success: function (authObj) {
