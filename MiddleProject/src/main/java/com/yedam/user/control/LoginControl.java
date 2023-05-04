@@ -35,4 +35,3 @@ public class LoginControl implements Control {
         }
     }
 }
-
