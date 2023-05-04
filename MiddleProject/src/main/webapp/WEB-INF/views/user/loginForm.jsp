@@ -19,6 +19,15 @@
     display: inline-block;
     vertical-align: middle;
   }
+  #login-buttons {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+#login-buttons button {
+  margin-right: 10px;
+}
   </style>
 </head>
 
@@ -49,8 +58,8 @@
                       <input type="password" class="form-control" id="exampleInputPassword1" placeholder="">
 
                     </div>
-                    <button type="submit" class="btn btn-primary">로그인</button>
-                    <div style="display: inline-block; margin-left: 10px;">
+                    <div id="login-buttons">
+                      <button type="submit" class="btn btn-primary">로그인</button>
                       <a id="kakao-login-btn"></a>
                       <a href="http://developers.kakao.com/logout"></a>
                       <script type='text/javascript'>
