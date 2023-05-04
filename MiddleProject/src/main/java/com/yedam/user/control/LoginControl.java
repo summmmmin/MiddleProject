@@ -16,13 +16,7 @@ import com.yedam.user.service.UserServiceImpl;
 public class LoginControl implements Control {
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			// TODO Auto-generated method stub
-			// MemberSerivce / MemberServiceImpl, MemberMapper.java(.xml)
-			// service: MemberVO loginCheck(String id, String pw)
-			// mapper: MemberVO loginCheck(MemberVO vo)
-    	
-    	
-    	
+
         String UserId = req.getParameter("UserId");
         String UserPw = req.getParameter("UserPw");
 
