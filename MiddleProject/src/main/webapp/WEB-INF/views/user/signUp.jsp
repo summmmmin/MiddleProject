@@ -60,23 +60,22 @@
                   <div class="col-md-6">
                     <br>
                     <label for="space" class="text-black"></label>
-                    <button type="submit" class="btn btn-primary mb-2" onclick="sendVerification()" >인증번호 받기</button>
+                    <button type="submit" class="btn btn-primary mb-2" onclick="sendVerification()" id="verificationBtn">인증번호 받기</button>
                   </div>
                 </div>
 
-              <div class="form-group row">
-                <div class="col-md-6">
-                  <label for="c_pw" class="text-black">비밀번호 <span class="text-danger">*</span></label>
-                  <input type="password" class="form-control" id="c_pw" name="c_pw" placeholder="8자 이상입력해주세요">
-                  <i class="fa fa-eye fa-lg"></i>
-                  
+                <div class="form-group row">
+                  <div class="col-md-6">
+                    <label for="c_pw" class="text-black">비밀번호 <span class="text-danger">*</span></label>
+                    <input type="password" class="form-control" id="c_pw" name="c_pw" placeholder="최소 8자 이상이어야 합니다.">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="c_pw2" class="text-black">비밀번호 확인 <span class="text-danger">*</span></label>
+                    <input type="password" class="form-control" id="c_pw2" name="c_pw2">
+                  </div>
+                  <!-- 비밀번호 경고 메시지 -->
+                  <div id="password-warning" class="col-md-12 text-danger"></div>
                 </div>
-                <div class="col-md-6">
-                  <label for="c_pw2" class="text-black">비밀번호 확인 <span class="text-danger">*</span></label>
-                  <input type="password" class="form-control" id="c_pw2" name="c_pw2">
-                  
-                </div>
-              </div>
 
               <div class="form-group row">
                 <div class="col-md-6">
@@ -93,7 +92,7 @@
               <div class="form-group row">
                 <div class="col-md-6">
                   <label for="c_phone" class="text-black">전화번호 </label>
-                  <input type="text" class="form-control" id="c_phone" name="c_phone" onkeyup="formatPhoneNumber(this)">
+                  <input type="text" class="form-control" id="c_phone" name="c_phone" onkeyup="formatPhoneNumber(this)" maxlength="13">
                 </div>
               </div>
               <div class="form-group row">
@@ -124,6 +123,9 @@
 
 	  // 알림 띄우기
 	  alert("인증번호가 발송되었습니다.");
+	  
+	  // 버튼 레이블 변경
+	  document.getElementById("verificationBtn").textContent = "인증번호 확인";
 	}
   </script>
   <!-- 회원가입 전화번호탭 하이픈 정규식 -->
@@ -143,6 +145,29 @@ function formatPhoneNumber(input) {
     input.value = phoneNumber.replace(pattern2, "$1-$2-$3").replace(/\-{1,2}$/g, "");
   }
 }
+</script>
+<!-- 비밀번호칸 8자제한 -->
+<script>
+//const는 한번 할당된 값이 변하지 않는 상수를 선언할 때 사용
+//그에 비해 let은 값이 변할 수 있는 변수를 선언할 때 사용
+
+const passwordInput = document.getElementById('c_pw');
+const passwordConfirmInput = document.getElementById('c_pw2');
+const passwordWarning = document.getElementById('password-warning');
+
+function checkPasswordValidity() {
+  if (!passwordInput.value) {
+    passwordWarning.textContent = '비밀번호를 입력해주세요.';
+  } else if (passwordInput.value.length < 8) {
+    passwordWarning.textContent = '최소 8자 이상 입력하세요.';
+  } else {
+    passwordWarning.textContent = '';
+  }
+}
+
+// 입력값이 바뀔 때마다 유효성 검사를 수행
+passwordInput.addEventListener('keyup', checkPasswordValidity);
+passwordConfirmInput.addEventListener('keyup', checkPasswordValidity);
 </script>
 
 </body>
