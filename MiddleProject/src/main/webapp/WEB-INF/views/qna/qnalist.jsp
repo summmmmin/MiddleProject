@@ -27,6 +27,7 @@
 <div class="site-section">
 <c:set var = "no" value="0"></c:set>
 <div class= container>
+<h3>Q&A</h3>
 <table class="table table-striped">
   <thead>
     <tr>
