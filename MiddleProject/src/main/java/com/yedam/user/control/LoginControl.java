@@ -29,7 +29,7 @@ public class LoginControl implements Control {
             
             return "main.do";
         } else {
-            return "login.do";
+            return "user/login.tiles";
         }
     }
 }
