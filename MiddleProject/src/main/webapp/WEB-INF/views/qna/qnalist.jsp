@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <title>Shoppers &mdash; Colorlib e-Commerce Template</title>
     <meta charset="utf-8">
@@ -38,7 +38,7 @@
   </thead>
   <c:forEach var="qna" items="${list }">
     <tr>
-		<td><c:out value="${no=no+1 }"></c:out></td>
+		<td><c:out value="${qna.postId }"></c:out></td>
 		<td><a href="getQna.do?page=${pageInfo.pageNum}&qid=${qna.postId }">${qna.postTitle } </a></td>
 		<td>${qna.userId }</td>
 		<td>${qna.postDate }</td>
@@ -48,17 +48,19 @@
 
 
 <div class="center">
-    <div class="pagination">
+    <div class="pagination justify-content-center">
 		<c:if test="${pageInfo.prev }">
-			<a href="qnaList.do?page=${pageInfo.startPage-1 }">Previous</a>
+			<a  class="page-link" href="qnaList.do?page=${pageInfo.startPage-1 }">Previous</a>
 		</c:if>
 		<c:forEach var="i" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
-			<a class="${i == pageInfo.pageNum ? 'active' : '' }" href="qnaList.do?page=${i }">${i } </a>
+			<a  class="page-link" class="${i == pageInfo.pageNum ? 'active' : '' }" href="qnaList.do?page=${i }">${i } </a>
 		</c:forEach>
 		<c:if test="${pageInfo.next }">
-			<a href="qnaList.do?page=${pageInfo.endPage+1 }">Next</a>
+			<a  class="page-link" href="qnaList.do?page=${pageInfo.endPage+1 }">Next</a>
 		</c:if>
-		 <p><a href="shop.html" class="btn btn-sm btn-primary">Q&A 등록</a></p>
+	</div>
+	<div class="d-flex justify-content-end">
+		 <p><a href="qnaAdd.do" class="btn btn-sm btn-primary">Q&A 등록</a></p>
 	</div>
 </div>
 </div>

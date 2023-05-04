@@ -37,7 +37,7 @@ public class FrontController extends HttpServlet{
 		map.put("/getQna.do", new GetQnaControl());
 		//product
 		map.put("/prodList.do", new ProdListControl());
-		map.put("/prodAddForm", new ProdAddForm());
+		map.put("/prodAddForm.do", new ProdAddForm());
 		map.put("/addProd.do", new AddProdControl());
 		
 		
