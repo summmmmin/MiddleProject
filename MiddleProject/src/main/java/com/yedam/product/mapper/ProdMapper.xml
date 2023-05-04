@@ -13,6 +13,10 @@
 		WHERE b.rn > (${page} - 1) * 10
 		]]>
 	</select>
+	
+	<select id="catList" parameterType="int">
+		select * from categories
+	</select>
 
 	<insert id="insertProd" parameterType="product">
 		insert into product

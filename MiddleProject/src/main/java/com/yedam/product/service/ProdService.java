@@ -11,4 +11,5 @@ public interface ProdService {
 	public boolean removeProd(int prodId);
 	public ProdVO getProd(int prodId);
 	public int totalViews();
+	public List<ProdVO> catList();
 }
