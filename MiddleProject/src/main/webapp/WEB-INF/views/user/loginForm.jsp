@@ -14,20 +14,22 @@
     body {
       margin: 10px;
     }
-    
-      .btn {
-    display: inline-block;
-    vertical-align: middle;
-  }
-  .login-buttons {
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
 
-.login-buttons button {
-  margin-right: 10px;
-}
+    .btn {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    #login-buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+
+    .login-buttons button {
+      margin-right: 10px;
+    }
   </style>
 </head>
 
@@ -45,7 +47,7 @@
               <div class="card">
                 <div class="card-header"><strong>로그인</strong></div>
                 <div class="card-body">
-                  <form action="logimForm.do" method="post">
+                  <form action="loginForm.do" method="post">
                     <div class="form-group">
                       <label class="text-muted" for="exampleInputEmail1">아이디</label>
                       <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
@@ -61,8 +63,8 @@
                     <div id="login-buttons">
                       <button type="submit" class="btn btn-primary">로그인</button>
                     </div>
-                    </form>
-                    <form style="text-align: center;">
+                  </form>
+                  <form style="text-align: center;">
                     <div style="margin-top: 10px;">
                       <a id="kakao-login-btn"></a>
                       <a href="http://developers.kakao.com/logout"></a>
