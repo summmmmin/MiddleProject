@@ -19,13 +19,13 @@
     display: inline-block;
     vertical-align: middle;
   }
-  #login-buttons {
+  .login-buttons {
   display: flex;
   align-items: center;
   height: 100%;
 }
 
-#login-buttons button {
+.login-buttons button {
   margin-right: 10px;
 }
   </style>
@@ -60,6 +60,10 @@
                     </div>
                     <div id="login-buttons">
                       <button type="submit" class="btn btn-primary">로그인</button>
+                    </div>
+                    </form>
+                    <form style="text-align: center;">
+                    <div style="margin-top: 10px;">
                       <a id="kakao-login-btn"></a>
                       <a href="http://developers.kakao.com/logout"></a>
                       <script type='text/javascript'>
