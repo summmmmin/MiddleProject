@@ -15,7 +15,7 @@ public class QnaAddControl implements Control {
 		String pageInfo = "main.do";
 
 		if(req.getMethod().equals("GET")) {
-			pageInfo = "qna/qnaAddForm.tiles";
+			pageInfo = "qna/qnaAdd.tiles";
 		}
 		
 		return  pageInfo;
