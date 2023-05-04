@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.sell.mapper.SellMapper">
+	<select id="selectSellList">
+		<![CDATA[
+    	select b.*
+    	from (select rownum rn, a.*
+         	 from (select sell.SELL_ID, sell.USER_ID, sell.PDT_ID, sell.SIZE_ID,
+			sell.SELL_DATE,sell.SELL_PRICE,sell.SELL_DLVY,sell.SELL_CANCEL,sell.SELL_CONFIRM,sell.SELL_PAY,sell.SELL_ACCOUNT, 
+			pdt.pdt_nm, pdt.pdt_brand, pdts.size_size
+			from sell 
+			left outer join product pdt on sell.pdt_id = pdt.pdt_id
+			left outer join product_size pdts on sell.size_id = pdts.size_id
+			where sell.user_id = #{userId}
+			order by sell.sell_date) a
+          	where rownum <= #{page} * 10) b
+    	where b.rn > (#{page}-1) * 10
+    	]]>
+	</select>
+	<select id="getCountSellUser">
+		select count(*) from sell where sell.user_id = #{userId}
+	</select>
+	<select id="searchSell">
+		select sell.SELL_ID, sell.USER_ID, sell.BUY_ID, sell.PDT_ID, sell.SIZE_ID,
+		sell.SELL_DATE,sell.SELL_PRICE,sell.SELL_DLVY,sell.SELL_CANCEL,sell.SELL_CONFIRM,sell.SELL_PAY,sell.SELL_ACCOUNT, 
+		pdt.pdt_nm, pdt.pdt_brand, pdts.size_size
+		from sell 
+		left outer join product pdt on sell.pdt_id = pdt.pdt_id
+		left outer join product_size pdts on sell.size_id = pdts.size_id
+		where sell.sell_id = #{sellId}
+	</select>
+	
+	<select id="SellList">
+		<![CDATA[
+    	select b.*
+    	from (select rownum rn, a.*
+         	 from (select sell.SELL_ID, sell.USER_ID, sell.BUY_ID, sell.PDT_ID, sell.SIZE_ID,
+			sell.SELL_DATE,sell.SELL_PRICE,sell.SELL_DLVY,sell.SELL_CANCEL,sell.SELL_CONFIRM,sell.SELL_PAY,sell.SELL_ACCOUNT, 
+			pdt.pdt_nm, pdt.pdt_brand, pdts.size_size
+			from sell 
+			left outer join product pdt on sell.pdt_id = pdt.pdt_id
+			left outer join product_size pdts on sell.size_id = pdts.size_id
+			order by sell.sell_date) a
+          	where rownum <= #{page} * 10) b
+    	where b.rn > (#{page}-1) * 10
+    	]]>
+	</select>
+	<select id="getCountSell">
+		select count(*) from sell
+	</select>
+</mapper>
