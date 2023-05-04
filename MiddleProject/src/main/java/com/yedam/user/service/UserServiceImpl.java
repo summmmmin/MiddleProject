@@ -20,8 +20,6 @@ public class UserServiceImpl implements UserService {
 	public static UserServiceImpl getInstance() {
 		return instance;
 	}
-
-	
 	
 	@Override
 	public UserVO loginCheck(String UserId, String UserPw) {
@@ -29,7 +27,7 @@ public class UserServiceImpl implements UserService {
 		vo.setUserId(UserId);
 		vo.setUserPw(UserPw);
 
-		UserVO member = mapper.loginCheck(vo);
-		return member;
+		UserVO user = mapper.loginCheck(vo);
+		return user;
 	}
 }

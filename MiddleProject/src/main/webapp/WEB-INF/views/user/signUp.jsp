@@ -171,5 +171,3 @@ passwordConfirmInput.addEventListener('keyup', checkPasswordValidity);
 </script>
 
 </body>
-
-</html>
