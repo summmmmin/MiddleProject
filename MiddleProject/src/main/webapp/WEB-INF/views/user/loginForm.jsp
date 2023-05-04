@@ -36,10 +36,6 @@
 </head>
 
 <body>
-  <% String errorMessage = (String) request.getAttribute("errorMessage"); %>
-  <% if (errorMessage != null) { %>
-  <p style="color: red;"><%= errorMessage %></p>
-  <% } %>
   <div id="content" class="flex">
     <div class="">
       <div class="page-content page-container" id="page-content">
@@ -49,17 +45,22 @@
               <div class="card">
                 <div class="card-header"><strong>로그인</strong></div>
                 <div class="card-body">
-                  <form action="loginForm.do" method="post">
+                  <% if (request.getAttribute("errorMessage") != null) { %>
+                    <script>
+                      alert("아이디 또는 비밀번호가 잘못되었습니다.");
+                    </script>
+                  <% } %>
+                  <form action="login.do" method="post">
                     <div class="form-group">
                       <label class="text-muted" for="exampleInputEmail1">아이디</label>
                       <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="">
+                        placeholder="" name="UserId">
                       <small id="emailHelp" class="form-text text-muted">아이디는 이메일 형식입니다</small>
 
                     </div>
                     <div class="form-group">
                       <label class="text-muted" for="exampleInputPassword1">비밀번호</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="">
+                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="" name="UserPw">
 
                     </div>
                     <div id="login-buttons">
