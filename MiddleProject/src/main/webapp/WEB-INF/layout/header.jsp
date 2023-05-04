@@ -66,7 +66,7 @@
             </li>
             <li><a href="prodList.do">Shop</a></li>
             <li><a href="qnaList.do">Q&A</a></li>
-	    	<li id="fright"><a href="login.do">Login</a></li>
+	    	<li id="fright"><a href="loginForm.do">Login</a></li>
           </ul>
         </div>
       </nav>

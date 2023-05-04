@@ -18,6 +18,7 @@ import com.yedam.qna.control.GetQnaControl;
 import com.yedam.qna.control.QnaListControl;
 import com.yedam.sell.control.SellListUControl;
 import com.yedam.user.control.LoginControl;
+import com.yedam.user.control.LoginFormControl;
 import com.yedam.user.control.SignUpControl;
 
 public class FrontController extends HttpServlet{
@@ -36,11 +37,11 @@ public class FrontController extends HttpServlet{
 		map.put("/getQna.do", new GetQnaControl());
 		//product
 		map.put("/prodList.do", new ProdListControl());
-		map.put("/prodAddForm.do", new ProdAddForm());
+		map.put("/prodAddForm", new ProdAddForm());
 		map.put("/addProd.do", new AddProdControl());
 		
 		
-		
+		map.put("/loginForm.do", new LoginFormControl());
 		map.put("/signUp.do", new SignUpControl());
 		map.put("/login.do", new LoginControl());
 		//sell
