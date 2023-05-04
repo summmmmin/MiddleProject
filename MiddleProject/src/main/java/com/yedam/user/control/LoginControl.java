@@ -15,7 +15,7 @@ import com.yedam.user.service.UserServiceImpl;
 public class LoginControl implements Control {
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try {
+
             String UserId = req.getParameter("user_id");
             String UserPw = req.getParameter("user_pw");
             
@@ -29,17 +29,11 @@ public class LoginControl implements Control {
             
             if (vo != null) {
                 HttpSession session = req.getSession();    
-                session.setAttribute("UserId", vo.getUserId());		//세션에 id저장
-                session.setAttribute("UserNm", vo.getUserNm());		//세션에 이름저장 (환영메세지 보낼거라면 출력)
+                session.setAttribute("UserId", vo.getUserId());
                 
                 return "main.do";
             } else {
-                req.setAttribute("errorMessage", "아이디나 비밀번호가 틀렸습니다");
                 return "loginForm.do";
             }
-        } catch (Exception e) {
-            req.setAttribute("errorMessage", "로그인 처리 중 오류가 발생했습니다.");
-            return "loginForm.do";
         }
     }
-}
