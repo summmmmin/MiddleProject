@@ -22,10 +22,10 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public UserVO loginCheck(String UserId, String UserPw) {
+	public UserVO loginCheck(String userId, String userPw) {
 		UserVO vo = new UserVO();
-		vo.setUserId(UserId);
-		vo.setUserPw(UserPw);
+		vo.setUserId(userId);
+		vo.setUserPw(userPw);
 
 		UserVO user = mapper.loginCheck(vo);
 		return user;
