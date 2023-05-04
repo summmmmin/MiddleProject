@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+    String userId = (String)session.getAttribute("UserId");
+    String userNm = (String)session.getAttribute("UserNm");
+%>
 <header class="site-navbar" role="banner">
       <div class="site-navbar-top">
         <div class="container">
@@ -66,7 +71,14 @@
             </li>
             <li><a href="prodList.do">Shop</a></li>
             <li><a href="qnaList.do">Q&A</a></li>
-	    	<li id="fright"><a href="loginForm.do">Login</a></li>
+            <c:choose>
+              <c:when test="${UserId == null }">
+                  <li id="fright"><a href="loginForm.do">Login</a></li>
+              </c:when>
+              <c:otherwise>
+                  <li id="fright"><a href="logout.do">Logout</a></li>
+              </c:otherwise>
+          </c:choose>
           </ul>
         </div>
       </nav>
