@@ -16,8 +16,8 @@ public class LoginControl implements Control {
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            String UserId = req.getParameter("UserId");
-            String UserPw = req.getParameter("UserPw");
+            String UserId = req.getParameter("user_id");
+            String UserPw = req.getParameter("user_pw");
             
             System.out.println(UserId);
             System.out.println(UserPw);
