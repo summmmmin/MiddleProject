@@ -17,20 +17,9 @@ public class LoginControl implements Control {
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	
-        String userId = req.getParameter("userId");
-        String userPw = req.getParameter("userPw");
+		return "user/login.tiles";
+		
 
-        UserService service = UserServiceImpl.getInstance();
-        UserVO vo = service.loginCheck(userId, userPw);
-        
-        if (vo != null) {
-            HttpSession session = req.getSession();    
-            session.setAttribute("userId", vo.getUserId());
-            
-            return "main.do";
-        } else {
-            return "login.do";
         }
     }
-}
 
