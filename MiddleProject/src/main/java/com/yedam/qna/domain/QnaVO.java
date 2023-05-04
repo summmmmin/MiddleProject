@@ -11,4 +11,5 @@ public class QnaVO {
 	private String postTitle;
 	private String postCT;
 	private Date postDate;
+	private String postImg;
 }

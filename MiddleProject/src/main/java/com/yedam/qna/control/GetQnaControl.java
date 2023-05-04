@@ -15,15 +15,16 @@ public class GetQnaControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String qid = req.getParameter("qid");
+		String qid = req.getParameter("postId");
 		String page = req.getParameter("page");
 		
 		QnaService service = new QnaServiceImpl();
 		QnaVO vo = service.getQna(Integer.parseInt(qid));
+		System.out.println(vo);
 		req.setAttribute("qnaInfo", vo);
 		req.setAttribute("pageNum", page);
 		
-		return "qna/qnaGet.tiles";
+		return "qna/getQna.tiles";
 		
 	}
 
