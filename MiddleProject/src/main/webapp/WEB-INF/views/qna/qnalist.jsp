@@ -40,7 +40,7 @@
   <c:forEach var="qna" items="${list }">
     <tr>
 		<td><c:out value="${qna.postId }"></c:out></td>
-		<td><a href="getQna.do?page=${pageInfo.pageNum}&postId=${qna.postId }">${qna.postTitle } </a></td>
+		<td><a href="getQna.do?page=${pageInfo.pageNum}&qid=${qna.postId }">${qna.postTitle } </a></td>
 		<td>${qna.userId }</td>
 		<td>${qna.postDate }</td>
     </tr>
