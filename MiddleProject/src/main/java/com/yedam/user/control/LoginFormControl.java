@@ -13,11 +13,11 @@ import com.yedam.user.domain.UserVO;
 import com.yedam.user.service.UserService;
 import com.yedam.user.service.UserServiceImpl;
 
-public class LoginControl implements Control {
+public class LoginFormControl implements Control {
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	
-		return "user/login.tiles";
+		return "user/loginForm.tiles";
 		
 
         }

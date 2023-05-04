@@ -15,7 +15,7 @@ import com.yedam.product.control.AddProdControl;
 import com.yedam.product.control.ProdListControl;
 import com.yedam.qna.control.GetQnaControl;
 import com.yedam.qna.control.QnaListControl;
-import com.yedam.user.control.LoginControl;
+import com.yedam.user.control.LoginFormControl;
 import com.yedam.user.control.SignUpControl;
 
 public class FrontController extends HttpServlet{
@@ -39,7 +39,7 @@ public class FrontController extends HttpServlet{
 		
 		
 		map.put("/signUp.do", new SignUpControl());
-		map.put("/login.do", new LoginControl());
+		map.put("/loginForm.do", new LoginFormControl());
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
