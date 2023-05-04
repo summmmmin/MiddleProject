@@ -17,8 +17,5 @@ public class LoginControl implements Control {
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	
-		return "user/login.tiles";
-
-
         }
     }
