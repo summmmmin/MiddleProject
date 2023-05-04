@@ -11,5 +11,7 @@ public interface ProdMapper {
 	public int updateProd(ProdVO vo);
 	public ProdVO searchProd(int prodId);
 	public int updateViews(int prodId);
-	public int getViews();	
+	public int getViews();
+	
+	public List<ProdVO> catList();
 }

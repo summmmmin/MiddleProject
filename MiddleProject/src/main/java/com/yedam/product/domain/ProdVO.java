@@ -12,4 +12,6 @@ public class ProdVO {
 	private String pdtImg;
 	private String pdtBrand;
 	private int pdtViews;
+	
+	private String catNm;
 }

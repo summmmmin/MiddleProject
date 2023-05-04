@@ -27,18 +27,20 @@ public class AddProdControl implements Control {
 		
 		int cat = Integer.parseInt(multi.getParameter("cat"));
 		int subcat = Integer.parseInt(multi.getParameter("subcat"));
-		String name = multi.getParameter("name");
+		String pdtName = multi.getParameter("pdtName");
 		int price = Integer.parseInt(multi.getParameter("price"));
 		String img = multi.getParameter("img");
 		String brand = multi.getParameter("brand");
+		String catName = multi.getParameter("catName");
 		
 		ProdVO vo = new ProdVO();
 		vo.setCatId(cat);
 		vo.setSubcatId(subcat);
-		vo.setPdtNm(name);
+		vo.setPdtNm(pdtName);
 		vo.setPdtPrice(price);
 		vo.setPdtImg(img);
 		vo.setPdtBrand(brand);
+		vo.setCatNm(catName);
 		
 		ProdService service = new ProdServiceImpl();
 		if (service.addProd(vo)) {
