@@ -17,8 +17,9 @@ public class LoginControl implements Control {
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	
-        String userId = req.getParameter("userId");
-        String userPw = req.getParameter("userPw");
+
+		
+
 
         UserService service = UserServiceImpl.getInstance();
         UserVO vo = service.loginCheck(userId, userPw);
@@ -30,7 +31,7 @@ public class LoginControl implements Control {
             return "main.do";
         } else {
             return "user/login.tiles";
+
         }
     }
-}
 

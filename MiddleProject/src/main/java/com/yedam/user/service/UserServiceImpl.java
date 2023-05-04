@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
 		vo.setUserId(UserId);
 		vo.setUserPw(UserPw);
 
-		UserVO member = mapper.loginCheck(vo);
-		return member;
+		UserVO user = mapper.loginCheck(vo);
+		return user;
 	}
 }
