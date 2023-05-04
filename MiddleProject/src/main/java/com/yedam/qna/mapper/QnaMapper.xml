@@ -23,20 +23,20 @@
   <!-- QNA추가. -->
   <insert id="insertQna" parameterType="qna">
   insert  into qna_post(post_id,user_id,post-title,post_ct,post_date)
-  	values(qna_seq.nextval, #{UId}, #{qTitle}, #{qCT}, sysdate)
+  	values(qna_seq.nextval, #{userId}, #{postTitle}, #{postCT}, sysdate)
   </insert>
   
   <!-- QNA수정. -->
   <update id="updateQna" parameterType="qna">
   update qna_post
-  	set	post-title=#{qTitle}
-  		post_ct= #{qCT}
-  where user_id= #{UId}
+  	set	post_title=#{postTitle}
+  		post_ct= #{postCT}
+  where user_id= #{userId}
   </update>
   
   <!-- QNA상세조회. -->
   <select id="searchQna" resultType="qna" parameterType="int">
-  	select * from qna_post where post_id_id=#{qId}
+  	select *from qna_post join users using(user_id); where post_id=#{postId}
   </select>
   
   <!-- QNA 총 개수. -->
