@@ -25,11 +25,11 @@ public class LoginControl implements Control {
         
         if (vo != null) {
             HttpSession session = req.getSession();    
-            session.setAttribute("id", vo.getUserId());
+            session.setAttribute("userId", vo.getUserId());
             
             return "main.do";
         } else {
-            return "loginForm.do";
+            return "login.do";
         }
     }
 }

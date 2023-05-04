@@ -20,8 +20,6 @@ public class UserServiceImpl implements UserService {
 	public static UserServiceImpl getInstance() {
 		return instance;
 	}
-
-	
 	
 	@Override
 	public UserVO loginCheck(String UserId, String UserPw) {
