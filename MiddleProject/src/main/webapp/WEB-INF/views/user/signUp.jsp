@@ -53,15 +53,15 @@
                 </div>
 
                 <div class="form-group row">
-                  <div class="col-md-6">
+                  <div class="col-md-12">
                     <label for="c_email2" class="text-black">이메일 인증번호 <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="c_email2" name="c_email2" placeholder="">
+                   <div class="input-group w-75">
+                    <input type="text" class="form-control" id="c_code" placeholder="인증번호" aria-label="Coupon Code" aria-describedby="button-addon2">
+                    <div class="input-group-append ">
+                      <button class="btn btn-primary btn-sm" type="button" id="button-addon2">인증번호 받기</button>
+                    </div>
                   </div>
-                  <div class="col-md-6">
-                    <br>
-                    <label for="space" class="text-black"></label>
-                    <button type="submit" class="btn btn-primary mb-2" onclick="sendVerification()" id="verificationBtn">인증번호 받기</button>
-                  </div>
+                </div>
                 </div>
 
                 <div class="form-group row">
