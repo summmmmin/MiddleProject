@@ -86,7 +86,7 @@
               </c:forEach>
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-             <button class="btn btn-primary me-md-2" type="button">게시글 등록</button>
+             <button class="btn btn-primary me-md-2" type="button" onclick="location.href='prodAddForm.do'">게시글 등록</button>
 			</div>
             <div class="row" data-aos="fade-up">
               <div class="col-md-12 text-center">
