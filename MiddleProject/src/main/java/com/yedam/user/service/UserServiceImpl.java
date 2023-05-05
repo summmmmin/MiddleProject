@@ -38,11 +38,6 @@ public class UserServiceImpl implements UserService {
 		return result == 1;
 	}
 	
-	@Override
-	public boolean checkEmail(String email) {
-	    int count = mapper.checkEmail(email);
-	    return count > 0;
-	}
 	
 	
 }
