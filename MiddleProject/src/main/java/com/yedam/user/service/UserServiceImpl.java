@@ -30,4 +30,13 @@ public class UserServiceImpl implements UserService {
 		UserVO user = mapper.loginCheck(vo);
 		return user;
 	}
+	
+	
+	@Override
+	public boolean addUser(UserVO user) {
+		int result = mapper.addUser(user);
+		return result == 1;
+	}
+	
+	
 }

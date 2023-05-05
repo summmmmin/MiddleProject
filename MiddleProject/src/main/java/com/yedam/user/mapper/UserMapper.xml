@@ -9,7 +9,7 @@
 
 <!-- addMember -->
 <insert id="addUser" parameterType="com.yedam.user.domain.UserVO">
-    INSERT INTO user (user_id, user_pw, user_nm, user_phone, user_add, user_grade, user_date, user_point) 
-    VALUES (#{userId}, #{userPw}, #{userNm}, #{userPh}, #{userAddr}, '일반회원', sysdate, 0)
+    INSERT INTO users (user_id, user_pw, user_nm, user_phone, user_add) 
+    VALUES (#{userId}, #{userPw}, #{userNm}, #{userPh}, #{userAddr})
 </insert>
 </mapper>

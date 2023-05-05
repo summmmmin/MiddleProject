@@ -41,13 +41,13 @@
           <div class="col-md-7">
             <h2 class="h3 mb-3 text-black">회원가입</h2>
 
-            <form action="#" method="post">
+            <form action="signUp.do" method="post" onsubmit="return submitForm()">
 
               <div class="p-3 p-lg-5 border">
                 <div class="form-group row">
                   <div class="col-md-6">
                     <label for="c_email" class="text-black">이메일 <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control" id="c_email" name="c_email" placeholder="">
+                    <input type="email" class="form-control" id="user_id" name="user_id" placeholder="">
                   </div>
                 </div>
 
@@ -66,37 +66,35 @@
                 <div class="form-group row">
                   <div class="col-md-6">
                     <label for="c_pw" class="text-black">비밀번호 <span class="text-danger">*</span></label>
-                    <input type="password" class="form-control" id="c_pw" name="c_pw" placeholder="최소 8자 이상이어야 합니다.">
+                    <input type="password" class="form-control" id="user_pw" name="user_pw" placeholder="최소 8자 이상이어야 합니다.">
                   </div>
                   <div class="col-md-6">
                     <label for="c_pw2" class="text-black">비밀번호 확인 <span class="text-danger">*</span></label>
                     <input type="password" class="form-control" id="c_pw2" name="c_pw2">
                   </div>
-                  <!-- 비밀번호 경고 메시지 -->
-                  <div id="password-warning" class="col-md-12 text-danger"></div>
                 </div>
 
               <div class="form-group row">
                 <div class="col-md-6">
                   <label for="c_name" class="text-black">이름 </label>
-                  <input type="text" class="form-control" id="c_name" name="c_name">
+                  <input type="text" class="form-control" id="user_name" name="user_nm">
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-md-12">
                   <label for="c_addr" class="text-black">주소 </label>
-                  <input type="text" class="form-control" id="c_addr" name="c_addr">
+                  <input type="text" class="form-control" id="user_add" name="user_add">
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-md-6">
                   <label for="c_phone" class="text-black">전화번호 </label>
-                  <input type="text" class="form-control" id="c_phone" name="c_phone" onkeyup="formatPhoneNumber(this)" maxlength="13">
+                  <input type="text" class="form-control" id="user_phone" name="user_phone" onkeyup="formatPhoneNumber(this)" maxlength="13">
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-lg-12">
-                  <input type="submit" class="btn btn-primary btn-lg btn-block" value="Send Message">
+                  <input type="submit" class="btn btn-primary btn-lg btn-block" value="가입 완료">
                 </div>
               </div>
           </div>
@@ -115,18 +113,6 @@
   <script src="js/aos.js"></script>
   <script src="js/main.js"></script>
   
-  <!-- 이메일 인증 발송관련 스크립트 -->
-  <script>
-  function sendVerification() {
-	  // 인증번호 발송 구현하기
-
-	  // 알림 띄우기
-	  alert("인증번호가 발송되었습니다.");
-	  
-	  // 버튼 레이블 변경
-	  document.getElementById("verificationBtn").textContent = "인증번호 확인";
-	}
-  </script>
   <!-- 회원가입 전화번호탭 하이픈 정규식 -->
   <script>
 function formatPhoneNumber(input) {
