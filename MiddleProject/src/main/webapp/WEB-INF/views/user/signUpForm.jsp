@@ -41,7 +41,7 @@
           <div class="col-md-7">
             <h2 class="h3 mb-3 text-black">회원가입</h2>
 
-            <form action="signUp.do" method="post" onsubmit="return submitForm()">
+            <form action="signUp.do" method="post" onsubmit="return validatePassword()">
 
               <div class="p-3 p-lg-5 border">
                 <div class="form-group row">
@@ -112,47 +112,7 @@
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/aos.js"></script>
   <script src="js/main.js"></script>
-  
-  <!-- 회원가입 전화번호탭 하이픈 정규식 -->
-  <script>
-function formatPhoneNumber(input) {
-  // 전화번호 포맷팅을 위한 정규식 패턴
-  const pattern1 = /^(\d{0,3})(\d{0,4})(\d{0,4})$/g;
-  const pattern2 = /^(\d{0,2})(\d{0,3})(\d{0,4})$/g;
-
-  // 입력된 전화번호에서 숫자만 추출
-  const phoneNumber = input.value.replace(/[^\d]/g, "");
-
-  // 숫자만 추출한 전화번호에 따라 포맷팅 처리
-  if (phoneNumber.length > 10) {
-    input.value = phoneNumber.replace(pattern1, "$1-$2-$3").replace(/\-{1,2}$/g, "");
-  } else {
-    input.value = phoneNumber.replace(pattern2, "$1-$2-$3").replace(/\-{1,2}$/g, "");
-  }
-}
-</script>
-<!-- 비밀번호칸 8자제한 -->
-<script>
-//const는 한번 할당된 값이 변하지 않는 상수를 선언할 때 사용
-//그에 비해 let은 값이 변할 수 있는 변수를 선언할 때 사용
-
-const passwordInput = document.getElementById('c_pw');
-const passwordConfirmInput = document.getElementById('c_pw2');
-const passwordWarning = document.getElementById('password-warning');
-
-function checkPasswordValidity() {
-  if (!passwordInput.value) {
-    passwordWarning.textContent = '비밀번호를 입력해주세요.';
-  } else if (passwordInput.value.length < 8) {
-    passwordWarning.textContent = '최소 8자 이상 입력하세요.';
-  } else {
-    passwordWarning.textContent = '';
-  }
-}
-
-// 입력값이 바뀔 때마다 유효성 검사를 수행
-passwordInput.addEventListener('keyup', checkPasswordValidity);
-passwordConfirmInput.addEventListener('keyup', checkPasswordValidity);
-</script>
+  <!-- 직접만든 js -->
+  <script src="js/custom.js"></script>
 
 </body>
