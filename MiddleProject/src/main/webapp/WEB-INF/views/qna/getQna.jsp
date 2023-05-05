@@ -41,8 +41,8 @@
 
             </div>
             <div class="mb-5">
-              <button class="btn btn-primary btn-sm">수정하기</button>
-  			  <button class="btn btn-sm btn-pink">목차</button>
+              <button class="btn btn-primary btn-sm">수정</button>
+  			  <button class="btn btn-outline-secondary btn-lg">목차</button>
             </div>
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
@@ -59,7 +59,6 @@
         </div>
       </div>
     </div>
-  </div>
   
    
   

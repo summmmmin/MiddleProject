@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
      <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
 <!DOCTYPE html>
 <html lang="ko">
@@ -23,31 +24,43 @@
     <link rel="stylesheet" href="../css/style.css">
  </head>
  <body>
-   <div class=container>
-	<h3>Q&A 등록</h3>
+<div class="site-wrap">
+	<div class="site-section">
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col-md-7">
+            <h2 class="h3 mb-3 text-black">Q&A 등록</h2>
 
-	<form action="qnaAdd.do" method="post" enctype="multipart/form-data">
-		<table class="table">
+			<form action="qnaAdd.do" method="post" enctype="multipart/form-data">
+			 <div class="p-3 p-lg-5 border">
+			<table class="table">
 			<tr>
 				<th scope="col" class="text-primary">제목</th>
-				<td><input type="text" name="name"></td>
+				<td><input type="text" class="form-control" name="title"></td>
 			</tr>
 			<tr>
 				<th scope="col" class="text-primary">작성자</th>
-				<td><input type="text" name="price"></td>
+				<td><span class="input-group-text" padding-right="5px" name = "writer">${user_name }</span></td>
+			</tr>
+			<tr>
+				<th scope="col" class="text-primary">내용</th>
+				<td> <textarea name="subject" cols="30" rows="15" class="form-control" placeholder="Write your notes here..."></textarea></td>
 			</tr>
 			<tr>
 				<th scope="col" class="text-primary">첨부파일</th>
 				<td><input type="file" name="img"></td>
 			</tr>
-		</table>
-			<p>
-            		<div class="col-md-5  d-flex justify-content-center">
-					<button type="submit"class="btn btn-outline-primary btn-sm btn-block">등록</button>
-					<button class="btn btn-outline btn-sm btn-block"><a href="qnaList.do">목차</a></button>
+			</table>
+            		<div class="d-flex justify-content-end">
+					<button type="submit"class="btn btn-outline-primary btn-sm">등록</button>
+					<button class="btn btn-outline-dark btn-sm "><a href="qnaList.do">목차</a></button></button>
 					</div>
-			</p>
-	</form>
+			</div>
+			</form>
+		  </div>
+		</div>
+	  </div>
+	</div>
 </div>
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-ui.js"></script>
