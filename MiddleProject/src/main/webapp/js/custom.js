@@ -17,7 +17,7 @@ function formatPhoneNumber(input) {
 }
 
 
-//비밀번호
+//비밀번호 정규식
 const passwordInput = document.getElementById('user_pw');
 const passwordConfirmInput = document.getElementById('c_pw2');
 const passwordWarning = document.getElementById('password-warning');
@@ -40,11 +40,14 @@ function checkPasswordMatch() {
   const passwordConfirmValue = passwordConfirmInput.value;
 
   if (passwordValue !== passwordConfirmValue) {
+    passwordWarning.style.color = 'red';
     passwordWarning.textContent = '비밀번호와 비밀번호 확인 값이 일치하지 않습니다.';
   } else {
+    passwordWarning.style.color = '';
     passwordWarning.textContent = '';
   }
 }
+
 
 function validatePassword() {
   const pw = passwordInput.value;
@@ -55,11 +58,17 @@ function validatePassword() {
     return false;
   }
 
+  const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+])[\w!@#$%^&*()_+]{8,}$/;
+  if (!passwordRegex.test(pw)) {
+    alert('비밀번호는 영어 대소문자, 특수문자를 모두 사용하고 8자 이상으로 입력해야 합니다.');
+    return false;
+  }
+
   return true;
 }
 
 // 비밀번호 유효성 검사와 일치 여부 검사를 수행하는 이벤트를 등록
-passwordInput.addEventListener('input', checkPasswordValidity);
+passwordInput.addEventListener('input', checkPasswordValidity);	
 passwordInput.addEventListener('keyup', checkPasswordMatch);
 
 // 비밀번호 함수 false면 회원가입 버튼 중단
@@ -71,9 +80,6 @@ submitButton.addEventListener('click', function(event) {
   }
 });
 
-
-
-
 function submitForm() {
 	if (!validatePassword()) {
 		return false;
@@ -84,3 +90,15 @@ function submitForm() {
 }
 
 
+
+//이메일관련
+  function sendAuthNum() {
+    var email = document.getElementById('user_id').value; // 이메일 주소를 입력하는 input 태그의 id가 'c_email'일 경우
+    var authNum = generateAuthNum(); // generateAuthNum 함수를 호출하여 인증번호를 생성
+    // 이메일 인증번호를 이메일로 전송
+    EmailSender.sendEmail(email, "인증번호", "인증번호는 " + authNum + "입니다.");
+    // 이메일 인증번호를 input 태그에 넣어주기
+    document.getElementById('c_code').value = authNum; // 인증번호를 입력하는 input 태그의 id가 'c_code'일 경우
+  }
+
+  document.getElementById('button-addon2').addEventListener('click', sendAuthNum); // 버튼 클릭 시 sendAuthNum 함수 호출

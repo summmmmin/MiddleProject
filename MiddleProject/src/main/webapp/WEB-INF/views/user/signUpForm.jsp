@@ -59,7 +59,7 @@
 										<div id="email-duplicate-message" style="color: red;"></div>
 									</div>
 								</div>
-
+<!-- 
 								<div class="form-group row">
 									<div class="col-md-12">
 										<label for="c_email2" class="text-black">이메일 인증번호 <span
@@ -75,7 +75,7 @@
 										</div>
 									</div>
 								</div>
-
+ -->
 								<div class="form-group row">
 									<div class="col-md-6">
 										<label for="c_pw" class="text-black">비밀번호 <span
