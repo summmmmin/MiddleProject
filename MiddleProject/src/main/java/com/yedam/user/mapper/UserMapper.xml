@@ -12,4 +12,10 @@
     INSERT INTO users (user_id, user_pw, user_nm, user_phone, user_add) 
     VALUES (#{userId}, #{userPw}, #{userNm}, #{userPh}, #{userAddr})
 </insert>
+
+<!-- 이메일 중복체크(회원가입) -->
+<select id="checkEmail" resultType="int">
+    SELECT COUNT(*) FROM users WHERE user_id = #{userId}
+</select>
+
 </mapper>

@@ -5,5 +5,6 @@ import com.yedam.user.domain.UserVO;
 public interface UserService {
     public UserVO loginCheck(String UserId, String UserPw);
     public boolean addUser(UserVO user);
+    public boolean checkEmail(String UserId);
 
 }

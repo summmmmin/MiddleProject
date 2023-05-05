@@ -72,7 +72,7 @@
             <li><a href="prodList.do">Shop</a></li>
             <li><a href="qnaList.do">Q&A</a></li>
             <c:choose>
-              <c:when test="${UserId == null }">
+              <c:when test="${userinfo == null }">
                   <li id="fright"><a href="loginForm.do">Login</a></li>
               </c:when>
               <c:otherwise>
