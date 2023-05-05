@@ -29,7 +29,8 @@ public class LoginControl implements Control {
             
             if (vo != null) {
                 HttpSession session = req.getSession();    
-                session.setAttribute("UserId", vo.getUserId());
+                session.setAttribute("userinfo", vo);
+                
                 
                 return "main.do";
             } else {
