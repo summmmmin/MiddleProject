@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
      <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
 <!DOCTYPE html>
 <html lang="ko">
@@ -35,15 +36,15 @@
 			<table class="table">
 			<tr>
 				<th scope="col" class="text-primary">제목</th>
-				<td><input type="text" class="form-control" name="name"></td>
+				<td><input type="text" class="form-control" name="title"></td>
 			</tr>
 			<tr>
 				<th scope="col" class="text-primary">작성자</th>
-				<td><span class="input-group-text" padding-right="5px">이름</span></td>
+				<td><span class="input-group-text" padding-right="5px" name = "writer">${user_name }</span></td>
 			</tr>
 			<tr>
 				<th scope="col" class="text-primary">내용</th>
-				<td> <textarea name="c_order_notes" id="c_order_notes" cols="30" rows="15" class="form-control" placeholder="Write your notes here..."></textarea></td>
+				<td> <textarea name="subject" cols="30" rows="15" class="form-control" placeholder="Write your notes here..."></textarea></td>
 			</tr>
 			<tr>
 				<th scope="col" class="text-primary">첨부파일</th>

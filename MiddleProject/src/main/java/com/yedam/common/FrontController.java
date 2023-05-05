@@ -23,6 +23,7 @@ import com.yedam.user.control.LoginControl;
 import com.yedam.user.control.LoginFormControl;
 import com.yedam.user.control.LogoutControl;
 import com.yedam.user.control.SignUpControl;
+import com.yedam.user.control.SignUpFormControl;
 
 public class FrontController extends HttpServlet{
 	private Map<String, Control> map;
@@ -46,8 +47,9 @@ public class FrontController extends HttpServlet{
 		
 		map.put("/logout.do", new LogoutControl());
 		map.put("/loginForm.do", new LoginFormControl());
-		map.put("/signUp.do", new SignUpControl());
+		map.put("/signUpForm.do", new SignUpFormControl());
 		map.put("/login.do", new LoginControl());
+		map.put("/signUp.do", new SignUpControl());
 		//sell
 		map.put("/sellListU.do", new SellListUControl());
 		map.put("/sellGet.do", new SellGetControl());

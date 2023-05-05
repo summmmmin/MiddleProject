@@ -14,7 +14,8 @@
   	select b.* 
   	from(select rownum rn, a.*
        	 from (select * from qna_post
-             order by 1 desc) a
+       	 		join users using(user_id)
+             order by post_id desc) a
       	 where rownum <= #{page}*10 )b
   	where b.rn > (#{page} - 1) * 10
   	]]>
@@ -22,8 +23,8 @@
   
   <!-- QNA추가. -->
   <insert id="insertQna" parameterType="qna">
-  insert  into qna_post(post_id,user_id,post-title,post_ct,post_date)
-  	values(qna_seq.nextval, #{userId}, #{postTitle}, #{postCT}, sysdate)
+  insert  into qna_post(post_id,user_id,post-title,post_ct,post_date,qna_img)
+  	values(post_id_seq.nextval, #{userId}, #{postTitle}, #{postCT}, sysdate,#{postImg})
   </insert>
   
   <!-- QNA수정. -->

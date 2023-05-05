@@ -41,7 +41,7 @@
     <tr>
 		<td><c:out value="${qna.postId }"></c:out></td>
 		<td><a href="getQna.do?page=${pageInfo.pageNum}&postId=${qna.postId }">${qna.postTitle } </a></td>
-		<td>${qna.userId }</td>
+		<td>${qna.userNM }</td>
 		<td>${qna.postDate }</td>
     </tr>
    </c:forEach>
