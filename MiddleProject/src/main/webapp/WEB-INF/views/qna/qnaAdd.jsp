@@ -40,7 +40,7 @@
 			</tr>
 			<tr>
 				<th scope="col" class="text-primary">작성자</th>
-				<td><span class="input-group-text" padding-right="5px" name = "writer">${user_name }</span></td>
+				<td><span class="input-group-text" padding-right="5px" name = "writer">${userinfo.userNm }</span></td>
 			</tr>
 			<tr>
 				<th scope="col" class="text-primary">내용</th>

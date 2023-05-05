@@ -32,7 +32,7 @@
           </div>
           <div class="col-md-6">
             <h2 class="text-black">${qnaInfo.postTitle }</h2>
-            <p><strong class="text-primary h1">${qnaInfo.userId }</strong></p>
+            <p><strong class="text-primary h1">${qnaInfo.userNm }</strong></p>
             <p class="mb-4">${qnaInfo.postCT }</p>
           
             <div class="mb-5">
@@ -42,23 +42,24 @@
             </div>
             <div class="mb-5">
               <button class="btn btn-primary btn-sm">수정</button>
-  			  <button class="btn btn-outline-secondary btn-lg">목차</button>
+  			  <button hrf class="btn btn-outline-secondary btn-lg"><a href="qnaList.do">목차</a></button></button>
             </div>
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">구매하기</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
-      </div>
+      <div class="p-3 p-lg-5 border">
+      <p><strong class="text-primary h4">답변</strong></p>
+        <div class="border p-3 mb-5">
+          <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsepaypal" role="button" aria-expanded="false" aria-controls="collapsepaypal">관리자</a></h3>
+
+            <div class="collapse" id="collapsepaypal">
+              <div class="py-2">
+                  <p class="mb-0">구라치지마십쇼</p>
+              </div>
+           </div>
+       	</div>
+       </div>
     </div>
+      </div>
   
    
   

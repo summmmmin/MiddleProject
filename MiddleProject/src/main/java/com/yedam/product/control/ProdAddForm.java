@@ -19,8 +19,14 @@ public class ProdAddForm implements Control {
 		
 		ProdService service = new ProdServiceImpl();
 		List<ProdVO> list = service.catList();
+		List<ProdVO> list2 = service.subcatList();
+		List<ProdVO> list3 = service.brdList();
+		List<ProdVO> list4 = service.genderList();
 		
 		req.setAttribute("list", list);
+		req.setAttribute("list2", list2);
+		req.setAttribute("list3", list3);
+		req.setAttribute("list4", list4);
 		
 		return "product/prodAddForm.tiles";
 	}

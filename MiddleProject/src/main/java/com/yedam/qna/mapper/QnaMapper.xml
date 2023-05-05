@@ -23,8 +23,8 @@
   
   <!-- QNA추가. -->
   <insert id="insertQna" parameterType="qna">
-  insert  into qna_post(post_id,user_id,post-title,post_ct,post_date,qna_img)
-  	values(post_id_seq.nextval, #{userId}, #{postTitle}, #{postCT}, sysdate,#{postImg})
+  insert into qna_post(post_id,user_id,post_title,post_ct,qna_img)
+  	values(post_id_seq.nextval, #{userId}, #{postTitle}, #{postCT},#{postImg})
   </insert>
   
   <!-- QNA수정. -->
