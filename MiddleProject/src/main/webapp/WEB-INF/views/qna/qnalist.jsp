@@ -41,7 +41,7 @@
     <tr>
 		<td><c:out value="${qna.postId }"></c:out></td>
 		<td><a href="getQna.do?page=${pageInfo.pageNum}&postId=${qna.postId }">${qna.postTitle } </a></td>
-		<td>${qna.userNM }</td>
+		<td>${qna.userNm }</td>
 		<td>${qna.postDate }</td>
     </tr>
    </c:forEach>
@@ -61,7 +61,7 @@
 		</c:if>
 	</div>
 	<div class="d-flex justify-content-end">
-		 <p><a href="qnaAdd.do" class="btn btn-sm btn-primary" >Q&A 등록</a></p>
+		 <p><a href="addQna.do" class="btn btn-sm btn-primary" >Q&A 등록</a></p>
 	</div>
 	
 </div>

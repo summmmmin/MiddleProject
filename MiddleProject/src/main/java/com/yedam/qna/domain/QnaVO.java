@@ -13,5 +13,5 @@ public class QnaVO {
 	private Date postDate;
 	private String postImg;
 	
-	private String userNM;
+	private String userNm;
 }
