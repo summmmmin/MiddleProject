@@ -66,7 +66,7 @@
 
                     </div>
                     <div id="login-buttons">
-					  <span><a href="signUp.do" class="btn btn-primary">회원가입</a></span>
+					  <span><a href="signUpForm.do" class="btn btn-primary">회원가입</a></span>
                       <button type="submit" class="btn btn-primary">로그인</button>
                     </div>
                   </form>
