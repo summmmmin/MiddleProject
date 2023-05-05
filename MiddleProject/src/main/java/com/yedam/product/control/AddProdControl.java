@@ -30,8 +30,6 @@ public class AddProdControl implements Control {
 		String pdtName = multi.getParameter("pdtName");
 		int price = Integer.parseInt(multi.getParameter("price"));
 		String img = multi.getParameter("img");
-		String brand = multi.getParameter("brand");
-		String catName = multi.getParameter("catName");
 		
 		ProdVO vo = new ProdVO();
 		vo.setCatId(cat);
@@ -39,8 +37,6 @@ public class AddProdControl implements Control {
 		vo.setPdtNm(pdtName);
 		vo.setPdtPrice(price);
 		vo.setPdtImg(img);
-		vo.setPdtBrand(brand);
-		vo.setCatNm(catName);
 		
 		ProdService service = new ProdServiceImpl();
 		if (service.addProd(vo)) {

@@ -12,4 +12,7 @@ public interface ProdService {
 	public ProdVO getProd(int prodId);
 	public int totalViews();
 	public List<ProdVO> catList();
+	public List<ProdVO> subcatList();
+	public List<ProdVO> brdList();
+	public List<ProdVO> genderList();
 }

@@ -13,8 +13,8 @@
 						<div class="col-auto my-1">
 							<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
 								<option selected>선택하세요</option>
-								<c:forEach var="categories" items="${list}" begin="1"
-									end="2">
+								<c:forEach var="categories" items="${list}" begin="0"
+									end="3">
 									<option value="${categories.catId}">${categories.catNm}</option>
 								</c:forEach>
 							</select>
@@ -30,7 +30,7 @@
 							<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
 								<option selected>선택하세요</option>
 								<c:forEach var="categories" items="${list}" begin="1"
-									end="${product.pdtId}">
+									end="3">
 									<option value="${product.subcatId}">${product.subcatId}</option>
 								</c:forEach>
 							</select>
@@ -55,7 +55,7 @@
 								<option selected>선택하세요</option>
 								<c:forEach var="product" items="${list}" begin="1"
 									end="${product.pdtId}">
-									<option value="${product.pdtBrand}">${product.pdtBrand}</option>
+									<option value="${product.brdId}">${product.brdNm}</option>
 								</c:forEach>
 							</select>
 						</div>
