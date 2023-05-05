@@ -40,11 +40,14 @@ function checkPasswordMatch() {
   const passwordConfirmValue = passwordConfirmInput.value;
 
   if (passwordValue !== passwordConfirmValue) {
+    passwordWarning.style.color = 'red';
     passwordWarning.textContent = '비밀번호와 비밀번호 확인 값이 일치하지 않습니다.';
   } else {
+    passwordWarning.style.color = '';
     passwordWarning.textContent = '';
   }
 }
+
 
 function validatePassword() {
   const pw = passwordInput.value;
@@ -55,11 +58,17 @@ function validatePassword() {
     return false;
   }
 
+  const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+])[\w!@#$%^&*()_+]{8,}$/;
+  if (!passwordRegex.test(pw)) {
+    alert('비밀번호는 영어 대소문자, 특수문자를 모두 사용하고 8자 이상으로 입력해야 합니다.');
+    return false;
+  }
+
   return true;
 }
 
 // 비밀번호 유효성 검사와 일치 여부 검사를 수행하는 이벤트를 등록
-passwordInput.addEventListener('input', checkPasswordValidity);
+passwordInput.addEventListener('input', checkPasswordValidity);	
 passwordInput.addEventListener('keyup', checkPasswordMatch);
 
 // 비밀번호 함수 false면 회원가입 버튼 중단
@@ -71,9 +80,6 @@ submitButton.addEventListener('click', function(event) {
   }
 });
 
-
-
-
 function submitForm() {
 	if (!validatePassword()) {
 		return false;
@@ -82,5 +88,4 @@ function submitForm() {
 	checkEmailDuplicate();
 
 }
-
 
