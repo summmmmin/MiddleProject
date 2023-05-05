@@ -17,13 +17,6 @@ public class QnaAddControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String pageInfo = "main.do";
-		
-		if(req.getMethod().equals("GET")) {
-			pageInfo = "qna/qnaAdd.tiles";
-		}else {
-		
-		
 		String saveDir =req.getServletContext().getRealPath("images");
 		int maxSize = 5 * 1024 * 1024;
 		String encoding = "UTF-8";
@@ -36,19 +29,17 @@ public class QnaAddControl implements Control {
 		String title = multi.getParameter("title");
 		String attach = multi.getFilesystemName("img");
 		
-		// 사용자의 입력값을 NoticeVO 입력.
+		// 사용자의 입력값을 QnaVO 입력.
 		QnaVO vo = new QnaVO();
 		vo.setPostTitle(title);
 		vo.setPostCT(subject);
-		vo.setUserNM(writer);
+		vo.setUserNm(writer);
 		vo.setPostImg(attach);;
 		
 		QnaService service = new QnaServiceImpl();
 		if(service.addQna(vo)) {
-			return "qna/qnalist.tiles"; 
+			return "qnaList.do"; 
 		}
-			return pageInfo;
-		}
-		return pageInfo;
-}
+			return "main.do";
+	}
 }
