@@ -42,6 +42,17 @@ public class ProdServiceImpl implements ProdService {
 	public List<ProdVO> catList() {
 		return mapper.catList();
 	}
-	
+	@Override
+	public List<ProdVO> subcatList() {
+		return null;
+	}
+	@Override
+	public List<ProdVO> brdList() {
+		return null;
+	}
+	@Override
+	public List<ProdVO> genderList() {
+		return null;
+	}
 	
 }

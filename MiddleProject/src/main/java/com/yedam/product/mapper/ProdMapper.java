@@ -5,7 +5,7 @@ import java.util.List;
 import com.yedam.product.domain.ProdVO;
 
 public interface ProdMapper {
-	public List<ProdVO> prodList(int prodId);
+	public List<ProdVO> prodList(int page);
 	public int insertProd(ProdVO vo);
 	public int deleteProd(int prodId);
 	public int updateProd(ProdVO vo);
@@ -14,4 +14,7 @@ public interface ProdMapper {
 	public int getViews();
 	
 	public List<ProdVO> catList();
+	public List<ProdVO> subcatList();
+	public List<ProdVO> brdList();
+	public List<ProdVO> genderList();
 }
