@@ -19,4 +19,6 @@ public class UserVO {
 	private String userGrade;	//user_grade(등급)
 	private Date userDate;		//user_date(가입날짜, sysdate)
 	private String userPoint;	//user_point(포인트)
+	//인증여부 구현
+	//인증키 구현
 }

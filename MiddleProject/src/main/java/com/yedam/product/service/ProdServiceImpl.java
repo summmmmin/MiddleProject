@@ -38,5 +38,10 @@ public class ProdServiceImpl implements ProdService {
 	public int totalViews() {
 		return mapper.getViews();
 	}
+	@Override
+	public List<ProdVO> catList() {
+		return mapper.catList();
+	}
+	
 	
 }
