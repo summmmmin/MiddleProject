@@ -76,7 +76,7 @@
 									</div>
 								</div>
 								<div class="row mb-5">
-									<c:forEach var="product" items="${list}" begin="1" end="9">
+									<c:forEach var="product" items="${list}">
 										<div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
 											<div class="block-4 text-center border">
 												<figure class="block-4-image">
