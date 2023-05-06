@@ -11,10 +11,9 @@
 				<td>
 					<div class="form-row align-items-center">
 						<div class="col-auto my-1">
-							<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-								<option selected>선택하세요</option>
-								<c:forEach var="categories" items="${list}" begin="0"
-									end="3">
+							<select class="form-control" name="catId" onchange="cat()">
+								<option selected disabled value="">선택하세요</option>
+								<c:forEach var="categories" items="${list}">
 									<option value="${categories.catId}">${categories.catNm}</option>
 								</c:forEach>
 							</select>
@@ -27,12 +26,30 @@
 				<td>
 					<div class="form-row align-items-center">
 						<div class="col-auto my-1">
-							<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-								<option selected>선택하세요</option>
-								<c:forEach var="categories" items="${list}" begin="1"
-									end="3">
-									<option value="${product.subcatId}">${product.subcatId}</option>
-								</c:forEach>
+							<select class="form-control" name="subcatId">
+								<option selected disabled value="">선택하세요</option>
+								<c:choose>
+									<c:when test='${catid == 1}'>
+										<c:forEach var="sub_category" items="${list2}">
+											<option value="${sub_category.subcatId}">${sub_category.subcatNm}</option>
+										</c:forEach>
+									</c:when>
+									<c:when test='${catid == 2}'>
+										<c:forEach var="sub_category" items="${list2}">
+											<option value="${sub_category.subcatId}">${sub_category.subcatNm}</option>
+										</c:forEach>
+									</c:when>
+									<c:when test='${catid == 3}'>
+										<c:forEach var="sub_category" items="${list2}">
+											<option value="${sub_category.subcatId}">${sub_category.subcatNm}</option>
+										</c:forEach>
+									</c:when>
+									<c:otherwise>
+										<c:forEach var="sub_category" items="${list2}">
+											<option value="${sub_category.subcatId}">${sub_category.subcatNm}</option>
+										</c:forEach>
+									</c:otherwise>
+								</c:choose>
 							</select>
 						</div>
 					</div>
@@ -40,7 +57,7 @@
 			</tr>
 			<tr>
 				<th scope="col" class="text-primary">상품 이름</th>
-				<td><input type="text" name="name"></td>
+				<td><input type="text" name="pdtName"></td>
 			</tr>
 			<tr>
 				<th scope="col" class="text-primary">상품 가격</th>
@@ -51,11 +68,25 @@
 				<td>
 					<div class="form-row align-items-center">
 						<div class="col-auto my-1">
-							<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-								<option selected>선택하세요</option>
-								<c:forEach var="product" items="${list}" begin="1"
-									end="${product.pdtId}">
-									<option value="${product.brdId}">${product.brdNm}</option>
+							<select class="form-control" name="brdId">
+								<option selected disabled value="">선택하세요</option>
+								<c:forEach var="brand" items="${list3}">
+									<option value="${brand.brdId}">${brand.brdNm}</option>
+								</c:forEach>
+							</select>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th scope="col" class="text-primary">성별</th>
+				<td>
+					<div class="form-row align-items-center">
+						<div class="col-auto my-1">
+							<select class="form-control" name="genderId">
+								<option selected disabled value="">선택하세요</option>
+								<c:forEach var="gender" items="${list4}">
+									<option value="${gender.genderId}">${gender.genderNm}</option>
 								</c:forEach>
 							</select>
 						</div>
@@ -67,12 +98,44 @@
 				<td><input type="file" name="img"></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center">
+				<td colspan="2" align="right">
 					<button class="btn btn-primary me-md-2" type="submit"
 						onclick="location.href='prodAddForm.do'">등록</button>
-					<button class="btn btn-primary me-md-2" type="reset">삭제</button>
 				</td>
 			</tr>
 		</table>
 	</form>
 </div>
+<script>
+function cat() {
+	let cat = document.getElementById("catId");
+	document.getElementById("subcatId");
+	
+	if (cat.value == 1) {
+		innerHTML
+	}
+}
+
+<c:choose>
+<c:when test='${catid == 1}'>
+	<c:forEach var="sub_category" items="${list2}">
+		<option value="${sub_category.subcatId}">${sub_category.subcatNm}</option>
+	</c:forEach>
+</c:when>
+<c:when test='${catid == 2}'>
+	<c:forEach var="sub_category" items="${list2}">
+		<option value="${sub_category.subcatId}">${sub_category.subcatNm}</option>
+	</c:forEach>
+</c:when>
+<c:when test='${catid == 3}'>
+	<c:forEach var="sub_category" items="${list2}">
+		<option value="${sub_category.subcatId}">${sub_category.subcatNm}</option>
+	</c:forEach>
+</c:when>
+<c:otherwise>
+	<c:forEach var="sub_category" items="${list2}">
+		<option value="${sub_category.subcatId}">${sub_category.subcatNm}</option>
+	</c:forEach>
+</c:otherwise>
+</c:choose>
+</script>

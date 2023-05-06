@@ -62,29 +62,27 @@
 		]]>
 	</select>
 	
-	<select id="catList" parameterType="int">
+	<select id="catList">
 		select * from categories
 	</select>
 
-	<select id="subcatList" parameterType="int">
+	<select id="subcatList">
 		select * from sub_category
-		where cat_id = #{catId}
 	</select>
 
-	<select id="brdList" parameterType="int">
+	<select id="brdList">
 		select * from brand
 	</select>
 	
-	<select id="genderList" parameterType="int">
+	<select id="genderList">
 		select * from gender
 	</select>
 
 	<insert id="insertProd" parameterType="product">
 		insert into product
-		(pdt_id, cat_id, subcat_id, pdt_nm, pdt_price, pdt_img)
-		values(product__seq.nextval, #{catId}, #{subcatId},
-		#{pdtPrice},
-		#{pdtImg}, #{pdtBrand})
+		(pdt_id, cat_id, subcat_id, pdt_nm, pdt_price, brd_id, gender_id, pdt_img)
+		values(pdt_id_seq.nextval, #{catId}, #{subcatId}, #{pdtNm},
+		#{pdtPrice}, #{brdId}, #{genderId}, #{pdtImg})
 	</insert>
 
 	<delete id="deleteProd" parameterType="int">
@@ -94,18 +92,18 @@
 
 	<update id="updateProd" parameterType="product">
 		update product set
-		pdt_nm=#{pdtNm}, pdt_price=#{pdtPrice}, pdt_img=#{pdtImg},
-		pdt_brand=#{pdtBrand} where pdt_id=#{pdtId}
+		cat_id=#{catId}, subcat_id=#{subcatId}, pdt_nm=#{pdtNm}, pdt_price=#{pdtPrice},
+		brd_id=#{brdId}, gender_id=#{genderId}, pdt_img=#{pdtImg} where pdt_id=#{pdtId}
 	</update>
 
-	<select id="searchProd" parameterType="int">
+	<select id="searchProd" resultType="product" parameterType="int">
 		select * from product
 		where pdt_id=#{pdtId}
 	</select>
 
 	<update id="updateViews" parameterType="int">
 		update product set
-		pdtViews=hit_count+1 where pdt_id=#{pdtId}
+		pdt_views=hit_count+1 where pdt_id=#{pdtId}
 	</update>
 
 	<select id="getViews" resultType="int">
