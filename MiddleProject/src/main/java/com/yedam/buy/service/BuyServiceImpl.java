@@ -6,7 +6,7 @@ import com.yedam.buy.domain.BuyVO;
 import com.yedam.buy.mapper.BuyMapper;
 import com.yedam.common.DataSource;
 
-public class BuySeriviceImpl implements BuyService {
+public class BuyServiceImpl implements BuyService {
 	SqlSession session = DataSource.getInstance().openSession(true);
 	BuyMapper mapper = session.getMapper(BuyMapper.class);
 	

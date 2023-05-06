@@ -105,19 +105,19 @@
 											<ul>
 												<li>
 													<c:if test="${pageInfo.prev}">
-														<a href="prodList.do?page=${pageInfo.startPage-1}">&lt;</a>
+														<a href="ProdList.do?page=${pageInfo.startPage-1}">&lt;</a>
 													</c:if>
 												</li>
 												<c:forEach var="i" begin="${pageInfo.startPage}"
 													end="${pageInfo.endPage}">
 													<li>
 														<a class="${i == pageInfo.pageNum ? 'active' : ''}"
-															href="prodList.do?page=${i}">${i}</a>
+															href="ProdList.do?page=${i}">${i}</a>
 													</li>
 												</c:forEach>
 												<li>
 													<c:if test="${pageInfo.next}">
-														<a href="prodList.do?page=${pageInfo.endPage+1}">&gt;</a>
+														<a href="ProdList.do?page=${pageInfo.endPage+1}">&gt;</a>
 													</c:if>
 												</li>
 											</ul>

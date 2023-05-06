@@ -31,7 +31,7 @@ public class ProdServiceImpl implements ProdService {
 	}
 	@Override
 	public ProdVO getProd(int prodId) {
-		mapper.updateViews(prodId);
+//		mapper.updateViews(prodId);
 		return mapper.searchProd(prodId);
 	}
 	@Override
@@ -44,7 +44,7 @@ public class ProdServiceImpl implements ProdService {
 	}
 	@Override
 	public List<ProdVO> subcatList() {
-		return null;
+		return mapper.subcatList();
 	}
 	@Override
 	public List<ProdVO> brdList() {

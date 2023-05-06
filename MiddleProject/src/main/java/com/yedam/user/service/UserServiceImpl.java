@@ -37,6 +37,12 @@ public class UserServiceImpl implements UserService {
 		int result = mapper.addUser(user);
 		return result == 1;
 	}
+
+	@Override
+	public int activateUser(String token) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 	
