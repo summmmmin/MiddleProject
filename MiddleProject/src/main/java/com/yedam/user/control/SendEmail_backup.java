@@ -13,7 +13,7 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class SendEmail2 {
+public class SendEmail_backup {
 	
 	public static void gmailSend() {
         String user = "qomo596@gmail.com"; // gmail 계정
@@ -57,7 +57,7 @@ public class SendEmail2 {
     }
 
 	public static void main(String[] args) {
-		SendEmail2.gmailSend();
+		SendEmail_backup.gmailSend();
 	}
 
 }
