@@ -31,7 +31,7 @@ public class ProdServiceImpl implements ProdService {
 	}
 	@Override
 	public ProdVO getProd(int prodId) {
-		mapper.updateViews(prodId);
+//		mapper.updateViews(prodId);
 		return mapper.searchProd(prodId);
 	}
 	@Override
