@@ -13,4 +13,5 @@ public interface QnaMapper {
 	public int updateQna(QnaVO vo); // qna 수정
 	public QnaVO searchQna(int qnaId); // qna 상세
 	public int getQnaCount(); // qna 총 개수
+	public int deleteQna(int qid);
 }

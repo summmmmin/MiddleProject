@@ -115,6 +115,7 @@ function cat() {
 		innerHTML
 	}
 }
+
 <c:choose>
 <c:when test='${catid == 1}'>
 	<c:forEach var="sub_category" items="${list2}">

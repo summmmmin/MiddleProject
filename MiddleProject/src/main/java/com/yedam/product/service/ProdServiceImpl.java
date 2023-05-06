@@ -48,11 +48,11 @@ public class ProdServiceImpl implements ProdService {
 	}
 	@Override
 	public List<ProdVO> brdList() {
-		return null;
+		return mapper.brdList();
 	}
 	@Override
 	public List<ProdVO> genderList() {
-		return null;
+		return mapper.genderList();
 	}
 	
 }

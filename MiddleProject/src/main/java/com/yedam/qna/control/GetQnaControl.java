@@ -1,6 +1,9 @@
 package com.yedam.qna.control;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +26,15 @@ public class GetQnaControl implements Control {
 		System.out.println(vo);
 		req.setAttribute("qnaInfo", vo);
 		req.setAttribute("pageNum", page);
+		
+		if(vo.getPostImg() != null) {
+			String imgPath =  req.getServletContext().getRealPath("images");
+			Path file = Paths.get(imgPath + "/" + vo.getPostImg());
+			System.out.println(Files.probeContentType(file));
+			// image/jpg, image/png, text/plain
+			String fileType = Files.probeContentType(file);
+			req.setAttribute("fileType", fileType.substring(0,fileType.indexOf("/")));
+		}
 		
 		return "qna/getQna.tiles";
 		
