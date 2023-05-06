@@ -10,6 +10,7 @@
 	</settings>
 	<typeAliases>
 		<typeAlias alias="qna" type="com.yedam.qna.domain.QnaVO" />
+		<typeAlias alias="qcomment" type="com.yedam.qna.domain.QCommentVO" />
 		<typeAlias alias="product" type="com.yedam.product.domain.ProdVO" />
 		<typeAlias alias="size" type="com.yedam.size.domain.SizeVO" />
         <typeAlias alias="buy" type="com.yedam.buy.domain.BuyVO" />
@@ -29,6 +30,7 @@
 	</environments>
 	<mappers>
 		<mapper resource="com/yedam/qna/mapper/QnaMapper.xml" />
+		<mapper resource="com/yedam/qna/mapper/QCommentMapper.xml" />
 		<mapper resource="com/yedam/product/mapper/ProdMapper.xml" />
 		<mapper resource="com/yedam/size/mapper/SizeMapper.xml" />
         <mapper resource="com/yedam/buy/mapper/BuyMapper.xml" />
