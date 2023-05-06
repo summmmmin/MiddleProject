@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
-import com.yedam.common.PageDTO;
+import com.yedam.product.domain.PageDTO;
 import com.yedam.product.domain.ProdVO;
 import com.yedam.product.service.ProdService;
 import com.yedam.product.service.ProdServiceImpl;
@@ -25,7 +25,6 @@ public class ProdListControl implements Control {
 		ProdService service = new ProdServiceImpl();
 		int total = service.totalViews();
 		List<ProdVO> list = service.prodList(page);
-		System.out.println(list);
 		
 		PageDTO dto = new PageDTO(page, total);
 		req.setAttribute("list", list);
