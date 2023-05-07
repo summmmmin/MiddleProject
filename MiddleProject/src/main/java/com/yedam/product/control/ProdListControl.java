@@ -25,6 +25,7 @@ public class ProdListControl implements Control {
 		ProdService service = new ProdServiceImpl();
 		int total = service.totalViews();
 		List<ProdVO> list = service.prodList(page);
+		System.out.println(list);
 		
 		PageDTO dto = new PageDTO(page, total);
 		req.setAttribute("list", list);
