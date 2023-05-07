@@ -28,6 +28,7 @@ public class QnaAddControl implements Control {
 		String subject = multi.getParameter("subject");
 		String title = multi.getParameter("title");
 		String attach = multi.getFilesystemName("img");
+		String userId = multi.getParameter("userId");
 		
 		// 사용자의 입력값을 QnaVO 입력.
 		QnaVO vo = new QnaVO();
@@ -35,6 +36,9 @@ public class QnaAddControl implements Control {
 		vo.setPostCT(subject);
 		vo.setUserNm(writer);
 		vo.setPostImg(attach);;
+		vo.setUserId(userId);
+		
+		System.out.println(vo);
 		
 		QnaService service = new QnaServiceImpl();
 		if(service.addQna(vo)) {

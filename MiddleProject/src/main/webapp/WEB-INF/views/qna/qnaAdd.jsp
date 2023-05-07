@@ -31,7 +31,7 @@
           <div class="col-md-7">
             <h2 class="h3 mb-3 text-black">Q&A 등록</h2>
 
-			<form action="qnaAdd.do" method="post" enctype="multipart/form-data">
+			<form action="qnaAdd.do?userId=${userinfo.userId }" method="post" enctype="multipart/form-data">
 			 <div class="p-3 p-lg-5 border">
 			<table class="table">
 			<tr>
