@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -20,12 +21,13 @@ public class GetProdControl implements Control {
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String pid = req.getParameter("pid");
-		String page = req.getParameter("page");
 		
 		ProdService service = new ProdServiceImpl();
 		ProdVO vo = service.getProd(Integer.parseInt(pid));
+		List<ProdVO> list = service.prodList2();
 		req.setAttribute("prodInfo", vo);
-		req.setAttribute("pageNum", page);
+		req.setAttribute("pageNum", list);
+		System.out.println(vo);
 		
 		if (vo.getPdtImg() != null) {
 			String imgPath = req.getServletContext().getRealPath("images");

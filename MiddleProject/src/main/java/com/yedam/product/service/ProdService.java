@@ -15,4 +15,5 @@ public interface ProdService {
 	public List<ProdVO> subcatList();
 	public List<ProdVO> brdList();
 	public List<ProdVO> genderList();
+	public List<ProdVO> prodList2();
 }
