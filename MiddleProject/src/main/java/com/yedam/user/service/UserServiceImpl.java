@@ -1,5 +1,8 @@
 package com.yedam.user.service;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.yedam.common.DataSource;
@@ -37,17 +40,27 @@ public class UserServiceImpl implements UserService {
 		int result = mapper.addUser(user);
 		return result == 1;
 	}
-
+	
 	@Override
-	public int activateUser(String token) {
-		// TODO Auto-generated method stub
-		return 0;
+	public boolean checkPassword(String userPw, HttpServletRequest request) {
+	    HttpSession session = request.getSession();
+	    String userId = (String) session.getAttribute("userId");
+
+	    UserVO vo = new UserVO();
+	    vo.setUserId(userId);
+	    vo.setUserPw(userPw);
+
+	    boolean isMatched = mapper.checkPassword(vo);
+
+	    return isMatched;
 	}
+
+
+
+
+
+
 	
 	
-}
-	
-	
-}
 }
 
