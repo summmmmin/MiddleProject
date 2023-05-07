@@ -10,7 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
+import com.yedam.qna.domain.QCommentVO;
 import com.yedam.qna.domain.QnaVO;
+import com.yedam.qna.service.QCommentService;
+import com.yedam.qna.service.QCommentServiceImpl;
 import com.yedam.qna.service.QnaService;
 import com.yedam.qna.service.QnaServiceImpl;
 
@@ -23,13 +26,16 @@ public class GetQnaControl implements Control {
 		
 		QnaService service = new QnaServiceImpl();
 		QnaVO vo = service.getQna(Integer.parseInt(qid));
+		QCommentService service2 = new QCommentServiceImpl();
+		QCommentVO vo2 = service2.getComment(Integer.parseInt(qid));
+		
 		System.out.println(vo);
 		req.setAttribute("qnaInfo", vo);
 		req.setAttribute("pageNum", page);
-		
-		if(vo.getPostImg() != null) {
+		req.setAttribute("commentInfo", vo2);
+		if(vo.getQnaImg() != null) {
 			String imgPath =  req.getServletContext().getRealPath("images");
-			Path file = Paths.get(imgPath + "/" + vo.getPostImg());
+			Path file = Paths.get(imgPath + "/" + vo.getQnaImg());
 			System.out.println(Files.probeContentType(file));
 			// image/jpg, image/png, text/plain
 			String fileType = Files.probeContentType(file);

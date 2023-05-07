@@ -52,7 +52,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6">
-						<img src="images/${prodInfo.pdtImg}" alt="Image" class="img-fluid">
+						<img src="images/${prodInfo.pdtImg}" alt="Image" class="img-fluid" style="width:200px;  height:200px;">
 					</div>
 					<div class="col-md-6">
 						<h2 class="text-black">${prodInfo.pdtNm}</h2>

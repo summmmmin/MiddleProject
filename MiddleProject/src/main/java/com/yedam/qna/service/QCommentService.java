@@ -4,4 +4,5 @@ import com.yedam.qna.domain.QCommentVO;
 
 public interface QCommentService {
 	public boolean modifyQcomment(QCommentVO vo);
+	public QCommentVO getComment(int qId);
 }

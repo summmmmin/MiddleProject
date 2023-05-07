@@ -28,9 +28,8 @@
 	<div class="site-section">
       <div class="container">
         <div class="row justify-content-md-center">
-          <div class="col-md-7">
+          <div class="col-md-12">
             <h2 class="h3 mb-3 text-black">Q&A</h2>
-          		<form action="qnaAdd.do" method="post" enctype="multipart/form-data">
           	<div class="p-3 p-lg-5 border">
 			<table class="table " style="text-align: center; border:1px solid #dddddd">
 			<tr>
@@ -42,46 +41,49 @@
 				<td colspan="2">${qnaInfo.userNm }</td>
 			</tr>
 			<tr>
+				<td scope="col" class="text-primary">첨부파일</td>
+				<td "colspan="2" > <img src="images/${qnaInfo.qnaImg }" alt="Image" class="img-fluid" style="width:200px;  height:200px;"></td>
+
+			</tr>
+			<tr>
 				<td scope="col" class="text-primary">내용</td>
 				<td colspan="2" style="min-height:200px;">${qnaInfo.postCT }</td>
 			</tr>
-			<tr>
-				<td scope="col" class="text-primary">첨부파일</td>
-				<td "colspan="2" > <img src="${fileType }" alt="Image" class="img-fluid"></td>
-				<td><c:if test="${qnaInfo.postImg != null}">
-					<c:choose>
-						<c:when test="${fileType == 'image' }">
-							<img width="200px" src="images/${qnaInfo.postImg }">
-						</c:when>
-						<c:otherwise>
-							<a href="images/${qnaInfo.postImg }">${qnaInfo.postImg }</a>
-						</c:otherwise>
-					</c:choose>
-				</c:if></td>
-			</tr>
 			</table>
             		<div class="d-flex justify-content-end">
+            		<c:if test ="${userinfo.userId == qnaInfo.userId }">
 					<button type="button" onclick="location.href='delQna.do?postId=${qnaInfo.postId}'"class="btn btn-danger btn-sm">삭제</button>
-					<button class="btn btn-outline-dark btn-sm "><a href="qnaList.do">목차</a></button>
+					</c:if>
+					<button class="btn btn-outline-dark btn-sm "><a href="qnaList.do">목차</a></button>				
 					</div>
 			</div>
             </div>
             </div>
+          <hr>
       <div class="p-3 p-lg-5 border" style="margin-top:20px">
-      <p><strong class="text-primary h4">답변</strong></p>
+     	<p><strong class="text-primary h4">답변</strong></p>
         <div class="border p-3 mb-5">
           <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsepaypal" role="button" aria-expanded="false" aria-controls="collapsepaypal">관리자</a></h3>
-
+			`<c:choose> 
+			<c:when test="${commentInfo == null }">
             <div class="collapse" id="collapsepaypal">
               <div class="py-2">
-                  <p class="mb-0">구라치지마십쇼</p>
+                  <p class="mb-0">답변을 작성중입니다.조금만 기다려주세요</p>
               </div>
            </div>
+           </c:when>
+           <c:otherwise>
+           	<div class="collapse" id="collapsepaypal">
+              <div class="py-2">
+                  <p class="mb-0">${commentInfo.commentCT }</p>
+              </div>
+           </div>
+           </c:otherwise>
+           </c:choose>
        	</div>
        </div>
-          </div>
-        </div>
-        
+      </div>
+     </div>    
     </div>
     <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-ui.js"></script>
