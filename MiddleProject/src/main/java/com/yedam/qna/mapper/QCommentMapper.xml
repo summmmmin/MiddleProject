@@ -11,4 +11,9 @@
 	  <select id="getcomment" resultType="qcomment">
   	select * from qna_comment where post_id=#{postId}
   </select>
+  
+    <insert id="insertComment" parameterType="qcomment">
+  insert into qna_post(post_id,user_grade,comment_ct)
+  	values(post_id=#{postId}, user_grade=#{userGrade},#{commentCT})
+  </insert>
 </mapper>
