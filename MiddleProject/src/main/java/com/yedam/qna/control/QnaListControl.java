@@ -18,16 +18,20 @@ public class QnaListControl implements Control {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String pageStr = req.getParameter("page");
+//		String uId = req.getParameter("qnauserId");
 		pageStr = pageStr ==null ? "1" : pageStr;
 		int page = Integer.parseInt(pageStr);
 		
 		QnaService service = new QnaServiceImpl();
 		int total = service.totalQnaCount();
 		List<QnaVO> list = service.qnaList(page);
+//		List<QnaVO> list2 = service.myqnaList(Integer.parseInt(uId));
 		
 		System.out.println(list);
+//		System.out.println(list2);
 		PageDTO dto = new PageDTO(page,total);
 		req.setAttribute("list", list);
+//		req.setAttribute("myQna", list2);
 		req.setAttribute("pageInfo", dto);
 	
 		return "qna/qnalist.tiles";
