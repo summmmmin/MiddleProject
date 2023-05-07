@@ -8,8 +8,8 @@ public interface ProdService {
 	public List<ProdVO> prodList(int page);
 	public boolean addProd(ProdVO vo);
 	public boolean modifyProd(ProdVO vo);
-	public boolean removeProd(int prodId);
-	public ProdVO getProd(int prodId);
+	public boolean removeProd(int pdtId);
+	public ProdVO getProd(int pdtId);
 	public int totalViews();
 	public List<ProdVO> catList();
 	public List<ProdVO> subcatList();

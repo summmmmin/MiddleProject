@@ -53,7 +53,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6">
-						<img src="images/${prodInfo.pdtImg}" alt="Image" class="img-fluid" style="width:200px;  height:200px;">
+						<img src="images/${prodInfo.pdtImg}" alt="Image" class="img-fluid">
 					</div>
 					<div class="col-md-6">
 						<h2 class="text-black">${prodInfo.pdtNm}</h2>
@@ -72,6 +72,10 @@
 							<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#sellModal">판매하기</button>
 							<button class="btn btn-sm btn-pink">관심상품</button>
 						</div>
+						<div class="mb-5">
+							<button class="btn btn-sm btn-gray" type="button"
+								onclick="location.href='modifyProd.do?pid=${prodInfo.pdtId}'">수정하기</button>
+						</div>		
 						<div class="modal fade" id="exampleModal" tabindex="-1"
 							aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog modal-dialog-centered">
@@ -132,7 +136,7 @@
 				<div class="row">
 						<div class="col-md-12">
 							<div class="nonloop-block-3 owl-carousel">
-							<c:forEach var="product2" items="${product2}">
+							 <c:forEach var="product2" items="${product2}" begin="0" end="6">
 								<div class="item">
 									<div class="block-4 text-center">
 										<figure class="block-4-image">
@@ -155,12 +159,12 @@
 								</div>
 							</c:forEach>
 						</div>
-						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- 판매하기 -->
+	      <!-- 판매하기 -->
       <div class="modal fade" id="sellModal" tabindex="-1" aria-labelledby="sellModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
