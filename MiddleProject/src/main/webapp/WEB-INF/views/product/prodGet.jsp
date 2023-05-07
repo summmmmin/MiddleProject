@@ -160,7 +160,7 @@
 			</div>
 		</div>
 	</div>
-	      <!-- 판매하기 -->
+	<!-- 판매하기 -->
       <div class="modal fade" id="sellModal" tabindex="-1" aria-labelledby="sellModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
