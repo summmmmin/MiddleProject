@@ -56,7 +56,7 @@ public class ProdServiceImpl implements ProdService {
 	}
 	@Override
 	public List<ProdVO> prodList2() {
-		return null;
+		return mapper.prodList2();
 	}
 	
 	
