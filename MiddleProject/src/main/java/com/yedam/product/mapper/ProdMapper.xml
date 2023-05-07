@@ -3,51 +3,6 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yedam.product.mapper.ProdMapper">
-<select id="prodList4">
-  		<![CDATA[
-		SELECT b.*
-		FROM (SELECT ROWNUM rn, a.*
-			  FROM (SELECT pdt.pdt_id, pdt.cat_id, pdt.subcat_id, pdt.brd_id, pdt.gender_id,
-			  pdt.pdt_nm, pdt.pdt_price, pdt.pdt_img, pdt.pdt_views, brd.brd_nm
-			  FROM product pdt
-			  left outer join brand brd on pdt.brd_id = brd.brd_id
-			  where pdt.subcat_id = #{subcat_id}
-			  ORDER BY pdt.pdt_id) a
-			  WHERE ROWNUM <= ${page} * 9) b
-		WHERE b.rn > (${page} - 1) * 9
-		]]>
-	</select>
-	
-	<select id="prodList3">
-		<![CDATA[
-		SELECT b.*
-		FROM (SELECT ROWNUM rn, a.*
-			  FROM (SELECT pdt.pdt_id, pdt.cat_id, pdt.subcat_id, pdt.brd_id, pdt.gender_id,
-			  pdt.pdt_nm, pdt.pdt_price, pdt.pdt_img, pdt.pdt_views, brd.brd_nm
-			  FROM product pdt
-			  left outer join brand brd on pdt.brd_id = brd.brd_id
-			  where pdt.cat_id = #{cat_id}
-			  ORDER BY pdt.pdt_id) a
-			  WHERE ROWNUM <= ${page} * 9) b
-		WHERE b.rn > (${page} - 1) * 9
-		]]>
-	</select>
-	
-	<select id="prodList2">
-		<![CDATA[
-		SELECT b.*
-		FROM (SELECT ROWNUM rn, a.*
-			  FROM (SELECT pdt.pdt_id, pdt.cat_id, pdt.subcat_id, pdt.brd_id, pdt.gender_id,
-			  pdt.pdt_nm, pdt.pdt_price, pdt.pdt_img, pdt.pdt_views, brd.brd_nm
-			  FROM product pdt
-			  left outer join brand brd on pdt.brd_id = brd.brd_id
-			  where pdt.gender_id = #{genderId}
-			  ORDER BY pdt.pdt_id) a
-			  WHERE ROWNUM <= ${page} * 9) b
-		WHERE b.rn > (${page} - 1) * 9
-		]]>
-	</select>
-	
 	<select id="prodList"> <!-- 상품리스트 -->
 		<![CDATA[
 		SELECT b.*
@@ -60,6 +15,10 @@
 			  WHERE ROWNUM <= ${page} * 9) b
 		WHERE b.rn > (${page} - 1) * 9
 		]]>
+	</select>
+	
+	<select id="prodList2">
+		select * from product order by id
 	</select>
 	
 	<select id="catList">
