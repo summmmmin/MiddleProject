@@ -80,6 +80,8 @@
 				<td colspan="2" align="right">
 					<button class="btn btn-primary me-md-2" type="submit"
 						onclick="location.href='prodAddForm.do'">등록</button>
+					<button class="btn btn-primary me-md-2" type="button"
+						onclick="location.href='prodList.do'">목차</button>
 				</td>
 			</tr>
 		</table>

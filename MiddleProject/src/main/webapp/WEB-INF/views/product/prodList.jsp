@@ -34,7 +34,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 mb-0">
-						<a href="index.html">Main</a> <span class="mx-2 mb-0">/</span> <strong
+						<a href="main.do">Main</a> <span class="mx-2 mb-0">/</span> <strong
 							class="text-black">Shop</strong>
 					</div>
 				</div>
@@ -87,14 +87,14 @@
 								<div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
 									<div class="block-4 text-center border">
 										<figure class="block-4-image">
-											<a href="getProd.do&page=${pageInfo.pageNum}&pid=${product.pdtId}"><img src="images/cloth_1.jpg"
+											<a href="getProd.do?&page=${pageInfo.pageNum}&pid=${product.pdtId}"><img src="images/${product.pdtImg}"
 												alt="Image placeholder" class="img-fluid"></a>
 										</figure>
 										<div class="block-4-text p-4">
 											<h3>
-												<a href="getProd.do&page=${pageInfo.pageNum}&pid=${product.pdtId}">${product.pdtNm}</a>
+												<a href="getProd.do?&page=${pageInfo.pageNum}&pid=${product.pdtId}">${product.pdtNm}</a>
 											</h3>
-											<p class="mb-0">${product.brdId}</p>
+											<p class="mb-0">${product.brdNm}</p>
 											<p class="text-primary font-weight-bold">${product.pdtPrice}</p>
 											<p>${product.pdtViews}</p>
 										</div>
