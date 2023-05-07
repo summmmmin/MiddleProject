@@ -11,7 +11,7 @@
 			  pdt.pdt_nm, pdt.pdt_price, pdt.pdt_img, pdt.pdt_views, brd.brd_nm
 			  FROM product pdt
 			  left outer join brand brd on pdt.brd_id = brd.brd_id
-			  ORDER BY pdt.pdt_id) a
+			  ORDER BY pdt.pdt_id desc) a
 			  WHERE ROWNUM <= ${page} * 9) b
 		WHERE b.rn > (${page} - 1) * 9
 		]]>
