@@ -24,7 +24,7 @@
   <!-- QNA추가. -->
   <insert id="insertQna" parameterType="qna">
   insert into qna_post(post_id,user_id,post_title,post_ct,qna_img)
-  	values(post_id_seq.nextval, #{userId}, #{postTitle}, #{postCT},#{postImg})
+  	values(post_id_seq.nextval, #{userId}, #{postTitle}, #{postCT},#{qnaImg})
   </insert>
   
   <delete id="deleteQna" parameterType="int">

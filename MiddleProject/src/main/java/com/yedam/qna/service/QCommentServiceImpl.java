@@ -21,4 +21,9 @@ public class QCommentServiceImpl implements QCommentService {
 		return mapper.getcomment(qId);
 	}
 
+	@Override
+	public boolean addComment(QCommentVO vo) {
+		return mapper.insertComment(vo) == 1;
+	}
+
 }

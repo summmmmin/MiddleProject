@@ -80,11 +80,25 @@
            </div>
            </c:otherwise>
            </c:choose>
+                       		<div class="d-flex justify-content-end">
+            		<c:if test ="${userinfo.userGrade=='관리자' }">
+					<button type="button" onclick="location.href='modifyQC.do?postId=${qnaInfo.postId}'"class="btn btn-danger btn-sm">답변달기</button>
+					</c:if>
        	</div>
        </div>
       </div>
      </div>    
     </div>
+    
+    <script>
+    let showFields = ['postId', 'comment']
+    let xhtp = new XMLHttpRequest();
+    xhtp.open('post','modifyQC.do?postId=${qnaInfo.postId}');
+    xhtp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+    xhtp.send('postId='+ postId +'&comment='+commentCT);
+    </script>
+    
+    
     <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-ui.js"></script>
   <script src="js/popper.min.js"></script>
