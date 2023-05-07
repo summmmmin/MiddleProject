@@ -26,13 +26,13 @@ public class ProdServiceImpl implements ProdService {
 		return mapper.updateProd(vo) == 1;
 	}
 	@Override
-	public boolean removeProd(int prodId) {
-		return mapper.deleteProd(prodId) == 1;
+	public boolean removeProd(int pdtId) {
+		return mapper.deleteProd(pdtId) == 1;
 	}
 	@Override
-	public ProdVO getProd(int prodId) {
-		mapper.updateViews(prodId);
-		return mapper.searchProd(prodId);
+	public ProdVO getProd(int pdtId) {
+		mapper.updateViews(pdtId);
+		return mapper.searchProd(pdtId);
 	}
 	@Override
 	public int totalViews() {
@@ -56,7 +56,7 @@ public class ProdServiceImpl implements ProdService {
 	}
 	@Override
 	public List<ProdVO> prodList2() {
-		return null;
+		return mapper.prodList2();
 	}
 	
 	
