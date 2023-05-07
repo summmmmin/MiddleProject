@@ -35,7 +35,7 @@ public class QnaAddControl implements Control {
 		vo.setPostTitle(title);
 		vo.setPostCT(subject);
 		vo.setUserNm(writer);
-		vo.setPostImg(attach);;
+		vo.setQnaImg(attach);;
 		vo.setUserId(userId);
 		
 		System.out.println(vo);
