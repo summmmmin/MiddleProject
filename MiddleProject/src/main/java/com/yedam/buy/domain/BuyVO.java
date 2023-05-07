@@ -15,5 +15,5 @@ public class BuyVO {
 	private String buyCancel;	//주문취소
 	private int buyFincost;		//결제금액
 	private int buyPoint;		//사용포인트
-	private String buyPay;		//결제상태
+	private String buyReturn;		//반품
 }

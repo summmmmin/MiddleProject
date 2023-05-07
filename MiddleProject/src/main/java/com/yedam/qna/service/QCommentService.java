@@ -1,5 +1,7 @@
 package com.yedam.qna.service;
 
-public interface QCommentService {
+import com.yedam.qna.domain.QCommentVO;
 
+public interface QCommentService {
+	public boolean modifyQcomment(QCommentVO vo);
 }

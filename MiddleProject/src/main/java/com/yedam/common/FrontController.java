@@ -12,10 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.product.control.AddProdControl;
+import com.yedam.product.control.GetProdControl;
 import com.yedam.product.control.ProdAddForm;
 import com.yedam.product.control.ProdListControl;
+import com.yedam.product.control.SubCatListControl;
 import com.yedam.qna.control.AddQnaControl;
+import com.yedam.qna.control.DelQnaControl;
 import com.yedam.qna.control.GetQnaControl;
+import com.yedam.qna.control.ModifyQCControl;
 import com.yedam.qna.control.QnaAddControl;
 import com.yedam.qna.control.QnaListControl;
 import com.yedam.sell.control.SellGetControl;
@@ -42,11 +46,14 @@ public class FrontController extends HttpServlet{
 		map.put("/getQna.do", new GetQnaControl());
 		map.put("/addQna.do", new AddQnaControl());
 		map.put("/qnaAdd.do", new QnaAddControl());
+		map.put("/delQna.do", new DelQnaControl());
+		map.put("/modifyQC.do", new ModifyQCControl());
 		//product
 		map.put("/prodList.do", new ProdListControl());
 		map.put("/prodAddForm.do", new ProdAddForm());
 		map.put("/addProd.do", new AddProdControl());
-		
+		map.put("/getProd.do", new GetProdControl());
+		map.put("/subCatList.do", new SubCatListControl());
 		map.put("/logout.do", new LogoutControl());
 		map.put("/loginForm.do", new LoginFormControl());
 		map.put("/signUpForm.do", new SignUpFormControl());

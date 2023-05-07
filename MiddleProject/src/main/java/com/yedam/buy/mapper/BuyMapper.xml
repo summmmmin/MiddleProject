@@ -11,8 +11,10 @@
 		values(buy_id_seq.nextval, #{userId}, #{sellId}, #{pdtId}, #{sizeId}, #{buyPrice}, #{buyFincost}, #{buyPoint}, '결제완료')
 	</insert>
 	<select id="selectBuyPrice">
-		select * from buy
-		where pdt_id=#{pdtId} and size_id=#{sizeId} and sell_id is null and rownum=1
-		order by 7, 6
+		select * 
+		from (select * from buy
+      		where pdt_id=#{pdtId} and size_id=#{sizeId} and sell_id is null and buy_dlvy='구매입찰중'
+      		order by buy_price, buy_date)
+		where rownum=1
 	</select>
 </mapper>

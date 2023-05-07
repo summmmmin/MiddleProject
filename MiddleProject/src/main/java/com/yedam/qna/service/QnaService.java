@@ -11,4 +11,5 @@ public interface QnaService {
 	public boolean modifyQna(QnaVO vo);
 	public QnaVO getQna(int qnaId);
 	public int totalQnaCount();
+	public boolean delQna(int qnaId);
 }

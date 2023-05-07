@@ -1,5 +1,8 @@
 package com.yedam.qna.mapper;
 
-public interface QCommnetMapper {
+import com.yedam.qna.domain.QCommentVO;
 
+public interface QCommnetMapper {
+	public int updateReply(QCommentVO vo);
+	public QCommentVO getcomment(int qid);
 }

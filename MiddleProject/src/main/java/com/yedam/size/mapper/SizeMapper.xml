@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yedam.buy.mapper.BuyMapper">
+<mapper namespace="com.yedam.size.mapper.SizeMapper">
 	<select id="selectSizeList" resultType="size">
-		select size_id, size_size
+		select *
 		from product_size
 		where cat_id=#{catId}
 	</select>

@@ -6,9 +6,8 @@ import lombok.Data;
 
 @Data
 public class QCommentVO {
-	private int commentId;
 	private int postId;
-	private String userNM;
+	private String userGrade;
 	private String commentCT;
 	private Date commentDate;
 }

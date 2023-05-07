@@ -24,50 +24,30 @@
     
   </head>
   <body>
-<div class="site-wrap">
-	<div class="site-section">
+    <div class="site-section">
       <div class="container">
-        <div class="row justify-content-md-center">
-          <div class="col-md-7">
-            <h2 class="h3 mb-3 text-black">Q&A</h2>
-          		<form action="qnaAdd.do" method="post" enctype="multipart/form-data">
-          	<div class="p-3 p-lg-5 border">
-			<table class="table " style="text-align: center; border:1px solid #dddddd">
-			<tr>
-				<td scope="col" style="width: 20%;"  class="text-primary">제목</td>
-				<td colspan="2">${qnaInfo.postTitle }</td>
-			</tr>
-			<tr>
-				<td scope="col" class="text-primary">작성자</td>
-				<td colspan="2">${qnaInfo.userNm }</td>
-			</tr>
-			<tr>
-				<td scope="col" class="text-primary">내용</td>
-				<td colspan="2" style="min-height:200px;">${qnaInfo.postCT }</td>
-			</tr>
-			<tr>
-				<td scope="col" class="text-primary">첨부파일</td>
-				<td "colspan="2" > <img src="${fileType }" alt="Image" class="img-fluid"></td>
-				<td><c:if test="${qnaInfo.postImg != null}">
-					<c:choose>
-						<c:when test="${fileType == 'image' }">
-							<img width="200px" src="images/${qnaInfo.postImg }">
-						</c:when>
-						<c:otherwise>
-							<a href="images/${qnaInfo.postImg }">${qnaInfo.postImg }</a>
-						</c:otherwise>
-					</c:choose>
-				</c:if></td>
-			</tr>
-			</table>
-            		<div class="d-flex justify-content-end">
-					<button type="button" onclick="location.href='delQna.do?postId=${qnaInfo.postId}'"class="btn btn-danger btn-sm">삭제</button>
-					<button class="btn btn-outline-dark btn-sm "><a href="qnaList.do">목차</a></button>
-					</div>
-			</div>
+        <div class="row">
+          <div class="col-md-6">
+            <img src="${qnaInfo.postImg }" alt="Image" class="img-fluid">
+          </div>
+          <div class="col-md-6">
+            <h2 class="text-black">${qnaInfo.postTitle }</h2>
+            <p><strong class="text-primary h1">${qnaInfo.userNm }</strong></p>
+            <p class="mb-4">${qnaInfo.postCT }</p>
+          
+            <div class="mb-5">
+              <div class="input-group mb-3" style="max-width: 120px;">
             </div>
+
             </div>
-      <div class="p-3 p-lg-5 border" style="margin-top:20px">
+            <div class="mb-5">
+              <button class="btn btn-primary btn-sm">수정</button>
+             <button  class="btn btn-primary btn-danger btn-lg " >삭제</button>
+  			  <button class="btn btn-outline-secondary btn-lg"><a href="qnaList.do">목차</a></button></button>
+            </div>
+          </div>
+        </div>
+      <div class="p-3 p-lg-5 border">
       <p><strong class="text-primary h4">답변</strong></p>
         <div class="border p-3 mb-5">
           <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsepaypal" role="button" aria-expanded="false" aria-controls="collapsepaypal">관리자</a></h3>
@@ -79,10 +59,11 @@
            </div>
        	</div>
        </div>
-          </div>
-        </div>
-        
     </div>
+      </div>
+  
+   
+  
     <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-ui.js"></script>
   <script src="js/popper.min.js"></script>

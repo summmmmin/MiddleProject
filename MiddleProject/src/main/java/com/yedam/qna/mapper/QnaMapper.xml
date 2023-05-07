@@ -27,8 +27,12 @@
   	values(post_id_seq.nextval, #{userId}, #{postTitle}, #{postCT},#{postImg})
   </insert>
   
+  <delete id="deleteQna" parameterType="int">
+  delete from qna_post where post_id=#{postId}
+  </delete>
+  
   <!-- QNA수정. -->
-  <update id="updateQna" parameterType="qna">
+  <update id="updateQna" parameterType="int">
   update qna_post
   	set	post_title=#{postTitle}
   		post_ct= #{postCT}
