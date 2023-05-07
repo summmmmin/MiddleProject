@@ -11,7 +11,7 @@
 				<td>
 					<div class="form-row align-items-center">
 						<div class="col-auto my-1">
-							<select class="form-control" name="catId" onchange="cat()">
+							<select class="form-control" id="catId" name="catId" onchange="catAction()">
 								<option selected disabled value="">선택하세요</option>
 								<c:forEach var="categories" items="${list}">
 									<option value="${categories.catId}">${categories.catNm}</option>
@@ -28,28 +28,7 @@
 						<div class="col-auto my-1">
 							<select class="form-control" name="subcatId">
 								<option selected disabled value="">선택하세요</option>
-								<c:choose>
-									<c:when test='${catid == 1}'>
-										<c:forEach var="sub_category" items="${list2}">
-											<option value="${sub_category.subcatId}">${sub_category.subcatNm}</option>
-										</c:forEach>
-									</c:when>
-									<c:when test='${catid == 2}'>
-										<c:forEach var="sub_category" items="${list2}">
-											<option value="${sub_category.subcatId}">${sub_category.subcatNm}</option>
-										</c:forEach>
-									</c:when>
-									<c:when test='${catid == 3}'>
-										<c:forEach var="sub_category" items="${list2}">
-											<option value="${sub_category.subcatId}">${sub_category.subcatNm}</option>
-										</c:forEach>
-									</c:when>
-									<c:otherwise>
-										<c:forEach var="sub_category" items="${list2}">
-											<option value="${sub_category.subcatId}">${sub_category.subcatNm}</option>
-										</c:forEach>
-									</c:otherwise>
-								</c:choose>
+								
 							</select>
 						</div>
 					</div>
@@ -107,35 +86,30 @@
 	</form>
 </div>
 <script>
-function cat() {
-	let cat = document.getElementById("catId");
-	document.getElementById("subcatId");
+var subList;
+//category 선택했을때(onchange)
+function catAction() {
+	var cat = document.getElementById('catId');
+	var catVal = cat.options[cat.selectedIndex].value;
+	console.log(catVal);
 	
-	if (cat.value == 1) {
-		innerHTML
-	}
+	//option 비우기
+	$('[name="subcatId"]').empty();
+	$('[name="subcatId"]').append('<option selected disabled value="">선택하세요</option>');
+	
+	//option추가
+	subList.forEach(subcat=>{
+		if(subcat.catId == catVal){
+			$('[name="subcatId"]').append('<option value="'+subcat.subcatId+'">'+subcat.subcatNm+'</option>')
+		}
+	})
 }
+//subcategory 목록 가져오기
+fetch('subCatList.do')
+.then(resolve=>resolve.json())
+.then(result=>{
+	subList = result; //결과를 subList에 넣기
+})
+.catch(err=>console.log(err));
 
-<c:choose>
-<c:when test='${catid == 1}'>
-	<c:forEach var="sub_category" items="${list2}">
-		<option value="${sub_category.subcatId}">${sub_category.subcatNm}</option>
-	</c:forEach>
-</c:when>
-<c:when test='${catid == 2}'>
-	<c:forEach var="sub_category" items="${list2}">
-		<option value="${sub_category.subcatId}">${sub_category.subcatNm}</option>
-	</c:forEach>
-</c:when>
-<c:when test='${catid == 3}'>
-	<c:forEach var="sub_category" items="${list2}">
-		<option value="${sub_category.subcatId}">${sub_category.subcatNm}</option>
-	</c:forEach>
-</c:when>
-<c:otherwise>
-	<c:forEach var="sub_category" items="${list2}">
-		<option value="${sub_category.subcatId}">${sub_category.subcatNm}</option>
-	</c:forEach>
-</c:otherwise>
-</c:choose>
 </script>
