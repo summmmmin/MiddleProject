@@ -7,10 +7,10 @@ import com.yedam.product.domain.ProdVO;
 public interface ProdMapper {
 	public List<ProdVO> prodList(int page);
 	public int insertProd(ProdVO vo);
-	public int deleteProd(int prodId);
+	public int deleteProd(int pdtId);
 	public int updateProd(ProdVO vo);
-	public ProdVO searchProd(int prodId);
-	public int updateViews(int prodId);
+	public ProdVO searchProd(int pdtId);
+	public int updateViews(int pdtId);
 	public int getViews();
 	
 	public List<ProdVO> catList();

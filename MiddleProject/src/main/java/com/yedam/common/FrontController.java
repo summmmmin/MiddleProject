@@ -13,10 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.product.control.AddProdControl;
 import com.yedam.product.control.GetProdControl;
+import com.yedam.product.control.ModifyProdControl;
 import com.yedam.product.control.ProdAddForm;
 import com.yedam.product.control.ProdListControl;
 import com.yedam.product.control.SubCatListControl;
-import com.yedam.qna.control.AddQCControl;
 import com.yedam.qna.control.AddQnaControl;
 import com.yedam.qna.control.DelQnaControl;
 import com.yedam.qna.control.GetQnaControl;
@@ -29,6 +29,8 @@ import com.yedam.sell.control.SellPriceControl;
 import com.yedam.user.control.LoginControl;
 import com.yedam.user.control.LoginFormControl;
 import com.yedam.user.control.LogoutControl;
+import com.yedam.user.control.MypageControl;
+import com.yedam.user.control.MypageViewControl;
 import com.yedam.user.control.SignUpControl;
 import com.yedam.user.control.SignUpFormControl;
 
@@ -49,14 +51,15 @@ public class FrontController extends HttpServlet{
 		map.put("/addQna.do", new AddQnaControl());
 		map.put("/qnaAdd.do", new QnaAddControl());
 		map.put("/delQna.do", new DelQnaControl());
-		map.put("/addQC.do", new AddQCControl());
 		map.put("/modifyQC.do", new ModifyQCControl());
 		//product
 		map.put("/prodList.do", new ProdListControl());
 		map.put("/prodAddForm.do", new ProdAddForm());
 		map.put("/addProd.do", new AddProdControl());
 		map.put("/getProd.do", new GetProdControl());
+		map.put("/modifyProd.do", new ModifyProdControl());
 		map.put("/subCatList.do", new SubCatListControl());
+		//users
 		map.put("/logout.do", new LogoutControl());
 		map.put("/loginForm.do", new LoginFormControl());
 		map.put("/signUpForm.do", new SignUpFormControl());
@@ -66,6 +69,10 @@ public class FrontController extends HttpServlet{
 		map.put("/sellListU.do", new SellListUControl());
 		map.put("/sellGet.do", new SellGetControl());
 		map.put("/sellPrice.do", new SellPriceControl());
+		
+		
+		map.put("/mypagePw.do", new MypageControl());
+		map.put("/mypageView.do", new MypageViewControl());
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

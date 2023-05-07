@@ -16,25 +16,30 @@ public class LoginControl implements Control {
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-            String UserId = req.getParameter("user_id");
-            String UserPw = req.getParameter("user_pw");
-            
-            System.out.println(UserId);
-            System.out.println(UserPw);
+        String userId = req.getParameter("user_id");
+        String userPw = req.getParameter("user_pw");
 
-            UserService service = UserServiceImpl.getInstance();
-            UserVO vo = service.loginCheck(UserId, UserPw);
+        UserService service = UserServiceImpl.getInstance();
+        UserVO vo = service.loginCheck(userId, userPw);
 
-            System.out.println(vo);
-            
-            if (vo != null) {
-                HttpSession session = req.getSession();    
-                session.setAttribute("userinfo", vo);
-                
-                
-                return "main.do";
+        if (vo != null) {
+            HttpSession session = req.getSession();    
+            session.setAttribute("userinfo", vo);
+
+            // 이전 URL이 저장된 세션 변수를 가져옴
+            String returnUrl = (String) session.getAttribute("returnUrl");
+
+            if (returnUrl != null) {
+                // 이전 URL이 저장된 세션 변수가 있으면 해당 URL로 이동
+                session.removeAttribute("returnUrl"); // 이전 URL 세션 변수 제거
+                resp.sendRedirect(returnUrl);
+                return returnUrl; // returnUrl 반환
             } else {
-                return "loginForm.do";
+                // 이전 URL이 저장된 세션 변수가 없으면 메인 페이지로 이동
+                return "main.do";
             }
+        } else {
+            return "loginForm.do";
         }
     }
+}
