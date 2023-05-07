@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,7 +53,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6">
-						<img src="images/${prodInfo.pdtImg}" alt="Image" class="img-fluid">
+						<!--<img src="images/${prodInfo.pdtImg}" alt="Image" class="img-fluid">  -->
 					</div>
 					<div class="col-md-6">
 						<h2 class="text-black">${prodInfo.pdtNm}</h2>
@@ -68,7 +69,7 @@
 						<div class="mb-5">
 							<button class="btn btn-primary btn-sm" data-toggle="modal"
 								data-target="#exampleModal">구매하기</button>
-							<button class="btn btn-primary btn-sm">판매하기</button>
+							<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#sellModal">판매하기</button>
 							<button class="btn btn-sm btn-pink">관심상품</button>
 						</div>
 						<div class="modal fade" id="exampleModal" tabindex="-1"
@@ -155,7 +156,72 @@
 			</div>
 		</div>
 	</div>
-
+	      <!-- 판매하기 -->
+      <div class="modal fade" id="sellModal" tabindex="-1" aria-labelledby="sellModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="sellModalLabel">판매하기</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="container" id="sizeSelec">                
+                <div class="row">
+                <c:forEach var="i" begin="0" end="${fn:length(sizeList)-1 }">
+                  <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-lg btn-block">
+                      <c:choose>
+                        <c:when test="var == 1">
+                          <input type="radio" name="sizes" id="${sizeList[i].sizeId }" checked>
+                        </c:when>
+                        <c:otherwise>
+                          <input type="radio" name="sizes" id="${sizeList[i].sizeId }">
+                        </c:otherwise>
+                      </c:choose>
+                        ${sizeList[i].sizeSize }<br>
+                        <c:choose>
+                          <c:when test="${not empty priceList[i]}">
+                            <span>${priceList[i].buyPrice }</span>
+                          </c:when>
+                          <c:otherwise>
+                            <span>판매입찰</span>
+                          </c:otherwise>
+                        </c:choose>
+                    </button>
+                    <br />
+                  </div>                	
+                </c:forEach>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary" onclick="sizeSelc()">
+                판매하기
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    <script>
+      function sizeSelc(){
+    	  var radios = document.getElementsByName('sizes');
+    	  var size;
+    	  for (var radio of radios){
+    		  if (radio.checked) {
+      	        size = radio.id;
+      	        console.log(size)
+      	        
+      	      }
+    	  }
+    	  location.href='sellPrice.do?prodId=${prodInfo.pdtId}&size='+size;
+      }
+    </script>  
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/jquery-ui.js"></script>
 	<script src="js/popper.min.js"></script>
