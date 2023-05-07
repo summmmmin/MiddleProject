@@ -26,7 +26,7 @@ public class GetProdControl implements Control {
 		ProdVO vo = service.getProd(Integer.parseInt(pid));
 		List<ProdVO> list = service.prodList2();
 		req.setAttribute("prodInfo", vo);
-		req.setAttribute("pageNum", list);
+		req.setAttribute("product", list);
 		System.out.println(vo);
 		
 		if (vo.getPdtImg() != null) {
