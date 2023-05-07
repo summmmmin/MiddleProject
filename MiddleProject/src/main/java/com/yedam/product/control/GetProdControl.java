@@ -26,8 +26,9 @@ public class GetProdControl implements Control {
 		ProdVO vo = service.getProd(Integer.parseInt(pid));
 		List<ProdVO> list = service.prodList2();
 		req.setAttribute("prodInfo", vo);
-		req.setAttribute("product", list);
+		req.setAttribute("product2", list);
 		System.out.println(vo);
+		System.out.println(list);
 		
 		if (vo.getPdtImg() != null) {
 			String imgPath = req.getServletContext().getRealPath("images");

@@ -18,7 +18,7 @@
 	</select>
 	
 	<select id="prodList2">
-		select * from product order by id
+		select * from product order by pdt_views desc
 	</select>
 	
 	<select id="catList">
