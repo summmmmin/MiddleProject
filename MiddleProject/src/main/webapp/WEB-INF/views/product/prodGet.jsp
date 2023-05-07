@@ -52,7 +52,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6">
-						<img src="images/${prodInfo.pdtImg}" alt="Image" class="img-fluid">
+						<img src="images/${prodInfo.pdtImg}" alt="Image" class="img-fluid" style="width:200px;  height:200px;">
 					</div>
 					<div class="col-md-6">
 						<h2 class="text-black">${prodInfo.pdtNm}</h2>
@@ -129,28 +129,32 @@
 					</div>
 				</div>
 				<div class="row">
-					<c:forEach var="product" items="${list}" begin="1" end="4">
 						<div class="col-md-12">
 							<div class="nonloop-block-3 owl-carousel">
+							<c:forEach var="product2" items="${product2}">
 								<div class="item">
 									<div class="block-4 text-center">
 										<figure class="block-4-image">
-											<img src="images/cloth_1.jpg" alt="Image placeholder"
+											<a
+												href="getProd.do?&page=${pageInfo.pageNum}&pid=${prodInfo.pdtId}">
+												<img src="images/${product2.pdtImg}" alt="Image placeholder"
 												class="img-fluid">
+											</a>
 										</figure>
 										<div class="block-4-text p-4">
 											<h3>
-												<a href="#">${product.pdtNm}</a>
+												<a
+													href="getProd.do?&page=${pageInfo.pageNum}&pid=${prodInfo.pdtId}">${product2.pdtNm}</a>
 											</h3>
-											<p class="mb-0">${product.brdId}</p>
-											<p class="text-primary font-weight-bold">${product.pdtPrice}</p>
-											<p>${product.pdtViews}</p>
+											<p class="mb-0">${product2.brdId}</p>
+											<p class="text-primary font-weight-bold">${product2.pdtPrice}</p>
+											<p>${product2.pdtViews}</p>
 										</div>
 									</div>
 								</div>
-							</div>
+							</c:forEach>
 						</div>
-					</c:forEach>
+						</div>
 				</div>
 			</div>
 		</div>

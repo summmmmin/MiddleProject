@@ -43,5 +43,10 @@ public class QnaServiceImpl implements QnaService {
 		return mapper.deleteQna(qid) == 1;
 	}
 
+	@Override
+	public List<QnaVO> myqnaList(int userId) {
+		return mapper.myQna(userId);
+	}
+
 
 }
