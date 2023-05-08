@@ -19,7 +19,7 @@ public class MypageControl implements Control {
         UserVO user = (UserVO) session.getAttribute("userinfo");
 
         if(user == null) { // 로그인되어있지 않은 경우
-        	session.setAttribute("returnUrl", request.getRequestURI()); // 이전 URL 저장, 비회원이 마이페이지를 누르고 로그인했을 때 바로 마이페이지로 이동하게
+        	//session.setAttribute("returnUrl", request.getRequestURI()); // 이전 URL 저장, 비회원이 마이페이지를 누르고 로그인했을 때 바로 마이페이지로 이동하게
             return "user/loginForm.tiles";
         }
 

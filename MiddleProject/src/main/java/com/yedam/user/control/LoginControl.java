@@ -22,6 +22,8 @@ public class LoginControl implements Control {
         UserService service = UserServiceImpl.getInstance();
         UserVO vo = service.loginCheck(userId, userPw);
 
+        System.out.println(vo);
+        
         if (vo != null) {
             HttpSession session = req.getSession();    
             session.setAttribute("userinfo", vo);
