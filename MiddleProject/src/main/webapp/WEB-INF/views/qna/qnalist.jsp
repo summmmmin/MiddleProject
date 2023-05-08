@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="../css/aos.css">
 
     <link rel="stylesheet" href="../css/style.css">
-    
+
   </head>
   <body>
 <div class="site-section">
@@ -65,7 +65,7 @@
 	<div class="d-flex justify-content-end">
 		 <p><a href="addQna.do" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal">Q&A 등록</a></p>
 	</div>
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" style="top:200px;" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -79,7 +79,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-        <button type="button" class="btn btn-primary" onclick="location.href="loginForm.do">로그인하기</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='loginForm.do'">로그인하기</button>
       </div>
     </div>
   </div>
