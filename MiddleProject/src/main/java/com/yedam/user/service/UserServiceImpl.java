@@ -41,19 +41,15 @@ public class UserServiceImpl implements UserService {
 		return result == 1;
 	}
 	
-	@Override
-	public boolean checkPassword(String userPw, HttpServletRequest request) {
-	    HttpSession session = request.getSession();
-	    String userId = (String) session.getAttribute("userId");
+    @Override
+    public boolean checkPassword(String userPw, String userId) {
+        UserVO vo = new UserVO();
+        vo.setUserId(userId);
+        vo.setUserPw(userPw);
+        boolean isMatched = mapper.checkPassword(vo);
+        return isMatched;
+    }
 
-	    UserVO vo = new UserVO();
-	    vo.setUserId(userId);
-	    vo.setUserPw(userPw);
-
-	    boolean isMatched = mapper.checkPassword(vo);
-
-	    return isMatched;
-	}
 	
 	@Override
 	public boolean deleteUser(UserVO user) {
