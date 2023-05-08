@@ -36,13 +36,17 @@ public class GetProdControl implements Control {
 		req.setAttribute("product2", list);
 		System.out.println(vo);
 		System.out.println(list);
-
-		if (vo.getPdtImg() != null) {
-			String imgPath = req.getServletContext().getRealPath("images");
-			Path file = Paths.get(imgPath + "/" + vo.getPdtImg());
-			System.out.println(Files.probeContentType(file));
-			String fileType = Files.probeContentType(file);
-			req.setAttribute("fileType", fileType.substring(0, fileType.indexOf("/")));
+		
+		try {
+			if (vo.getPdtImg() != null) {
+				String imgPath = req.getServletContext().getRealPath("images");
+				Path file = Paths.get(imgPath + "/" + vo.getPdtImg());
+				System.out.println(Files.probeContentType(file));
+				String fileType = Files.probeContentType(file);
+				req.setAttribute("fileType", fileType.substring(0, fileType.indexOf("/")));
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
 
 		// 상품의 사이즈리스트
