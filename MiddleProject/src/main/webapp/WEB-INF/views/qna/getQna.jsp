@@ -42,7 +42,7 @@
 			</tr>
 			<tr>
 				<td scope="col" class="text-primary">첨부파일</td>
-				<td "colspan="2" > <img src="images/${qnaInfo.qnaImg }" alt="Image" class="img-fluid" style="width:200px;  height:200px;"></td>
+				<td colspan="2" > <img src="images/${qnaInfo.qnaImg }" alt="Image" class="img-fluid" style="width:200px;  height:200px;"></td>
 
 			</tr>
 			<tr>
@@ -64,39 +64,64 @@
      	<p><strong class="text-primary h4">답변</strong></p>
         <div class="border p-3 mb-5">
           <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsepaypal" role="button" aria-expanded="false" aria-controls="collapsepaypal">관리자</a></h3>
-			`<c:choose> 
-			<c:when test="${commentInfo == null }">
             <div class="collapse" id="collapsepaypal">
               <div class="py-2">
-                  <p class="mb-0">답변을 작성중입니다.조금만 기다려주세요</p>
+			<c:choose> 
+			<c:when test="${userinfo.userGrade=='일반회원' }">
+				<c:choose>
+				<c:when test="${commentInfo.commentCT == null}">
+				<p class="mb-0">답변을 작성중입니다.조금만 기다려주세요</p>
+				</c:when>
+				<c:otherwise>
+			 	<p class="mb-0">${commentInfo.commentCT }</p>
+				</c:otherwise>
+				</c:choose>
+			</c:when>
+			<c:when test="${userinfo.userGrade=='관리자' }">
+                 <c:choose>
+				 <c:when test="${commentInfo.commentCT == null}">
+                 <textarea id=comment style="width:980px;height:200px;" >답변을 작성해주세요</textarea>
+          		 </c:when>
+				 <c:otherwise>
+				 <textarea id=comment1 style="width:980px;height:200px;" >${commentInfo.commentCT }</textarea>
+              	 </c:otherwise>
+              	 </c:choose>
+             </c:when>
+           	</c:choose>
               </div>
-           </div>
-           </c:when>
-           <c:otherwise>
-           	<div class="collapse" id="collapsepaypal">
-              <div class="py-2">
-                  <p class="mb-0">${commentInfo.commentCT }</p>
-              </div>
-           </div>
-           </c:otherwise>
-           </c:choose>
-                       		<div class="d-flex justify-content-end">
+           </div>           
+                <div class="d-flex justify-content-end">
             		<c:if test ="${userinfo.userGrade=='관리자' }">
-					<button type="button" onclick="location.href='modifyQC.do?postId=${qnaInfo.postId}'"class="btn btn-danger btn-sm">답변달기</button>
+            		<c:choose>
+						<c:when test="${commentInfo.commentCT == null}">
+						<button type="button" id="addComment" class="btn btn-danger btn-sm">답변달기</button>
+						</c:when>
+						<c:otherwise>
+						<button type="button" id="modifyComment" class="btn btn-danger btn-sm">수정</button>	
+						</c:otherwise>
+					</c:choose>
 					</c:if>
+
        	</div>
        </div>
       </div>
      </div>    
     </div>
     
-    <script>
-    let showFields = ['postId', 'comment']
+<script>
+    document.querySelector("#addComment").addEventListener('click', addCommentFnc);
+    function addCommentFnc(e){
+    	
+    let comment= document.querySelector("#comment").value;	
+    }
+    
     let xhtp = new XMLHttpRequest();
-    xhtp.open('post','modifyQC.do?postId=${qnaInfo.postId}');
+    xhtp.open('post','addQC.do');
     xhtp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-    xhtp.send('postId='+ postId +'&comment='+commentCT);
-    </script>
+    xhtp.send('postId=${postId}&comment=' + comment;)
+
+    
+    </script> 
     
     
     <script src="js/jquery-3.3.1.min.js"></script>
