@@ -2,7 +2,6 @@ package com.yedam.user.service;
 
 import javax.servlet.http.HttpServletRequest;
 
-
 import com.yedam.user.domain.UserVO;
 
 public interface UserService {
@@ -10,5 +9,6 @@ public interface UserService {
     public boolean addUser(UserVO user);
     boolean checkPassword(String userId, String password);
     public boolean deleteUser(UserVO user);
+    public boolean modifyUser(UserVO user);
 
 }

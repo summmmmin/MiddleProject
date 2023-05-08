@@ -28,4 +28,11 @@
     DELETE FROM users WHERE user_id=#{userId}
 </delete>
 
+<!-- 회원정보 수정 -->
+<update id="modifyUser" parameterType="com.yedam.user.domain.UserVO">
+    UPDATE users
+    SET user_pw=#{userPw}, user_phone=#{userPh}, useradd=#{userAddr}, user_nm=#{userNm}
+    WHERE user_id=#{userId}
+</update>
+
 </mapper>
