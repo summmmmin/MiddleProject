@@ -47,7 +47,23 @@
     	where b.rn > (#{page}-1) * 10
     	]]>
 	</select>
+	
 	<select id="getCountSell">
 		select count(*) from sell
 	</select>
+	
+	<insert id="insertDlvy">
+		insert into deliver(dlv_id) values(dlv_seq.nextval)
+	</insert>
+	<insert id="insertSell">
+	  insert into sell(sell_id, user_id, buy_id, pdt_id, size_id, sell_price, sell_dlvy, sell_account, dlv_id) 
+	  values(sell_seq.nextval, #{userId}, #{buyId}, #{pdtId}, #{sizeId}, #{sellPrice}, '발송요청', #{sellAccount}, dlv_seq.currval) 
+	</insert>
+	
+	<insert id="insertSellBid">
+	  insert into sell(sell_id, user_id, pdt_id, size_id, sell_price, sell_dlvy, sell_account, dlv_id) 
+	  values(sell_seq.nextval, #{userId}, #{pdtId}, #{sizeId}, #{sellPrice}, '판매입찰중', #{sellAccount}, dlv_seq.currval) 
+	</insert>
+	
+	
 </mapper>

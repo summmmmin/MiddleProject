@@ -14,4 +14,9 @@ public class BuyServiceImpl implements BuyService {
 	public BuyVO getBuyPrice(BuyVO vo) {
 		return mapper.selectBuyPrice(vo);
 	}
+
+	@Override
+	public boolean insertSellId(int sellId, int buyId) {
+		return mapper.insertSellId(sellId, buyId)==1;
+	}
 }

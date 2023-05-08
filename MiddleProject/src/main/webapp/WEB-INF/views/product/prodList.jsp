@@ -117,10 +117,30 @@
 						<div class="border p-4 rounded mb-4">
 							<div class="mb-4">
 								<h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
-								<label for="Men" class="d-flex"> <input type="checkbox"
-									id="Men" class="mr-2 mt-1"> <span class="text-black">상의</span>
-									<span class="text-black ml-auto">(2,319)</span>
-								</label> <label for="Women" class="d-flex"> <input
+								<label for="${categories.catId}" class="d-flex"> 
+									<input type="checkbox" id="${categories.catId}" class="mr-2 mt-1"> 
+										<span class="text-black">${categories.catNm}</span>
+										<span class="text-black ml-auto">(2,319)</span>
+								</label> 
+
+								<c:forEach var="categories" items="${list}">
+									<label for="${categories.catId}" class="d-flex"> 
+										<input type="checkbox" id="${categories.catId}" class="mr-2 mt-1"> 
+											<span class="text-black">${categories.catNm}</span>
+											<span class="text-black ml-auto">${total}</span>
+									</label> 
+								</c:forEach>
+								select count(*) from product where cat_id=?
+								숫자
+
+
+								int total;
+								int[] cntarr = new int[list.size]
+								for(카테고리리스트크기만큼){
+									total = service.getcount(list[i].catId)
+									
+								}
+								<label for="Women" class="d-flex"> <input
 									type="checkbox" id="Women" class="mr-2 mt-1"> <span
 									class="text-black">하의</span> <span
 									class="text-black ml-auto">(1,282)</span>
