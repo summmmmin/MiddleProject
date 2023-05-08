@@ -7,10 +7,15 @@
     SELECT * FROM users WHERE user_Id=#{userId} AND user_Pw=#{userPw}
 </select>
 
+<!-- 회원단건체크 -->
+<select id="getUserInfo" parameterType="com.yedam.user.domain.UserVO" resultType="com.yedam.user.domain.UserVO">
+  SELECT user_id, user_nm, user_phone, user_add, user_grade, user_date, user_point FROM users WHERE user_id = #{userId}
+</select>
+
 <!-- addMember -->
 <insert id="addUser" parameterType="com.yedam.user.domain.UserVO">
     INSERT INTO users (user_id, user_pw, user_nm, user_phone, user_add) 
-    VALUES (#{userId}, #{userPw}, #{userNm}, #{userPh}, #{userAddr})
+    VALUES (#{userId}, #{userPw}, #{userNm}, #{userPhone}, #{userAdd})
 </insert>
 
 <!-- 이메일 중복체크(회원가입) -->
@@ -31,7 +36,7 @@
 <!-- 회원정보 수정 -->
 <update id="modifyUser" parameterType="com.yedam.user.domain.UserVO">
     UPDATE users
-    SET user_pw=#{userPw}, user_phone=#{userPh}, useradd=#{userAddr}, user_nm=#{userNm}
+    SET user_pw=#{userPw}, user_phone=#{userPhone}, useradd=#{userAdd}, user_nm=#{userNm}
     WHERE user_id=#{userId}
 </update>
 

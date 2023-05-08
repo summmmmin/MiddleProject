@@ -1,7 +1,5 @@
 package com.yedam.user.service;
 
-import javax.servlet.http.HttpServletRequest;
-
 import com.yedam.user.domain.UserVO;
 
 public interface UserService {

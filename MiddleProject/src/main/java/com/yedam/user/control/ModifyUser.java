@@ -21,16 +21,16 @@ public class ModifyUser implements Control {
 		System.out.println(id);
 
 		String userPw = req.getParameter("userinfo.userPw");
-		String userPh = req.getParameter("userinfo.userPh");
-		String userAddr = req.getParameter("userinfo.userAddr");
+		String userPhone = req.getParameter("userinfo.userPhone");
+		String userAdd = req.getParameter("userinfo.userAdd");
 
 		UserService service = UserServiceImpl.getInstance();
 		UserVO user = new UserVO();
 
 
 		user.setUserPw(userPw);
-		user.setUserPh(userPh);
-		user.setUserAddr(userAddr);
+		user.setUserPhone(userPhone);
+		user.setUserAdd(userAdd);
 
 		System.out.println(user);
 

@@ -83,7 +83,7 @@ public class FrontController extends HttpServlet{
 		map.put("/mypagePw.do", new MypageControl());
 		map.put("/mypageView.do", new MypageViewControl());
 		map.put("/deleteUser.do", new DeleteUserControl());
-		map.put("/modifyUser.do", new ModifyUserFormControl());
+		map.put("/modifyUserForm.do", new ModifyUserFormControl());
 
 		//note
 		map.put("/noteSend.do", new NoteSendControl());

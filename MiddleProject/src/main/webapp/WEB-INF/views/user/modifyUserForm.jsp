@@ -57,11 +57,11 @@
 								<div class="form-group row">
 									<div class="col-md-6">
 										<label for="c_email" class="text-black">전화번호</label> <input type="text" class="form-control"
-											id="phone" name="phone" value="${userinfo.userPh}">
+											id="phone" name="phone" value="${userinfo.userPhone}">
 									</div>
 									<div class="col-md-6">
 										<label for="c_email" class="text-black">주소</label> <input type="text" class="form-control"
-											id="address" name="address" value="${userinfo.userAddr}">
+											id="address" name="address" value="${userinfo.userAdd}">
 									</div>
 								</div>
 								<div class="form-group row">
