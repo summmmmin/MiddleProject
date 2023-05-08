@@ -43,7 +43,7 @@
 					<div class="col-md-7">
 						<h2 class="h3 mb-3 text-black">회원정보 변경</h2>
 
-						<form action="modifyUser.do" method="post">
+						<form action="modifyUserForm.do" method="post">
 							<div class="p-3 p-lg-5 border">
 								<div class="form-group row">
 									<div class="col-md-6">
@@ -91,7 +91,7 @@
 								<div class="form-group row">
 									<div class="col-md-6">
 										<input type="submit" class="btn btn-primary btn-lg btn-block"
-											value="변경" >
+											value="수정" >
 									</div>
 									<div class="col-md-6">
 										<input type="button" class="btn btn-danger btn-lg btn-block"

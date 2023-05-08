@@ -54,6 +54,11 @@ public class UserServiceImpl implements UserService {
 		return result == 1;
 	}
 
+	@Override
+	public boolean modifyUser(UserVO user) {
+		return mapper.modifyUser(user) == 1;
+
+	}
 
 
 

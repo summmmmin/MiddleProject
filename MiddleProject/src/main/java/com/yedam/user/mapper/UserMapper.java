@@ -8,5 +8,7 @@ public interface UserMapper {
 	public int addUser(UserVO vo);
 	public Boolean checkPassword(UserVO vo);
     public int deleteUser(UserVO vo);
+	public int modifyUser(UserVO vo);
+
 
 }
