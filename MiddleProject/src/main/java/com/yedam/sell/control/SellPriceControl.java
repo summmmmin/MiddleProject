@@ -27,7 +27,8 @@ public class SellPriceControl implements Control {
 		buy = buyService.getBuyPrice(buy);
 		
 		req.setAttribute("price", buy);
-		
+		req.setAttribute("prodId", prodId);
+		req.setAttribute("size", size);
 		return "sell/sellPrice.tiles";
 	}
 

@@ -17,4 +17,8 @@
       		order by buy_price, buy_date)
 		where rownum=1
 	</select>
+	<select id="selectBuy">
+		select * from buy natural join product natural join product_size natural join brand
+		where buy_id=#{buyId}
+	</select>
 </mapper>
