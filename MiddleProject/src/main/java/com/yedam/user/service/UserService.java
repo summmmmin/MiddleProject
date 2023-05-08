@@ -8,7 +8,7 @@ import com.yedam.user.domain.UserVO;
 public interface UserService {
     public UserVO loginCheck(String UserId, String UserPw);
     public boolean addUser(UserVO user);
-    boolean checkPassword(String userPw, String userId);
+    boolean checkPassword(String userId, String password);
     public boolean deleteUser(UserVO user);
 
 }

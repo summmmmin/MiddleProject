@@ -1,8 +1,5 @@
 package com.yedam.user.service;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.apache.ibatis.session.SqlSession;
 
 import com.yedam.common.DataSource;
@@ -65,4 +62,3 @@ public class UserServiceImpl implements UserService {
 	
 	
 }
-
