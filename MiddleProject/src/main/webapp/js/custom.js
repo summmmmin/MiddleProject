@@ -105,5 +105,17 @@ document.getElementById('button-addon2').addEventListener('click', sendAuthNum);
 
 
 
+// 회원정보 변경
 
+document.addEventListener('DOMContentLoaded', function() {
+  const submitBtn = document.getElementById('submitBtn');
+  const phoneInput = document.getElementById('phone');
+  const addressInput = document.getElementById('address');
+  const newPasswordInput = document.getElementById('newPassword');
 
+  submitBtn.addEventListener('click', function() {
+    phoneInput.readOnly = false;
+    addressInput.readOnly = false;
+    newPasswordInput.style.display = 'block';
+  });
+});
