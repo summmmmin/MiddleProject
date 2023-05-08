@@ -21,4 +21,8 @@
 		select * from buy natural join product natural join product_size natural join brand
 		where buy_id=#{buyId}
 	</select>
+	
+	<update id="insertSellId">
+		update buy set sell_id=#{sellId}, buy_dlvy='입고대기'  where buy_id=#{buyId}
+	</update>
 </mapper>

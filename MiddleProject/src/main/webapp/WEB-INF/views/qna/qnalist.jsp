@@ -79,7 +79,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-        <button type="button" class="btn btn-primary" onclick="location.href="loginForm.do">로그인하기</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='loginForm.do'">로그인하기</button>
       </div>
     </div>
   </div>

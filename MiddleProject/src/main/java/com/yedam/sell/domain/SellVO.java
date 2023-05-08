@@ -21,4 +21,10 @@ public class SellVO {
 	private String pdtNm;		//상품이름
 	private String pdtBrand;	//브랜드
 	private String sizeSize;	//사이즈
+
+	private int dlvId;	//배송id
+	private int dlvNum;	//송장번호
+	private String dlvName; //이름
+	private String dlvphone;//번호
+	private String dlvAddr; //주소
 }
