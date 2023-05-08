@@ -108,7 +108,7 @@
 					<div class="col-md-3 order-1 mb-5 mb-md-0">
 						<div class="border p-4 rounded mb-4">
 							<div class="mb-4">
-								<h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
+								<h3 class="mb-3 h6 text-uppercase text-black d-block">카테고리</h3>
 								<c:forEach var="i" begin="0" end="${fn:length(catlist)-1}">
 									<label for="${catlist[i].catId}" class="d-flex"> <input
 										type="checkbox" id="${catlist[i].catId}" class="mr-2 mt-1">
@@ -118,10 +118,23 @@
 								</c:forEach>
 							</div>
 						</div>
+						
+						<div class="border p-4 rounded mb-4">
+							<div class="mb-4">
+								<h3 class="mb-3 h6 text-uppercase text-black d-block">서브카테고리</h3>
+								<c:forEach var="i" begin="0" end="${fn:length(subcatlist)-1}">
+									<label for="${subcatlist[i].subcatId}" class="d-flex"> <input
+										type="checkbox" id="${subcatlist[i].subcatId}" class="mr-2 mt-1">
+										<span class="text-black">${subcatlist[i].subcatNm}</span> <span
+										class="text-black ml-auto">(${subcntarr[i]})</span>
+									</label>
+								</c:forEach>
+							</div>
+						</div>
 
 						<div class="border p-4 rounded mb-4">
 							<div class="mb-4">
-								<h3 class="mb-3 h6 text-uppercase text-black d-block">gender</h3>
+								<h3 class="mb-3 h6 text-uppercase text-black d-block">성별</h3>
 								<c:forEach var="i" begin="0" end="${fn:length(genderlist)-1}">
 									<label for="${genderlist[i].genderId}" class="d-flex"> <input
 										type="checkbox" id="${genderlist[i].genderId}" class="mr-2 mt-1">
@@ -134,7 +147,7 @@
 
 						<div class="border p-4 rounded mb-4">
 							<div class="mb-4">
-								<h3 class="mb-3 h6 text-uppercase text-black d-block">brand</h3>
+								<h3 class="mb-3 h6 text-uppercase text-black d-block">브랜드</h3>
 								<c:forEach var="i" begin="0" end="${fn:length(brdlist)-1}">
 									<label for="${brdlist[i].brdId}" class="d-flex"> <input
 										type="checkbox" id="${brdlist[i].brdId}" class="mr-2 mt-1">
@@ -147,7 +160,7 @@
 
 						<div class="border p-4 rounded mb-4">
 							<div class="mb-4">
-								<h3 class="mb-3 h6 text-uppercase text-black d-block">Size</h3>
+								<h3 class="mb-3 h6 text-uppercase text-black d-block">사이즈</h3>
 								<label for="s_sm" class="d-flex"> <input type="checkbox"
 									id="s_sm" class="mr-2 mt-1"> <span class="text-black">Small</span>
 									<span class="text-black ml-auto">(2,319)</span>
@@ -178,5 +191,4 @@
 
 	<script src="js/main.js"></script>
 </body>
-
 </html>

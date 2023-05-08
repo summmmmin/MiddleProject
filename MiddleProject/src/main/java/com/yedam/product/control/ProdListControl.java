@@ -41,6 +41,16 @@ public class ProdListControl implements Control {
 		req.setAttribute("catlist", catlist);
 		req.setAttribute("cntarr", cntarr);
 		
+		List<ProdVO> subcatlist = service.subcatList();
+		int subcattotal;
+		int[] subcntarr = new int[subcatlist.size()];
+		for(int i = 0; i < subcatlist.size(); i++) {
+			subcattotal = service.getCount(subcatlist.get(i).getSubcatId());
+			subcntarr[i] = subcattotal;
+		}
+		req.setAttribute("subcatlist", subcatlist);
+		req.setAttribute("subcntarr", subcntarr);
+		
 		List<ProdVO> genderlist = service.genderList();
 		int gendertotal;
 		int[] genderarr = new int[genderlist.size()];
