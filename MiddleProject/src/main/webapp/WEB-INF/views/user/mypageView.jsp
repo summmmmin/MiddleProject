@@ -61,12 +61,12 @@
 									<div class="col-md-6">
 										<label for="c_email" class="text-black">전화번호</label> <input
 											type="text" class="form-control" id="phone" name="phone"
-											value="${userinfo.userPh}" readonly>
+											value="${userinfo.userPhone}" readonly>
 									</div>
 									<div class="col-md-6">
 										<label for="c_email" class="text-black">주소</label> <input
 											type="text" class="form-control" id="address" name="address"
-											value="${userinfo.userAddr}" readonly>
+											value="${userinfo.userAdd}" readonly>
 									</div>
 								</div>
 								<div class="form-group row">

@@ -28,12 +28,7 @@ public class DeleteUserControl implements Control {
 		boolean result = userService.deleteUser(user);
 
 		if (result) {
-			// 세션에서 로그인 정보 삭제
-			session.removeAttribute("userId");
-			session.removeAttribute("userPw");
-			session.removeAttribute("userName");
-			session.removeAttribute("userAddress");
-			session.removeAttribute("userPhone");
+			session.invalidate();
 			
 			return "user/main.tiles";
 		}

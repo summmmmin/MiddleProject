@@ -19,15 +19,15 @@ public class SignUpControl implements Control {
         String userId = req.getParameter("user_id");
         String userPw = req.getParameter("user_pw");
         String userNm = req.getParameter("user_nm");
-        String userPh = req.getParameter("user_phone");
-        String userAddr = req.getParameter("user_add");
+        String userPhone = req.getParameter("user_phone");
+        String userAdd = req.getParameter("user_add");
 
         UserVO user = new UserVO();
         user.setUserId(userId);
         user.setUserPw(userPw);
         user.setUserNm(userNm);
-        user.setUserPh(userPh);
-        user.setUserAddr(userAddr);
+        user.setUserPhone(userPhone);
+        user.setUserAdd(userAdd);
         
         System.out.println(user);
 
