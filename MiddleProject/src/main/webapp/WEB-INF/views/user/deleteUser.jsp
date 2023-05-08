@@ -30,7 +30,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 mb-0">
-						<a href="main.do">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">MyPage</strong>
+						<a href="main.do">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Delete</strong>
 					</div>
 				</div>
 			</div>
@@ -41,7 +41,7 @@
 		<div class="container">
 			<div class="row justify-content-md-center">
 				<div class="col-md-7">
-					<form method="post" action="mypageView.do">
+					<form method="post" action="deleteUser.do">
 						<div class="d-flex justify-content-center">
 							<div class="p-3 p-lg-5 border">
 								<div class="form-group row">
@@ -52,10 +52,8 @@
 										</div>
 									</div>
 								</div>
-								<form method="post" action="/checkPassword">
-									<input type="password" name="user_pw" placeholder="현재 비밀번호를 입력하세요" />
-									<input type="submit" value="확인" />
-								</form>
+								<input type="password" name="user_pw" placeholder="현재 비밀번호를 입력하세요" />
+								<input type="submit" value="확인" />
 							</div>
 						</div>
 					</form>

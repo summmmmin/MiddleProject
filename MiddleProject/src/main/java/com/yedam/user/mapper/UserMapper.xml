@@ -23,4 +23,9 @@
     SELECT * FROM users WHERE user_Id=#{userId} AND user_Pw=#{userPw}
 </select>
 
+<!-- 회원탈퇴 -->
+<delete id="deleteUser" parameterType="com.yedam.user.domain.UserVO">
+    DELETE FROM users WHERE user_id=#{userId}
+</delete>
+
 </mapper>
