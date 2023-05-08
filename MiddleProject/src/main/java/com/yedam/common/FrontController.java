@@ -79,6 +79,10 @@ public class FrontController extends HttpServlet{
 		map.put("/mypageView.do", new MypageViewControl());
 		map.put("/deleteUserForm.do", new DeleteUserControl());
 		map.put("/modifyUserForm.do", new ModifyUserForm());
+		//note
+		map.put("/noteSend.do", new NoteSendControl());
+		map.put("noteList.do", new NoteListControl());
+		map.put("/getNote.do", new GetNoteControl());
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
