@@ -4,7 +4,7 @@ import lombok.Data;
 import oracle.sql.DATE;
 
 @Data
-public class noteVO {
+public class NoteVO {
 	private int noteId;
 	private String userId;
 	private String noteCT;

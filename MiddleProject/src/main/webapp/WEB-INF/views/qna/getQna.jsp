@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="../css/aos.css">
 
     <link rel="stylesheet" href="../css/style.css">
-    
+
   </head>
   <body>
 <div class="site-wrap">
@@ -108,6 +108,7 @@
      </div>    
     </div>
     
+    
 <script>
     document.querySelector("#addComment").addEventListener('click', addCommentFnc);
     function addCommentFnc(e){
@@ -118,7 +119,8 @@
     let xhtp = new XMLHttpRequest();
     xhtp.open('post','addQC.do');
     xhtp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-    xhtp.send('postId=${postId}&comment=' + comment;)
+    xhtp.send('postId=${postId}&comment=' + comment;);
+    
 
     
     </script> 
