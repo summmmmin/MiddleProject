@@ -85,19 +85,15 @@
 								</div>
 								<div class="form-group row">
 									<div class="col-md-6">
-										<label for="newPassword-toggle" class="text-black">비밀번호 변경</label> <input
-											type="password" class="form-control" id="newPassword"
-											name="newPassword">
+										<label for="newPassword-toggle" class="text-black">비밀번호
+											변경</label> <input type="password" class="form-control"
+											id="newPassword" name="newPassword">
 									</div>
 								</div>
-								<div class="form-group row">
-									<div class="col-md-6">
-										<input type="submit" class="btn btn-primary btn-lg btn-block"
-											value="변경">
-									</div>
-									<div class="col-md-6">
-										<input type="button" class="btn btn-danger btn-lg btn-block"
-											value="탈퇴" onclick="location.href='deleteUser.do'">
+								<div class="form-group row text-center">
+									<div class="col-md-6 text-center mt-3">
+										<input type="submit" class="btn btn-success btn-lg btn-block"
+											value="완료">
 									</div>
 								</div>
 							</div>

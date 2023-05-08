@@ -91,7 +91,7 @@
 								<div class="form-group row">
 									<div class="col-md-6">
 										<input type="submit" class="btn btn-primary btn-lg btn-block"
-											value="변경" >
+											value="수정" >
 									</div>
 									<div class="col-md-6">
 										<input type="button" class="btn btn-danger btn-lg btn-block"
