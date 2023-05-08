@@ -54,6 +54,12 @@ public class UserServiceImpl implements UserService {
 
 	    return isMatched;
 	}
+	
+	@Override
+	public boolean deleteUser(UserVO user) {
+		int result = mapper.deleteUser(user);
+		return result == 1;
+	}
 
 
 
