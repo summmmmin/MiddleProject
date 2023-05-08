@@ -2,7 +2,7 @@
 pageEncoding="UTF-8"%>
 <div class="container" id="priceSelec">
   <div class="row mb-5">
-    <div class="d-grid gap-2 col-6 mx-auto">
+    
       <div class="btn-group btn-group-toggle" data-toggle="buttons">
         <label class="btn btn-secondary active" id="1" onclick='select(event)'>
           <input type="radio" name="selc" id="option1" checked /> 즉시판매
@@ -11,7 +11,7 @@ pageEncoding="UTF-8"%>
           <input type="radio" name="selc" id="option2"/> 판매입찰
         </label>
       </div>
-    </div>
+    
   </div>
 
   <dl class="row" id="a">
