@@ -73,9 +73,13 @@
 							<button class="btn btn-sm btn-pink">관심상품</button>
 						</div>
 						<div class="mb-5">
-							<button class="btn btn-sm btn-gray" type="button"
+							<c:if test="${userinfo.userGrade == '관리자'}">
+							<button class="btn btn-sm btn-blue" type="button"
 								onclick="location.href='modifyProd.do?pid=${prodInfo.pdtId}'">수정하기</button>
-						</div>		
+							<button class="btn btn-sm btn-red" type="button"
+								onclick="location.href='delProd.do?pid=${prodInfo.pdtId}'">삭제하기</button>
+							</c:if>
+						</div>
 						<div class="modal fade" id="exampleModal" tabindex="-1"
 							aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog modal-dialog-centered">
@@ -141,7 +145,7 @@
 									<div class="block-4 text-center">
 										<figure class="block-4-image">
 											<a
-												href="getProd.do?&page=${pageInfo.pageNum}&pid=${prodInfo.pdtId}">
+												href="getProd.do?&pid=${prodInfo.pdtId}">
 												<img src="images/${product2.pdtImg}" alt="Image placeholder"
 												class="img-fluid">
 											</a>
@@ -149,7 +153,7 @@
 										<div class="block-4-text p-4">
 											<h3>
 												<a
-													href="getProd.do?&page=${pageInfo.pageNum}&pid=${prodInfo.pdtId}">${product2.pdtNm}</a>
+													href="getProd.do?&pid=${prodInfo.pdtId}">${product2.pdtNm}</a>
 											</h3>
 											<p class="mb-0">${product2.brdId}</p>
 											<p class="text-primary font-weight-bold">${product2.pdtPrice}</p>
