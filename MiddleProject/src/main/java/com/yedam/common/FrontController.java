@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.product.control.AddProdControl;
+import com.yedam.product.control.DelProdControl;
 import com.yedam.product.control.GetProdControl;
 import com.yedam.product.control.ModifyProdControl;
 import com.yedam.product.control.ProdAddForm;
@@ -59,6 +60,7 @@ public class FrontController extends HttpServlet{
 		map.put("/addProd.do", new AddProdControl());
 		map.put("/getProd.do", new GetProdControl());
 		map.put("/modifyProd.do", new ModifyProdControl());
+		map.put("/delProd.do", new DelProdControl());
 		map.put("/subCatList.do", new SubCatListControl());
 		//users
 		map.put("/logout.do", new LogoutControl());
