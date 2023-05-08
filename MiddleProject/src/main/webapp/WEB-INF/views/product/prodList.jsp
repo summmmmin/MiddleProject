@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,20 +53,6 @@
 								<div class="float-md-left mb-4">
 									<h2 class="text-black h5">상품 목록</h2>
 								</div>
-								<div class="d-flex">
-									<div class="dropdown mr-1 ml-md-auto">
-										<button type="button"
-											class="btn btn-secondary btn-sm dropdown-toggle"
-											id="dropdownMenuOffset" data-toggle="dropdown"
-											aria-haspopup="true" aria-expanded="false">Latest</button>
-										<div class="dropdown-menu"
-											aria-labelledby="dropdownMenuOffset">
-											<a class="dropdown-item" href="#">Men</a> <a
-												class="dropdown-item" href="#">Women</a> <a
-												class="dropdown-item" href="#">Children</a>
-										</div>
-									</div>
-								</div>
 							</div>
 						</div>
 						<div class="row mb-5">
@@ -73,12 +60,15 @@
 								<div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
 									<div class="block-4 text-center border">
 										<figure class="block-4-image">
-											<a href="getProd.do?&page=${pageInfo.pageNum}&pid=${product.pdtId}"><img src="images/${product.pdtImg}"
-												alt="Image placeholder" class="img-fluid"></a>
+											<a
+												href="getProd.do?&page=${pageInfo.pageNum}&pid=${product.pdtId}"><img
+												src="images/${product.pdtImg}" alt="Image placeholder"
+												class="img-fluid"></a>
 										</figure>
 										<div class="block-4-text p-4">
 											<h3>
-												<a href="getProd.do?&page=${pageInfo.pageNum}&pid=${product.pdtId}">${product.pdtNm}</a>
+												<a
+													href="getProd.do?&page=${pageInfo.pageNum}&pid=${product.pdtId}">${product.pdtNm}</a>
 											</h3>
 											<p class="mb-0">${product.brdNm}</p>
 											<p class="text-primary font-weight-bold">${product.pdtPrice}</p>
@@ -89,8 +79,10 @@
 							</c:forEach>
 						</div>
 						<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-							<button class="btn btn-primary me-md-2" type="button"
-								onclick="location.href='prodAddForm.do'">게시글 등록</button>
+							<c:if test="${userinfo.userGrade == '관리자'}">
+								<button class="btn btn-primary me-md-2" type="button"
+									onclick="location.href='prodAddForm.do'">게시글 등록</button>
+							</c:if>
 						</div>
 						<div class="row" data-aos="fade-up">
 							<div class="col-md-12 text-center">
@@ -101,7 +93,7 @@
 											</c:if></li>
 										<c:forEach var="i" begin="${pageInfo.startPage}"
 											end="${pageInfo.endPage}">
-											<li><a class="${i == pageInfo.pageNum ? 'active' : ''}"
+											<li class="${i == pageInfo.pageNum ? 'active' : ''}"><a
 												href="prodList.do?page=${i}">${i}</a></li>
 										</c:forEach>
 										<li><c:if test="${pageInfo.next}">
@@ -117,88 +109,39 @@
 						<div class="border p-4 rounded mb-4">
 							<div class="mb-4">
 								<h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
-								<label for="${categories.catId}" class="d-flex"> 
-									<input type="checkbox" id="${categories.catId}" class="mr-2 mt-1"> 
-										<span class="text-black">${categories.catNm}</span>
-										<span class="text-black ml-auto">(2,319)</span>
-								</label> 
-
-								<c:forEach var="categories" items="${list}">
-									<label for="${categories.catId}" class="d-flex"> 
-										<input type="checkbox" id="${categories.catId}" class="mr-2 mt-1"> 
-											<span class="text-black">${categories.catNm}</span>
-											<span class="text-black ml-auto">${total}</span>
-									</label> 
+								<c:forEach var="i" begin="0" end="${fn:length(catlist)-1}">
+									<label for="${catlist[i].catId}" class="d-flex"> <input
+										type="checkbox" id="${catlist[i].catId}" class="mr-2 mt-1">
+										<span class="text-black">${catlist[i].catNm}</span> <span
+										class="text-black ml-auto">(${cntarr[i]})</span>
+									</label>
 								</c:forEach>
-								select count(*) from product where cat_id=?
-								숫자
-
-
-								int total;
-								int[] cntarr = new int[list.size]
-								for(카테고리리스트크기만큼){
-									total = service.getcount(list[i].catId)
-									
-								}
-								<label for="Women" class="d-flex"> <input
-									type="checkbox" id="Women" class="mr-2 mt-1"> <span
-									class="text-black">하의</span> <span
-									class="text-black ml-auto">(1,282)</span>
-								</label> <label for="Children" class="d-flex"> <input
-									type="checkbox" id="Children" class="mr-2 mt-1"> <span
-									class="text-black">아우터</span> <span
-									class="text-black ml-auto">(1,392)</span>
-								</label> <label for="Children" class="d-flex"> <input
-									type="checkbox" id="Children" class="mr-2 mt-1"> <span
-									class="text-black">신발</span> <span
-									class="text-black ml-auto">(1,392)</span>
-								</label>
 							</div>
 						</div>
 
 						<div class="border p-4 rounded mb-4">
 							<div class="mb-4">
 								<h3 class="mb-3 h6 text-uppercase text-black d-block">gender</h3>
-								<label for="Men" class="d-flex"> <input type="checkbox"
-									id="Men" class="mr-2 mt-1"> <span class="text-black">Men</span>
-									<span class="text-black ml-auto">(2,319)</span>
-								</label> <label for="Women" class="d-flex"> <input
-									type="checkbox" id="Women" class="mr-2 mt-1"> <span
-									class="text-black">Women</span> <span
-									class="text-black ml-auto">(1,282)</span>
-								</label> <label for="Children" class="d-flex"> <input
-									type="checkbox" id="Children" class="mr-2 mt-1"> <span
-									class="text-black">Children</span> <span
-									class="text-black ml-auto">(1,392)</span>
-								</label>
+								<c:forEach var="i" begin="0" end="${fn:length(genderlist)-1}">
+									<label for="${genderlist[i].genderId}" class="d-flex"> <input
+										type="checkbox" id="${genderlist[i].genderId}" class="mr-2 mt-1">
+										<span class="text-black">${genderlist[i].genderNm}</span> <span
+										class="text-black ml-auto">(${genderarr[i]})</span>
+									</label>
+								</c:forEach>
 							</div>
 						</div>
 
 						<div class="border p-4 rounded mb-4">
 							<div class="mb-4">
 								<h3 class="mb-3 h6 text-uppercase text-black d-block">brand</h3>
-								<label for="Men" class="d-flex"> <input type="checkbox"
-									id="Men" class="mr-2 mt-1"> <span class="text-black">NIKE</span>
-									<span class="text-black ml-auto">(2,319)</span>
-								</label> <label for="Women" class="d-flex"> <input
-									type="checkbox" id="Women" class="mr-2 mt-1"> <span
-									class="text-black">Adidas</span> <span
-									class="text-black ml-auto">(1,282)</span>
-								</label> <label for="Children" class="d-flex"> <input
-									type="checkbox" id="Children" class="mr-2 mt-1"> <span
-									class="text-black">Zara</span> <span class="text-black ml-auto">(1,392)</span>
-								</label> <label for="Children" class="d-flex"> <input
-									type="checkbox" id="Children" class="mr-2 mt-1"> <span
-									class="text-black">UNIQLO</span> <span
-									class="text-black ml-auto">(1,392)</span>
-								</label> <label for="Children" class="d-flex"> <input
-									type="checkbox" id="Children" class="mr-2 mt-1"> <span
-									class="text-black">Puma</span> <span class="text-black ml-auto">(1,392)</span>
-								</label> <label for="Children" class="d-flex"> <input
-									type="checkbox" id="Children" class="mr-2 mt-1"> <span
-									class="text-black">fila</span> <span class="text-black ml-auto">(1,392)</span>
-								</label>
-
+								<c:forEach var="i" begin="0" end="${fn:length(brdlist)-1}">
+									<label for="${brdlist[i].brdId}" class="d-flex"> <input
+										type="checkbox" id="${brdlist[i].brdId}" class="mr-2 mt-1">
+										<span class="text-black">${brdlist[i].brdNm}</span> <span
+										class="text-black ml-auto">(${brdarr[i]})</span>
+									</label>
+								</c:forEach>
 							</div>
 						</div>
 
@@ -234,7 +177,6 @@
 	<script src="js/aos.js"></script>
 
 	<script src="js/main.js"></script>
-
 </body>
 
 </html>

@@ -18,4 +18,5 @@ public interface ProdMapper {
 	public List<ProdVO> brdList();
 	public List<ProdVO> genderList();
 	public List<ProdVO> prodList2();
+	public int getCount(int catId);
 }
