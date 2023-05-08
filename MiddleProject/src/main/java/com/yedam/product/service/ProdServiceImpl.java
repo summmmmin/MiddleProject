@@ -58,6 +58,10 @@ public class ProdServiceImpl implements ProdService {
 	public List<ProdVO> prodList2() {
 		return mapper.prodList2();
 	}
+	@Override
+	public int getCount(int catId) {
+		return mapper.getCount(catId);
+	}
 	
 	
 }
