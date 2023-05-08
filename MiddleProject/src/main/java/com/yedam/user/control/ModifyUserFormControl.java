@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 import com.yedam.common.Control;
 import com.yedam.user.domain.UserVO;
 
-public class ModifyUserForm implements Control {
+public class ModifyUserFormControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
