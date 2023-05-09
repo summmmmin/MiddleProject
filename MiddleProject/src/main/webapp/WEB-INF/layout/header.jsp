@@ -27,9 +27,9 @@
               <div class="site-top-icons">
                 <ul>
                   <li><a href="mypagePw.do"><span class="icon icon-person"></span></a></li>
-                  <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
+                  <li><a href="cart.html"><span class="icon icon-heart-o"></span></a></li>
                   <li>
-                    <a href="cart.html" class="site-cart">
+                    <a href="#" class="site-cart">
                       <span class="icon icon-message"></span>
                       <span class="count">2</span>
                     </a>
