@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
+
 <head>
 	<meta charset="UTF-8">
 	<title>회원 탈퇴 완료</title>
@@ -33,11 +32,10 @@
 		}
 	</style>
 </head>
-<body2>
+
 	<div class="container2">
 		<img src="https://www.example.com/images/delete.png" alt="탈퇴 완료 이미지">
 		<h1>회원 탈퇴 완료</h1>
 		<p>회원 탈퇴 처리가 완료되었습니다.</p>
 	</div>
-</body2>
-</html>
+
