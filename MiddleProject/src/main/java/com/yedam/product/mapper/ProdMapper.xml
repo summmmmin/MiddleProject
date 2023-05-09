@@ -73,6 +73,10 @@
 	<select id="getViews" resultType="int">
 		select count(*) from product
 	</select>
+	
+	<select id="getCount" resultType="int">
+		select count(*) from product where cat_id=#{catId}
+	</select>
 
 
 </mapper>

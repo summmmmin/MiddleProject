@@ -1,4 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yedam.note.mapper.NoteMapper">
+	
+	<!-- 쪽지 리스트. -->
+	<select id="noteList" resultType="note">
+	select * from note order by note_id desc where user_id=#{userId}
+	</select>
+	
+	 <!-- 쪽지 단일삭제. -->
+	 <delete id="delNote" parameterType="int" >
+	 delete from note where note_id=#{noteId}
+	 </delete>
+	 
+	 <!-- 쪽지 전체삭제. -->
+	 <delete id="delAllNote" parameterType="String" >
+	 delete from note where user_id=#{userId}
+	 </delete>
+	 
+	 <!-- 쪽지 상세보기. -->
+	 <select id="getNote" resultType="note">
+	 select * from note where note_id=#{noteId}
+	 </select>
+	  
+	 <!-- 쪽지 단일 보내기. -->
+	 <insert id="sendNote" parameterType='note'>
+	 insert into note(note_id,user_id,note,note_ct)
+  	 values(note_id_seq.nextval,#{userId},#{postCT})
+	 </insert>
+	 
+	  <!-- 모든 아이디. -->
+	  <select id="allUser">
+	  select user_id from users
+	  </select>
+	 
 </mapper>
