@@ -40,7 +40,7 @@
 			</tr>
 			<tr>
 				<th scope="col" class="text-primary">상품 가격</th>
-				<td><input type="text" name="price"></td>
+				<td><input type="text" name="price">원</td>
 			</tr>
 			<tr>
 				<th scope="col" class="text-primary">브랜드</th>

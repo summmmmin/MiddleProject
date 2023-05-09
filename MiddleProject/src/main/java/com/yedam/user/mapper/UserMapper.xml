@@ -9,7 +9,7 @@
 
 <!-- 회원단건체크 -->
 <select id="getUserInfo" parameterType="com.yedam.user.domain.UserVO" resultType="com.yedam.user.domain.UserVO">
-  SELECT user_id, user_nm, user_phone, user_add, user_grade, user_date, user_point FROM users WHERE user_id = #{userId}
+  SELECT * FROM users WHERE user_id = #{userId}
 </select>
 
 <!-- addMember -->
