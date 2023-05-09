@@ -15,19 +15,25 @@ import com.yedam.user.service.UserServiceImpl;
 public class DeleteUserControl implements Control {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	    HttpSession session = req.getSession();
-	    UserVO user = (UserVO) session.getAttribute("userinfo");
+		HttpSession session = req.getSession();
+		UserVO user = (UserVO) session.getAttribute("userinfo");
 
-	    UserService userService = UserServiceImpl.getInstance();
-	    boolean result = userService.deleteUser(user);
+		if (user == null) { // 로그인되어있지 않은 경우
+			// session.setAttribute("returnUrl", request.getRequestURI()); // 이전 URL 저장,
+			// 비회원이 마이페이지를 누르고 로그인했을 때 바로 마이페이지로 이동하게
+			return "user/loginForm.tiles";
+		}
 
-	    if (result) {
-	        session.invalidate();
-	        return "user/deleteUser.tiles";
-	    } else {
-	        // 비밀번호가 일치하지 않으면 삭제 실패 메시지를 출력합니다.
-	        req.setAttribute("message", "비밀번호가 일치하지 않습니다.");
-	        return "user/deleteUserForm.tiles";
-	    }
+		UserService userService = UserServiceImpl.getInstance();
+		boolean result = userService.deleteUser(user);
+
+		if (result) {
+			session.invalidate();
+			return "user/deleteUser.tiles";
+		} else {
+			// 비밀번호가 일치하지 않으면 삭제 실패 메시지를 출력합니다.
+			req.setAttribute("message", "비밀번호가 일치하지 않습니다.");
+			return "user/deleteUserForm.tiles";
+		}
 	}
 }

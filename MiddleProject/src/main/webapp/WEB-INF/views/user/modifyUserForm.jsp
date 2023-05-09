@@ -64,7 +64,8 @@
 									<div class="col-md-6">
 										<label for="c_email" class="text-black">전화번호</label> <input
 											type="text" class="form-control" id="user_phone"
-											name="newPhone" value="${userinfo.userPhone}" maxlength="13" oninput="formatPhoneNumber(this)">
+											name="newPhone" value="${userinfo.userPhone}" maxlength="13"
+											oninput="formatPhoneNumber(this)">
 									</div>
 									<div class="col-md-6">
 										<label for="c_email" class="text-black">주소</label> <input
@@ -96,6 +97,10 @@
 									<div class="col-md-6 text-center mt-3">
 										<input type="submit" class="btn btn-success btn-lg btn-block"
 											value="완료">
+									</div>
+									<div class="col-md-6 text-center mt-3">
+										<a href="javascript:history.back();"
+											class="btn btn-secondary btn-lg btn-block">취소</a>
 									</div>
 								</div>
 							</div>
