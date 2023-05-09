@@ -13,11 +13,11 @@ public class ProdVO {
 	private int pdtPrice;
 	private String pdtImg;
 	private int pdtViews;
-	private int sizeId;
 	
 	private String catNm;
 	private String subcatNm;
 	private String brdNm;
 	private String genderNm;
+	private String sizeNm;
 	
 }
