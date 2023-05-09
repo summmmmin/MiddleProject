@@ -26,7 +26,7 @@
 			<div class="col-md-9 order-2">
 
 				<div class="row">
-					<div class="col-md-12 mb-5">
+					<div class="col-md-12 mb-2">
 						<div class="float-md-left mb-4">
 							<h2 class="text-black h5">상품 목록</h2>
 						</div>
@@ -90,32 +90,24 @@
 							<a class="js-open-target" id="cat" data-target=".closed-content1"
 								onclick="categories()">카테고리</a>
 						</h3>
-						<div class="closed-content1" style="display:none;">
+						<div class="closed-content1" style="display: none;">
 							<c:forEach var="i" begin="0" end="${fn:length(catlist)-1}">
 								<label for="${catlist[i].catId}" class="d-flex"> <input
 									type="checkbox" id="${catlist[i].catId}" class="mr-2 mt-1">
 									<span class="text-black">${catlist[i].catNm}</span> <span
 									class="text-black ml-auto">(${cntarr[i]})</span>
 								</label>
-							</c:forEach>
-						</div>
-					</div>
-				</div>
-
-				<div class="border p-4 rounded mb-4">
-					<div class="mb-4">
-						<h3 class="mb-3 h6 text-uppercase text-black d-block"
-							class="jquery-on-container">
-							<a class="js-open-target" id="subcat"
-								data-target=".closed-content2" onclick="subcategory()">세부카테고리</a>
-						</h3>
-						<div class="closed-content2" style="display:none;">
-							<c:forEach var="i" begin="0" end="${fn:length(subcatlist)-1}">
-								<label for="${subcatlist[i].subcatId}" class="d-flex"> <input
-									type="checkbox" id="${subcatlist[i].subcatId}"
-									class="mr-2 mt-1"> <span class="text-black">${subcatlist[i].subcatNm}</span>
-									<span class="text-black ml-auto">(${subcntarr[i]})</span>
-								</label>
+								<c:choose>
+									<c:when test="var == 1">
+										<c:forEach var="i" begin="0" end="${fn:length(subcatlist)-1}">
+											<label for="${subcatlist[i].subcatId}" class="d-flex">
+												<input type="checkbox" id="${subcatlist[i].subcatId}"
+												class="mr-2 mt-1"> <span class="text-black">${subcatlist[i].subcatNm}</span>
+												<span class="text-black ml-auto">(${subcntarr[i]})</span>
+											</label>
+										</c:forEach>
+									</c:when>
+								</c:choose>
 							</c:forEach>
 						</div>
 					</div>
@@ -128,7 +120,7 @@
 							<a class="js-open-target" id="gender"
 								data-target=".closed-content3" onclick="gender()">성별</a>
 						</h3>
-						<div class="closed-content3" style="display:none;">
+						<div class="closed-content3" style="display: none;">
 							<c:forEach var="i" begin="0" end="${fn:length(genderlist)-1}">
 								<label for="${genderlist[i].genderId}" class="d-flex"> <input
 									type="checkbox" id="${genderlist[i].genderId}"
@@ -147,7 +139,7 @@
 							<a class="js-open-target" id="brand"
 								data-target=".closed-content4" onclick="brand()">브랜드</a>
 						</h3>
-						<div class="closed-content4" style="display:none;">
+						<div class="closed-content4" style="display: none;">
 							<c:forEach var="i" begin="0" end="${fn:length(brdlist)-1}">
 								<label for="${brdlist[i].brdId}" class="d-flex"> <input
 									type="checkbox" id="${brdlist[i].brdId}" class="mr-2 mt-1">
@@ -166,17 +158,67 @@
 							<a class="js-open-target" id="size"
 								data-target=".closed-content5" onclick="size()">사이즈</a>
 						</h3>
-						<div class="closed-content5" style="display:none;">
-							<label for="s_sm" class="d-flex"> <input type="checkbox"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">Small</span>
-								<span class="text-black ml-auto">(2,319)</span>
-							</label> <label for="s_md" class="d-flex"> <input type="checkbox"
-								id="s_md" class="mr-2 mt-1"> <span class="text-black">Medium</span>
-								<span class="text-black ml-auto">(1,282)</span>
-							</label> <label for="s_lg" class="d-flex"> <input type="checkbox"
-								id="s_lg" class="mr-2 mt-1"> <span class="text-black">Large</span>
-								<span class="text-black ml-auto">(1,392)</span>
-							</label>
+						<div class="closed-content5" style="display: none;">
+							<p>의류</p>
+							<button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">XS</span>
+							</button> <button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">S</span>
+							</button> <button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">M</span>
+							</button> <button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">L</span>
+							</button> <button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">XL</span>
+							</button> <button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">44</span>
+							</button> <button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">55</span>
+							</button> <button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">66</span>
+							</button> <button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">77</span>
+							</button> <button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">88</span>
+							</button> <button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">110</span>
+							</button>
+							<p>신발</p> 
+							<button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">220</span>
+							</button> <button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">225</span>
+							</button> <button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">230</span>
+							</button> <button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">235</span>
+							</button> <button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">240</span>
+							</button> <button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">245</span>
+							</button> <button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">250</span>
+							</button> <button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">255</span>
+							</button> <button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">260</span>
+							</button> <button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">265</span>
+							</button> <button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">270</span>
+							</button> <button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">275</span>
+							</button> <button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">280</span>
+							</button> <button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">285</span>
+							</button> <button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">290</span>
+							</button> <button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">295</span>
+							</button> <button type="button" class="btn btn-outline-primary"
+								id="s_sm" class="mr-2 mt-1"> <span class="text-black">300</span>
+							</button>
 						</div>
 					</div>
 				</div>
@@ -194,12 +236,10 @@
 		});
 	}
 
-	function subcategory() {
-		$('#subcat').each(function() {
-			var target_selector = $(this).data('target');
-			console.log(target_selector);
-			$(target_selector).toggle();
-		});
+	function categories2() {
+		var cat = document.getElementById('${catlist[i].catId}');
+		var catVal = cat.options[cat.selectedIndex].value;
+		console.log(catVal);
 	}
 
 	function gender() {
