@@ -43,7 +43,7 @@ if (id == null) {
 								<div class="form-group">
 									<label for="newPassword-toggle" class="text-black">비밀번호
 										확인</label> <input type="password" class="form-control" id="user_pw"
-										name="newPassword" oninput="checkPasswordValidity2()">
+										name="user_pw">
 									<div id="password-warning"></div>
 								</div>
 							</div>
