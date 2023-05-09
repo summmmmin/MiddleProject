@@ -43,7 +43,7 @@
 					<div class="col-md-7">
 						<h2 class="h3 mb-3 text-black">회원정보 변경</h2>
 
-						<form action="modifyUserForm.do" method="post">
+						<form action="mypageView.do" method="post">
 							<div class="p-3 p-lg-5 border">
 								<div class="form-group row">
 									<div class="col-md-6">
@@ -90,8 +90,8 @@
 								</div>
 								<div class="form-group row">
 									<div class="col-md-6">
-										<input type="submit" class="btn btn-primary btn-lg btn-block"
-											value="수정" >
+										<input type="button" class="btn btn-primary btn-lg btn-block"
+											value="수정" onclick="location.href='modifyUserForm.do'" >
 									</div>
 									<div class="col-md-6">
 										<input type="button" class="btn btn-danger btn-lg btn-block"
