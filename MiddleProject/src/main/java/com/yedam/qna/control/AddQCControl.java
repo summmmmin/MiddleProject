@@ -22,10 +22,12 @@ public class AddQCControl implements Control {
 		// TODO Auto-generated method stub
 		// 댓글등록 컨트롤...ing...
 		String id = req.getParameter("postId");
+		System.out.println(id);
 		String comment = req.getParameter("comment");
+		System.out.println(comment);
 		
 		QCommentVO vo = new QCommentVO();
-		vo.setPostId(Integer.parseInt(id));;
+		vo.setPostId(Integer.parseInt(id));
 		vo.setCommentCT(comment);
 		
 		QCommentService service = new QCommentServiceImpl();

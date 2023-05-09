@@ -16,8 +16,8 @@
   
   <!-- comment 등록. -->
   <insert id="insertComment" parameterType="qcomment">
-  insert into qna_post(post_id,user_grade,comment_ct)
-  values(post_id=#{postId}, user_grade=#{userGrade},#{commentCT})
+  insert into qna_comment(comment_ct,post_id)
+  values(#{commentCT},#{postId})
   </insert>
 
 </mapper>

@@ -13,8 +13,8 @@ public class NoteServiceImpl implements NoteService {
 	SqlSession session = DataSource.getInstance().openSession(true);
 	NoteMapper mapper = session.getMapper(NoteMapper.class);
 	@Override
-	public List<NoteVO> noteList(int userId) {
-		return mapper.myNote(userId);
+	public List<NoteVO> noteList(String userId) {
+		return mapper.noteList(userId);
 	}
 	@Override
 	public boolean delNote(int noteId) {
@@ -31,9 +31,9 @@ public class NoteServiceImpl implements NoteService {
 		return mapper.getNote(noteId);
 	}
 	@Override
-	public boolean sendNote(int userId) {
+	public boolean sendNote(NoteVO vo) {
 		// TODO Auto-generated method stub
-		return mapper.sendNote(userId);
+		return mapper.sendNote(vo);
 	}
 	@Override
 	public UserVO allUser() {
