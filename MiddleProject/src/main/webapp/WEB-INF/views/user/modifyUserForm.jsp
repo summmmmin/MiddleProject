@@ -42,42 +42,42 @@
 					<div class="col-md-7">
 						<h2 class="h3 mb-3 text-black">회원정보 변경</h2>
 
-						<form action="mypageView.do" method="post">
+						<form action="modifyUser.do" method="post">
 							<div class="p-3 p-lg-5 border">
 								<div class="form-group row">
 									<div class="col-md-6">
-										<label for="c_email" class="text-black">이름</label> <input type="text" class="form-control" id="name"
+										<label for="c_email" class="text-black">이름</label> <input type="text" class="form-control" id="user_nm"
 											name="name" value="${userinfo.userNm}" readonly>
 									</div>
 									<div class="col-md-6">
-										<label for="c_email" class="text-black">아이디</label> <input type="text" class="form-control" id="id"
+										<label for="c_email" class="text-black">아이디</label> <input type="text" class="form-control" id="user_id"
 											name="id" value="${userinfo.userId}" readonly>
 									</div>
 								</div>
 								<div class="form-group row">
 									<div class="col-md-6">
 										<label for="c_email" class="text-black">전화번호</label> <input type="text" class="form-control"
-											id="phone" name="phone" value="${userinfo.userPhone}">
+											id="user_phone" name="newPhone" value="${userinfo.userPhone}">
 									</div>
 									<div class="col-md-6">
 										<label for="c_email" class="text-black">주소</label> <input type="text" class="form-control"
-											id="address" name="address" value="${userinfo.userAdd}">
+											id="user_add" name="newAdd" value="${userinfo.userAdd}">
 									</div>
 								</div>
 								<div class="form-group row">
 									<div class="col-md-6">
 										<label for="c_email" class="text-black">등급</label> <input type="text" class="form-control"
-											id="grade" name="grade" value="${userinfo.userGrade}" readonly>
+											id="user_grade" name="grade" value="${userinfo.userGrade}" readonly>
 									</div>
 									<div class="col-md-6">
 										<label for="c_email" class="text-black">포인트</label> <input type="text" class="form-control"
-											id="points" name="points" value="${userinfo.userPoint}" readonly>
+											id="user_point" name="points" value="${userinfo.userPoint}" readonly>
 									</div>
 								</div>
 								<div class="form-group row">
 									<div class="col-md-6">
 										<label for="newPassword-toggle" class="text-black">비밀번호
-											변경</label> <input type="password" class="form-control" id="newPassword" name="newPassword">
+											변경</label> <input type="password" class="form-control" id="user_pw" name="newPassword">
 									</div>
 								</div>
 								<div class="form-group row text-center">
