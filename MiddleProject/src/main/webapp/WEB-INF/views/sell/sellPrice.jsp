@@ -139,9 +139,7 @@ pageEncoding="UTF-8"%>
 		  alert("입력하세요");
 		  
 	  }else{
-		  $('#form').attr("action","sellForm.do?pid=${prodId}&size=${size}").submit();
-		  form.method = "GET";
-		  form.submit();
+		  $('#form').attr("action","sellForm.do?pid=${prodId}&size=${size}").submit();		  
 	  }
   }
 </script>
