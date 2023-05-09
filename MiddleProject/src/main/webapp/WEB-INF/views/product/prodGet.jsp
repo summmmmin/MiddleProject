@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <style>
-/*╟Э╫и╩Сг╟ ╩Ж*/
+/*Й╢─Л▀╛Л┐│М▓┬ Л┐┴*/
 .btn-pink {
 	color: #fff;
 	background-color: #e83e8c;
@@ -40,17 +40,17 @@
 				</div>
 				<div class="mb-5">
 					<button class="btn btn-primary btn-sm" data-toggle="modal"
-						data-target="#exampleModal">╠╦╦его╠Б</button>
+						data-target="#exampleModal">Й╣╛К╖╓М∙≤Й╦╟</button>
 					<button class="btn btn-primary btn-sm" data-toggle="modal"
-						data-target="#sellModal">фг╦его╠Б</button>
-					<button class="btn btn-sm btn-pink">╟Э╫и╩Сг╟</button>
+						data-target="#sellModal">М▄░К╖╓М∙≤Й╦╟</button>
+					<button class="btn btn-sm btn-pink">Й╢─Л▀╛Л┐│М▓┬</button>
 				</div>
 				<div class="mb-5">
-					<c:if test="${userinfo.userGrade == '╟Э╦╝юз'}">
+					<c:if test="${userinfo.userGrade == 'Й╢─К╕╛Л·░'}">
 						<button class="btn btn-sm btn-blue" type="button"
-							onclick="location.href='modifyProd.do?pid=${prodInfo.pdtId}'">╪Жа╓го╠Б</button>
+							onclick="location.href='modifyProd.do?pid=${prodInfo.pdtId}'">Л┬≤Л═∙М∙≤Й╦╟</button>
 						<button class="btn btn-sm btn-red" type="button"
-							onclick="location.href='delProd.do?pid=${prodInfo.pdtId}'">╩Ха╕го╠Б</button>
+							onclick="location.href='delProd.do?pid=${prodInfo.pdtId}'">Л┌╜Л═°М∙≤Й╦╟</button>
 					</c:if>
 				</div>
 				<div class="modal fade" id="exampleModal" tabindex="-1"
@@ -58,7 +58,7 @@
 					<div class="modal-dialog modal-dialog-centered">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">╩ГюлаН ╪╠ец</h5>
+								<h5 class="modal-title" id="exampleModalLabel">Л┌╛Л²╢Л╕┬ Л└═М┐²</h5>
 								<button type="button" class="close" data-dismiss="modal"
 									aria-label="Close">
 									<span aria-hidden="true">&times;</span>
@@ -67,27 +67,27 @@
 							<div class="modal-body">
 								<div class="row">
 									<div class="col-sm-4">
-										<button type="button" class="btn btn-primary btn-lg btn-block">╩ГюлаН</button>
+										<button type="button" class="btn btn-primary btn-lg btn-block">Л┌╛Л²╢Л╕┬</button>
 										<p></p>
 									</div>
 									<div class="col-sm-4">
-										<button type="button" class="btn btn-primary btn-lg btn-block">╩ГюлаН</button>
+										<button type="button" class="btn btn-primary btn-lg btn-block">Л┌╛Л²╢Л╕┬</button>
 									</div>
 									<div class="col-sm-4">
-										<button type="button" class="btn btn-primary btn-lg btn-block">╩ГюлаН</button>
+										<button type="button" class="btn btn-primary btn-lg btn-block">Л┌╛Л²╢Л╕┬</button>
 									</div>
 									<div class="col-sm-4">
-										<button type="button" class="btn btn-primary btn-lg btn-block">╩ГюлаН</button>
+										<button type="button" class="btn btn-primary btn-lg btn-block">Л┌╛Л²╢Л╕┬</button>
 									</div>
 									<div class="col-sm-4">
-										<button type="button" class="btn btn-primary btn-lg btn-block">╩ГюлаН</button>
+										<button type="button" class="btn btn-primary btn-lg btn-block">Л┌╛Л²╢Л╕┬</button>
 									</div>
 								</div>
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary"
 									data-dismiss="modal">Close</button>
-								<button type="button" class="btn btn-primary">╠╦╦его╠Б</button>
+								<button type="button" class="btn btn-primary">Й╣╛К╖╓М∙≤Й╦╟</button>
 							</div>
 						</div>
 					</div>
@@ -133,53 +133,55 @@
 		</div>
 	</div>
 </div>
-<!-- фг╦его╠Б -->
-<div class="modal fade" id="sellModal" tabindex="-1"
-	aria-labelledby="sellModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="sellModalLabel">фг╦его╠Б</h5>
-				<button type="button" class="close" data-dismiss="modal"
-					aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<div class="container" id="sizeSelec">
-					<div class="row">
-						<c:forEach var="i" begin="0" end="${fn:length(sizeList)-1 }">
-							<div class="col-sm-4">
-								<button type="button" class="btn btn-primary btn-lg btn-block">
-									<c:choose>
-										<c:when test="var == 1">
-											<input type="radio" name="sizes" id="${sizeList[i].sizeId }"
-												checked>
-										</c:when>
-										<c:otherwise>
-											<input type="radio" name="sizes" id="${sizeList[i].sizeId }">
-										</c:otherwise>
-									</c:choose>
-									${sizeList[i].sizeSize }<br>
-									<c:choose>
-										<c:when test="${not empty priceList[i]}">
-											<span>${priceList[i].buyPrice }</span>
-										</c:when>
-										<c:otherwise>
-											<span>фг╦еютбШ</span>
-										</c:otherwise>
-									</c:choose>
-								</button>
-								<br />
-							</div>
-						</c:forEach>
+
+	<!-- М▄░К╖╓М∙≤Й╦╟ -->
+	<div class="modal fade" style="z-index:2000;" id="sellModal" tabindex="-1"
+		aria-labelledby="sellModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="sellModalLabel">М▄░К╖╓М∙≤Й╦╟</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="container" id="sizeSelec">
+						<div class="row">
+							<c:forEach var="i" begin="0" end="${fn:length(sizeList)-1 }">
+								<div class="col-sm-4">
+									<button type="button" class="btn btn-primary btn-lg btn-block">
+										<c:choose>
+											<c:when test="var == 1">
+												<input type="radio" name="sizes" id="${sizeList[i].sizeId }"
+													checked>
+											</c:when>
+											<c:otherwise>
+												<input type="radio" name="sizes" id="${sizeList[i].sizeId }">
+											</c:otherwise>
+										</c:choose>
+										${sizeList[i].sizeSize }<br>
+										<c:choose>
+											<c:when test="${not empty priceList[i]}">
+												<span>${priceList[i].buyPrice }</span>
+											</c:when>
+											<c:otherwise>
+												<span>М▄░К╖╓Л·┘Л╟╟</span>
+											</c:otherwise>
+										</c:choose>
+									</button>
+									<br />
+								</div>
+							</c:forEach>
+						</div>
 					</div>
 				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				<button type="submit" class="btn btn-primary" onclick="sizeSelc()">
-					фг╦его╠Б</button>
+					М▄░К╖╓М∙≤Й╦╟</button>
 			</div>
 		</div>
 	</div>
