@@ -140,7 +140,7 @@ pageEncoding="UTF-8"%>
 		  
 	  }else{
 		  $('#form').attr("action","sellForm.do?pid=${prodId}&size=${size}").submit();
-		  form.mothod = "GET";
+		  form.method = "GET";
 		  form.submit();
 	  }
   }
