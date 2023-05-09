@@ -31,7 +31,7 @@ public class DeleteUserFormControl implements Control {
 		System.out.println("user_pw " + inputPw);
 		System.out.println(user.getUserPw());
 		if (inputPw != null && inputPw.equals(user.getUserPw())) {
-			return "user/deleteUser.tiles";
+			return "deleteUser.do";
 		} else {
 			req.setAttribute("errorMsg", "비밀번호가 일치하지 않습니다.");
 			return "user/deleteUserForm.tiles";
