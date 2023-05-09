@@ -18,4 +18,11 @@ public interface SellMapper {
 	public List<SellVO> SellList(int page);
 	//총데이터수
 	public int getCountSell();
+	
+	//배송번호생성
+	public int insertDlvy();
+	//즉시판매
+	public int insertSell(SellVO vo);
+	//판매입찰
+	public int insertSellBid(SellVO vo);
 }

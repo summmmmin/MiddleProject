@@ -31,6 +31,46 @@ public class ProdListControl implements Control {
 		req.setAttribute("list", list);
 		req.setAttribute("pageInfo", dto);
 		
+		List<ProdVO> catlist = service.catList();
+		int cattotal;
+		int[] cntarr = new int[catlist.size()];
+		for(int i = 0; i < catlist.size(); i++) {
+			cattotal = service.getCount(catlist.get(i).getCatId());
+			cntarr[i] = cattotal;
+		}
+		req.setAttribute("catlist", catlist);
+		req.setAttribute("cntarr", cntarr);
+		
+		List<ProdVO> subcatlist = service.subcatList();
+		int subcattotal;
+		int[] subcntarr = new int[subcatlist.size()];
+		for(int i = 0; i < subcatlist.size(); i++) {
+			subcattotal = service.getCount(subcatlist.get(i).getSubcatId());
+			subcntarr[i] = subcattotal;
+		}
+		req.setAttribute("subcatlist", subcatlist);
+		req.setAttribute("subcntarr", subcntarr);
+		
+		List<ProdVO> genderlist = service.genderList();
+		int gendertotal;
+		int[] genderarr = new int[genderlist.size()];
+		for(int i = 0; i < genderlist.size(); i++) {
+			gendertotal = service.getCount(genderlist.get(i).getGenderId());
+			genderarr[i] = gendertotal;
+		}
+		req.setAttribute("genderlist", genderlist);
+		req.setAttribute("genderarr", genderarr);
+		
+		List<ProdVO> brdlist = service.brdList();
+		int brdtotal;
+		int[] brdarr = new int[brdlist.size()];
+		for(int i = 0; i < brdlist.size(); i++) {
+			brdtotal = service.getCount(brdlist.get(i).getBrdId());
+			brdarr[i] = brdtotal;
+		}
+		req.setAttribute("brdlist", brdlist);
+		req.setAttribute("brdarr", brdarr);
+		
 		return "product/prodList.tiles";
 	}
 

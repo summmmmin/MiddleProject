@@ -50,7 +50,7 @@
 	</delete>
 
 	<update id="updateProd" parameterType="product">
-		update product set pdt_nm=#{pdtNm}, pdt_price=#{pdtPrice} where pdt_id=#{pdtId}
+		update product set pdt_nm=#{pdtNm}, pdt_price=#{pdtPrice}, pdt_img=#{pdtImg} where pdt_id=#{pdtId}
 	</update>
 
 	<select id="searchProd">
@@ -72,6 +72,10 @@
 
 	<select id="getViews" resultType="int">
 		select count(*) from product
+	</select>
+	
+	<select id="getCount" resultType="int">
+		select count(*) from product where cat_id=#{catId}
 	</select>
 
 

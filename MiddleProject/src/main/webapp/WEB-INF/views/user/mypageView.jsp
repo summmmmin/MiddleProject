@@ -1,40 +1,117 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+
 <head>
-	<style>
-		label {
-			display: block;
-			margin-bottom: 10px;
-		}
-		input[readonly] {
-			border: none;
-			background-color: #f7f7f7;
-		}
-	</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+
 </head>
+
 <body>
-	<h1>마이페이지</h1>
-	<form action="mypageView.do" method="post">
-		<label for="name">이름</label>
-		<input type="text" id="name" name="name" value="${userInfo.userNm}" readonly>
-		<label for="id">아이디</label>
-		<input type="text" id="id" name="id" value="${userInfo.userId}" readonly>
-		<label for="phone">전화번호</label>
-		<input type="text" id="phone" name="phone" value="${userInfo.userPh}">
-		<label for="address">주소</label>
-		<input type="text" id="address" name="address" value="${userInfo.userAddr}">
-		<label for="grade">등급</label>
-		<input type="text" id="grade" name="grade" value="${userInfo.userGrade}" readonly>
-		<label for="points">포인트</label>
-		<input type="text" id="points" name="points" value="${userInfo.userPoint}" readonly>
-		<label for="newPassword">비밀번호 변경</label>
-		<input type="password" id="newPassword" name="newPassword">
-<!--  		<label for="confirmPassword">Confirm Password</label>
-		<input type="password" id="confirmPassword" name="confirmPassword">
-		<input type="submit" value="Change Password"> -->
-	</form>
+    <div class="site-wrap">
+        <div class="bg-light py-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 mb-0">
+                        <a href="main.do">Home</a> <span class="mx-2 mb-0">/</span> <strong
+                            class="text-black">Mypage</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+		<div class="site-section">
+			<div class="container">
+				<div class="row justify-content-md-center">
+					<div class="col-md-7">
+						<h2 class="h3 mb-3 text-black">회원정보 변경</h2>
+
+						<form action="mypageView.do" method="post">
+							<div class="p-3 p-lg-5 border">
+								<div class="form-group row">
+									<div class="col-md-6">
+										<label for="c_email" class="text-black">이름</label> <input
+											type="text" class="form-control" id="name" name="name"
+											value="${userinfo.userNm}" readonly>
+									</div>
+									<div class="col-md-6">
+										<label for="c_email" class="text-black">아이디</label> <input
+											type="text" class="form-control" id="id" name="id"
+											value="${userinfo.userId}" readonly>
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-md-6">
+										<label for="c_email" class="text-black">전화번호</label> <input
+											type="text" class="form-control" id="phone" name="phone"
+											value="${userinfo.userPhone}" readonly>
+									</div>
+									<div class="col-md-6">
+										<label for="c_email" class="text-black">주소</label> <input
+											type="text" class="form-control" id="address" name="address"
+											value="${userinfo.userAdd}" readonly>
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-md-6">
+										<label for="c_email" class="text-black">등급</label> <input
+											type="text" class="form-control" id="grade" name="grade"
+											value="${userinfo.userGrade}" readonly>
+									</div>
+									<div class="col-md-6">
+										<label for="c_email" class="text-black">포인트</label> <input
+											type="text" class="form-control" id="points" name="points"
+											value="${userinfo.userPoint}" readonly>
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-md-6">
+										<label for="newPassword-toggle" class="text-black"></label> <input
+											type="password" class="form-control" id="newPassword"
+											name="newPassword" style="display: none;">
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-md-6">
+										<input type="button" class="btn btn-primary btn-lg btn-block"
+											value="수정" onclick="location.href='modifyUserForm.do'" >
+									</div>
+									<div class="col-md-6">
+										<input type="button" class="btn btn-danger btn-lg btn-block"
+											value="탈퇴" onclick="location.href='deleteUserForm.do'">
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/custom.js"></script>
 </body>
-</html>

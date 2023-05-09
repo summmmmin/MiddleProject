@@ -35,4 +35,14 @@ public class SellServiceImpl implements SellService {
 		return mapper.getCountSell();
 	}
 
+	@Override
+	public boolean addSell(SellVO vo) {
+		mapper.insertDlvy();
+		return mapper.insertSell(vo)==1;
+	}
+	@Override
+	public boolean addSellBid(SellVO vo) {
+		return mapper.insertSellBid(vo)==1;
+	}
+
 }

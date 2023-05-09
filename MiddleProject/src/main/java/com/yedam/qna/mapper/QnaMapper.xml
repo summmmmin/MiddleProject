@@ -5,7 +5,7 @@
 <mapper namespace="com.yedam.qna.mapper.QnaMapper">
   <!-- 내가 쓴 QNA -->
   <select id="myQna" parameterType="int">
-  	select * from qna_post order by post_id desc where user_id={userId}
+  	select * from qna_post where user_id=#{userId} order by post_id desc
   </select>
    
   <!-- QNA목록페이지. -->
@@ -14,7 +14,7 @@
   	select b.* 
   	from(select rownum rn, a.*
        	 from (select * from qna_post
-       	 		join users using(user_id)
+       	 	left outer join users using(user_id)
              order by post_id desc) a
       	 where rownum <= #{page}*10 )b
   	where b.rn > (#{page} - 1) * 10
@@ -26,7 +26,7 @@
   insert into qna_post(post_id,user_id,post_title,post_ct,qna_img)
   	values(post_id_seq.nextval, #{userId}, #{postTitle}, #{postCT},#{qnaImg})
   </insert>
-  
+   <!-- QNA삭제. -->
   <delete id="deleteQna" parameterType="int">
   delete from qna_post where post_id=#{postId}
   </delete>

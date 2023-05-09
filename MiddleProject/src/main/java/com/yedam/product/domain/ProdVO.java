@@ -18,5 +18,6 @@ public class ProdVO {
 	private String subcatNm;
 	private String brdNm;
 	private String genderNm;
+	private String sizeNm;
 	
 }

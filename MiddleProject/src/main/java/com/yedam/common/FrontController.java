@@ -11,24 +11,36 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yedam.note.control.DelAllNoteControl;
+import com.yedam.note.control.DelNoteControl;
+import com.yedam.note.control.GetNoteControl;
+import com.yedam.note.control.NoteListControl;
+import com.yedam.note.control.NoteSendControl;
 import com.yedam.product.control.AddProdControl;
+import com.yedam.product.control.DelProdControl;
 import com.yedam.product.control.GetProdControl;
 import com.yedam.product.control.ModifyProdControl;
 import com.yedam.product.control.ProdAddForm;
 import com.yedam.product.control.ProdListControl;
 import com.yedam.product.control.SubCatListControl;
+import com.yedam.qna.control.AddQCControl;
 import com.yedam.qna.control.AddQnaControl;
 import com.yedam.qna.control.DelQnaControl;
 import com.yedam.qna.control.GetQnaControl;
 import com.yedam.qna.control.ModifyQCControl;
 import com.yedam.qna.control.QnaAddControl;
 import com.yedam.qna.control.QnaListControl;
+import com.yedam.sell.control.SellFormControl;
 import com.yedam.sell.control.SellGetControl;
 import com.yedam.sell.control.SellListUControl;
 import com.yedam.sell.control.SellPriceControl;
+import com.yedam.user.control.DeleteUserControl;
+import com.yedam.user.control.DeleteUserFormControl;
 import com.yedam.user.control.LoginControl;
 import com.yedam.user.control.LoginFormControl;
 import com.yedam.user.control.LogoutControl;
+import com.yedam.user.control.ModifyUserControl;
+import com.yedam.user.control.ModifyUserFormControl;
 import com.yedam.user.control.MypageControl;
 import com.yedam.user.control.MypageViewControl;
 import com.yedam.user.control.SignUpControl;
@@ -52,12 +64,14 @@ public class FrontController extends HttpServlet{
 		map.put("/qnaAdd.do", new QnaAddControl());
 		map.put("/delQna.do", new DelQnaControl());
 		map.put("/modifyQC.do", new ModifyQCControl());
+		map.put("/addQC.do", new AddQCControl());
 		//product
 		map.put("/prodList.do", new ProdListControl());
 		map.put("/prodAddForm.do", new ProdAddForm());
 		map.put("/addProd.do", new AddProdControl());
 		map.put("/getProd.do", new GetProdControl());
 		map.put("/modifyProd.do", new ModifyProdControl());
+		map.put("/delProd.do", new DelProdControl());
 		map.put("/subCatList.do", new SubCatListControl());
 		//users
 		map.put("/logout.do", new LogoutControl());
@@ -69,10 +83,21 @@ public class FrontController extends HttpServlet{
 		map.put("/sellListU.do", new SellListUControl());
 		map.put("/sellGet.do", new SellGetControl());
 		map.put("/sellPrice.do", new SellPriceControl());
-		
+		map.put("/sellForm.do", new SellFormControl());
 		
 		map.put("/mypagePw.do", new MypageControl());
 		map.put("/mypageView.do", new MypageViewControl());
+		map.put("/deleteUserForm.do", new DeleteUserFormControl());
+		map.put("/modifyUser.do", new ModifyUserControl());
+		map.put("/modifyUserForm.do", new ModifyUserFormControl());
+		map.put("/deleteUser.do", new DeleteUserControl());
+
+		//note
+		map.put("/noteSend.do", new NoteSendControl());
+		map.put("/noteList.do", new NoteListControl());
+		map.put("/getNote.do", new GetNoteControl());
+		map.put("/delNote.do", new DelNoteControl());
+		map.put("/delAllNote.do",new DelAllNoteControl());
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
