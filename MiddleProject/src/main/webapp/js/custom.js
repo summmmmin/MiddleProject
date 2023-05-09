@@ -74,7 +74,8 @@ function validatePassword() {
 
 // 비밀번호 유효성 검사와 일치 여부 검사
 passwordInput.addEventListener('input', checkPasswordValidity);
-passwordInput.addEventListener('keyup', checkPasswordMatch);
+passwordConfirmInput.addEventListener('input', checkPasswordMatch);
+
 
 // 비밀번호 함수 false면 회원가입 버튼 중단
 const submitButton = document.getElementById('submit-button');
@@ -108,3 +109,37 @@ function sendAuthNum() {
 }
 
 document.getElementById('button-addon2').addEventListener('click', sendAuthNum); // 버튼 클릭 시 sendAuthNum 함수 호출
+
+
+//폼 빈칸x
+function validateForm() {
+  const user_id = document.getElementById("user_id");
+  const user_pw = document.getElementById("user_pw");
+  const c_pw2 = document.getElementById("c_pw2");
+  const user_name = document.getElementById("user_name");
+  const user_add = document.getElementById("user_add");
+  const user_phone = document.getElementById("user_phone");
+
+  if (user_id.value === "" || user_pw.value === "" || c_pw2.value === "" || user_name.value === "" || user_add.value === "" || user_phone.value === "") {
+    alert("모든 사항을 기입해주세요.");
+    if (user_id.value === "") {
+      user_id.classList.add("form-input-error");
+    }
+    if (user_pw.value === "") {
+      user_pw.classList.add("form-input-error");
+    }
+    if (c_pw2.value === "") {
+      c_pw2.classList.add("form-input-error");
+    }
+    if (user_name.value === "") {
+      user_name.classList.add("form-input-error");
+    }
+    if (user_add.value === "") {
+      user_add.classList.add("form-input-error");
+    }
+    if (user_phone.value === "") {
+      user_phone.classList.add("form-input-error");
+    }
+    return false;
+  }
+}
