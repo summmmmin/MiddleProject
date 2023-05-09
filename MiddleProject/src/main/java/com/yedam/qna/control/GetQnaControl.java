@@ -29,7 +29,7 @@ public class GetQnaControl implements Control {
 		QCommentService service2 = new QCommentServiceImpl();
 		QCommentVO vo2 = service2.getComment(Integer.parseInt(qid));
 		
-		System.out.println(vo);
+
 		req.setAttribute("qnaInfo", vo);
 		req.setAttribute("pageNum", page);
 		req.setAttribute("commentInfo", vo2);
