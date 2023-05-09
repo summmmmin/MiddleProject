@@ -38,7 +38,6 @@ public class QnaAddControl implements Control {
 		vo.setQnaImg(attach);;
 		vo.setUserId(userId);
 		
-		System.out.println(vo);
 		
 		QnaService service = new QnaServiceImpl();
 		if(service.addQna(vo)) {

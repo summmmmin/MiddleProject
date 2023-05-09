@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yedam.note.control.DelAllNoteControl;
+import com.yedam.note.control.DelNoteControl;
 import com.yedam.note.control.GetNoteControl;
 import com.yedam.note.control.NoteListControl;
 import com.yedam.note.control.NoteSendControl;
@@ -92,8 +94,10 @@ public class FrontController extends HttpServlet{
 
 		//note
 		map.put("/noteSend.do", new NoteSendControl());
-		map.put("noteList.do", new NoteListControl());
+		map.put("/noteList.do", new NoteListControl());
 		map.put("/getNote.do", new GetNoteControl());
+		map.put("/delNote.do", new DelNoteControl());
+		map.put("/delAllNote.do",new DelAllNoteControl());
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

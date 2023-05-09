@@ -1,30 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Shoppers &mdash; Colorlib e-Commerce Template</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
-
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-
-
-    <link rel="stylesheet" href="../css/aos.css">
-
-    <link rel="stylesheet" href="../css/style.css">
-
-  </head>
-  <body>
-<div class="site-wrap">
 	<div class="site-section">
       <div class="container">
         <div class="row justify-content-md-center">
@@ -94,10 +71,10 @@
             		<c:if test ="${userinfo.userGrade=='관리자' }">
             		<c:choose>
 						<c:when test="${commentInfo.commentCT == null}">
-						<button type="button" id="addComment" class="btn btn-danger btn-sm">답변달기</button>
+						<button type="button" id="addComment" onclick="location.href='getlQna.do?postId=${qnaInfo.postId}'" class="btn btn-danger btn-sm">답변달기</button>
 						</c:when>
 						<c:otherwise>
-						<button type="button" id="modifyComment" class="btn btn-danger btn-sm">수정</button>	
+						<button type="button" id="modifyComment" onclick="location.href='getlQna.do?postId=${qnaInfo.postId}'"  class="btn btn-danger btn-sm">수정</button>	
 						</c:otherwise>
 					</c:choose>
 					</c:if>
@@ -106,34 +83,29 @@
        </div>
       </div>
      </div>    
-    </div>
     
-    
+  </body>  
 <script>
-    document.querySelector("#addComment").addEventListener('click', addCommentFnc);
-    function addCommentFnc(e){
-    	
-    let comment= document.querySelector("#comment").value;	
-    }
-    
-    let xhtp = new XMLHttpRequest();
-    xhtp.open('post','addQC.do');
-    xhtp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-    xhtp.send('postId=${postId}&comment=' + comment;);
-    
+    document.querySelector("#addComment").addEventListener('click', function(){
+    	let comment= document.querySelector("#comment").value;	
+        
+    	let xhtp = new XMLHttpRequest();
+        xhtp.open('post','addQC.do');
+        xhtp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+        xhtp.send("postId=${qnaInfo.postId}&comment=" + comment);
+        xhtp.onload = function(){
+        	let result =JSON.parse(xhtp.response);
+        	console.log(result);
+        	document.createElement()
+        }
+    });
+
+    document.querySelector("#modifyComment").addEventListener('click', function(){
+    	let comment1 = document.querySelector("#comment1").value;
+    	et xhtp = new XMLHttpRequest();
+        xhtp.open('post','modifyQC.do');
+        xhtp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+        xhtp.send("postId=${qnaInfo.postId}&comment=" + comment);
 
     
     </script> 
-    
-    
-    <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/jquery-ui.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-
-  <script src="js/main.js"></script>
-</body>
-</html>

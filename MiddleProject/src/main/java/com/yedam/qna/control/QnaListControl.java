@@ -27,7 +27,6 @@ public class QnaListControl implements Control {
 		List<QnaVO> list = service.qnaList(page);
 //		List<QnaVO> list2 = service.myqnaList(Integer.parseInt(uId));
 		
-		System.out.println(list);
 //		System.out.println(list2);
 		PageDTO dto = new PageDTO(page,total);
 		req.setAttribute("list", list);
