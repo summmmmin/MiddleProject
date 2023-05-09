@@ -16,7 +16,25 @@ public class DeleteUserFormControl implements Control {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		return "user/deleteUser.tiles";
+		HttpSession session = req.getSession();
+		UserVO user = (UserVO) session.getAttribute("userinfo");
 
+		if (user == null) { // 로그인되어있지 않은 경우
+							// session.setAttribute("returnUrl", request.getRequestURI()); // 이전 URL 저장,
+							// 비회원이 마이페이지를 누르고 로그인했을 때 바로 마이페이지로 이동하게
+			return "user/loginForm.tiles";
+		}
+
+		// 비밀번호 검증
+		String inputPw = req.getParameter("user_pw");
+
+		System.out.println("user_pw " + inputPw);
+		System.out.println(user.getUserPw());
+		if (inputPw != null && inputPw.equals(user.getUserPw())) {
+			return "user/deleteUser.tiles";
+		} else {
+			req.setAttribute("errorMsg", "비밀번호가 일치하지 않습니다.");
+			return "user/deleteUserForm.tiles";
+		}
 	}
 }

@@ -41,28 +41,31 @@
 		<div class="container">
 			<div class="row justify-content-md-center">
 				<div class="col-md-7">
-					<form method="post" action="mypageView.do">
-						<div class="d-flex justify-content-center">
-							<div class="p-3 p-lg-5 border">
-								<div class="form-group row">
-									<div class="col-md-6">
-										<label for="c_email" class="text-black">현재 사용자</label>
-										<div id="email-duplicate-message" style="color: black;">
-											<c:out value="${sessionScope.userinfo.userId}" />
-										</div>
+					<div class="d-flex justify-content-center">
+						<div class="p-3 p-lg-5 border">
+							<div class="form-group row">
+								<div class="col-md-6">
+									<label for="c_email" class="text-black">현재 사용자</label>
+									<div id="email-duplicate-message" style="color: black;">
+										<c:out value="${sessionScope.userinfo.userId}" />
 									</div>
 								</div>
-								<form method="post" action="/checkPassword">
-									<input type="password" name="user_pw" placeholder="현재 비밀번호를 입력하세요" />
-									<input type="submit" value="확인" />
-								</form>
+							</div>
+							<div class="form-group row">
+								<div class="col-md-6">
+									<form method="post" action="mypagePw.do">
+										<input type="password" id="user_pw" name="user_inputpw" placeholder="현재 비밀번호를 입력하세요" />
+										<input type="submit" value="확인" />
+									</form>
+								</div>
 							</div>
 						</div>
-					</form>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/jquery-ui.js"></script>
 	<script src="js/popper.min.js"></script>
