@@ -33,6 +33,7 @@ import com.yedam.sell.control.SellGetControl;
 import com.yedam.sell.control.SellListUControl;
 import com.yedam.sell.control.SellPriceControl;
 import com.yedam.user.control.DeleteUserControl;
+import com.yedam.user.control.DeleteUserFormControl;
 import com.yedam.user.control.LoginControl;
 import com.yedam.user.control.LoginFormControl;
 import com.yedam.user.control.LogoutControl;
@@ -84,9 +85,10 @@ public class FrontController extends HttpServlet{
 		
 		map.put("/mypagePw.do", new MypageControl());
 		map.put("/mypageView.do", new MypageViewControl());
-		map.put("/deleteUser.do", new DeleteUserControl());
+		map.put("/deleteUserForm.do", new DeleteUserFormControl());
 		map.put("/modifyUser.do", new ModifyUserControl());
 		map.put("/modifyUserForm.do", new ModifyUserFormControl());
+		map.put("/deleteUser.do", new DeleteUserControl());
 
 		//note
 		map.put("/noteSend.do", new NoteSendControl());

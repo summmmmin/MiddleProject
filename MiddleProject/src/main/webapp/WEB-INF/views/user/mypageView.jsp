@@ -95,7 +95,7 @@
 									</div>
 									<div class="col-md-6">
 										<input type="button" class="btn btn-danger btn-lg btn-block"
-											value="탈퇴" onclick="location.href='deleteUser.do'">
+											value="탈퇴" onclick="location.href='deleteUserForm.do'">
 									</div>
 								</div>
 							</div>
