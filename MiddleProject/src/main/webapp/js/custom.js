@@ -1,20 +1,25 @@
 //회원가입 전화번호탭 하이픈 정규식
 
 function formatPhoneNumber(input) {
-	// 전화번호 포맷팅을 위한 정규식 패턴
-	const pattern1 = /^(\d{0,3})(\d{0,4})(\d{0,4})$/g;
-	const pattern2 = /^(\d{0,2})(\d{0,3})(\d{0,4})$/g;
+    // 전화번호 포맷팅을 위한 정규식 패턴
+    const pattern1 = /^(\d{0,3})(\d{0,4})(\d{0,4})$/g;
+    const pattern2 = /^(\d{0,2})(\d{0,3})(\d{0,4})$/g;
 
-	// 입력된 전화번호에서 숫자만 추출
-	const phoneNumber = input.value.replace(/[^\d]/g, "");
+    // 입력된 전화번호에서 숫자만 추출
+    const phoneNumber = input.value.replace(/[^\d]/g, "");
 
-	// 숫자만 추출한 전화번호에 따라 포맷팅 처리
-	if (phoneNumber.length > 10) {
-		input.value = phoneNumber.replace(pattern1, "$1-$2-$3").replace(/\-{1,2}$/g, "");
-	} else {
-		input.value = phoneNumber.replace(pattern2, "$1-$2-$3").replace(/\-{1,2}$/g, "");
-	}
+    // 숫자만 추출한 전화번호에 따라 포맷팅 처리
+    if (phoneNumber.length > 10) {
+        input.value = phoneNumber.replace(pattern1, "$1-$2-$3").replace(/\-{1,2}$/g, "");
+    } else {
+        input.value = phoneNumber.replace(pattern2, "$1-$2-$3").replace(/\-{1,2}$/g, "");
+    }
 }
+
+const userPhoneInput = document.getElementById('user_phone');
+userPhoneInput.addEventListener('keyup', function() {
+    formatPhoneNumber(this);
+});
 
 
 //비밀번호 정규식
@@ -75,10 +80,11 @@ passwordInput.addEventListener('keyup', checkPasswordMatch);
 const submitButton = document.getElementById('submit-button');
 
 submitButton.addEventListener('click', function(event) {
-	if (!validatePassword()) {
-		event.preventDefault();
-	}
+  if (!validatePassword()) {
+    event.preventDefault();
+  }
 });
+
 
 function submitForm() {
 	if (!validatePassword()) {
@@ -102,20 +108,3 @@ function sendAuthNum() {
 }
 
 document.getElementById('button-addon2').addEventListener('click', sendAuthNum); // 버튼 클릭 시 sendAuthNum 함수 호출
-
-
-
-// 회원정보 변경
-
-document.addEventListener('DOMContentLoaded', function() {
-  const submitBtn = document.getElementById('submitBtn');
-  const phoneInput = document.getElementById('phone');
-  const addressInput = document.getElementById('address');
-  const newPasswordInput = document.getElementById('newPassword');
-
-  submitBtn.addEventListener('click', function() {
-    phoneInput.readOnly = false;
-    addressInput.readOnly = false;
-    newPasswordInput.style.display = 'block';
-  });
-});
