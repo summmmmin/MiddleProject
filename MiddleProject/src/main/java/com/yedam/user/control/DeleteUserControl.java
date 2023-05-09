@@ -17,9 +17,6 @@ public class DeleteUserControl implements Control {
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	    HttpSession session = req.getSession();
 	    UserVO user = (UserVO) session.getAttribute("userinfo");
-	    String userId = user.getUserId(); // 로그인한 사용자의 아이디
-
-	    String userPw = req.getParameter("user_pw"); // 사용자가 입력한 비밀번호
 
 	    UserService userService = UserServiceImpl.getInstance();
 	    boolean result = userService.deleteUser(user);

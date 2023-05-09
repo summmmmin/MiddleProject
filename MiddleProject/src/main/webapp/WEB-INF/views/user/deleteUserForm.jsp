@@ -21,14 +21,13 @@ if (id == null) {
 				</div>
 			</div>
 		</div>
-	</div>
 
 	<div class="site-section">
 		<div class="container">
 			<div class="row justify-content-md-center">
 				<div class="col-md-7">
 				<h2 class="d-flex justify-content-center text-black">회원 탈퇴</h2>
-					<form method="post" action="deleteUser.do">
+					<form method="post" action="deleteUserForm.do">
 						<div class="d-flex justify-content-center">
 							<div class="p-3 p-lg-5 border">
 								<div class="form-group row">
@@ -49,3 +48,4 @@ if (id == null) {
 				</div>
 			</div>
 		</div>
+	</div>
