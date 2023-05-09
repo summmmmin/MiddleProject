@@ -26,11 +26,11 @@ public class DeleteUserControl implements Control {
 
 	    if (result) {
 	        session.invalidate();
-	        return "main.do";
+	        return "user/deleteUser.tiles";
 	    } else {
 	        // 비밀번호가 일치하지 않으면 삭제 실패 메시지를 출력합니다.
 	        req.setAttribute("message", "비밀번호가 일치하지 않습니다.");
-	        return "user/deleteUser.tiles";
+	        return "user/deleteUserForm.tiles";
 	    }
 	}
 }

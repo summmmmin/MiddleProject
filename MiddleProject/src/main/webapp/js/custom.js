@@ -72,7 +72,7 @@ function validatePassword() {
 	return true;
 }
 
-// 비밀번호 유효성 검사와 일치 여부 검사를 수행하는 이벤트를 등록
+// 비밀번호 유효성 검사와 일치 여부 검사
 passwordInput.addEventListener('input', checkPasswordValidity);
 passwordInput.addEventListener('keyup', checkPasswordMatch);
 
