@@ -21,9 +21,9 @@ public interface BuyService {
 	public BuyVO getBuyPrice(BuyVO vo);
 	
 	//상태변경
-	public boolean cancelBuy(String state, int buyId);
-	public boolean returnBuy(String state, int buyId);
-	public boolean deliveBuy(String state, int buyId);
+	public boolean cancelBuy(BuyVO vo);
+	public boolean returnBuy(BuyVO vo);
+	public boolean deliveBuy(BuyVO vo);
 	//배송지변경
 	public boolean modifyDlvy(BuyVO vo);
 	//배송완료

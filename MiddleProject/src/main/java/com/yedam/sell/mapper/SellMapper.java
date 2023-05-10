@@ -28,12 +28,11 @@ public interface SellMapper {
 	public int insertSellBid(SellVO vo);
 	
 	//상태변경
-	public int cancelSell(@Param("sellId") int sellId, @Param("cancel") String cancel);
-	public int dlvySell(@Param("sellId") int sellId, @Param("sdlvy") String sdlvy);
-	public int updateBuyState(@Param("sellId") int sellId, @Param("bdlvy") String bdlvy);
+	public int cancelSell(SellVO vo);
+	public int dlvySell(SellVO vo);
 	
 	//정산계좌변경
-	public int updateAcct(@Param("sellId") int sellId, @Param("sellAccount") String sellAccount);
+	public int updateAcct(SellVO vo);
 	//즉시구매가
 	public SellVO selectSellPrice(SellVO vo);
 }

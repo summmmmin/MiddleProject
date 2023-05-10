@@ -26,9 +26,9 @@ public interface BuyMapper {
 	public int setSellId(BuyVO vo);
 	
 	//상태변경
-	public int cancelBuy(@Param("cancel") String cancel, @Param("buyId") int buyId);
-	public int returnBuy(@Param("state") String state, @Param("buyId") int buyId);
-	public int deliveBuy(@Param("dlvy") String dlvy, @Param("buyId") int buyId);
+	public int cancelBuy(BuyVO vo);
+	public int returnBuy(BuyVO vo);
+	public int deliveBuy(BuyVO vo);
 	public int updateDlvy(BuyVO vo);
 	public int completeDlvy();
 }

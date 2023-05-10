@@ -52,21 +52,17 @@ public class SellServiceImpl implements SellService {
 	}
 	
 	@Override
-	public boolean cancelSell(int sellId, String state) {
-		return mapper.cancelSell(sellId, state)==1;
+	public boolean cancelSell(SellVO vo) {
+		return mapper.cancelSell(vo)==1;
 	}
 	@Override
-	public boolean dlvySell(int sellId, String state) {
-		return mapper.dlvySell(sellId, state)==1;
+	public boolean dlvySell(SellVO vo) {
+		return mapper.dlvySell(vo)==1;
 	}
 	@Override
-	public boolean updateBuyState(int sellId, String state) {
-		return mapper.updateBuyState(sellId, state)==1;
-	}
-	@Override
-	public boolean modifyAcct(int sellId, String sellAccount) {
+	public boolean modifyAcct(SellVO vo) {
 		// 정산계좌변경
-		return mapper.updateAcct(sellId, sellAccount)==1;
+		return mapper.updateAcct(vo)==1;
 	}
 	@Override
 	public SellVO getSellPrice(SellVO vo) {
