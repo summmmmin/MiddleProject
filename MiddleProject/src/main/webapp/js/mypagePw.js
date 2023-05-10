@@ -10,7 +10,7 @@ function checkPassword(event) {
 		headers: {
 			'Content-Type': 'application/x-www-form-urlencoded'
 		},
-		body: 'user_inputpw=' + userPw // 수정된 부분
+		body: 'inputpw=' + userPw // 수정된 부분
 	})
 		.then(function(response) {
 			console.log(response);
