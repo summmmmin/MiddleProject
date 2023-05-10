@@ -20,4 +20,6 @@ public interface SellService {
 	public boolean updateBuyState(int sellId, String state);
 	
 	public boolean modifyAcct(int sellId, String sellAccount);
+	//즉시구매가
+	public SellVO getSellPrice(SellVO vo);
 }

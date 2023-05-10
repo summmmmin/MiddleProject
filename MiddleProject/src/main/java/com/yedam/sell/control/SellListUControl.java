@@ -24,7 +24,7 @@ public class SellListUControl implements Control {
 		int page = Integer.parseInt(pageStr);
 		
 		SellService service = new SellServiceImpl();
-		int total = service.sellUserCount(userId);
+		int total = service.sellCount(userId);
 		List<SellVO> list = service.getSellList(userId, page);
 		PageDTO dto = new PageDTO(page, total);
 		req.setAttribute("pageInfo", dto);

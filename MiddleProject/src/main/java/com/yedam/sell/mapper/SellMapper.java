@@ -22,7 +22,7 @@ public interface SellMapper {
 	//즉시판매
 	public int insertSell(SellVO vo);
 	//구매상태변경
-	public int setBuyId(@Param("sellId") int sellId, @Param("buyId") int buyId);
+	public int setBuyId(SellVO vo);
 	
 	//판매입찰
 	public int insertSellBid(SellVO vo);
@@ -34,4 +34,6 @@ public interface SellMapper {
 	
 	//정산계좌변경
 	public int updateAcct(@Param("sellId") int sellId, @Param("sellAccount") String sellAccount);
+	//즉시구매가
+	public SellVO selectSellPrice(SellVO vo);
 }

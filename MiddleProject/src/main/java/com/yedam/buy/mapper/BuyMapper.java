@@ -23,7 +23,7 @@ public interface BuyMapper {
 	public BuyVO selectBuy(int buyId);
 	
 	//체결(판매아이디넣기)
-	public int setSellId(@Param("sellId") int sellId, @Param("buyId") int buyId);
+	public int setSellId(BuyVO vo);
 	
 	//상태변경
 	public int cancelBuy(@Param("cancel") String cancel, @Param("buyId") int buyId);
