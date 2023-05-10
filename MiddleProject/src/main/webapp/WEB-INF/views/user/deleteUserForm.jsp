@@ -27,7 +27,7 @@ if (id == null) {
 		<div class="row justify-content-md-center">
 			<div class="col-md-6">
 				<h2 class="h3 mb-4 text-black">회원탈퇴</h2>
-				<form method="post" action="deleteUserForm.do">
+				<form method="post" action="deleteUser.do">
 					<div class="border rounded p-3">
 						<div class="row">
 							<div class="col-md-6">

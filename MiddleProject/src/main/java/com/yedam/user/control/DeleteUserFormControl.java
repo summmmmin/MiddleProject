@@ -24,17 +24,6 @@ public class DeleteUserFormControl implements Control {
 							// 비회원이 마이페이지를 누르고 로그인했을 때 바로 마이페이지로 이동하게
 			return "user/loginForm.tiles";
 		}
-
-		// 비밀번호 검증
-		String inputPw = req.getParameter("user_pw");
-
-		System.out.println("user_pw " + inputPw);
-		System.out.println(user.getUserPw());
-		if (inputPw != null && inputPw.equals(user.getUserPw())) {
-			return "deleteUser.do";
-		} else {
-			req.setAttribute("errorMsg", "비밀번호가 일치하지 않습니다.");
-			return "user/deleteUserForm.tiles";
-		}
+		return "user/deleteUserForm.tiles";
 	}
 }
