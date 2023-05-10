@@ -5,8 +5,8 @@
   <div class="bg-light py-3">
     <div class="container">
       <div class="row">
-        <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong
-            class="text-black">Cart</strong></div>
+        <div class="col-md-12 mb-0"><a href="main.do">Home</a> <span class="mx-2 mb-0">/</span> <strong
+            class="text-black">wishList</strong></div>
       </div>
     </div>
   </div>
@@ -14,14 +14,15 @@
   <div class="site-section">
     <div class="container">
       <div class="row mb-5">
+      <h2 class="h3 mb-4 text-black">관심상품</h2>
         <form class="col-md-12" method="post">
           <div class="site-blocks-table">
             <table class="table table-bordered">
               <thead>
                 <tr>
-                  <th class="product-thumbnail">Image</th>
-                  <th class="product-name">Product</th>
-                  <th class="product-remove">Remove</th>
+                  <th class="product-thumbnail">상품 이미지</th>
+                  <th class="product-name">상품</th>
+                  <th class="product-remove">삭제</th>
                 </tr>
               </thead>
               <tbody>
