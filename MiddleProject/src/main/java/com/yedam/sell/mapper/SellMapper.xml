@@ -66,7 +66,7 @@
 	</insert>
 	
 	<update id="cancelSell">
-	  update sell set sell_cancel = ${cancel} where sell_id=#{sellId}
+	  update sell set sell_cancel = #{sellCancel} where sell_id=#{sellId}
 	</update>
 	
 	<update id="updateAcct">
@@ -74,16 +74,13 @@
 	</update>
 	
 	<update id="dlvySell">
-	  update sell set sell_dlvy = ${sdlvy} where sell_id=#{sellId}
-	</update>
-	<update id="updateBuyState">
-	  update buy set buy_dlvy= ${bdlvy} where sell_id=#{sellId}
+	  update sell set sell_dlvy = #{sellDlvy} where sell_id=#{sellId}
 	</update>
 	
 	<select id="selectSellPrice">
 	  select * 
 		from (select * from sell
-      		where pdt_id=#{pdtId} and size_id=#{sizeId} and buy_id is null and sell_dlvy='판매입찰중'
+      		where pdt_id=#{pdtId} and size_id=#{sizeId} and buy_id is null and sell_dlvy='판매입찰중' and sell_cancel='N'
       		order by sell_price, sell_date)
 		where rownum=1
 	</select>

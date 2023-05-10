@@ -21,8 +21,30 @@ public class SellGetControl implements Control {
 		SellService service = new SellServiceImpl();
 		SellVO vo = service.getSellId(Integer.parseInt(sellId));
 		req.setAttribute("sellInfo", vo);
+		String json="";
+		json += "{\"sellId\":"+vo.getSellId()+",";
+		json += "\"userId\":\""+vo.getUserId()+"\",";
+		json += "\"buyId\":"+vo.getBuyId()+",";
+		json += "\"sellDate\":\""+vo.getSellDate()+"\",";
+		json += "\"sellPrice\":"+vo.getSellPrice()+",";
+		json += "\"sellDlvy\":\""+vo.getSellDlvy()+"\",";
+		json += "\"sellCancel\":\""+vo.getSellCancel()+"\",";
+		json += "\"sellAccount\":\""+vo.getSellAccount()+"\",";
+		json += "\"pdtNm\":\""+vo.getPdtNm()+"\",";
+		json += "\"pdtImg\":\""+vo.getPdtImg()+"\",";
+		json += "\"sizeSize\":\""+vo.getSizeSize()+"\",";
+		json += "\"brdNm\":\""+vo.getBrdNm()+"\",";
+		json += "\"dlvId\":"+vo.getDlvId()+",";
+		json += "\"dlvName\":\""+vo.getDlvName()+"\",";
+		json += "\"dlvPhone\":\""+vo.getDlvphone()+"\",";
+		json += "\"dlvAddr\":\""+vo.getDlvAddr()+"\",";
+		json += "\"dlvNum\":"+vo.getDlvNum()+",";
+		json += "\"dlvDate\":\""+vo.getDlvDate()+"\"}";	
+		System.out.println(json);
+		return json+".json";
 		
-		return "sell/sellGet.tiles";
+
+		
 	}
 
 }

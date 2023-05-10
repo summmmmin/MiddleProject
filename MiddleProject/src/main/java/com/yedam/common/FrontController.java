@@ -30,6 +30,8 @@ import com.yedam.qna.control.GetQnaControl;
 import com.yedam.qna.control.ModifyQCControl;
 import com.yedam.qna.control.QnaAddControl;
 import com.yedam.qna.control.QnaListControl;
+import com.yedam.sell.control.SellCancelControl;
+import com.yedam.sell.control.SellDetailControl;
 import com.yedam.sell.control.SellFormControl;
 import com.yedam.sell.control.SellGetControl;
 import com.yedam.sell.control.SellListUControl;
@@ -84,6 +86,10 @@ public class FrontController extends HttpServlet{
 		map.put("/sellGet.do", new SellGetControl());
 		map.put("/sellPrice.do", new SellPriceControl());
 		map.put("/sellForm.do", new SellFormControl());
+		map.put("/sellCancel.do", new SellCancelControl());
+		map.put("/sellDetail.do", new SellDetailControl());
+		
+		
 		
 		map.put("/mypagePw.do", new MypageControl());
 		map.put("/mypageView.do", new MypageViewControl());
@@ -98,6 +104,7 @@ public class FrontController extends HttpServlet{
 		map.put("/getNote.do", new GetNoteControl());
 		map.put("/delNote.do", new DelNoteControl());
 		map.put("/delAllNote.do",new DelAllNoteControl());
+		
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

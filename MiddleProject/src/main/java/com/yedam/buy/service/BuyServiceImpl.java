@@ -62,21 +62,21 @@ public class BuyServiceImpl implements BuyService {
 	}
 
 	@Override
-	public boolean cancelBuy(String state, int buyId) {
+	public boolean cancelBuy(BuyVO vo) {
 		// 취소상태변경
-		return mapper.cancelBuy(state, buyId)==1;
+		return mapper.cancelBuy(vo)==1;
 	}
 
 	@Override
-	public boolean returnBuy(String state, int buyId) {
+	public boolean returnBuy(BuyVO vo) {
 		// 반품상태변경
-		return mapper.returnBuy(state, buyId)==1;
+		return mapper.returnBuy(vo)==1;
 	}
 
 	@Override
-	public boolean deliveBuy(String state, int buyId) {
+	public boolean deliveBuy(BuyVO vo) {
 		// 배송상태변경
-		return mapper.deliveBuy(state, buyId)==1;
+		return mapper.deliveBuy(vo)==1;
 	}
 
 	@Override

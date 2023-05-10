@@ -59,15 +59,15 @@
 	</select>
 	
 	<update id="cancelBuy">
-	  update buy set buy_cancel=${cancel} where buy_id=#{buyId}
+	  update buy set buy_cancel=#{buyCancel} where buy_id=#{buyId}
 	</update>
 	
 	<update id="returnBuy">
-	  update buy set buy_return=${state} where buy_id=#{buyId}
+	  update buy set buy_return={buyReturn} where buy_id=#{buyId}
 	</update>
 	
 	<update id="deliveBuy">
-	  update buy set buy_dlvy=${dlvy} where buy_id=#{buyId}
+	  update buy set buy_dlvy=#{buyDlvy} where buy_id=#{buyId}
 	</update>
 	
 	<update id="updateDlvy">
@@ -82,7 +82,7 @@
 	<select id="selectBuyPrice">
 		select * 
 		from (select * from buy
-      		where pdt_id=#{pdtId} and size_id=#{sizeId} and sell_id is null and buy_dlvy='구매입찰중'
+      		where pdt_id=#{pdtId} and size_id=#{sizeId} and sell_id is null and buy_dlvy='구매입찰중' and buy_cancel='N' 
       		order by buy_price, buy_date)
 		where rownum=1
 	</select>

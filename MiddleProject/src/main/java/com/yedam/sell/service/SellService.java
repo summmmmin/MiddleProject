@@ -15,11 +15,10 @@ public interface SellService {
 	public boolean addSell(SellVO vo);	//즉시판매
 	public boolean addSellBid(SellVO vo); //판매입찰
 	
-	public boolean cancelSell(int sellId, String state);
-	public boolean dlvySell(int sellId, String state);
-	public boolean updateBuyState(int sellId, String state);
+	public boolean cancelSell(SellVO vo);
+	public boolean dlvySell(SellVO vo);
 	
-	public boolean modifyAcct(int sellId, String sellAccount);
+	public boolean modifyAcct(SellVO vo);
 	//즉시구매가
 	public SellVO getSellPrice(SellVO vo);
 }

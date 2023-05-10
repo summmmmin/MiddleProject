@@ -46,7 +46,7 @@ prefix="c" %>
               <c:forEach var="sell" items="${list }">
                 <tr>
                   <th scope="row"><c:out value="${no=no+1 }"></c:out></th>
-                  <td><a href="sellGet.do?sell=${sell.sellId }">${sell.sellId }</a></td>
+                  <td><a href="sellDetail.do?sellId=${sell.sellId }">${sell.sellId }</a></td>
                   <td>${sell.sellDate }</td>
                   <td>${sell.pdtNm }</td>
                   <td>${sell.brdNm }</td>
@@ -57,7 +57,7 @@ prefix="c" %>
                     <c:when
                       test="${sell.sellCancel == 'N' && (sell.sellDlvy == '판매입찰중' || sell.sellDlvy == '발송요청')}"
                     >
-                      <td><button >취소신청</button></td>
+                      <td><button class="cancelBtn btn btn-sm btn-primary" data-id="${sell.sellId }" data-toggle="modal" data-target="#cancelModal">취소신청</button></td>
                     </c:when>
                     <c:otherwise>
                       <td>${sell.sellCancel }</td>
@@ -101,22 +101,31 @@ prefix="c" %>
   </div>
 </div>
 
-<div class="modal fade" style="top:200px;" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" style="top:200px;" id="cancelModal" tabindex="-1" aria-labelledby="cancelModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">비회원으로 접속하셨습니다.</h5>
+        <h5 class="modal-title" id="cancelModalLabel">취소</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        로그인하시겠습니까?
+        취소하시겠습니까?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-        <button type="button" class="btn btn-primary" onclick="location.href='loginForm.do'">로그인하기</button>
+        <button type="button" class="btn btn-primary" id="cancelCheck">취소하기</button>
       </div>
     </div>
   </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+	$(document).on("click", ".cancelBtn", function () {
+	    let cancelId = $(this).data('id');
+	    $("#cancelCheck").on("click", function(){
+	    	location.href = 'sellCancel.do?id='+cancelId
+	    })
+	});
+</script>
