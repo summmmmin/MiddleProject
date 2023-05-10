@@ -13,7 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 
 
-public class wishVO {
+public class WishVO {
 	private String wishId;
 	private String userId;
 	private String pdtId;
