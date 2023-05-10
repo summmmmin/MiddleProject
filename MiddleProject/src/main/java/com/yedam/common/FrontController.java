@@ -51,7 +51,7 @@ import com.yedam.user.control.MypageViewControl;
 import com.yedam.user.control.SignUpControl;
 import com.yedam.user.control.SignUpFormControl;
 import com.yedam.user.control.UserListControl;
-import com.yedam.wish.controll.wishListControl;
+import com.yedam.wish.control.wishListControl;
 
 public class FrontController extends HttpServlet{
 	private Map<String, Control> map;

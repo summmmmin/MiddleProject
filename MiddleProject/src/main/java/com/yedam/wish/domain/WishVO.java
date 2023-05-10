@@ -14,8 +14,11 @@ import lombok.Setter;
 
 
 public class WishVO {
-	private String wishId;
-	private String userId;
-	private String pdtId;
+	private int wishId;
+	private int userId;
+	private int pdtId;
 	private Date wishDate;
+	private String pdtNm;	// 상품이름
+	private String pdtImg;	// 상품사진
+	private int pdtPrice;	// 상품가격
 }

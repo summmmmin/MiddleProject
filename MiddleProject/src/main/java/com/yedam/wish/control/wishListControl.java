@@ -1,6 +1,7 @@
-package com.yedam.wish.controll;
+package com.yedam.wish.control;
 
 import java.io.IOException;
+
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -19,21 +20,26 @@ public class wishListControl implements Control {
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		UserVO userInfo = (UserVO) session.getAttribute("userinfo");
-
+		
+		System.out.println(userInfo);
+		
 		if (userInfo == null) {
 			return "user/loginForm.tiles";
 		}
 
 		String userId = userInfo.getUserId();
-		resp.setContentType("application/json;charset=utf-8");
+		System.out.println(userId);
 
 		WishService service = new WishServiceImpl();
-		String json = "[";
 		List<WishVO> list = service.wishList(userId);
+		
+		System.out.println(" 해당 유저의 관심상품은 > " + list);
 
 		req.setAttribute("wishlist", list);
+		System.out.println(list);
 
 		return "wish/wishList.tiles";
 	}
 
 }
+
