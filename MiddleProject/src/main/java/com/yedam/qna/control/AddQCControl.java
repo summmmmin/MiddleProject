@@ -21,40 +21,45 @@ public class AddQCControl implements Control {
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// 댓글등록 컨트롤...ing...
-		String id = req.getParameter("postId");
-		System.out.println(id);
-		String comment = req.getParameter("comment");
+		String id = req.getParameter("postId"); // 	Q 번호
+		String comment = req.getParameter("subject"); //답변 내용
 		System.out.println(comment);
-		
 		QCommentVO vo = new QCommentVO();
 		vo.setPostId(Integer.parseInt(id));
 		vo.setCommentCT(comment);
+		System.out.println(vo);
 		
 		QCommentService service = new QCommentServiceImpl();
 		
-		boolean result = service.addComment(vo);
-		
-		String json = "";
-		
-		Map<String, Object> map = new HashMap<>();
-		
-		
-		if(result) {
-			// {"retCode":"Success"}
-			// json = "{\"retCode\":\"Success\"}";
-			// {"retCode":"Success","data":vo}
-			map.put("retCode", "Success");
-			map.put("data", vo);
+		if(service.addComment(vo)) {
+			return "getQna.do?postId="+id;
 		}else {
-			//{"retCode":"Fail"}
-			// json = "{\"retCode\":\"Fail\"}";
-			map.put("retCode","Fail");
-			
+			return "main.do";
 		}
-		Gson gson = new GsonBuilder().create();//gson 객체
-		json = gson.toJson(map);
-	
-		return json + ".json";
+
+		
+		
+//		String json = "";
+//		
+//		Map<String, Object> map = new HashMap<>();
+//		
+//		
+//		if(result) {
+//			// {"retCode":"Success"}
+//			// json = "{\"retCode\":\"Success\"}";
+//			// {"retCode":"Success","data":vo}
+//			map.put("retCode", "Success");
+//			map.put("data", vo);
+//		}else {
+//			//{"retCode":"Fail"}
+//			// json = "{\"retCode\":\"Fail\"}";
+//			map.put("retCode","Fail");
+//			
+//		}
+//		Gson gson = new GsonBuilder().create();//gson 객체
+//		json = gson.toJson(map);
+//	
+//		return json + ".json";
 	}
 
 }

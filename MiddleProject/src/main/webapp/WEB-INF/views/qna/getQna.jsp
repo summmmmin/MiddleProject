@@ -37,6 +37,7 @@
             </div>
             </div>
           <hr>
+     <form method="post" action="addQC.do?postId=${qnaInfo.postId }">
       <div class="p-3 p-lg-5 border" style="margin-top:20px">
      	<p><strong class="text-primary h4">답변</strong></p>
         <div class="border p-3 mb-5">
@@ -57,10 +58,10 @@
 			<c:when test="${userinfo.userGrade=='관리자' }">
                  <c:choose>
 				 <c:when test="${commentInfo.commentCT == null}">
-                 <textarea id=comment style="width:980px;height:200px;" >답변을 작성해주세요</textarea>
+                 <textarea name="subject" id=comment style="width:980px;height:200px;" >답변을 작성해주세요</textarea>
           		 </c:when>
 				 <c:otherwise>
-				 <textarea id=comment1 style="width:980px;height:200px;" >${commentInfo.commentCT }</textarea>
+				 <textarea name="subject2"  onclick="modifyQC()" id=comment1 style="width:980px;height:200px;" >${commentInfo.commentCT }</textarea>
               	 </c:otherwise>
               	 </c:choose>
              </c:when>
@@ -71,10 +72,10 @@
             		<c:if test ="${userinfo.userGrade=='관리자' }">
             		<c:choose>
 						<c:when test="${commentInfo.commentCT == null}">
-						<button type="button" id="addComment" onclick="location.href='getlQna.do?postId=${qnaInfo.postId}'" class="btn btn-danger btn-sm">답변달기</button>
+						<button type="submit" id="addComment"  class="btn btn-danger btn-sm">답변달기</button>
 						</c:when>
 						<c:otherwise>
-						<button type="button" id="modifyComment" onclick="location.href='getlQna.do?postId=${qnaInfo.postId}'"  class="btn btn-danger btn-sm">수정</button>	
+						<button type="button" id="modifyComment" onclick="modifyQC()"  class="btn btn-danger btn-sm">수정</button>	
 						</c:otherwise>
 					</c:choose>
 					</c:if>
@@ -82,30 +83,20 @@
        	</div>
        </div>
       </div>
+      </form>
      </div>    
     
   </body>  
 <script>
-    document.querySelector("#addComment").addEventListener('click', function(){
-    	let comment= document.querySelector("#comment").value;	
-        
-    	let xhtp = new XMLHttpRequest();
-        xhtp.open('post','addQC.do');
-        xhtp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-        xhtp.send("postId=${qnaInfo.postId}&comment=" + comment);
-        xhtp.onload = function(){
-        	let result =JSON.parse(xhtp.response);
-        	console.log(result);
-        	document.createElement()
-        }
-    });
 
-    document.querySelector("#modifyComment").addEventListener('click', function(){
-    	let comment1 = document.querySelector("#comment1").value;
-    	et xhtp = new XMLHttpRequest();
-        xhtp.open('post','modifyQC.do');
-        xhtp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-        xhtp.send("postId=${qnaInfo.postId}&comment=" + comment);
+function modifyQC(){
+	$('#form').attr("action","modifyQC.do?postId=${qnaInfo.postId}").submit();
+}
 
-    
+
+
+
+
+
+
     </script> 
