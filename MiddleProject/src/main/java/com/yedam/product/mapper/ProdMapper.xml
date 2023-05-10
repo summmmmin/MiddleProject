@@ -3,60 +3,62 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yedam.product.mapper.ProdMapper">
-	<select id="prodList"> <!-- 상품리스트 -->
+	<select id="prodList"> <!-- 상품 리스트 -->
 		<![CDATA[
 		SELECT b.*
 		FROM (SELECT ROWNUM rn, a.*
 			  FROM (SELECT pdt.pdt_id, pdt.cat_id, pdt.subcat_id, pdt.brd_id, pdt.gender_id,
-			  pdt.pdt_nm, pdt.pdt_price, pdt.pdt_img, pdt.pdt_views, brd.brd_nm
+			  pdt.pdt_nm, pdt.pdt_price, pdt.pdt_img, pdt.pdt_views, pdt.pdt_del, brd.brd_nm
 			  FROM product pdt
 			  left outer join brand brd on pdt.brd_id = brd.brd_id
+			  where pdt.pdt_del = 'N'
 			  ORDER BY pdt.pdt_id desc) a
 			  WHERE ROWNUM <= ${page} * 9) b
 		WHERE b.rn > (${page} - 1) * 9
 		]]>
 	</select>
 	
-	<select id="prodList2">
-		select * from product order by pdt_views desc
+	<select id="prodList2"> <!-- 추천상품 리스트 -->
+		select * from product 
+		where pdt_del = 'N'
+		order by pdt_views desc
 	</select>
 	
-	<select id="catList">
+	<select id="catList"> <!-- 카테고리 리스트 -->
 		select * from categories
 	</select>
 
-	<select id="subcatList">
+	<select id="subcatList"> <!-- 서브 카테고리 리스트 -->
 		select * from sub_category
 	</select>
 
-	<select id="brdList">
+	<select id="brdList"> <!-- 브랜드 리스트 -->
 		select * from brand
 	</select>
 	
-	<select id="genderList">
+	<select id="genderList"> <!-- 성별 리스트 -->
 		select * from gender
 	</select>
 
-	<insert id="insertProd" parameterType="product">
+	<insert id="insertProd" parameterType="product"> <!-- 등록 -->
 		insert into product
 		(pdt_id, cat_id, subcat_id, pdt_nm, pdt_price, brd_id, gender_id, pdt_img)
 		values(pdt_id_seq.nextval, #{catId}, #{subcatId}, #{pdtNm},
 		#{pdtPrice}, #{brdId}, #{genderId}, #{pdtImg})
 	</insert>
 
-	<delete id="deleteProd" parameterType="int">
-		delete from product where
-		pdt_id=#{pdtId}
+	<delete id="deleteProd" parameterType="product"> <!-- 삭제 -->
+		update product set pdt_del='Y' where pdt_id=#{pdtId}
 	</delete>
 
-	<update id="updateProd" parameterType="product">
+	<update id="updateProd" parameterType="product"> <!-- 수정 -->
 		update product set pdt_nm=#{pdtNm}, pdt_price=#{pdtPrice}, pdt_img=#{pdtImg} where pdt_id=#{pdtId}
 	</update>
 
-	<select id="searchProd">
+	<select id="searchProd"> <!-- 상세조회 -->
 		SELECT pdt.pdt_id, pdt.cat_id, pdt.subcat_id, pdt.brd_id, pdt.gender_id,
-			  pdt.pdt_nm, pdt.pdt_price, pdt.pdt_img, pdt.pdt_views, brd.brd_nm,
-			  cat.cat_nm, subcat.subcat_nm, gender.gender_nm
+			  pdt.pdt_nm, pdt.pdt_price, pdt.pdt_img, pdt.pdt_views,
+			  brd.brd_nm, cat.cat_nm, subcat.subcat_nm, gender.gender_nm
 			  FROM product pdt
 			  left outer join brand brd on pdt.brd_id = brd.brd_id
 			  left outer join categories cat on pdt.cat_id = cat.cat_id
@@ -65,16 +67,16 @@
 			  where pdt.pdt_id=#{pdtId}
 	</select>
 
-	<update id="updateViews" parameterType="int">
+	<update id="updateViews" parameterType="int"> <!-- 조회수 -->
 		update product set
 		pdt_views=pdt_views+1 where pdt_id=#{pdtId}
 	</update>
 
-	<select id="getViews" resultType="int">
+	<select id="getViews" resultType="int"> <!-- 조회수 증가 -->
 		select count(*) from product
 	</select>
 	
-	<select id="getCount" resultType="int">
+	<select id="getCount" resultType="int"> <!-- 갯수 -->
 		select count(*) from product where cat_id=#{catId}
 	</select>
 

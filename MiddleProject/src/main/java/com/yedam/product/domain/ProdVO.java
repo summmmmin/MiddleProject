@@ -13,6 +13,7 @@ public class ProdVO {
 	private int pdtPrice;
 	private String pdtImg;
 	private int pdtViews;
+	private String pdtDel;
 	
 	private String catNm;
 	private String subcatNm;
