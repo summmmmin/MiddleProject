@@ -1,7 +1,6 @@
 package com.yedam.common;
 
 import java.io.IOException;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,6 +21,7 @@ import com.yedam.product.control.DelProdControl;
 import com.yedam.product.control.GetProdControl;
 import com.yedam.product.control.ModifyProdControl;
 import com.yedam.product.control.ProdAddForm;
+import com.yedam.product.control.ProdList2Control;
 import com.yedam.product.control.ProdListControl;
 import com.yedam.product.control.SubCatListControl;
 import com.yedam.qna.control.AddQCControl;
@@ -81,6 +81,7 @@ public class FrontController extends HttpServlet{
 		map.put("/modifyProd.do", new ModifyProdControl());
 		map.put("/delProd.do", new DelProdControl());
 		map.put("/subCatList.do", new SubCatListControl());
+		map.put("/prodList2.do", new ProdList2Control());
 		//users
 		map.put("/logout.do", new LogoutControl());
 		map.put("/loginForm.do", new LoginFormControl());

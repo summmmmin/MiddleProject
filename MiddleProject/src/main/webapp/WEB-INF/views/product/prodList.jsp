@@ -82,168 +82,236 @@
 				</div>
 			</div>
 
-			<div class="col-md-3 order-1 mb-5 mb-md-0">
-				<div class="border p-4 rounded mb-4">
-					<div class="mb-4">
-						<h3 class="mb-3 h6 text-uppercase text-black d-block"
-							class="jquery-on-container">
-							<a class="js-open-target" id="cat" data-target=".closed-content1"
-								onclick="categories()">카테고리</a>
-						</h3>
-						<div class="closed-content1" style="display: none;">
-							<c:forEach var="i" begin="0" end="${fn:length(catlist)-1}">
-								<label for="${catlist[i].catId}" class="d-flex"> <input
-									type="checkbox" id="${catlist[i].catId}" class="mr-2 mt-1">
-									<span class="text-black">${catlist[i].catNm}</span> <span
-									class="text-black ml-auto">(${cntarr[i]})</span>
-								</label>
-								<c:choose>
-									<c:when test="var == 1">
-										<c:forEach var="i" begin="0" end="${fn:length(subcatlist)-1}">
-											<label for="${subcatlist[i].subcatId}" class="d-flex">
-												<input type="checkbox" id="${subcatlist[i].subcatId}"
-												class="mr-2 mt-1"> <span class="text-black">${subcatlist[i].subcatNm}</span>
-												<span class="text-black ml-auto">(${subcntarr[i]})</span>
-											</label>
-										</c:forEach>
-									</c:when>
-								</c:choose>
-							</c:forEach>
+			<form action="prodList.do" method="post">
+				<div class="col-md-3 order-1 mb-5 mb-md-0">
+					<div class="border p-4 rounded mb-4">
+						<div class="mb-4">
+							<h3 class="mb-3 h6 text-uppercase text-black d-block"
+								class="jquery-on-container">
+								<a class="js-open-target" id="cat"
+									data-target=".closed-content1" onclick="categories()">카테고리</a>
+							</h3>
+							<div class="closed-content1" style="display: none;">
+								<c:forEach var="i" begin="0" end="${fn:length(catlist)-1}">
+									<div>
+										<label class="d-flex"> <input type="checkbox"
+											id="${catlist[i].catId}" class="mr-2 mt-1 catId"> <span
+											class="text-black">${catlist[i].catNm}</span> <span
+											class="text-black ml-auto">(${cntarr[i]})</span>
+										</label>
+										<div style="display: none;">
+											<c:forEach var="j" begin="0" end="${fn:length(subcatlist)-1}">
+												<c:choose>
+													<c:when test="${subcatlist[j].catId == catlist[i].catId}">
+														<label class="d-flex"> <input type="checkbox"
+															id="${subcatlist[j].subcatId}" class="mr-2 mt-1">
+															<span class="text-black">${subcatlist[j].subcatNm}</span>
+															<span class="text-black ml-auto">(${subcntarr[j]})</span>
+														</label>
+													</c:when>
+													<c:otherwise>
+													</c:otherwise>
+												</c:choose>
+											</c:forEach>
+										</div>
+									</div>
+								</c:forEach>
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="border p-4 rounded mb-4">
-					<div class="mb-4">
-						<h3 class="mb-3 h6 text-uppercase text-black d-block"
-							class="jquery-on-container">
-							<a class="js-open-target" id="gender"
-								data-target=".closed-content3" onclick="gender()">성별</a>
-						</h3>
-						<div class="closed-content3" style="display: none;">
-							<c:forEach var="i" begin="0" end="${fn:length(genderlist)-1}">
-								<label for="${genderlist[i].genderId}" class="d-flex"> <input
-									type="checkbox" id="${genderlist[i].genderId}"
-									class="mr-2 mt-1"> <span class="text-black">${genderlist[i].genderNm}</span>
-									<span class="text-black ml-auto">(${genderarr[i]})</span>
-								</label>
-							</c:forEach>
+					<div class="border p-4 rounded mb-4">
+						<div class="mb-4">
+							<h3 class="mb-3 h6 text-uppercase text-black d-block"
+								class="jquery-on-container">
+								<a class="js-open-target" id="gender"
+									data-target=".closed-content3" onclick="gender()">성별</a>
+							</h3>
+							<div class="closed-content3" style="display: none;">
+								<c:forEach var="i" begin="0" end="${fn:length(genderlist)-1}">
+									<label class="d-flex"> <input type="checkbox"
+										id="${genderlist[i].genderId}" class="mr-2 mt-1"> <span
+										class="text-black">${genderlist[i].genderNm}</span> <span
+										class="text-black ml-auto">(${genderarr[i]})</span>
+									</label>
+								</c:forEach>
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="border p-4 rounded mb-4">
-					<div class="mb-4">
-						<h3 class="mb-3 h6 text-uppercase text-black d-block"
-							class="jquery-on-container">
-							<a class="js-open-target" id="brand"
-								data-target=".closed-content4" onclick="brand()">브랜드</a>
-						</h3>
-						<div class="closed-content4" style="display: none;">
-							<c:forEach var="i" begin="0" end="${fn:length(brdlist)-1}">
-								<label for="${brdlist[i].brdId}" class="d-flex"> <input
-									type="checkbox" id="${brdlist[i].brdId}" class="mr-2 mt-1">
-									<span class="text-black">${brdlist[i].brdNm}</span> <span
-									class="text-black ml-auto">(${brdarr[i]})</span>
-								</label>
-							</c:forEach>
+					<div class="border p-4 rounded mb-4">
+						<div class="mb-4">
+							<h3 class="mb-3 h6 text-uppercase text-black d-block"
+								class="jquery-on-container">
+								<a class="js-open-target" id="brand"
+									data-target=".closed-content4" onclick="brand()">브랜드</a>
+							</h3>
+							<div class="closed-content4" style="display: none;">
+								<c:forEach var="i" begin="0" end="${fn:length(brdlist)-1}">
+									<label class="d-flex"> <input type="checkbox"
+										id="${brdlist[i].brdId}" class="mr-2 mt-1"> <span
+										class="text-black">${brdlist[i].brdNm}</span> <span
+										class="text-black ml-auto">(${brdarr[i]})</span>
+									</label>
+								</c:forEach>
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="border p-4 rounded mb-4">
-					<div class="mb-4">
-						<h3 class="mb-3 h6 text-uppercase text-black d-block"
-							class="jquery-on-container">
-							<a class="js-open-target" id="size"
-								data-target=".closed-content5" onclick="size()">사이즈</a>
-						</h3>
-						<div class="closed-content5" style="display: none;">
-							<p>의류</p>
-							<button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">XS</span>
-							</button> <button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">S</span>
-							</button> <button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">M</span>
-							</button> <button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">L</span>
-							</button> <button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">XL</span>
-							</button> <button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">44</span>
-							</button> <button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">55</span>
-							</button> <button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">66</span>
-							</button> <button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">77</span>
-							</button> <button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">88</span>
-							</button> <button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">110</span>
-							</button>
-							<p>신발</p> 
-							<button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">220</span>
-							</button> <button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">225</span>
-							</button> <button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">230</span>
-							</button> <button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">235</span>
-							</button> <button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">240</span>
-							</button> <button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">245</span>
-							</button> <button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">250</span>
-							</button> <button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">255</span>
-							</button> <button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">260</span>
-							</button> <button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">265</span>
-							</button> <button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">270</span>
-							</button> <button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">275</span>
-							</button> <button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">280</span>
-							</button> <button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">285</span>
-							</button> <button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">290</span>
-							</button> <button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">295</span>
-							</button> <button type="button" class="btn btn-outline-primary"
-								id="s_sm" class="mr-2 mt-1"> <span class="text-black">300</span>
-							</button>
+					<div class="border p-4 rounded mb-4">
+						<div class="mb-4">
+							<h3 class="mb-3 h6 text-uppercase text-black d-block"
+								class="jquery-on-container">
+								<a class="js-open-target" id="size"
+									data-target=".closed-content5" onclick="size()">사이즈</a>
+							</h3>
+							<div class="closed-content5" style="display: none;">
+								<p>의류</p>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">XS</span>
+								</button>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">S</span>
+								</button>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">M</span>
+								</button>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">L</span>
+								</button>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">XL</span>
+								</button>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">44</span>
+								</button>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">55</span>
+								</button>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">66</span>
+								</button>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">77</span>
+								</button>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">88</span>
+								</button>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">110</span>
+								</button>
+								<p>신발</p>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">220</span>
+								</button>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">225</span>
+								</button>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">230</span>
+								</button>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">235</span>
+								</button>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">240</span>
+								</button>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">245</span>
+								</button>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">250</span>
+								</button>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">255</span>
+								</button>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">260</span>
+								</button>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">265</span>
+								</button>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">270</span>
+								</button>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">275</span>
+								</button>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">280</span>
+								</button>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">285</span>
+								</button>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">290</span>
+								</button>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">295</span>
+								</button>
+								<button type="button" class="btn btn-outline-primary" id="s_sm"
+									class="mr-2 mt-1">
+									<span class="text-black">300</span>
+								</button>
+							</div>
 						</div>
 					</div>
-				</div>
 
-			</div>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>
 <script>
+	document.querySelectorAll('.catId').forEach(item => {
+		item.addEventListener('click', function() {
+			let subcat = this.parentElement.parentElement.children[1];
+			if(this.checked){
+				subcat.style = "display: block";				
+			}else if(!this.checked){
+				subcat.style = "display: none";	
+			}
+			
+		})
+	})
+
 	function categories() {
-		$('#cat').each(function() {
+		$('#cat').each(function () {
 			var target_selector = $(this).data('target');
 			console.log(target_selector);
 			$(target_selector).toggle();
 		});
 	}
 
-	function categories2() {
-		var cat = document.getElementById('${catlist[i].catId}');
-		var catVal = cat.options[cat.selectedIndex].value;
-		console.log(catVal);
-	}
-
 	function gender() {
-		$('#gender').each(function() {
+		$('#gender').each(function () {
 			var target_selector = $(this).data('target');
 			console.log(target_selector);
 			$(target_selector).toggle();
@@ -251,7 +319,7 @@
 	}
 
 	function brand() {
-		$('#brand').each(function() {
+		$('#brand').each(function () {
 			var target_selector = $(this).data('target');
 			console.log(target_selector);
 			$(target_selector).toggle();
@@ -259,10 +327,11 @@
 	}
 
 	function size() {
-		$('#size').each(function() {
+		$('#size').each(function () {
 			var target_selector = $(this).data('target');
 			console.log(target_selector);
 			$(target_selector).toggle();
 		});
 	}
+	
 </script>
