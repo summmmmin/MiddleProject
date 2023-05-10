@@ -27,7 +27,7 @@ public class SellFormControl implements Control {
 		//sellForm.jsp실행 
 		//(상품정보, 가격, 사용자정보 입력된상태) 
 		//(배송지, 포인트사용입력, 결제하기버튼)
-		
+		System.out.println(pid+size+inprice+price);
 		//post일때
 		//
 		

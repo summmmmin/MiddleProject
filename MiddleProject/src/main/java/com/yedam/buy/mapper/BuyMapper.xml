@@ -2,14 +2,83 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yedam.buy.mapper.BuyMapper">
-	<select id="selectBuyList" resultType="buy">
-		select * from buy
-	</select>
-	<insert id="insertBuy" parameterType="int">
-		insert into Buy(BUY_ID, USER_ID, SELL_ID, PDT_ID, SIZE_ID, BUY_PRICE, BUY_FINCOST, BUY_POINT, BUY_PAY) 
-		values(buy_id_seq.nextval, #{userId}, #{sellId}, #{pdtId}, #{sizeId}, #{buyPrice}, #{buyFincost}, #{buyPoint}, '결제완료')
+<mapper namespace="com.yedam.buy.mapper.BuyMapper">	
+	<insert id="insertBuy">
+	  insert all
+	  into deliver values(dlv_seq.nextval, #{dlvName}, #{dlvPhone}, #{dlvAddr}, #{dlvNum}, null)
+	  into buy(buy_id, user_id, sell_id, pdt_id, size_id, buy_price, buy_dlvy, buy_point, buy_fincost, dlv_id) 
+	  values(buy_seq.nextval, #{userId}, #{sellId}, #{pdtId}, #{sizeId}, #{buytPrice}, '구매입찰중', #{buyPoint}, #{buyFincost}, dlv_seq.currval) 
+	  select * from dual
 	</insert>
+	<update id="setSellId">
+		update sell set sell_dlvy='발송요청', buy_id=#{buyId} where sell_id=#{sellId}
+	</update>
+	
+	<insert id="insertBuyBid">
+	  insert all
+	  into deliver values(dlv_seq.nextval, #{dlvName}, #{dlvPhone}, #{dlvAddr}, #{dlvNum}, null)
+	  into buy(buy_id, user_id, pdt_id, size_id, buy_price, buy_dlvy, buy_point, buy_fincost, dlv_id) 
+	  values(buy_seq.nextval, #{userId}, #{pdtId}, #{sizeId}, #{buytPrice}, '구매입찰중', #{buyPoint}, #{buyFincost}, dlv_seq.currval) 
+	  select * from dual
+	</insert>
+	
+	<select id="selectBuyList" resultType="buy">
+	  <![CDATA[
+    	select b.*
+    	from (select rownum rn, a.*
+		      from (select *
+					from buy 
+					natural join product natural join product_size natural join brand
+					where user_id = #{userId}
+					order by buy_date desc) a
+          	  where rownum <= #{page} * 10) b
+    	where b.rn > (#{page}-1) * 10
+    	]]>
+	</select>
+	<select id="countBuy">
+	  select count(*) from buy where user_id = #{userId}
+	</select>
+	
+	<select id="BuyList">
+	  <![CDATA[
+	  select b.*
+    	from (select rownum rn, a.*
+         	 from (select * from buy natural join product natural join product_size natural join brand
+				   order by buy_date desc) a
+          	where rownum <= #{page} * 10) b
+    	where b.rn > (#{page}-1) * 10	  
+      ]]>
+	</select>
+	<select id="getCountBuy">
+	  select count(*) from buy
+	</select>
+	
+	<select id="selectBuy">
+		select * from buy natural join product natural join product_size natural join brand natural join deliver
+		where buy_id=#{buyId}
+	</select>
+	
+	<update id="cancelBuy">
+	  update buy set buy_cancel=${cancel} where buy_id=#{buyId}
+	</update>
+	
+	<update id="returnBuy">
+	  update buy set buy_return=${state} where buy_id=#{buyId}
+	</update>
+	
+	<update id="deliveBuy">
+	  update buy set buy_dlvy=${dlvy} where buy_id=#{buyId}
+	</update>
+	
+	<update id="updateDlvy">
+	  update deliver
+	  set dlv_name=#{dlvName}, dlv_phone=#{dlvPhone}, dlv_addr=#{dlvAddr}, dlv_num=#{dlvNum} where dlv_id=#{dlvId}
+	</update>
+	
+	<update id="completeDlvy">
+	  UPDATE DELIVER SET DLV_DATE=SYSDATE
+	</update>
+	
 	<select id="selectBuyPrice">
 		select * 
 		from (select * from buy
@@ -17,12 +86,4 @@
       		order by buy_price, buy_date)
 		where rownum=1
 	</select>
-	<select id="selectBuy">
-		select * from buy natural join product natural join product_size natural join brand
-		where buy_id=#{buyId}
-	</select>
-	
-	<update id="insertSellId">
-		update buy set sell_id=#{sellId}, buy_dlvy='입고대기'  where buy_id=#{buyId}
-	</update>
 </mapper>

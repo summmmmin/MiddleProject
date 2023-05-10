@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%> 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+pageEncoding="UTF-8"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core"
+prefix="c" %>
 
 <div class="bg-light py-3">
   <div class="container">
@@ -30,6 +30,7 @@ pageEncoding="UTF-8"%>
                 <th scope="col">사이즈</th>
                 <th scope="col">가격</th>
                 <th scope="col">상태</th>
+                <th scope="col">취소</th>
               </tr>
             </thead>
             <tbody>
@@ -45,13 +46,24 @@ pageEncoding="UTF-8"%>
               <c:forEach var="sell" items="${list }">
                 <tr>
                   <th scope="row"><c:out value="${no=no+1 }"></c:out></th>
-                  <td>${sell.sellId }</td>
+                  <td><a href="sellGet.do?sell=${sell.sellId }">${sell.sellId }</a></td>
                   <td>${sell.sellDate }</td>
                   <td>${sell.pdtNm }</td>
-                  <td>${sell.pdtBrand }</td>
+                  <td>${sell.brdNm }</td>
                   <td>${sell.sizeSize }</td>
                   <td>${sell.sellPrice }</td>
-                  <td>${sell.sellConfirm }</td>
+                  <td>${sell.sellDlvy }</td>
+                  <c:choose>
+                    <c:when
+                      test="${sell.sellCancel == 'N' && (sell.sellDlvy == '판매입찰중' || sell.sellDlvy == '발송요청')}"
+                    >
+                      <td><button >취소신청</button></td>
+                    </c:when>
+                    <c:otherwise>
+                      <td>${sell.sellCancel }</td>
+                    </c:otherwise>
+                  </c:choose>
+                  <c:if test="${sell.sellDlvy }"></c:if>
                 </tr>
               </c:forEach>
             </tbody>
@@ -62,29 +74,48 @@ pageEncoding="UTF-8"%>
     <div class="row" data-aos="fade-up">
       <div class="col-md-12 text-center">
         <div class="site-block-27">
-          <c:if test="${pageInfo.prev }">
-            <a class="page-link" href="sellListU.do?page=${pageInfo.startPage-1 }"
-              >previous</a
+          <ul>
+            <li>
+              <c:if test="${pageInfo.prev}">
+                <a href="prodList.do?page=${pageInfo.startPage-1}">&lt;</a>
+              </c:if>
+            </li>
+            <c:forEach
+              var="i"
+              begin="${pageInfo.startPage}"
+              end="${pageInfo.endPage}"
             >
-          </c:if>
-          <c:forEach
-            var="i"
-            begin="${pageInfo.startPage }"
-            end="${pageInfo.endPage }"
-          >
-            <a
-              class="page-link"
-              class="${i == pageInfo.pageNum ? 'active' : '' }"
-              href="sellListU.do?page=${i }"
-              >${i }
-            </a>
-          </c:forEach>
-          <c:if test="${pageInfo.next }">
-            <a class="page-link" href="sellListU.do?page=${pageInfo.endPage+1 }&userId=${userInfo.id}"
-              >Next</a
-            >
-          </c:if>
+              <li class="${i == pageInfo.pageNum ? 'active' : ''}">
+                <a href="prodList.do?page=${i}">${i}</a>
+              </li>
+            </c:forEach>
+            <li>
+              <c:if test="${pageInfo.next}">
+                <a href="prodList.do?page=${pageInfo.endPage+1}">&gt;</a>
+              </c:if>
+            </li>
+          </ul>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" style="top:200px;" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">비회원으로 접속하셨습니다.</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        로그인하시겠습니까?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='loginForm.do'">로그인하기</button>
       </div>
     </div>
   </div>

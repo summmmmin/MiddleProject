@@ -7,15 +7,14 @@
 		<![CDATA[
     	select b.*
     	from (select rownum rn, a.*
-         	 from (select sell.SELL_ID, sell.USER_ID, sell.PDT_ID, sell.SIZE_ID,
-			sell.SELL_DATE,sell.SELL_PRICE,sell.SELL_DLVY,sell.SELL_CANCEL,sell.SELL_CONFIRM,sell.SELL_PAY,sell.SELL_ACCOUNT, 
-			pdt.pdt_nm, pdt.pdt_brand, pdts.size_size
-			from sell 
-			left outer join product pdt on sell.pdt_id = pdt.pdt_id
-			left outer join product_size pdts on sell.size_id = pdts.size_id
-			where sell.user_id = #{userId}
-			order by sell.sell_date) a
-          	where rownum <= #{page} * 10) b
+		      from (select *
+					from sell 
+					left outer join product pdt on sell.pdt_id = pdt.pdt_id
+					left outer join product_size pdts on sell.size_id = pdts.size_id
+					left outer join brand on pdt.brd_id= brand.brd_id
+					where sell.user_id = #{userId}
+					order by sell.sell_date desc) a
+          	  where rownum <= #{page} * 10) b
     	where b.rn > (#{page}-1) * 10
     	]]>
 	</select>
@@ -23,12 +22,8 @@
 		select count(*) from sell where sell.user_id = #{userId}
 	</select>
 	<select id="searchSell">
-		select sell.SELL_ID, sell.USER_ID, sell.BUY_ID, sell.PDT_ID, sell.SIZE_ID,
-		sell.SELL_DATE,sell.SELL_PRICE,sell.SELL_DLVY,sell.SELL_CANCEL,sell.SELL_CONFIRM,sell.SELL_PAY,sell.SELL_ACCOUNT, 
-		pdt.pdt_nm, pdt.pdt_brand, pdts.size_size
-		from sell 
-		left outer join product pdt on sell.pdt_id = pdt.pdt_id
-		left outer join product_size pdts on sell.size_id = pdts.size_id
+		select *
+		from sell natural join product natural join product_size natural join brand natural join deliver
 		where sell.sell_id = #{sellId}
 	</select>
 	
@@ -36,13 +31,12 @@
 		<![CDATA[
     	select b.*
     	from (select rownum rn, a.*
-         	 from (select sell.SELL_ID, sell.USER_ID, sell.BUY_ID, sell.PDT_ID, sell.SIZE_ID,
-			sell.SELL_DATE,sell.SELL_PRICE,sell.SELL_DLVY,sell.SELL_CANCEL,sell.SELL_CONFIRM,sell.SELL_PAY,sell.SELL_ACCOUNT, 
-			pdt.pdt_nm, pdt.pdt_brand, pdts.size_size
-			from sell 
-			left outer join product pdt on sell.pdt_id = pdt.pdt_id
-			left outer join product_size pdts on sell.size_id = pdts.size_id
-			order by sell.sell_date) a
+         	 from (select *
+				   from sell 
+				   left outer join product pdt on sell.pdt_id = pdt.pdt_id
+				   left outer join product_size pdts on sell.size_id = pdts.size_id
+  				   left outer join brand on pdt.brd_id= brand.brd_id
+				   order by sell.sell_date desc) a
           	where rownum <= #{page} * 10) b
     	where b.rn > (#{page}-1) * 10
     	]]>
@@ -52,18 +46,45 @@
 		select count(*) from sell
 	</select>
 	
-	<insert id="insertDlvy">
-		insert into deliver(dlv_id) values(dlv_seq.nextval)
-	</insert>
 	<insert id="insertSell">
-	  insert into sell(sell_id, user_id, buy_id, pdt_id, size_id, sell_price, sell_dlvy, sell_account, dlv_id) 
+	  insert all
+	  into deliver(dlv_id) values(dlv_seq.nextval)
+	  into sell(sell_id, user_id, buy_id, pdt_id, size_id, sell_price, sell_dlvy, sell_account, dlv_id) 
 	  values(sell_seq.nextval, #{userId}, #{buyId}, #{pdtId}, #{sizeId}, #{sellPrice}, '발송요청', #{sellAccount}, dlv_seq.currval) 
+	  select * from dual
 	</insert>
+	<update id="setBuyId">
+	  update buy set buy_dlvy='입고대기',sell_id=#{sellId} where buy_id=#{buyId}
+	</update>
 	
 	<insert id="insertSellBid">
-	  insert into sell(sell_id, user_id, pdt_id, size_id, sell_price, sell_dlvy, sell_account, dlv_id) 
-	  values(sell_seq.nextval, #{userId}, #{pdtId}, #{sizeId}, #{sellPrice}, '판매입찰중', #{sellAccount}, dlv_seq.currval) 
+	  insert all
+  	  into deliver(dlv_id) values(dlv_seq.nextval)
+  	  into sell(sell_id, user_id, pdt_id, size_id, sell_price, sell_dlvy, sell_account, dlv_id) 
+  	  values(sell_seq.nextval, #{userId}, #{pdtId}, #{sizeId}, #{sellPrice}, '판매입찰중', #{sellAccount}, dlv_seq.currval)
+  	  select * from dual
 	</insert>
 	
+	<update id="cancelSell">
+	  update sell set sell_cancel = ${cancel} where sell_id=#{sellId}
+	</update>
 	
+	<update id="updateAcct">
+	  update sell set sell_account = #{sellAccount} where sell_id=#{sellId}
+	</update>
+	
+	<update id="dlvySell">
+	  update sell set sell_dlvy = ${sdlvy} where sell_id=#{sellId}
+	</update>
+	<update id="updateBuyState">
+	  update buy set buy_dlvy= ${bdlvy} where sell_id=#{sellId}
+	</update>
+	
+	<select id="selectSellPrice">
+	  select * 
+		from (select * from sell
+      		where pdt_id=#{pdtId} and size_id=#{sizeId} and buy_id is null and sell_dlvy='판매입찰중'
+      		order by sell_price, sell_date)
+		where rownum=1
+	</select>
 </mapper>
