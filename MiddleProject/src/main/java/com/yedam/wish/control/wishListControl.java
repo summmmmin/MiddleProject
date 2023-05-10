@@ -34,9 +34,13 @@ public class wishListControl implements Control {
 		List<WishVO> list = service.wishList(userId);
 		
 		System.out.println(" 해당 유저의 관심상품은 > " + list);
-
-		req.setAttribute("wishlist", list);
-		System.out.println(list);
+		
+        // 관심상품이 비어있을 경우 메시지를 설정
+        if (list.isEmpty()) {
+            req.setAttribute("isEmpty", true);
+        } else {
+            req.setAttribute("wishlist", list);
+        }
 
 		return "wish/wishList.tiles";
 	}
