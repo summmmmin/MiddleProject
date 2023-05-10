@@ -4,30 +4,35 @@
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
 <style>
-.card {
-	padding: 10px;
-}
+	.card {
+		padding: 10px;
+	}
 
-body {
-	margin: 10px;
-}
+	body {
+		margin: 10px;
+	}
 
-.btn {
-	display: inline-block;
-	vertical-align: middle;
-}
+	.btn {
+		display: inline-block;
+		vertical-align: middle;
+	}
 
-#login-buttons {
-	display: flex;
-	justify-content: center;
-	margin-top: 10px;
-	margin-right: 10px;
-}
+	#login-buttons {
+		display: flex;
+		justify-content: center;
+		margin-top: 10px;
+		margin-right: 10px;
+	}
 
-#login-buttons span {
-  margin: 0 12px;
-}
+	#login-buttons span {
+		margin: 0 12px;
+	}
+
+	.form-input-error {
+		border: 1px solid red;
+	}
 </style>
+
 <div id="content" class="flex">
 	<div class="">
 		<div class="page-content page-container" id="page-content">
@@ -39,28 +44,20 @@ body {
 								<strong>로그인</strong>
 							</div>
 							<div class="card-body">
-								<%
-								if (request.getAttribute("errorMessage") != null) {
-								%>
-								<script>
-									alert("아이디 또는 비밀번호가 잘못되었습니다.");
-								</script>
-								<%
-								}
-								%>
-								<form action="login.do" method="post">
+								<form action="login.do" method="POST" onsubmit="return validateForm()">
 									<div class="form-group">
 										<label class="text-muted" for="exampleInputEmail1">아이디</label>
-										<input type="email" class="form-control"
-											id="exampleInputEmail1" aria-describedby="emailHelp"
-											placeholder="" name="user_id"> <small id="emailHelp"
-											class="form-text text-muted">아이디는 이메일 형식입니다</small>
-
+										<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+											placeholder="" name="user_id"> <small id="emailHelp" class="form-text text-muted">아이디는 이메일
+											형식입니다</small>
 									</div>
 									<div class="form-group">
 										<label class="text-muted" for="exampleInputPassword1">비밀번호</label>
-										<input type="password" class="form-control"
-											id="exampleInputPassword1" placeholder="" name="user_pw">
+										<input type="password" class="form-control" id="exampleInputPassword1" placeholder=""
+											name="user_pw">
+										<c:if test="${not empty message}">
+											<p style="color: red; font-size: 12px;">${message}</p>
+										</c:if>
 
 									</div>
 									<div id="login-buttons">
@@ -70,27 +67,26 @@ body {
 								</form>
 								<form style="text-align: center;">
 									<div style="margin-top: 10px;">
-										<a id="kakao-login-btn"></a> <a
-											href="http://developers.kakao.com/logout"></a>
+										<a id="kakao-login-btn"></a> <a href="http://developers.kakao.com/logout"></a>
 										<script type='text/javascript'>
 											//<![CDATA[
 											// 사용할 앱의 JavaScript 키
 											Kakao
-													.init('bad00d675e508815a17b7c361b884556');
+												.init('bad00d675e508815a17b7c361b884556');
 											// 카카오 로그인 버튼생성
 											Kakao.Auth
-													.createLoginButton({
-														container : '#kakao-login-btn',
-														success : function(
-																authObj) {
-															alert(JSON
-																	.stringify(authObj));
-														},
-														fail : function(err) {
-															alert(JSON
-																	.stringify(err));
-														}
-													});
+												.createLoginButton({
+													container: '#kakao-login-btn',
+													success: function (
+														authObj) {
+														alert(JSON
+															.stringify(authObj));
+													},
+													fail: function (err) {
+														alert(JSON
+															.stringify(err));
+													}
+												});
 											//]]>
 										</script>
 									</div>
@@ -103,3 +99,4 @@ body {
 		</div>
 	</div>
 </div>
+<script src="js/login.js"></script>

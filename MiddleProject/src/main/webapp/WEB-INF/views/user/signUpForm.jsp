@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
 .form-input-error {
-  border: 2px solid red;
+  border: 1px solid red;
 }
 </style>
 
@@ -96,4 +96,3 @@
 		</div>
 	</div>
 	<script src="js/custom.js"></script>
-</body>
