@@ -18,9 +18,15 @@ public class DelNoteControl implements Control {
 		
 		String nid = req.getParameter("noteId");
 		NoteService service = new NoteServiceImpl();
-		service.delNote(Integer.parseInt(nid));
-
-		return "noteList.do";
+		String json = "";
+		
+		if(service.delNote(Integer.parseInt(nid))){
+			json = "{\"retCode\":\"Success\"}";
+			
+		}else {
+			json = "{\"retCode\":\"Fail\"}";
+		}
+		return json + ".json";
 	}
 
 }

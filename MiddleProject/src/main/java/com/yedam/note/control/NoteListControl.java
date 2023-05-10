@@ -23,10 +23,18 @@ public class NoteListControl implements Control {
 		HttpSession session = req.getSession();
 		UserVO userInfo = (UserVO) session.getAttribute("userinfo");
 		String id = userInfo.getUserId();
-
 		NoteService service = new NoteServiceImpl();
+		
+		if(req.getMethod().equals("GET")) {
+
+			return "note/noteList.tiles";	
+		
+		}else if(req.getMethod().equals("POST")) {
+		
+		
 		String json = "[";
 		List<NoteVO> list = service.noteList(id);
+		
 		for(int i = 0 ; i<list.size();i++) {
 			json +="{\"userId\":"+list.get(i).getUserId() + ",";
 			json += "\"noteId\":" + list.get(i).getNoteId() + ",";
@@ -38,9 +46,10 @@ public class NoteListControl implements Control {
 				json += ",";
 			}
 		}
-		
 		json +="]";
 		return json + ".json";
 	}
-
+		return "note/noteList.tiles";
+	}
 }
+

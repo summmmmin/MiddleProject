@@ -29,6 +29,7 @@ import com.yedam.qna.control.AddQnaControl;
 import com.yedam.qna.control.DelQnaControl;
 import com.yedam.qna.control.GetQnaControl;
 import com.yedam.qna.control.ModifyQCControl;
+import com.yedam.qna.control.MyQnaControl;
 import com.yedam.qna.control.QnaAddControl;
 import com.yedam.qna.control.QnaListControl;
 import com.yedam.sell.control.SellFormControl;
@@ -69,6 +70,7 @@ public class FrontController extends HttpServlet{
 		map.put("/delQna.do", new DelQnaControl());
 		map.put("/modifyQC.do", new ModifyQCControl());
 		map.put("/addQC.do", new AddQCControl());
+		map.put("myQna.do", new MyQnaControl());
 		//product
 		map.put("/prodList.do", new ProdListControl());
 		map.put("/prodAddForm.do", new ProdAddForm());

@@ -7,10 +7,11 @@ import com.yedam.qna.domain.QnaVO;
 
 public interface QnaService {
 	public List<QnaVO> qnaList(int page);
-	public List<QnaVO> myqnaList(int userId);
+	public List<QnaVO> myqnaList(String userId, int page);
 	public boolean addQna(QnaVO vo);
 	public boolean modifyQna(QnaVO vo);
 	public QnaVO getQna(int qnaId);
 	public int totalQnaCount();
+	public int myQnaCount(String uid);
 	public boolean delQna(int qnaId);
 }
