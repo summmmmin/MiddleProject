@@ -19,10 +19,21 @@ public interface SellMapper {
 	//총데이터수
 	public int getCountSell();
 	
-	//배송번호생성
-	public int insertDlvy();
 	//즉시판매
 	public int insertSell(SellVO vo);
+	//구매상태변경
+	public int setBuyId(SellVO vo);
+	
 	//판매입찰
 	public int insertSellBid(SellVO vo);
+	
+	//상태변경
+	public int cancelSell(@Param("sellId") int sellId, @Param("cancel") String cancel);
+	public int dlvySell(@Param("sellId") int sellId, @Param("sdlvy") String sdlvy);
+	public int updateBuyState(@Param("sellId") int sellId, @Param("bdlvy") String bdlvy);
+	
+	//정산계좌변경
+	public int updateAcct(@Param("sellId") int sellId, @Param("sellAccount") String sellAccount);
+	//즉시구매가
+	public SellVO selectSellPrice(SellVO vo);
 }

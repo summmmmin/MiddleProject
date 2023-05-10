@@ -1,5 +1,7 @@
 package com.yedam.buy.service;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.yedam.buy.domain.BuyVO;
@@ -12,11 +14,80 @@ public class BuyServiceImpl implements BuyService {
 	
 	@Override
 	public BuyVO getBuyPrice(BuyVO vo) {
+		//즉시판매가
 		return mapper.selectBuyPrice(vo);
 	}
 
 	@Override
-	public boolean insertSellId(int sellId, int buyId) {
-		return mapper.insertSellId(sellId, buyId)==1;
+	public boolean addBuy(BuyVO vo) {
+		// 즉시구매
+		mapper.setSellId(vo);
+		return mapper.insertBuy(vo)==2;
+	}
+
+	@Override
+	public boolean addBuyBid(BuyVO vo) {
+		// 구매입찰
+		return mapper.insertBuyBid(vo)==2;
+	}
+
+	@Override
+	public List<BuyVO> getBuyList(String userId, int page) {
+		//사용자 구매 내역
+		return mapper.selectBuyList(userId, page);
+	}
+
+	@Override
+	public int buyCount(String userId) {
+		// 사용자 구매내역 수
+		return mapper.countBuy(userId);
+	}
+
+	@Override
+	public List<BuyVO> BuyList(int page) {
+		// 전체구매내역
+		return mapper.BuyList(page);
+	}
+
+	@Override
+	public int buyTotalCount() {
+		// 전체 구매수
+		return mapper.getCountBuy();
+	}
+
+	@Override
+	public BuyVO getBuyId(int buyId) {
+		// 구매상세
+		return mapper.selectBuy(buyId);
+	}
+
+	@Override
+	public boolean cancelBuy(String state, int buyId) {
+		// 취소상태변경
+		return mapper.cancelBuy(state, buyId)==1;
+	}
+
+	@Override
+	public boolean returnBuy(String state, int buyId) {
+		// 반품상태변경
+		return mapper.returnBuy(state, buyId)==1;
+	}
+
+	@Override
+	public boolean deliveBuy(String state, int buyId) {
+		// 배송상태변경
+		return mapper.deliveBuy(state, buyId)==1;
+	}
+
+	@Override
+	public boolean modifyDlvy(BuyVO vo) {
+		// 배송지변경
+		return mapper.updateDlvy(vo)==1;
+	}
+
+	@Override
+	public boolean completeDlvy() {
+		// 배송완료
+		return mapper.completeDlvy()==1;
 	}
 }

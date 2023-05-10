@@ -19,7 +19,7 @@ public class SellVO {
 	private String sellPay;		//정산상태
 
 	private String pdtNm;		//상품이름
-	private String pdtBrand;	//브랜드
+	private String brdNm;	//브랜드
 	private String sizeSize;	//사이즈
 
 	private int dlvId;	//배송id

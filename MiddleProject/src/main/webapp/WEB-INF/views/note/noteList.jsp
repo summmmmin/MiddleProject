@@ -1,26 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <title>Shoppers &mdash; Colorlib e-Commerce Template</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
-
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-
-
-    <link rel="stylesheet" href="../css/aos.css">
-
-    <link rel="stylesheet" href="../css/style.css">
 <style>
 #text{
 }
@@ -33,9 +13,6 @@ display:inline-block
 
 }
 </style>
-
-  </head>
-  <body>
 <div class="site-section">
 <div class= container>
 <c:set var = "no" value="0"></c:set>
@@ -49,6 +26,12 @@ display:inline-block
       <th><button type="button" onclick=""class="btn btn-danger btn-sm4">전체삭제</button></th>
     </tr>
   </thead>
+  <tbody id ="list"></tbody>
+</table>
+</div>
+</div>
+<script>
+</script>
   <c:forEach var="i" items="${notelist }">
     <tr>
 		<td><c:out value="${no=no+1 }"></c:out></td>
@@ -58,17 +41,4 @@ display:inline-block
     </tr>
    </c:forEach>
    <tr>
-</table>
-</div>
-</div>
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/jquery-ui.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/main.js"></script>
-    </body>
-</html>
   
