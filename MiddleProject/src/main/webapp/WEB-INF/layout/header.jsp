@@ -28,7 +28,7 @@
                 <ul>
                   <li><a href="mypagePwForm.do"><span class="icon icon-person"></span></a></li>
                   <li><a href="wishList.do"><span class="icon icon-heart-o"></span></a></li>
-                  <li><a href="noteList.do" class="site-cart"><span class="icon icon-send"></span>
+                  <li><a href="listNote.do" class="site-cart"><span class="icon icon-send"></span>
                     <span class="count" >5</span></a></li>
                   <li>
                     <a href="#" class="site-cart">
