@@ -44,8 +44,13 @@ public class QnaServiceImpl implements QnaService {
 	}
 
 	@Override
-	public List<QnaVO> myqnaList(int userId) {
-		return mapper.myQna(userId);
+	public List<QnaVO> myqnaList(String userId, int page) {
+		return mapper.myQna(userId,page);
+	}
+
+	@Override
+	public int myQnaCount(String uid) {
+		return  mapper.getMyQnaCount(uid);
 	}
 
 

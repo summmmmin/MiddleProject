@@ -1,1 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.wish.mapper.WishMapper">
+	
+<!-- 관심상품 목록 출력 -->
+<select id="wishList" resultType="wish">
+select w.wish_id, p.pdt_nm, p.pdt_price, p.pdt_img
+from wish_lists w
+join product p ON w.pdt_id = p.pdt_id
+where w.user_id = #{userId}
+</select>
+
+
+</mapper>

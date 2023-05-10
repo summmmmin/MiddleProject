@@ -21,7 +21,7 @@ public class NoteServiceImpl implements NoteService {
 		return mapper.delNote(noteId);
 	}
 	@Override
-	public int delAllNote(int userId) {
+	public boolean delAllNote(String userId) {
 		// TODO Auto-generated method stub
 		return mapper.delAllNote(userId);
 	}

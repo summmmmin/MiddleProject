@@ -1,6 +1,7 @@
 package com.yedam.common;
 
 import java.io.IOException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,6 +29,7 @@ import com.yedam.qna.control.AddQnaControl;
 import com.yedam.qna.control.DelQnaControl;
 import com.yedam.qna.control.GetQnaControl;
 import com.yedam.qna.control.ModifyQCControl;
+import com.yedam.qna.control.MyQnaControl;
 import com.yedam.qna.control.QnaAddControl;
 import com.yedam.qna.control.QnaListControl;
 import com.yedam.sell.control.SellCancelControl;
@@ -44,9 +46,12 @@ import com.yedam.user.control.LogoutControl;
 import com.yedam.user.control.ModifyUserControl;
 import com.yedam.user.control.ModifyUserFormControl;
 import com.yedam.user.control.MypageControl;
+import com.yedam.user.control.MypagePwFormControl;
 import com.yedam.user.control.MypageViewControl;
 import com.yedam.user.control.SignUpControl;
 import com.yedam.user.control.SignUpFormControl;
+import com.yedam.user.control.UserListControl;
+import com.yedam.wish.controll.wishListControl;
 
 public class FrontController extends HttpServlet{
 	private Map<String, Control> map;
@@ -67,6 +72,7 @@ public class FrontController extends HttpServlet{
 		map.put("/delQna.do", new DelQnaControl());
 		map.put("/modifyQC.do", new ModifyQCControl());
 		map.put("/addQC.do", new AddQCControl());
+		map.put("myQna.do", new MyQnaControl());
 		//product
 		map.put("/prodList.do", new ProdListControl());
 		map.put("/prodAddForm.do", new ProdAddForm());
@@ -97,6 +103,8 @@ public class FrontController extends HttpServlet{
 		map.put("/modifyUser.do", new ModifyUserControl());
 		map.put("/modifyUserForm.do", new ModifyUserFormControl());
 		map.put("/deleteUser.do", new DeleteUserControl());
+		map.put("/userList.do", new UserListControl());
+		map.put("/mypagePwForm.do", new MypagePwFormControl());
 
 		//note
 		map.put("/noteSend.do", new NoteSendControl());
@@ -105,6 +113,14 @@ public class FrontController extends HttpServlet{
 		map.put("/delNote.do", new DelNoteControl());
 		map.put("/delAllNote.do",new DelAllNoteControl());
 		
+
+		
+		
+		
+		
+		//wish(관심상품)
+		map.put("/wishList.do",  new wishListControl());
+
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

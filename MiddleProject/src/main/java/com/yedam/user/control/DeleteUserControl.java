@@ -24,16 +24,21 @@ public class DeleteUserControl implements Control {
 			return "user/loginForm.tiles";
 		}
 
+		
 		UserService userService = UserServiceImpl.getInstance();
 		boolean result = userService.deleteUser(user);
 
-		if (result) {
+		// 비밀번호 검증
+		String inputPw = req.getParameter("user_pw");
+
+		System.out.println("user_pw " + inputPw);
+		System.out.println(user.getUserPw());
+		if (inputPw != null && inputPw.equals(user.getUserPw())) {
 			session.invalidate();
 			return "user/deleteUser.tiles";
 		} else {
-			// 비밀번호가 일치하지 않으면 삭제 실패 메시지를 출력합니다.
-			req.setAttribute("message", "비밀번호가 일치하지 않습니다.");
+			req.setAttribute("errorMsg", "비밀번호가 일치하지 않습니다.");
 			return "user/deleteUserForm.tiles";
 		}
+		}
 	}
-}

@@ -2,7 +2,6 @@ package com.yedam.user.control;
 
 import java.io.IOException;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +13,7 @@ import com.yedam.user.service.UserService;
 import com.yedam.user.service.UserServiceImpl;
 
 public class LoginControl implements Control {
-    @Override
+	@Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String userId = req.getParameter("user_id");
@@ -42,7 +41,8 @@ public class LoginControl implements Control {
                 return "main.do";
             }
         } else {
-            return "loginForm.do";
+            req.setAttribute("message", "아이디 또는 비밀번호가 틀렸습니다.");
+            return "user/loginForm.tiles";
         }
     }
 }
