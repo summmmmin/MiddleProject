@@ -26,7 +26,7 @@
             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
               <div class="site-top-icons">
                 <ul>
-                  <li><a href="mypagePw.do"><span class="icon icon-person"></span></a></li>
+                  <li><a href="mypagePwForm.do"><span class="icon icon-person"></span></a></li>
                   <li><a href="cart.html"><span class="icon icon-heart-o"></span></a></li>
                   <li><a href="noteList.do" class="site-cart"><span class="icon icon-send"></span>
                     <span class="count" >5</span></a></li>

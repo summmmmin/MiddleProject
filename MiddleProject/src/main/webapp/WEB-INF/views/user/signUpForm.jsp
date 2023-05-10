@@ -3,10 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
 .form-input-error {
-  border: 1px solid red;
+  border: 2px solid red;
 }
 </style>
-<body>
 
 	<div class="site-wrap">
 		<div class="bg-light py-3">

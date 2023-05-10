@@ -100,15 +100,15 @@ function submitForm() {
 
 //이메일관련
 function sendAuthNum() {
-	var email = document.getElementById('user_id').value; // 이메일 주소를 입력하는 input 태그의 id가 'c_email'일 경우
+	var email = document.getElementById('user_id').value; // 이메일 주소를 입력하는 input 태그의 id
 	var authNum = generateAuthNum(); // generateAuthNum 함수를 호출하여 인증번호를 생성
 	// 이메일 인증번호를 이메일로 전송
 	EmailSender.sendEmail(email, "인증번호", "인증번호는 " + authNum + "입니다.");
 	// 이메일 인증번호를 input 태그에 넣어주기
-	document.getElementById('c_code').value = authNum; // 인증번호를 입력하는 input 태그의 id가 'c_code'일 경우
+	document.getElementById('c_code').value = authNum; // 인증번호를 입력하는 input 태그
 }
 
-document.getElementById('button-addon2').addEventListener('click', sendAuthNum); // 버튼 클릭 시 sendAuthNum 함수 호출
+document.getElementById('button-addon2').addEventListener('click', sendAuthNum); // 버튼 클릭 시 sendAuthNum 호출
 
 
 //폼 빈칸x

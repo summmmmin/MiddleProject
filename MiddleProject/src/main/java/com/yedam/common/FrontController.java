@@ -1,6 +1,7 @@
 package com.yedam.common;
 
 import java.io.IOException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,9 +43,11 @@ import com.yedam.user.control.LogoutControl;
 import com.yedam.user.control.ModifyUserControl;
 import com.yedam.user.control.ModifyUserFormControl;
 import com.yedam.user.control.MypageControl;
+import com.yedam.user.control.MypagePwFormControl;
 import com.yedam.user.control.MypageViewControl;
 import com.yedam.user.control.SignUpControl;
 import com.yedam.user.control.SignUpFormControl;
+import com.yedam.user.control.UserListControl;
 
 public class FrontController extends HttpServlet{
 	private Map<String, Control> map;
@@ -91,6 +94,8 @@ public class FrontController extends HttpServlet{
 		map.put("/modifyUser.do", new ModifyUserControl());
 		map.put("/modifyUserForm.do", new ModifyUserFormControl());
 		map.put("/deleteUser.do", new DeleteUserControl());
+		map.put("/userList.do", new UserListControl());
+		map.put("/mypagePwForm.do", new MypagePwFormControl());
 
 		//note
 		map.put("/noteSend.do", new NoteSendControl());
