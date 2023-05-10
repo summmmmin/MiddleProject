@@ -7,20 +7,26 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.yedam.common.Control;
 import com.yedam.qna.domain.QCommentVO;
+import com.yedam.qna.domain.QnaVO;
 import com.yedam.qna.service.QCommentService;
 import com.yedam.qna.service.QCommentServiceImpl;
 
 public class ModifyQCControl implements Control {
 
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession();
+		QnaVO qnaInfo = (QnaVO) session.getAttribute("qnainfo");
+		int id = qnaInfo.getPostId();
 		QCommentVO vo = new QCommentVO();
-		vo.setCommentCT(req.getParameter("comment"));
-		vo.setPostId(Integer.parseInt(req.getParameter("postId")));
+		
+		vo.setPostId(id);
+		vo.setPostId(Integer.parseInt(req.getParameter("subject2")));
 		
 		QCommentService service = new QCommentServiceImpl();
 		System.out.println(vo);
@@ -32,16 +38,11 @@ public class ModifyQCControl implements Control {
 		Map<String, Object> map = new HashMap<>();
 		
 		if(result) {
-			vo = service.getComment(vo.getPostId());
-			map.put("retCode", "Success");
-			map.put("data", vo);
+			return "getQna.do?postId="+id;
 		}else {
-			map.put("retCode","Fail");
+			return "main.do";
 		}
-		Gson gson = new GsonBuilder().create();//gson 객체
-		json = gson.toJson(map);
-	
-		return json + ".json";
+
 
 	}
 
