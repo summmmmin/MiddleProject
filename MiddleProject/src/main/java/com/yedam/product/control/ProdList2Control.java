@@ -49,6 +49,7 @@ public class ProdList2Control implements Control {
 			json += "\"brdNm\":" + list.get(i).getBrdNm() + ",";
 			json += "\"genderNm\":" + list.get(i).getGenderNm() + ",";
 			json += "\"sizeNm\":" + list.get(i).getSizeNm() + "\"}";
+			System.out.println(json);
 			
 			if(i+1 != list.size()) {
 				json += ",";
@@ -58,7 +59,7 @@ public class ProdList2Control implements Control {
 			for(i = 0; i<list.size(); i++) {
 				cat += list.get(i).getCatId();
 				if(i != list.size() -1) {
-					cat += "|";
+					cat += ",";
 				}
 			}
 			
@@ -67,7 +68,7 @@ public class ProdList2Control implements Control {
 			for(i = 0; i<catArr.length; i++) {
 				cat += catArr[i];
 				if(i != catArr.length -1) {
-					cat += "|";
+					cat += ",";
 				}
 			}
 		}
