@@ -15,27 +15,30 @@ import com.yedam.qna.service.QnaService;
 import com.yedam.qna.service.QnaServiceImpl;
 import com.yedam.user.domain.UserVO;
 
-public class QnaListControl implements Control {
+public class MyQnaControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//		HttpSession session = req.getSession();
+//		UserVO userInfo = (UserVO) session.getAttribute("userinfo");
+//		String id = userInfo.getUserId();
+		String id = req.getParameter("userId");
 		String pageStr = req.getParameter("page");	
 		pageStr = pageStr ==null ? "1" : pageStr;
 		int page = Integer.parseInt(pageStr);
 		
+		System.out.println(id);
 		QnaService service = new QnaServiceImpl();
-		int total = service.totalQnaCount();
-		List<QnaVO> list = service.qnaList(page);
-		
-		
+		int total = service.myQnaCount(id);
+		System.out.println(total);
 		PageDTO dto = new PageDTO(page,total);
-		req.setAttribute("list", list);
-
+		List<QnaVO> list = service.myqnaList(id,page);
+		System.out.println(list);
+		req.setAttribute("myQna", list);
 		req.setAttribute("pageInfo", dto);
-	
-		return "qna/qnalist.tiles";
 		
-
+		
+		return "qna/myQnaList.tiles";
 	}
 
 }

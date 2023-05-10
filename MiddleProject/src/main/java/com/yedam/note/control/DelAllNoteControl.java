@@ -20,9 +20,14 @@ public class DelAllNoteControl implements Control {
 		UserVO userInfo = (UserVO) session.getAttribute("userinfo");
 		String id = userInfo.getUserId();
 		NoteService service = new NoteServiceImpl();
-		service.delAllNote(Integer.parseInt(id));
-		
-		return "noteList.do";
+		String json="";
+		if(service.delAllNote(id)) {
+			json = "{\"retCode\":\"Success\"}";
+			
+		}else {
+			json = "{\"retCode\":\"Fail\"}";
+		}
+		return json + ".json";
 	}
 
 }
