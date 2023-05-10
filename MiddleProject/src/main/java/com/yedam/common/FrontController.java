@@ -48,6 +48,7 @@ import com.yedam.user.control.MypageViewControl;
 import com.yedam.user.control.SignUpControl;
 import com.yedam.user.control.SignUpFormControl;
 import com.yedam.user.control.UserListControl;
+import com.yedam.wish.controll.wishListControl;
 
 public class FrontController extends HttpServlet{
 	private Map<String, Control> map;
@@ -103,6 +104,13 @@ public class FrontController extends HttpServlet{
 		map.put("/getNote.do", new GetNoteControl());
 		map.put("/delNote.do", new DelNoteControl());
 		map.put("/delAllNote.do",new DelAllNoteControl());
+		
+		
+		
+		
+		
+		//wish(관심상품)
+		map.put("/wishList.do",  new wishListControl());
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
