@@ -43,7 +43,10 @@ if (id == null) {
 								<div class="form-group">
 									<label for="newPassword-toggle" class="text-black">비밀번호
 										확인</label> <input type="password" class="form-control" id="user_pw"
-										name="user_pw">
+										name="user_pw" placeholder="비밀번호를 입력하세요">
+									<c:if test="${not empty errorMsg}">
+										<p style="color: red; font-size: 12px;">${errorMsg}</p>
+									</c:if>
 									<div id="password-warning"></div>
 								</div>
 							</div>
