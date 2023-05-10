@@ -19,31 +19,24 @@ import com.yedam.qna.service.QCommentServiceImpl;
 
 public class ModifyQCControl implements Control {
 
-	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession session = req.getSession();
-		QnaVO qnaInfo = (QnaVO) session.getAttribute("qnainfo");
-		int id = qnaInfo.getPostId();
+	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {		
+		String id = req.getParameter("postId"); // 	Q 번호
+		String comment = req.getParameter("subject2"); //답변 내용
 		QCommentVO vo = new QCommentVO();
 		
-		vo.setPostId(id);
-		vo.setPostId(Integer.parseInt(req.getParameter("subject2")));
+		vo.setPostId(Integer.parseInt(id));
+		vo.setCommentCT(comment);
 		
 		QCommentService service = new QCommentServiceImpl();
 		System.out.println(vo);
 		boolean result= service.modifyQcomment(vo);
 		System.out.println(result);
-		// search.
-		String json = "";
-		
-		Map<String, Object> map = new HashMap<>();
 		
 		if(result) {
 			return "getQna.do?postId="+id;
 		}else {
 			return "main.do";
 		}
-
-
 	}
 
 }

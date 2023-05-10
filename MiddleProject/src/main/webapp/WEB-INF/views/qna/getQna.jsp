@@ -37,7 +37,7 @@
             </div>
             </div>
           <hr>
-     <form method="post" action="addQC.do?postId=${qnaInfo.postId }">
+     <form method="post" id="form">
       <div class="p-3 p-lg-5 border" style="margin-top:20px">
      	<p><strong class="text-primary h4">답변</strong></p>
         <div class="border p-3 mb-5">
@@ -61,7 +61,7 @@
                  <textarea name="subject" id=comment style="width:980px;height:200px;" >답변을 작성해주세요</textarea>
           		 </c:when>
 				 <c:otherwise>
-				 <textarea name="subject2"  onclick="modifyQC()" id=comment1 style="width:980px;height:200px;" >${commentInfo.commentCT }</textarea>
+				 <textarea name="subject2" id=comment1 style="width:980px;height:200px;" >${commentInfo.commentCT }</textarea>
               	 </c:otherwise>
               	 </c:choose>
              </c:when>
@@ -72,10 +72,10 @@
             		<c:if test ="${userinfo.userGrade=='관리자' }">
             		<c:choose>
 						<c:when test="${commentInfo.commentCT == null}">
-						<button type="submit" id="addComment"  class="btn btn-danger btn-sm">답변달기</button>
+						<button id="addComment" class="btn btn-danger btn-sm" onclick="addQC()">답변달기</button>
 						</c:when>
 						<c:otherwise>
-						<button type="button" id="modifyComment" onclick="modifyQC()"  class="btn btn-danger btn-sm">수정</button>	
+						<button id="modifyComment" onclick="modifyQC()"  class="btn btn-danger btn-sm">수정</button>	
 						</c:otherwise>
 					</c:choose>
 					</c:if>
@@ -88,7 +88,9 @@
     
   </body>  
 <script>
-
+function addQC(){
+	$('#form').attr("action","addQC.do?postId=${qnaInfo.postId }").submit();
+}
 function modifyQC(){
 	$('#form').attr("action","modifyQC.do?postId=${qnaInfo.postId}").submit();
 }
