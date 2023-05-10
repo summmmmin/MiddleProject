@@ -61,7 +61,7 @@ if (id == null) {
 						<div class="col-md-6">
 							<div class="form-group text-center mt-3">
 								<button type="button" class="btn btn-secondary btn-lg btn-block"
-									onclick="history.back()">취소</button>
+									onclick="deleteUserForm.do">취소</button>
 							</div>
 						</div>
 					</div>
