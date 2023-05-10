@@ -26,7 +26,7 @@
 			line-height: 1.6;
 		}
 		img {
-			max-width: 100%;
+			max-width: 50%;
 			height: auto;
 			margin-bottom: 20px;
 		}
@@ -34,7 +34,7 @@
 </head>
 
 	<div class="container2">
-		<img src="https://www.example.com/images/delete.png" alt="탈퇴 완료 이미지">
+		<img src="http://clipart-library.com/images/dc95gpLc7.png" alt="탈퇴 완료 이미지">
 		<h1>회원 탈퇴 완료</h1>
 		<p>회원 탈퇴 처리가 완료되었습니다.</p>
 	</div>
