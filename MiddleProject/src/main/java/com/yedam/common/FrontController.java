@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.yedam.note.control.DelAllNoteControl;
 import com.yedam.note.control.DelNoteControl;
 import com.yedam.note.control.GetNoteControl;
+import com.yedam.note.control.ListNoteControl;
 import com.yedam.note.control.NoteListControl;
 import com.yedam.note.control.NoteSendControl;
 import com.yedam.product.control.AddProdControl;
@@ -113,6 +114,7 @@ public class FrontController extends HttpServlet{
 		map.put("/getNote.do", new GetNoteControl());
 		map.put("/delNote.do", new DelNoteControl());
 		map.put("/delAllNote.do",new DelAllNoteControl());
+		map.put("/listNote.do", new ListNoteControl());
 		
 
 		

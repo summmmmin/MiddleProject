@@ -23,7 +23,7 @@ public class GetQnaControl implements Control {
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String qid = req.getParameter("postId");
 		String page = req.getParameter("page");
-		
+		System.out.println(qid);
 		QnaService service = new QnaServiceImpl();
 		QnaVO vo = service.getQna(Integer.parseInt(qid));
 		QCommentService service2 = new QCommentServiceImpl();
