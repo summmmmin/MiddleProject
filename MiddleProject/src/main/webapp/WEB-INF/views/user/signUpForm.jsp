@@ -26,7 +26,7 @@
 					<h2 class="h3 mb-3 text-black">회원가입</h2>
 
 					<form action="signUp.do" method="post"
-						onsubmit="return validateForm()">
+						onsubmit="return validateForm() && redForm();">
 
 						<div class="p-3 p-lg-5 border">
 							<div class="form-group row">
@@ -34,7 +34,7 @@
 									<label for="c_email" class="text-black">이메일 <span
 										class="text-danger">*</span></label> <input type="email"
 										class="form-control" id="user_id" name="user_id"
-										placeholder="">
+										placeholder="" required>
 									<div id="email-duplicate-message" style="color: red;"></div>
 								</div>
 							</div>
@@ -60,17 +60,15 @@
 									<label for="c_pw" class="text-black">비밀번호 <span
 										class="text-danger">*</span></label> <input type="password"
 										class="form-control" id="user_pw" name="user_pw"
-										placeholder="최소 8자 이상이어야 합니다." required>
+										placeholder="최소 8자 이상이어야 합니다.">
 								</div>
 								<div class="col-md-6">
 									<label for="c_pw2" class="text-black">비밀번호 확인 <span
 										class="text-danger">*</span></label> <input type="password"
-										class="form-control" id="c_pw2" name="c_pw2" required>
+										class="form-control" id="c_pw2" name="c_pw2">
 								</div>
 							</div>
 							<div id="password-warning"></div>
-
-
 							<div class="form-group row">
 								<div class="col-md-6">
 									<label for="c_name" class="text-black">이름 </label> <input
@@ -104,4 +102,4 @@
 		</div>
 	</div>
 </div>
-<script src="js/custom.js"></script>
+<script src="js/signUp.js"></script>
