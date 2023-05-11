@@ -18,6 +18,9 @@ import com.yedam.common.Control;
 import com.yedam.product.domain.ProdVO;
 import com.yedam.product.service.ProdService;
 import com.yedam.product.service.ProdServiceImpl;
+import com.yedam.sell.domain.SellVO;
+import com.yedam.sell.service.SellService;
+import com.yedam.sell.service.SellServiceImpl;
 import com.yedam.size.domain.SizeVO;
 import com.yedam.size.service.SizeService;
 import com.yedam.size.service.SizeServiceImpl;
@@ -66,7 +69,20 @@ public class GetProdControl implements Control {
 			priceList.add(buy);
 		}
 		req.setAttribute("priceList", priceList);
-
+		
+		// 즉시구매가
+		SellService sellService = new SellServiceImpl();
+		List<SellVO> priceBuy = new ArrayList<SellVO>();
+		SellVO sell = new SellVO();
+		for (int i = 0; i < sizeList.size(); i++) {
+			sell = new SellVO();
+			sell.setPdtId(vo.getPdtId());
+			sell.setSizeId(sizeList.get(i).getSizeId());
+			sell = sellService.getSellPrice(sell);
+			priceBuy.add(sell);
+		}
+		req.setAttribute("priceBuy", priceBuy);		
+		
 		return "product/prodGet.tiles";
 	}
 
