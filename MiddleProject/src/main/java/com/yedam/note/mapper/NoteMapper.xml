@@ -3,8 +3,16 @@
 <mapper namespace="com.yedam.note.mapper.NoteMapper">
 	
 	<!-- 쪽지 리스트. -->
-	<select id="noteList" resultType="note">
-	select * from note where user_id=#{userId} order by note_id desc 
+	<select id="noteList">
+	<![CDATA[
+	select b.* 
+  	from(select rownum rn, a.*
+       	 from (select * from note
+       	 	where user_id=#{userId}
+             order by note_id desc) a
+      	 where rownum <= #{page}*10 )b
+  	where b.rn > (#{page} - 1) * 10
+  	]]>
 	</select>
 	
 	 <!-- 쪽지 단일삭제. -->
@@ -28,9 +36,14 @@
   	 values(note_id_seq.nextval,#{userId},#{postCT})
 	 </insert>
 	 
-	  <!-- 모든 아이디. -->
-	  <select id="allUser">
-	  select user_id from users
-	  </select>
+	 <!-- 나의 쪽지 수. -->
+	 <select id="getNoteCount">
+  	 select count(*) from note where user_id=#{userId}
+  	 </select>	
+	 
+	 <!-- 모든 아이디. -->
+	 <select id="allUser">
+	 select user_id from users
+	 </select>
 	 
 </mapper>
