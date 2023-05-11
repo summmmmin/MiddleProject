@@ -16,4 +16,16 @@ public class WishServiceImpl implements WishService {
 	public List<WishVO> wishList(String userId) {
 		return mapper.wishList(userId);
 	}
+	
+	@Override
+	public boolean deletewishList(int wishId) {
+		return mapper.deletewishList(wishId) == 1;
+		
+	}
+	
+	@Override
+	public boolean addwishList(WishVO wish) {
+	    return mapper.addwishList(wish);
+	}
+
 }
