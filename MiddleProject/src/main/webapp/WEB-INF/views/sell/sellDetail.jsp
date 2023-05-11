@@ -214,7 +214,7 @@ pageEncoding="UTF-8"%>
   })
   .then(resolve=>resolve.json())
   .then(result=>{
-	  //console.log(result);
+	  console.log(result);
 	  document.getElementById("sellNo").children[1].innerText=result.sellId;
 	  document.getElementById("sellNo").children[3].children[0].innerText=result.sellDate;
 	  document.getElementById("acct").children[1].children[1].innerText=result.sellAccount;
