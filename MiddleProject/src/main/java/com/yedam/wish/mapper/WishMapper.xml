@@ -8,15 +8,6 @@
 	join product p ON w.pdt_id = p.pdt_id
 	where w.user_id = #{userId}
 	</select>
-	<!-- db컬럼명-java변수명 이름매칭 -->	
-	<resultMap id="wishResultMap" type="com.yedam.wish.domain.WishVO">
-    <id property="wishId" column="wish_id"/>
-    <result property="userId" column="user_id"/>
-    <result property="pdtId" column="pdt_id"/>
-    <result property="wishDate" column="wish_date"/>
-    <result property="pdtNm" column="pdt_nm"/>
-    <result property="pdtImg" column="pdt_img"/>
-    <result property="pdtPrice" column="pdt_price"/>
-</resultMap>
+
 	
 </mapper>

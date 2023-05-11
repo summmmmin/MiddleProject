@@ -7,5 +7,6 @@ import com.yedam.wish.domain.WishVO;
 
 public interface WishMapper {
 	public List<WishVO> wishList(String userId);
+	public int deletewishList(int wishId);
 
 }
