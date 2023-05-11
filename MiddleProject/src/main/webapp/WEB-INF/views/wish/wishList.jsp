@@ -40,12 +40,14 @@
 									<c:otherwise>
 										<c:forEach var="item" items="${wishlist}">
 											<tr>
-												<td class="product-thumbnail"><img src="${item.pdtImg}"
-													alt="Image" class="img-fluid"></td>
+												<td class="product-thumbnail"><a
+													href="getProd.do?pid=${item.pdtId}"> <img
+														src="${item.pdtImg}" alt="Image" class="img-fluid">
+												</a></td>
 												<td class="product-name">
 													<h2 class="h5 text-black">
-														<a href="getProd.do?&pid=${item.pdtId}">
-															${item.pdtNm} </a>
+														<a href="getProd.do?&pid=${item.pdtId}"> ${item.pdtNm}
+														</a>
 													</h2>
 
 												</td>
