@@ -4,7 +4,7 @@
 
 <style>
   .sidebar {
-    position: fixed;
+    position: sticky;
     top: 50%;
     left: 20px;
     transform: translateY(-50%);
@@ -12,6 +12,8 @@
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+        width: 200px;
+    
   }
 
   .sidebar a {
@@ -29,18 +31,6 @@
   }
 </style>
 
-
-<div class="sidebar">
-  <a href="#">내 정보 보기</a>
-  <a href="wishList.do">관심상품</a>
-  <a href="#">구매내역</a>
-  <a href="#">판매내역</a>
-  <a href="#">나의 Q&A</a>
-  <a href="#">받은 쪽지함</a>
-  <a href="#">나의 리뷰</a>
-</div>
-
-
     <div class="site-wrap">
         <div class="bg-light py-3">
             <div class="container">
@@ -55,8 +45,20 @@
 
 		<div class="site-section">
 			<div class="container">
+			  <div class="row">
+    <div class="col-md-3">
+      <div class="sidebar">
+        <a href="#">내 정보 보기</a>
+        <a href="wishList.do">관심상품</a>
+        <a href="#">구매내역</a>
+        <a href="#">판매내역</a>
+        <a href="#">나의 Q&A</a>
+        <a href="#">받은 쪽지함</a>
+        <a href="#">나의 리뷰</a>
+      </div>
+    </div>
 				<div class="row justify-content-md-center">
-					<div class="col-md-7">
+					<div class="col-md-9">
 						<h2 class="h3 mb-3 text-black">내 정보</h2>
 
 						<form action="mypageView.do" method="post">

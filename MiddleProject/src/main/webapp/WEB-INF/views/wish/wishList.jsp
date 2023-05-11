@@ -68,4 +68,4 @@
 		</div>
 	</div>
 </div>
-<!-- <script src="js/DeleteWishList.js"></script> -->
+<script src="js/DeleteWishList.js"></script>
