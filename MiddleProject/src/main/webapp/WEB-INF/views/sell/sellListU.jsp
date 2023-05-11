@@ -34,15 +34,6 @@ prefix="c" %>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>1</td>
-                <td>2023-05-04</td>
-                <td>물건이름</td>
-                <td>300</td>
-                <td>5000</td>
-                <td>정산완료</td>
-              </tr>
               <c:forEach var="sell" items="${list }">
                 <tr>
                   <th scope="row"><c:out value="${no=no+1 }"></c:out></th>
@@ -77,7 +68,7 @@ prefix="c" %>
           <ul>
             <li>
               <c:if test="${pageInfo.prev}">
-                <a href="prodList.do?page=${pageInfo.startPage-1}">&lt;</a>
+                <a href="sellListU.do?page=${pageInfo.startPage-1}">&lt;</a>
               </c:if>
             </li>
             <c:forEach
@@ -86,12 +77,12 @@ prefix="c" %>
               end="${pageInfo.endPage}"
             >
               <li class="${i == pageInfo.pageNum ? 'active' : ''}">
-                <a href="prodList.do?page=${i}">${i}</a>
+                <a href="sellListU.do?page=${i}">${i}</a>
               </li>
             </c:forEach>
             <li>
               <c:if test="${pageInfo.next}">
-                <a href="prodList.do?page=${pageInfo.endPage+1}">&gt;</a>
+                <a href="sellListU.do?page=${pageInfo.endPage+1}">&gt;</a>
               </c:if>
             </li>
           </ul>

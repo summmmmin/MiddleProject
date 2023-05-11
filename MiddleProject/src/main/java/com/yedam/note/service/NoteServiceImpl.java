@@ -13,8 +13,8 @@ public class NoteServiceImpl implements NoteService {
 	SqlSession session = DataSource.getInstance().openSession(true);
 	NoteMapper mapper = session.getMapper(NoteMapper.class);
 	@Override
-	public List<NoteVO> noteList(String userId) {
-		return mapper.noteList(userId);
+	public List<NoteVO> noteList(String userId, int page) {
+		return mapper.noteList(userId,page);
 	}
 	@Override
 	public boolean delNote(int noteId) {
@@ -39,6 +39,10 @@ public class NoteServiceImpl implements NoteService {
 	public UserVO allUser() {
 		// TODO Auto-generated method stub
 		return mapper.allUser();
+	}
+	@Override
+	public int myNoteCount(String uid) {
+		return mapper.getNoteCount(uid);
 	}
 
 }
