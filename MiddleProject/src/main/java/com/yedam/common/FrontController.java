@@ -12,9 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.buy.control.BuyCancelControl;
+import com.yedam.buy.control.BuyDetailControl;
 import com.yedam.buy.control.BuyGetControl;
 import com.yedam.buy.control.BuyListUControl;
 import com.yedam.buy.control.BuyReturnControl;
+import com.yedam.buy.control.ModifyDlvy;
 import com.yedam.note.control.DelAllNoteControl;
 import com.yedam.note.control.DelNoteControl;
 import com.yedam.note.control.GetNoteControl;
@@ -120,9 +122,9 @@ public class FrontController extends HttpServlet{
 		map.put("/delAllNote.do",new DelAllNoteControl());
 		map.put("/listNote.do", new ListNoteControl());
 		
-		
+		map.put("/modifyDlvy.do", new ModifyDlvy());
 		map.put("/buyReturn.do", new BuyReturnControl());
-		
+		map.put("/buyDetail.do", new BuyDetailControl());
 		
 		//wish(관심상품)
 		map.put("/wishList.do",  new wishListControl());

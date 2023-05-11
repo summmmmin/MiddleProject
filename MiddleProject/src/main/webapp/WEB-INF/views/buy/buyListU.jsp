@@ -78,7 +78,7 @@ prefix="c" %>
           <ul>
             <li>
               <c:if test="${pageInfo.prev}">
-                <a href="prodList.do?page=${pageInfo.startPage-1}">&lt;</a>
+                <a href="buyListU.do?page=${pageInfo.startPage-1}">&lt;</a>
               </c:if>
             </li>
             <c:forEach
@@ -87,12 +87,12 @@ prefix="c" %>
               end="${pageInfo.endPage}"
             >
               <li class="${i == pageInfo.pageNum ? 'active' : ''}">
-                <a href="prodList.do?page=${i}">${i}</a>
+                <a href="buyListU.do?page=${i}">${i}</a>
               </li>
             </c:forEach>
             <li>
               <c:if test="${pageInfo.next}">
-                <a href="prodList.do?page=${pageInfo.endPage+1}">&gt;</a>
+                <a href="buyListU.do?page=${pageInfo.endPage+1}">&gt;</a>
               </c:if>
             </li>
           </ul>
@@ -143,6 +143,7 @@ prefix="c" %>
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
+
 	$(document).on("click", ".cancelBtn", function () {
 	    let cancelId = $(this).data('id');
 	    $("#cancelCheck").on("click", function(){
