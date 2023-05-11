@@ -2,6 +2,45 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<style>
+  .sidebar {
+    position: fixed;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    background-color: #f1f1f1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .sidebar a {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+  }
+
+  .sidebar a:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+</style>
+
+
+<div class="sidebar">
+  <a href="#">내 정보 보기</a>
+  <a href="wishList.do">관심상품</a>
+  <a href="#">구매내역</a>
+  <a href="#">판매내역</a>
+  <a href="#">나의 Q&A</a>
+  <a href="#">받은 쪽지함</a>
+  <a href="#">나의 리뷰</a>
+</div>
+
+
     <div class="site-wrap">
         <div class="bg-light py-3">
             <div class="container">
@@ -18,7 +57,7 @@
 			<div class="container">
 				<div class="row justify-content-md-center">
 					<div class="col-md-7">
-						<h2 class="h3 mb-3 text-black">회원정보 변경</h2>
+						<h2 class="h3 mb-3 text-black">내 정보</h2>
 
 						<form action="mypageView.do" method="post">
 							<div class="p-3 p-lg-5 border">
