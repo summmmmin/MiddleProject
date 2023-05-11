@@ -42,7 +42,12 @@
 
 <!-- 유저리스트 -->
 <select id="userList">
-	select * from users;
+	select * from users
 </select>
 
+<!-- 카카오 유저 회원가입 -->
+<insert id="kakaoSignUp" parameterType="com.yedam.user.domain.UserVO">
+    INSERT INTO users (user_id, user_pw, user_nm, user_phone, user_add) 
+    VALUES (#{userId}, #{userPw}, #{userNm}, #{userPhone}, #{userAdd})
+</insert>
 </mapper>

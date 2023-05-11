@@ -48,6 +48,8 @@ import com.yedam.sell.control.SellListUControl;
 import com.yedam.sell.control.SellPriceControl;
 import com.yedam.user.control.DeleteUserControl;
 import com.yedam.user.control.DeleteUserFormControl;
+import com.yedam.user.control.KakaoLoginControl;
+import com.yedam.user.control.KakaoUserControl;
 import com.yedam.user.control.LoginControl;
 import com.yedam.user.control.LoginFormControl;
 import com.yedam.user.control.LogoutControl;
@@ -98,6 +100,8 @@ public class FrontController extends HttpServlet{
 		map.put("/signUpForm.do", new SignUpFormControl());
 		map.put("/login.do", new LoginControl());
 		map.put("/signUp.do", new SignUpControl());
+		map.put("/kakaoLogin.do", new KakaoLoginControl());
+		map.put("/kakaoUser.do", new KakaoUserControl());
 		//sell
 		map.put("/sellListU.do", new SellListUControl());
 		map.put("/sellGet.do", new SellGetControl());

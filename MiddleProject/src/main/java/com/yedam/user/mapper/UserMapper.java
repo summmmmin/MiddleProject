@@ -13,6 +13,8 @@ public interface UserMapper {
 	public int modifyUser(UserVO vo);
 	
 	public List<UserVO> userList();
+	public UserVO getUserInfo(String userId);
+	public int kakaoSignUp(UserVO vo);
 
 
 }
