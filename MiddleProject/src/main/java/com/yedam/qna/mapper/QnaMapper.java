@@ -17,4 +17,5 @@ public interface QnaMapper {
 	public int getQnaCount(); // qna 총 개수
 	public int getMyQnaCount(String userId); // myqna 총 개수
 	public int deleteQna(int qid); //qna 지우기
+
 }
