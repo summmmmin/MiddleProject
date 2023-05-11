@@ -27,17 +27,16 @@ public class SellListUControl implements Control {
 	    }
 		String pageStr = req.getParameter("page");
 		String userId = user.getUserId();
-		
+		System.out.println(userId);
 		pageStr = pageStr == null? "1":pageStr;
 		int page = Integer.parseInt(pageStr);
 		
 		SellService service = new SellServiceImpl();
-		int total = service.sellCount(userId);		
-		List<SellVO> list = service.getSellList(userId, page);
+		int total = service.sellCount(userId);		List<SellVO> list = service.getSellList(userId, page);
 		PageDTO dto = new PageDTO(page, total);
 		req.setAttribute("pageInfo", dto);
 		req.setAttribute("list", list);
-		
+		System.out.println(total);
 		return "sell/sellListU.tiles";
 	}
 

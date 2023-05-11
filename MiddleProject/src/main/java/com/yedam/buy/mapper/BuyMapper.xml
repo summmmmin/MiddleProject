@@ -63,7 +63,7 @@
 	</update>
 	
 	<update id="returnBuy">
-	  update buy set buy_return=#{buyReturn} where buy_id=#{buyId}
+	  update buy set buy_return={buyReturn} where buy_id=#{buyId}
 	</update>
 	
 	<update id="deliveBuy">

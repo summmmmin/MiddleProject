@@ -7,7 +7,6 @@
     white-space: nowrap;
     overflow: hidden;
 }
-
 .table
 #tlist{
 
@@ -21,13 +20,13 @@
 <div class= container>
 <c:set var = "no" value="0"></c:set>
 <h3>쪽지함</h3>
-<table class="table table-striped" style="width:1000px;">
+<table class="table table-striped" style="width:800px;">
   <thead>
     <tr>
       <th scope="col" class ="text-primary" >No.</th>
       <th scope="col" class ="text-primary">내용</th>
-      <th  scope="col" class ="text-primary" style="width:140px;">DATE</th>
-      <th><button type="button" onclick="" class="btn btn-danger btn-sm4">전체삭제</button></th>
+      <th scope="col" class ="text-primary">DATE</th>
+      <th><button type="button" onclick=""class="btn btn-danger btn-sm4">전체삭제</button></th>
     </tr>
   </thead>
   
@@ -35,29 +34,14 @@
  	
 	</tbody>
 </table>
-<div class="center">
-    <div class="pagination justify-content-center">
-		<c:if test="${pageInfo.prev }">
-			<a  class="page-link" href="listNote.do?page=${pageInfo.startPage-1 }">Previous</a>
-		</c:if>
-		<c:forEach var="i" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
-			<a  class="page-link" class="${i == pageInfo.pageNum ? 'active' : '' }" href="listNote.do?page=${i }">${i } </a>
-		</c:forEach>
-		<c:if test="${pageInfo.next }">
-			<a  class="page-link" href="listNote.do?page=${pageInfo.endPage+1 }">Next</a>
-		</c:if>
-	</div>
-</div>
 </div>
 </div>
 
 
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
 <script>
 
 console.log('${userinfo.userId}');
-
-
 
 let xhtp = new XMLHttpRequest(); //Ajax 호출.
 xhtp.open('get','noteList.do');
@@ -67,6 +51,7 @@ xhtp.onload = function(){
 	console.log(xhtp.response);
 	let result = JSON.parse(xhtp.response);
 	console.log(result);
+	console.log(result.length);
 	let tlist = document.getElementById('tlist');  
 		for (let i=0; i<result.length;i++){
 			let tr = document.createElement('tr');
@@ -76,9 +61,8 @@ xhtp.onload = function(){
 			tr.append(td);
 			
 			td = document.createElement('td');
-			td.id= result[i].noteId;
+			td.id='ss';
 			td.innerText = result[i].noteCT;
-		
 			tr.append(td);
 			
 			td = document.createElement('td');
@@ -87,28 +71,11 @@ xhtp.onload = function(){
 			
 			let btn = document.createElement('button');
 			btn.addEventListener('click', function(){
-				btn.parentElement.parentElement.remove(); // 제거
-				console.log(btn.parentElement.parentElement);
+				fetch('delNote.do')
+				.then( resolve => resolve.json() ) 
 				
-				let 삭제글번호 = result[i].noteId;
-				console.log(삭제글번호);
-				let xhtp = new XMLHttpRequest();
-				xhtp.open('post','delNote.do');
-				xhtp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-				xhtp.send('noteId=' + 삭제글번호);// 요청방식post일 경우에 parameter를 send() 포함.
-
-				xhtp.onload = function(){
-					let result = JSON.parse(xhtp.response);
-					if(result.retCode== 'Success'){
-						alert('삭제완료')
-						btn.parentElement.parentElement.remove();
-					}else if(result.retCode== 'Fail'){
-						alert('처리중 에러발생');
-
-					}else{
-						alert('알수없는 결과값입니다.');
-					}
-				}		
+				btn.parentElement.parentElement.remove(); // 제거
+				
 			});
 			btn.innerText = '삭제';
 			td = document.createElement('td');
@@ -116,13 +83,11 @@ xhtp.onload = function(){
 			tr.append(td);
 			
 			tlist.append(tr);
-		
+			
 			
 		}
 		
 	}
-	
-	
 			
 </script>
   

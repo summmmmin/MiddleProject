@@ -16,12 +16,7 @@ public class BuyVO {
 	private int buyFincost;		//결제금액
 	private int buyPoint;		//사용포인트
 	private String buyReturn;		//반품
-	
-	private String pdtNm;		//상품이름
-	private String brdNm;	//브랜드
-	private String sizeSize;	//사이즈
-	private String pdtImg;
-	
+	 
 	private int dlvId;	//배송id
 	private String dlvName; //주문자이름
 	private String dlvPhone; //주문자폰

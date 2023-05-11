@@ -38,6 +38,9 @@
 			<a  class="page-link" href="myQna.do?page=${pageInfo.endPage+1 }">Next</a>
 		</c:if>
 	</div>
+	<div class="d-flex justify-content-end">
+		 <p><a href="addQna.do" class="btn btn-sm btn-primary" >Q&A 등록</a></p>
+	</div>
 </div>
 </div>
 </div>
