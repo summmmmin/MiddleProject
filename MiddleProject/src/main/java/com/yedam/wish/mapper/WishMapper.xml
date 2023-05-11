@@ -8,6 +8,9 @@
 	join product p ON w.pdt_id = p.pdt_id
 	where w.user_id = #{userId}
 	</select>
-
 	
+	<!-- 관심상품 삭제 -->
+	<delete id="deletewishList" parameterType="com.yedam.wish.domain.WishVO">
+		delete from wish_lists where wish_id=#{wishId}
+	</delete>
 </mapper>

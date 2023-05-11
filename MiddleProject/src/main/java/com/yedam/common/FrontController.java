@@ -52,7 +52,9 @@ import com.yedam.user.control.MypageViewControl;
 import com.yedam.user.control.SignUpControl;
 import com.yedam.user.control.SignUpFormControl;
 import com.yedam.user.control.UserListControl;
-import com.yedam.wish.control.wishListControl;
+import com.yedam.wish.control.WishListControl;
+import com.yedam.wish.control.DeletewishList;
+import com.yedam.wish.control.AddwishList;
 
 public class FrontController extends HttpServlet{
 	private Map<String, Control> map;
@@ -122,7 +124,9 @@ public class FrontController extends HttpServlet{
 		
 		
 		//wish(관심상품)
-		map.put("/wishList.do",  new wishListControl());
+		map.put("/wishList.do",  new WishListControl());
+		map.put("/deletewishList.do", new DeletewishList());
+		map.put("/addwishList.do", new AddwishList());
 
 	}
 	@Override

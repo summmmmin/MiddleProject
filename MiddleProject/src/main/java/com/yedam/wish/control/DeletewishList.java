@@ -12,7 +12,7 @@ import com.yedam.user.domain.UserVO;
 import com.yedam.wish.service.WishService;
 import com.yedam.wish.service.WishServiceImpl;
 
-public class wishListDelete implements Control {
+public class DeletewishList implements Control {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
