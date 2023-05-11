@@ -136,7 +136,7 @@
                                                                             // 서버 응답 처리
                                                                             console
                                                                                 .log(xhr.responseText);
-                                                                            window.location.href = 'main.do';
+                                                                            //window.location.href = 'main.do';
                                                                         }
                                                                     };
 
