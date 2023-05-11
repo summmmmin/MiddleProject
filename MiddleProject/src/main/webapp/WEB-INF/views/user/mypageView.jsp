@@ -3,62 +3,57 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <style>
-  .sidebar {
-    position: sticky;
-    top: 50%;
-    left: 20px;
-    transform: translateY(-50%);
-    background-color: #f1f1f1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-        width: 200px;
-    
-  }
+.sidebar {
+	position: sticky;
+	top: 50%;
+	left: 20px;
+	transform: translateY(-50%);
+	background-color: #f1f1f1;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	width: 200px;
+}
 
-  .sidebar a {
-    display: block;
-    margin-bottom: 10px;
-    color: #333;
-    text-decoration: none;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 5px;
-  }
+.sidebar a {
+	display: block;
+	margin-bottom: 10px;
+	color: #333;
+	text-decoration: none;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 5px;
+}
 
-  .sidebar a:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-  }
+.sidebar a:last-child {
+	border-bottom: none;
+	margin-bottom: 0;
+}
 </style>
 
-    <div class="site-wrap">
-        <div class="bg-light py-3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 mb-0">
-                        <a href="main.do">Home</a> <span class="mx-2 mb-0">/</span> <strong
-                            class="text-black">Mypage</strong>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="site-wrap">
+	<div class="bg-light py-3">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 mb-0">
+					<a href="main.do">Home</a> <span class="mx-2 mb-0">/</span> <strong
+						class="text-black">Mypage</strong>
+				</div>
+			</div>
+		</div>
+	</div>
 
-		<div class="site-section">
-			<div class="container">
-			  <div class="row">
-    <div class="col-md-3">
-      <div class="sidebar">
-        <a href="#">내 정보 보기</a>
-        <a href="wishList.do">관심상품</a>
-        <a href="#">구매내역</a>
-        <a href="#">판매내역</a>
-        <a href="#">나의 Q&A</a>
-        <a href="#">받은 쪽지함</a>
-        <a href="#">나의 리뷰</a>
-      </div>
-    </div>
+	<div class="site-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar">
+						<a href="#">내 정보 보기</a> <a href="wishList.do">관심상품</a> <a href="#">구매내역</a>
+						<a href="#">판매내역</a> <a href="#">나의 Q&A</a> <a href="#">받은 쪽지함</a>
+						<a href="#">나의 리뷰</a>
+					</div>
+				</div>
 				<div class="row justify-content-md-center">
-					<div class="col-md-9">
+					<div class="col-md-12">
 						<h2 class="h3 mb-3 text-black">내 정보</h2>
 
 						<form action="mypageView.do" method="post">
@@ -109,7 +104,7 @@
 								<div class="form-group row">
 									<div class="col-md-6">
 										<input type="button" class="btn btn-primary btn-lg btn-block"
-											value="수정" onclick="location.href='modifyUserForm.do'" >
+											value="수정" onclick="location.href='modifyUserForm.do'">
 									</div>
 									<div class="col-md-6">
 										<input type="button" class="btn btn-danger btn-lg btn-block"
@@ -123,3 +118,4 @@
 			</div>
 		</div>
 	</div>
+</div>

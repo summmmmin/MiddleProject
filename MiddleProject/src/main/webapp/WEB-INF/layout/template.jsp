@@ -36,6 +36,8 @@
 	<tiles:insertAttribute name="body"></tiles:insertAttribute>
 	<!-- footer --> 
 	<tiles:insertAttribute name="footer"></tiles:insertAttribute>
+	<!-- top -->
+	<tiles:insertAttribute name="top"></tiles:insertAttribute>
     
   </div>
 
