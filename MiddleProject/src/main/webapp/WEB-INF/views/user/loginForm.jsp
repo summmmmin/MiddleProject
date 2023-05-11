@@ -16,6 +16,15 @@
 		display: inline-block;
 		vertical-align: middle;
 	}
+	
+	#btn1{
+	margin-left:13px;
+	padding:10px;
+	}
+	
+	#btn2{
+	padding:11px 14px 11px 14px;
+	}
 
 	#login-buttons {
 		display: flex;
@@ -61,8 +70,8 @@
 
 									</div>
 									<div id="login-buttons">
-										<span><a href="signUpForm.do" class="btn btn-primary">회원가입</a></span>
-										<span><button type="submit" class="btn btn-primary">로그인</button></span>
+										<span><a href="signUpForm.do" class="btn btn-primary" id="btn1">회원가입</a></span>
+										<span><button type="submit" class="btn btn-primary" id="btn2">로그인</button></span>
 									</div>
 								</form>
 								<form style="text-align: center;">

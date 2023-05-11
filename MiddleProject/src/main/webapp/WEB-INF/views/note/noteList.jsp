@@ -1,11 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<style>
+ #ss{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.table
+#tlist{
+
+}
+#ss2{
+} 
+</style>
+
+
 <div class="site-section">
 <div class= container>
 <c:set var = "no" value="0"></c:set>
 <h3>쪽지함</h3>
-<table class="table table-striped">
+<table class="table table-striped" style="width:800px;">
   <thead>
     <tr>
       <th scope="col" class ="text-primary" >No.</th>
@@ -21,30 +36,33 @@
 </table>
 </div>
 </div>
+
+
+
 <script>
 
-
+console.log('${userinfo.userId}');
 
 let xhtp = new XMLHttpRequest(); //Ajax 호출.
-xhtp.open('get','noteList.do?userId=${userInfo.userId}');
+xhtp.open('get','noteList.do');
 xhtp.send();
 xhtp.onload = function(){
+
 	console.log(xhtp.response);
-
 	let result = JSON.parse(xhtp.response);
+	console.log(result);
+	console.log(result.length);
 	let tlist = document.getElementById('tlist');  
-
 		for (let i=0; i<result.length;i++){
 			let tr = document.createElement('tr');
 			let td = document.createElement('td');
-			td.innerText = result[i].i;
-			
-			td = document.createElement('td');
-			td.innerText = result[i].noteCT;
+			let div = document.createElement('div');
+			td.innerText = i+1;
 			tr.append(td);
 			
 			td = document.createElement('td');
-			td.innerText = result[i].noteDate;
+			td.id='ss';
+			td.innerText = result[i].noteCT;
 			tr.append(td);
 			
 			td = document.createElement('td');
@@ -68,7 +86,6 @@ xhtp.onload = function(){
 			
 			
 		}
-		
 		
 	}
 			

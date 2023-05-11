@@ -26,20 +26,20 @@ public class NoteListControl implements Control {
 		System.out.println(id);
 		NoteService service = new NoteServiceImpl();
 		System.out.println(id);
-		String json = "";
+		String json = "[";
 		List<NoteVO> list = service.noteList(id);		
 		for(int i = 0 ; i<list.size();i++) {
-			json +="{\"userId\":"+list.get(i).getUserId() + ",";
-			json += "\"noteId\":\"" + list.get(i).getNoteId() + "\",";
-			json += "\"noteCT\":" + list.get(i).getNoteCT() +",";
-			json += "\"noteDate\":" + list.get(i).getNoteDate()  + ",";
-			json += "\"noteView\" :\"" + list.get(i).getNoteView() + "\"}";
+			json +="{\"userId\":\""+list.get(i).getUserId() + "\",";
+			json += "\"noteId\":" + list.get(i).getNoteId() + ",";
+			json += "\"noteCT\":\"" + list.get(i).getNoteCT() +"\",";
+			json += "\"noteDate\":\"" + list.get(i).getNoteDate()  + "\",";
+			json += "\"noteView\" :" + list.get(i).getNoteView() + "}";
 		
 			if(i+1 != list.size()) {
 				json += ",";
 			}
 		}
-		json +="";
+		json +="]";
 		System.out.println(json);
 		return json + ".json";
 	}
