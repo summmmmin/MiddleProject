@@ -274,6 +274,9 @@ pageEncoding="UTF-8"%>
         	      document.getElementById('table').replaceChild(template, tbody);
         	      })
     	      }
+    	if(dlv.buyDlvy == '배송완료'){
+    		
+    	}
     	tbody.children[1].children[1].innerText=dlv.dlvName;
     	tbody.children[2].children[1].innerText=dlv.dlvPhone;
     	tbody.children[3].children[1].innerText=dlv.dlvAddr;
