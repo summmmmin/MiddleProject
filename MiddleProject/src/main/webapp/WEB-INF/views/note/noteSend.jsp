@@ -6,7 +6,7 @@
       <div class="container">
         <div class="row justify-content-md-center">
           <div class="col-md-7">
-            <h2 class="h3 mb-3 text-black">쪽지보내ㄱ</h2>
+            <h2 class="h3 mb-3 text-black">쪽지보내기</h2>
 
 			<form action="noteSend.do" method="post" enctype="multipart/form-data">
 			 <div class="p-3 p-lg-5 border">
