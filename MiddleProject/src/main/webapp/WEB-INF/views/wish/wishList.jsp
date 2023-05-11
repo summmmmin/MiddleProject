@@ -58,3 +58,4 @@
 		</div>
 	</div>
 </div>
+<script src="js/DeleteWishList.js" ></script>

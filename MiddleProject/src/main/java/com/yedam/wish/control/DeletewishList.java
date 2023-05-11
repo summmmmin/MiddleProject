@@ -30,7 +30,7 @@ public class DeletewishList implements Control {
 		WishService service = new WishServiceImpl();
 		service.deletewishList(Integer.parseInt(wishId));
 		
-		return "wishList.do";
+		return "redirect:wishList.do";
 	}
 
 }
