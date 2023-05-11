@@ -6,7 +6,8 @@
   <definition name="midproject" template="/WEB-INF/layout/template.jsp">
   	<put-attribute name="header" value="/WEB-INF/layout/header.jsp"></put-attribute>
   	<put-attribute name="body" value="/WEB-INF/layout/body.jsp"></put-attribute> 
-  	<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp"></put-attribute>    
+  	<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp"></put-attribute> 
+  	<put-attribute name="top" value="/WEB-INF/layout/top.jsp"></put-attribute>   
   </definition>
   
   <definition name="WILDCARD:*/*" extends="midproject">

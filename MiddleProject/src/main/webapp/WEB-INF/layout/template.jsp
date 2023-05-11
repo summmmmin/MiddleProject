@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="css/aos.css">
 
     <link rel="stylesheet" href="css/style.css">
-    
+    <link rel="stylesheet" href="css/sidebar.css">
   </head>
   <body>  
   <div class="site-wrap">
@@ -36,6 +36,8 @@
 	<tiles:insertAttribute name="body"></tiles:insertAttribute>
 	<!-- footer --> 
 	<tiles:insertAttribute name="footer"></tiles:insertAttribute>
+	<!-- top -->
+	<tiles:insertAttribute name="top"></tiles:insertAttribute>
     
   </div>
 

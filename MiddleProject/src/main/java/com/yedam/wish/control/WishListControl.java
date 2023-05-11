@@ -15,7 +15,7 @@ import com.yedam.wish.domain.WishVO;
 import com.yedam.wish.service.WishService;
 import com.yedam.wish.service.WishServiceImpl;
 
-public class wishListControl implements Control {
+public class WishListControl implements Control {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
