@@ -22,4 +22,10 @@ public class WishServiceImpl implements WishService {
 		return mapper.deletewishList(wishId) == 1;
 		
 	}
+	
+	@Override
+	public boolean addwishList(WishVO wish) {
+	    return mapper.addwishList(wish);
+	}
+
 }

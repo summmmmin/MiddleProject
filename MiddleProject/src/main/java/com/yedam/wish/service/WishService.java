@@ -7,5 +7,7 @@ import com.yedam.wish.domain.WishVO;
 public interface WishService {
 	public List<WishVO> wishList(String userId);
 	public boolean deletewishList(int wishId);
+	public boolean addwishList(WishVO wish);
+	
 	
 }
