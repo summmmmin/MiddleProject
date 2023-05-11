@@ -8,7 +8,7 @@
             <div class="intro-text text-center text-md-left">
               <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla. </p>
               <p>
-                <a href="#" class="btn btn-sm btn-primary">지금 쇼핑하기</a>
+                <a href="prodList.do" class="btn btn-sm btn-primary">지금 쇼핑하기</a>
               </p>
             </div>
           </div>
@@ -135,7 +135,7 @@
             <a href="#"><img src="images/blog_1.jpg" alt="Image placeholder" class="img-fluid rounded"></a>
           </div>
           <div class="col-md-12 col-lg-5 text-center pl-md-5">
-            <h2><a href="#">전품목 50% 할인</a></h2>
+            <h2><a href="prodList.do">전품목 50% 할인</a></h2>
             <p class="post-meta mb-4">By <a href="#">Carl Smith</a> <span class="block-8-sep">&bullet;</span> September 3, 2018</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam iste dolor accusantium facere corporis ipsum animi deleniti fugiat. Ex, veniam?</p>
             <p><a href="#" class="btn btn-primary btn-sm">지금 쇼핑하기</a></p>

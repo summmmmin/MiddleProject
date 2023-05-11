@@ -43,7 +43,9 @@
 						data-target="#exampleModal">구매하기</button>
 					<button class="btn btn-primary btn-sm" data-toggle="modal"
 						data-target="#sellModal">판매하기</button>
-					<button class="btn btn-sm btn-pink">관심상품</button>
+					<button class="btn btn-sm btn-pink" data-toggle="modal"
+						data-target="#wishModal" data-pid="${prodInfo.pdtId}"
+						onclick="openWishModal(this)">관심상품</button>
 				</div>
 				<div class="mb-5">
 					<c:if test="${userinfo.userGrade == '관리자'}">
@@ -134,8 +136,8 @@
 	</div>
 </div>
 <!-- 판매하기 -->
-<div class="modal fade" style="z-index:2000;" id="sellModal" tabindex="-1"
-	aria-labelledby="sellModalLabel" aria-hidden="true">
+<div class="modal fade" style="z-index: 2000;" id="sellModal"
+	tabindex="-1" aria-labelledby="sellModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -185,6 +187,28 @@
 	</div>
 </div>
 
+<!-- 관심상품 modal 설정 -->
+<div class="modal fade" id="wishModal" tabindex="-1"
+	aria-labelledby="wishModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="wishModalLabel">관심상품</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>관심 상품에 저장되었습니다.</p>
+			</div>
+			<div class="modal-footer">
+				<a href="wishList.do" class="btn btn-primary btn-pink">관심상품으로 이동</a>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+			</div>
+		</div>
+	</div>
+</div>
 <script>
       function sizeSelc(){
     	  var radios = document.getElementsByName('sizes');
@@ -199,3 +223,4 @@
     	  location.href='sellPrice.do?prodId=${prodInfo.pdtId}&size='+size;
       }
 </script>
+<script src="js/AddWishList.js"></script>

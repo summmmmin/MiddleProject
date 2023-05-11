@@ -23,33 +23,25 @@ public class NoteListControl implements Control {
 		HttpSession session = req.getSession();
 		UserVO userInfo = (UserVO) session.getAttribute("userinfo");
 		String id = userInfo.getUserId();
+		System.out.println(id);
 		NoteService service = new NoteServiceImpl();
-		
-		if(req.getMethod().equals("GET")) {
-
-			return "note/noteList.tiles";	
-		
-		}else if(req.getMethod().equals("POST")) {
-		
-		
+		System.out.println(id);
 		String json = "[";
-		List<NoteVO> list = service.noteList(id);
-		
+		List<NoteVO> list = service.noteList(id);		
 		for(int i = 0 ; i<list.size();i++) {
-			json +="{\"userId\":"+list.get(i).getUserId() + ",";
+			json +="{\"userId\":\""+list.get(i).getUserId() + "\",";
 			json += "\"noteId\":" + list.get(i).getNoteId() + ",";
 			json += "\"noteCT\":\"" + list.get(i).getNoteCT() +"\",";
-			json += "\"noteDate\" :\"" + list.get(i).getNoteDate()  +"\",";
-			json += "\"noteView\" :\"" + list.get(i).getNoteView() + "\"}";
+			json += "\"noteDate\":\"" + list.get(i).getNoteDate()  + "\",";
+			json += "\"noteView\" :" + list.get(i).getNoteView() + "}";
 		
 			if(i+1 != list.size()) {
 				json += ",";
 			}
 		}
 		json +="]";
+		System.out.println(json);
 		return json + ".json";
-	}
-		return "note/noteList.tiles";
 	}
 }
 

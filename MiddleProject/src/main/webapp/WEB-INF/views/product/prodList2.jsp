@@ -287,6 +287,7 @@
 	</div>
 </div>
 <script>
+  
 	document.querySelectorAll('.catId').forEach(item => {
 		item.addEventListener('click', function() {
 			let subcat = this.parentElement.parentElement.children[1];

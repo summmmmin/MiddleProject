@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yedam.wish.mapper.WishMapper">
+	<!-- 관심상품 목록 출력 -->
+	<select id="wishList" resultType="com.yedam.wish.domain.WishVO">
+	select w.wish_id, p.pdt_id, p.pdt_nm, p.pdt_price
+	from wish_lists w
+	join product p ON w.pdt_id = p.pdt_id
+	where w.user_id = #{userId}
+	</select>
+	<!-- 관심상품 삭제 -->
+	<delete id="deletewishList" parameterType="com.yedam.wish.domain.WishVO">
+		delete from wish_lists where wish_id=#{wishId}
+	</delete>
+	<!-- 관심상품 등록 -->
+	<insert id="addwishList" parameterType="com.yedam.wish.domain.WishVO">
+	INSERT INTO wish_lists (wish_id, user_id, pdt_id) 
+    VALUES (wish_lists_seq.nextval, #{userId}, #{pdtId})
+	</insert>
 	
-<!-- 관심상품 목록 출력 -->
-<select id="wishList" resultType="wish">
-select w.wish_id, p.pdt_nm, p.pdt_price, p.pdt_img
-from wish_lists w
-join product p ON w.pdt_id = p.pdt_id
-where w.user_id = #{userId}
-</select>
-
-
 </mapper>

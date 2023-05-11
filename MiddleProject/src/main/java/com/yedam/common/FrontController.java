@@ -1,7 +1,6 @@
 package com.yedam.common;
 
 import java.io.IOException;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,16 +11,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yedam.buy.control.BuyCancelControl;
+import com.yedam.buy.control.BuyDetailControl;
+import com.yedam.buy.control.BuyGetControl;
+import com.yedam.buy.control.BuyListUControl;
+import com.yedam.buy.control.BuyReturnControl;
+import com.yedam.buy.control.ModifyDlvy;
 import com.yedam.note.control.DelAllNoteControl;
 import com.yedam.note.control.DelNoteControl;
 import com.yedam.note.control.GetNoteControl;
+import com.yedam.note.control.ListNoteControl;
 import com.yedam.note.control.NoteListControl;
 import com.yedam.note.control.NoteSendControl;
+import com.yedam.note.control.SendNoteControl;
 import com.yedam.product.control.AddProdControl;
 import com.yedam.product.control.DelProdControl;
 import com.yedam.product.control.GetProdControl;
 import com.yedam.product.control.ModifyProdControl;
 import com.yedam.product.control.ProdAddForm;
+import com.yedam.product.control.ProdList2Control;
 import com.yedam.product.control.ProdListControl;
 import com.yedam.product.control.SubCatListControl;
 import com.yedam.qna.control.AddQCControl;
@@ -51,7 +59,9 @@ import com.yedam.user.control.MypageViewControl;
 import com.yedam.user.control.SignUpControl;
 import com.yedam.user.control.SignUpFormControl;
 import com.yedam.user.control.UserListControl;
-import com.yedam.wish.controll.wishListControl;
+import com.yedam.wish.control.WishListControl;
+import com.yedam.wish.control.DeletewishList;
+import com.yedam.wish.control.AddwishList;
 
 public class FrontController extends HttpServlet{
 	private Map<String, Control> map;
@@ -81,6 +91,7 @@ public class FrontController extends HttpServlet{
 		map.put("/modifyProd.do", new ModifyProdControl());
 		map.put("/delProd.do", new DelProdControl());
 		map.put("/subCatList.do", new SubCatListControl());
+		map.put("/prodList2.do", new ProdList2Control());
 		//users
 		map.put("/logout.do", new LogoutControl());
 		map.put("/loginForm.do", new LoginFormControl());
@@ -94,9 +105,8 @@ public class FrontController extends HttpServlet{
 		map.put("/sellForm.do", new SellFormControl());
 		map.put("/sellCancel.do", new SellCancelControl());
 		map.put("/sellDetail.do", new SellDetailControl());
-		
-		
-		
+    
+    
 		map.put("/mypagePw.do", new MypageControl());
 		map.put("/mypageView.do", new MypageViewControl());
 		map.put("/deleteUserForm.do", new DeleteUserFormControl());
@@ -112,14 +122,26 @@ public class FrontController extends HttpServlet{
 		map.put("/getNote.do", new GetNoteControl());
 		map.put("/delNote.do", new DelNoteControl());
 		map.put("/delAllNote.do",new DelAllNoteControl());
-		
+		map.put("/listNote.do", new ListNoteControl());
+		map.put("/sendNote.do", new SendNoteControl());
 
 		
-		
-		
+		//buy
+		map.put("/buyListU.do", new BuyListUControl());
+		map.put("/buyGet.do", new BuyGetControl());
+		map.put("/buyCancel.do", new BuyCancelControl());
+		map.put("/modifyDlvy.do", new ModifyDlvy());
+		map.put("/buyReturn.do", new BuyReturnControl());
+		map.put("/buyDetail.do", new BuyDetailControl());
+
+    
+    
+    
 		
 		//wish(관심상품)
-		map.put("/wishList.do",  new wishListControl());
+		map.put("/wishList.do",  new WishListControl());
+		map.put("/deletewishList.do", new DeletewishList());
+		map.put("/addwishList.do", new AddwishList());
 
 	}
 	@Override
