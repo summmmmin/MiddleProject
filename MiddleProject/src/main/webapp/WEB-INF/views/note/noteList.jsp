@@ -14,24 +14,26 @@
       <th><button type="button" onclick=""class="btn btn-danger btn-sm4">전체삭제</button></th>
     </tr>
   </thead>
-  <tbody id ="tlist"></tbody>
+  
+  <tbody id ="tlist">
+ 	
+	</tbody>
 </table>
 </div>
 </div>
 <script>
-			let id = document.createElement('li');
-			id.innerText = obj.id;
-			document.getElementById('list').append(id);
-			let name = document.createElement('li');
-			name.innerText = obj.name;
-			document.getElementById('list').append(name);
 
-let noteList;
-fetch('noteList.do')
-.then(resolve => resolve.json())
-.then(result => {
-	noteList = result.data
-	 console.log(noteList);
+
+
+let xhtp = new XMLHttpRequest(); //Ajax 호출.
+xhtp.open('get','noteList.do?userId=${userInfo.userId}');
+xhtp.send();
+xhtp.onload = function(){
+	console.log(xhtp.response);
+
+	let result = JSON.parse(xhtp.response);
+	let tlist = document.getElementById('tlist');  
+
 		for (let i=0; i<result.length;i++){
 			let tr = document.createElement('tr');
 			let td = document.createElement('td');
@@ -70,36 +72,5 @@ fetch('noteList.do')
 		
 	}
 			
-  		}
-  	})
-  	.catch(error =>	console.log(error) )
-  	console.log('error',error);
-  	
-}
-
-
-document.querySelector("#addComment").addEventListener('click', function(){
-	let comment= document.querySelector("#comment").value;	
-
-	let xhtp = new XMLHttpRequest();
-    xhtp.open('post','addQC.do');
-    xhtp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-    xhtp.send("postId=${qnaInfo.postId}&comment=" + comment);
-    xhtp.onload = function(){
-    	let result =JSON.parse(xhtp.response);
-    	console.log(result);
-    	document.createElement();
-
-
-
 </script>
-  <c:forEach var="i" items="${notelist }">
-    <tr>
-		<td><c:out value="${no=no+1 }"></c:out></td>
-		<td class=><div class="col-2 text-truncate" style="max-width: 800px;" ><a href="getNote.do?noteId=${i.noteId}">${i.noteCT }</div></td>
-		<td>${i.noteDate}</td>
-		<td><button type="button" onclick="location.href='delNote.do';"class="btn btn-danger btn-sm4">삭제</button></td>
-    </tr>
-   </c:forEach>
-   <tr>
   

@@ -1,7 +1,6 @@
 package com.yedam.common;
 
 import java.io.IOException;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.yedam.note.control.DelAllNoteControl;
 import com.yedam.note.control.DelNoteControl;
 import com.yedam.note.control.GetNoteControl;
+import com.yedam.note.control.ListNoteControl;
 import com.yedam.note.control.NoteListControl;
 import com.yedam.note.control.NoteSendControl;
 import com.yedam.product.control.AddProdControl;
@@ -22,6 +22,7 @@ import com.yedam.product.control.DelProdControl;
 import com.yedam.product.control.GetProdControl;
 import com.yedam.product.control.ModifyProdControl;
 import com.yedam.product.control.ProdAddForm;
+import com.yedam.product.control.ProdList2Control;
 import com.yedam.product.control.ProdListControl;
 import com.yedam.product.control.SubCatListControl;
 import com.yedam.qna.control.AddQCControl;
@@ -51,7 +52,7 @@ import com.yedam.user.control.MypageViewControl;
 import com.yedam.user.control.SignUpControl;
 import com.yedam.user.control.SignUpFormControl;
 import com.yedam.user.control.UserListControl;
-import com.yedam.wish.controll.wishListControl;
+import com.yedam.wish.control.wishListControl;
 
 public class FrontController extends HttpServlet{
 	private Map<String, Control> map;
@@ -81,6 +82,7 @@ public class FrontController extends HttpServlet{
 		map.put("/modifyProd.do", new ModifyProdControl());
 		map.put("/delProd.do", new DelProdControl());
 		map.put("/subCatList.do", new SubCatListControl());
+		map.put("/prodList2.do", new ProdList2Control());
 		//users
 		map.put("/logout.do", new LogoutControl());
 		map.put("/loginForm.do", new LoginFormControl());
@@ -112,6 +114,7 @@ public class FrontController extends HttpServlet{
 		map.put("/getNote.do", new GetNoteControl());
 		map.put("/delNote.do", new DelNoteControl());
 		map.put("/delAllNote.do",new DelAllNoteControl());
+		map.put("/listNote.do", new ListNoteControl());
 		
 
 		
