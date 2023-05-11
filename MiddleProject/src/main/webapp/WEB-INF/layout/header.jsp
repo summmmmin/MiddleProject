@@ -64,7 +64,7 @@
               </ul>
             </li>
             <li class="has-children">
-              <a href="about.html">Ranking</a>
+              <a href="#">Ranking</a>
               <ul class="dropdown">
                 <li><a href="#">Menu One</a></li>
                 <li><a href="#">Menu Two</a></li>

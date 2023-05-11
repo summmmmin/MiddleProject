@@ -20,13 +20,13 @@
 			<div class="col-md-3">
 				<div class="sidebar">
 					<a href="mypageView.do">내 정보 보기</a> <a href="wishList.do">관심상품</a>
-					<a href="#">구매내역</a> <a href="#">판매내역</a> <a href="#">나의 Q&A</a> <a
+					<a href="#">구매내역</a> <a href="#">판매내역</a> <a href="myQna.do">나의 Q&A</a> <a
 						href="#">받은 쪽지함</a> <a href="#">나의 리뷰</a>
 				</div>
 			</div>
 			<div class="col-md-9">
 				<div class="row mb-5">
-					<h2 class="h3 mb-4 text-black">${userinfo.userNm }님의관심상품</h2>
+					<h2 class="h3 mb-4 text-black">${userinfo.userNm }님의 관심상품</h2>
 					<form class="col-md-12" method="post">
 						<div class="site-blocks-table">
 							<table class="table table-bordered">
