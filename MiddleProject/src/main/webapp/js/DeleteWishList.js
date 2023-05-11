@@ -5,6 +5,7 @@ window.addEventListener('DOMContentLoaded', function() {
     button.addEventListener('click', function(e) {
       e.preventDefault();
       var wishId = this.getAttribute('data-wishId');
+      var deleteButton = this; // 버튼저장
       
       var xhr = new XMLHttpRequest();
       xhr.open('POST', 'deletewishList.do');
@@ -14,7 +15,7 @@ window.addEventListener('DOMContentLoaded', function() {
           if (xhr.status === 200) {
             console.log('관심상품 삭제 성공');
             // 삭제한 행을 화면에서 제거
-            var row = this.closest('tr');
+            var row = deleteButton.closest('tr');
             row.parentNode.removeChild(row);
           } else {
             console.log('관심상품 삭제 실패');
