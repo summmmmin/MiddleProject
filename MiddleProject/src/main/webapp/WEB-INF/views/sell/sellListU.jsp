@@ -34,15 +34,6 @@ prefix="c" %>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>1</td>
-                <td>2023-05-04</td>
-                <td>물건이름</td>
-                <td>300</td>
-                <td>5000</td>
-                <td>정산완료</td>
-              </tr>
               <c:forEach var="sell" items="${list }">
                 <tr>
                   <th scope="row"><c:out value="${no=no+1 }"></c:out></th>
