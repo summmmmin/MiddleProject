@@ -1,0 +1,26 @@
+@charset "UTF-8";
+.sidebar {
+	position: sticky;
+	top: 50%;
+	left: 20px;
+	transform: translateY(-50%);
+	background-color: #f1f1f1;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	width: 200px;
+}
+
+.sidebar a {
+	display: block;
+	margin-bottom: 10px;
+	color: #333;
+	text-decoration: none;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 5px;
+}
+
+.sidebar a:last-child {
+	border-bottom: none;
+	margin-bottom: 0;
+}
