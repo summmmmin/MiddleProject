@@ -2,9 +2,9 @@ package com.yedam.user.control;
 
 
 import java.util.Properties;
-import java.util.UUID;
 
-import javax.mail.Authenticator;
+
+
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -15,42 +15,58 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class SendEmail {
+	
+										// 해당파일 수정하지마세요
+										// 필요하면 복사해서 쓰세요
+	
+	
+	public static void gmailSend(String userId, String newPassword) {
+        String user = "qomo596@gmail.com"; // 발신 gmail 계정
+        String password = "ddlgznoxtmfefivt";   // gmail 패스워드(2단계 앱보안 비밀번호)
 
-    public static void sendEmail(String recipient, String subject, String content, String activationLink) throws MessagingException {
-        // SMTP 서버와 연결에 필요한 정보를 설정
-        Properties properties = new Properties();
-        properties.put("mail.smtp.host", "smtp.gmail.com");
-        properties.put("mail.smtp.port", "587");
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-
-        // Gmail 계정 정보
-        String username = "qomo596@gmail.com"; // 보내는 사람의 Gmail 계정
-        String password = "ddlgznoxtmfefivt"; // 보내는 사람의 Gmail 계정 비밀번호
-
-        // Session 객체를 생성
-        Session session = Session.getInstance(properties, new Authenticator() {
+        // SMTP 서버 정보를 설정한다.
+        Properties prop = new Properties();
+        prop.put("mail.smtp.host", "smtp.gmail.com"); 
+        prop.put("mail.smtp.port", 465); 
+        prop.put("mail.smtp.auth", "true"); 
+        prop.put("mail.smtp.ssl.enable", "true"); 
+        prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+        
+        Session session = Session.getDefaultInstance(prop, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(username, password);
+                return new PasswordAuthentication(user, password);
             }
         });
 
-        // Message 객체를 생성
-        Message message = new MimeMessage(session);
+        try {
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(user));
 
-        // 보내는 사람, 받는 사람, 제목, 내용을 설정
-        message.setFrom(new InternetAddress(username));
-        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipient));
-        message.setSubject(subject);
-        message.setContent(content + "<br><br>계정 활성화를 위해서 다음 링크를 클릭해주세요:<br><a href='" + activationLink + "'>활성화 링크</a>", "text/html");
+            //수신자메일주소 (회원아이디)
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(userId)); 
 
-        // 이메일을 보냅니다.
-        Transport.send(message);
+            // 메일제목
+            message.setSubject("크림발라드림 사이트의 비밀번호 찾기를 요청하셨습니다");
+
+            // 내용
+            String emailContent = "안녕하세요,\n\n새로운 비밀번호로 재설정되었습니다.\n\n새 비밀번호: " + newPassword;
+            message.setText(emailContent); 
+            
+            
+            Transport.send(message); ////전송
+            System.out.println("비밀번호 재설정 메일 발송완료");
+        } catch (AddressException e) {
+            e.printStackTrace();
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
     }
 
-    public static String generateActivationLink(String email) {
-        String uniqueValue = UUID.randomUUID().toString(); // 랜덤한 유니크 값 생성
-        String activationLink = "http://localhost:8081/activate?email=" + email + "&key=" + uniqueValue;
-        return activationLink;
-    }
+	public static void main(String[] args) {
+	    String userId = "user@example.com"; // 수신자 이메일 주소
+	    String newPassword = "newPassword"; // 새로운 비밀번호
+
+	    SendEmail.gmailSend(userId, newPassword);
+	}
+
 }

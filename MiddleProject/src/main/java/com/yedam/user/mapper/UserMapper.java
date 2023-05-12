@@ -15,6 +15,7 @@ public interface UserMapper {
 	public List<UserVO> userList();
 	public UserVO getUserInfo(String userId);
 	public int kakaoSignUp(UserVO vo);
+	public int findPassword(UserVO vo);
 
 
 }

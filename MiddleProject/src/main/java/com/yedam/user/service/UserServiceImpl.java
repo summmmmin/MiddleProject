@@ -74,5 +74,13 @@ public class UserServiceImpl implements UserService {
 	public boolean kakaoSignUp(UserVO user) {
 		return mapper.kakaoSignUp(user) == 1;
 	}
+	
+	@Override
+	public boolean findPassword(String userId, String newPassword) {
+		UserVO vo = new UserVO();
+		vo.setUserId(userId);
+		vo.setUserPw(newPassword);
+		return mapper.findPassword(vo) == 1;
+	}
 
 }

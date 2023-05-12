@@ -60,16 +60,16 @@ public class KakaoLoginControl implements Control {
 
 			if (isSuccess) {
 				// 회원가입 했으니 로그인까지 자동으로 이어지게 하기
-				System.out.println("카카오 회원가입 완료");
-				UserVO kakaoUser = userService.loginCheck(userId, userNm);
-
 				session = request.getSession();
+				System.out.println("카카오 회원가입 완료");
+				
+				UserVO kakaoUser = userService.loginCheck(userId, userNm);
 				session.setAttribute("userinfo", kakaoUser);
 
 				// 카카오 로그인 플래그 설정
 				session.setAttribute("kakaoUser", true);
 
-				return gson + ".json";
+				return "main.do";
 
 			} else {
 
@@ -81,8 +81,10 @@ public class KakaoLoginControl implements Control {
 			// 이미 계정이 있는 회원
 			System.out.println("이미 가입한 회원입니다");
 			session.setAttribute("userinfo", user);
-			response.getWriter().append("main.do");
+			//response.getWriter().append("main.do");
+			//return "main.do";
 		}
+		
 		return "main.do";
 	}
 }
