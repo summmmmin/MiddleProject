@@ -25,19 +25,40 @@
 	</select>
 
 	<select id="prodList3">
-		<![CDATA[
 		SELECT b.*
 		FROM (SELECT ROWNUM rn, a.*
-			  FROM (select * from product 
-					where cat_id in(select product_size.cat_id from product_size 
-					left join product on product_size.cat_id=product.cat_id
-					where product_size.size_size in = ('#{sizeId}')
-					and product.cat_id in (#{catId}))
-					and brd_id in (#{brdId})
-					and gender_id in (#{genderId})
-					and pdt_del in('N');) a
-			  WHERE ROWNUM <= ${page} * 9) b
-		WHERE b.rn > (${page} - 1) * 9
+			  FROM (select * 
+			        from product 
+					where pdt_del = 'N' and 
+					(cat_id in (select product_size.cat_id from product_size 
+					                 	left join product on product_size.cat_id=product.cat_id
+					                 	<where>
+					                	<foreach item="item" index="index" collection="list"
+                                     	open="product_size.size_size in (" separator="," close=")">
+                                     	#{item}
+                                    	</foreach>
+                                    	<foreach item="item" index="index" collection="list2"
+                     				 	open="and product.cat_id in (" separator="," close=")">
+                     					 #{item}
+                    				 	</foreach>
+                    				 	</where>
+                    				 	)
+                    <foreach item="item" index="index" collection="list3"
+                     open="and brd_id in (" separator="," close=")">
+                     #{item}
+                    </foreach>
+                    <foreach item="item" index="index" collection="list4"
+                     open="and gender_id in (" separator="," close=")">
+                     #{item}
+                    </foreach>
+                    <foreach item="item" index="index" collection="list5"
+                     open="and subcat_id in (" separator="," close=")">
+                     #{item}
+                    </foreach>)
+                    ) a
+		<![CDATA[
+			  WHERE ROWNUM <= ${page} * 90) b
+		WHERE b.rn > (0 - 1) * 9
 		]]>
 	</select>
 

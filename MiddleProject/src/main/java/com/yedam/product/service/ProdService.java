@@ -17,5 +17,5 @@ public interface ProdService {
 	public List<ProdVO> genderList();
 	public List<ProdVO> prodList2();
 	public int getCount(int catId);
-	public List<ProdVO> prodList3();
+	public List<ProdVO> prodList3(int page);
 }
