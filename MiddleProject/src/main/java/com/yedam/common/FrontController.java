@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.buy.control.BuyCancelControl;
 import com.yedam.buy.control.BuyDetailControl;
-import com.yedam.buy.control.BuyFromControl;
+import com.yedam.buy.control.BuyFormControl;
 import com.yedam.buy.control.BuyGetControl;
 import com.yedam.buy.control.BuyListUControl;
 import com.yedam.buy.control.BuyPriceControl;
@@ -136,7 +136,7 @@ public class FrontController extends HttpServlet{
 		map.put("/buyReturn.do", new BuyReturnControl());
 		map.put("/buyDetail.do", new BuyDetailControl());
 		map.put("/buyPrice.do", new BuyPriceControl());
-		map.put("/buyForm.do", new BuyFromControl());
+		map.put("/buyForm.do", new BuyFormControl());
     
     
 		

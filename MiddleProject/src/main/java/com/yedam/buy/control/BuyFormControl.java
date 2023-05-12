@@ -8,12 +8,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
 
-public class BuyFromControl implements Control {
+public class BuyFormControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// 
-		return "buy/buyFrom.tiles";
+		
+		if (req.getMethod().equals("GET")) {
+			
+			return "buy/buyForm.tiles";
+		} else if (req.getMethod().equals("POST")) {
+			
+		}
+		return "";
+		
 	}
 
 }
