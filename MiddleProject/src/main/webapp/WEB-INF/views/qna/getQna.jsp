@@ -31,7 +31,7 @@
             		<c:if test ="${userinfo.userId == qnaInfo.userId }">
 					<button type="button" onclick="location.href='delQna.do?postId=${qnaInfo.postId}'"class="btn btn-danger btn-sm">삭제</button>
 					</c:if>
-					<button class="btn btn-outline-dark btn-sm "><a href="qnaList.do">목차</a></button>				
+					<button class="btn btn-outline-dark btn-sm " onclick="location.href='qnaList.do'">목차</a></button>				
 					</div>
 			</div>
             </div>

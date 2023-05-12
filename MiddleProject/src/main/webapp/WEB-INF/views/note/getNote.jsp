@@ -16,7 +16,8 @@
 			</tr>
 			</table>
             		<div class="d-flex justify-content-end">
-					<button class="btn btn-outline-dark btn-sm "><a href="noteList.do">목차</a></button>				
+					<button class="btn btn-outline-dark btn-sm "><a href="main.do">목차</a></button>
+									
 					</div>
 			</div>
             </div>

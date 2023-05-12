@@ -19,11 +19,13 @@ public class MyQnaControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		HttpSession session = req.getSession();
-//		UserVO userInfo = (UserVO) session.getAttribute("userinfo");
-//		String id = userInfo.getUserId();
-		String id = req.getParameter("userId");
-		String pageStr = req.getParameter("page");	
+		HttpSession session = req.getSession();
+		UserVO userInfo = (UserVO) session.getAttribute("userinfo");
+		String id = userInfo.getUserId();
+		
+		System.out.println(id);
+		String pageStr = req.getParameter("page");
+		System.out.println(pageStr);
 		pageStr = pageStr ==null ? "1" : pageStr;
 		int page = Integer.parseInt(pageStr);
 		
