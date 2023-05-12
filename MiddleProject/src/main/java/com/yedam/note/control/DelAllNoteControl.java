@@ -20,6 +20,8 @@ public class DelAllNoteControl implements Control {
 		UserVO userInfo = (UserVO) session.getAttribute("userinfo");
 		String id = userInfo.getUserId();
 		NoteService service = new NoteServiceImpl();
+		String page = req.getParameter("page");
+		
 		String json="";
 		if(service.delAllNote(id)) {
 			json = "{\"retCode\":\"Success\"}";

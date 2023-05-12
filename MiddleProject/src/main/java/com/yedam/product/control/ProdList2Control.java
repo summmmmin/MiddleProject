@@ -25,7 +25,7 @@ public class ProdList2Control implements Control {
 		
 		ProdService service = new ProdServiceImpl();
 		int total = service.totalViews();
-		List<ProdVO> list = service.prodList(page);
+		List<ProdVO> list = service.prodList3(page);
 		System.out.println(list);
 		
 		PageDTO dto = new PageDTO(page, total);
@@ -55,22 +55,22 @@ public class ProdList2Control implements Control {
 				json += ",";
 			}
 			
-			String cat = "";
-			for(i = 0; i<list.size(); i++) {
-				cat += list.get(i).getCatId();
-				if(i != list.size() -1) {
-					cat += ",";
-				}
-			}
-			
-			String[] catArr = new String[list.size()];
-			cat = "";
-			for(i = 0; i<catArr.length; i++) {
-				cat += catArr[i];
-				if(i != catArr.length -1) {
-					cat += ",";
-				}
-			}
+//			String cat = "";
+//			for(i = 0; i<list.size(); i++) {
+//				cat += list.get(i).getCatId();
+//				if(i != list.size() -1) {
+//					cat += ",";
+//				}
+//			}
+//			
+//			String[] catArr = new String[list.size()];
+//			cat = "";
+//			for(i = 0; i<catArr.length; i++) {
+//				cat += catArr[i];
+//				if(i != catArr.length -1) {
+//					cat += ",";
+//				}
+//			}
 		}
 		return json + ".json";
 	}
