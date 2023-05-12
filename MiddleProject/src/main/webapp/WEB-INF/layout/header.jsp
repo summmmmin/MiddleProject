@@ -86,7 +86,7 @@
                 <li><a href="#">Menu Three</a></li>
               </ul>
             </li>
-            <li><a href="prodList.do">Shop</a></li>
+            <li><a href="prodList.do?page=1">Shop</a></li>
             <li><a href="qnaList.do">Q&A</a></li>
             <c:choose>
               <c:when test="${userinfo == null }">
