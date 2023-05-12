@@ -11,6 +11,6 @@ import com.yedam.common.Control;
 public class FindPassWordFormControl implements Control {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		return "user/findPasswordForm.tiles";
+		return "user/findPassWordForm.tiles";
 	}
 }

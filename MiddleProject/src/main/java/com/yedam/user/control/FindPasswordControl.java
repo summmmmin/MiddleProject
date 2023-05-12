@@ -1,6 +1,7 @@
 package com.yedam.user.control;
 
 import java.io.IOException;
+
 import java.util.Random;
 
 import javax.servlet.ServletException;
@@ -21,9 +22,12 @@ public class FindPasswordControl implements Control {
 
 		if (service.getUserInfo(userId) != null) {
 			String userId2 = userId;
-			String newPassword = generatePw(); // Generate a new password
+			String newPassword = generatePw(); 
 			service.findPassword(userId2, newPassword);
-			sendEmail(userId2, newPassword); // Call the sendEmail method
+			SendEmail.gmailSend(userId2, newPassword); 
+			System.out.println(userId);
+			System.out.println(newPassword);
+			System.out.println(userId2);
 			req.setAttribute("message", "비밀번호가 이메일로 전송되었습니다.");
 		} else {
 			req.setAttribute("message", "올바른 이메일 형식이 아니거나 존재하지 않는 아이디입니다.");
@@ -43,11 +47,5 @@ public class FindPasswordControl implements Control {
 			sb.append(characters.charAt(index));
 		}
 		return sb.toString();	
-	}
-
-	private void sendEmail(String userId, String newPassword) {
-		System.out.println("비밀번호가 이메일로 전송되었습니다.");
-		System.out.println("회원이메일: " + userId);
-		System.out.println("새로운 비밀번호: " + newPassword);
 	}
 }

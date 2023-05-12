@@ -59,7 +59,7 @@
                                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" name="user_id"> <small id="emailHelp" class="form-text text-muted">아이디는 이메일 형식입니다</small>
                                     </div>
                                     <div class="form-group">
-                                        <label class="text-muted" for="exampleInputPassword1">비밀번호</label> <span style="float: right; font-size: 12px; color: #007bff; font-weight: bold"><a href="findPasswordForm.do">비밀번호를 찾으시나요? </a></span>
+                                        <label class="text-muted" for="exampleInputPassword1">비밀번호</label> <span style="float: right; font-size: 12px; color: #007bff; font-weight: bold"><a href="findPassWordForm.do">비밀번호를 찾으시나요? </a></span>
                                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="" name="user_pw">
                                         <c:if test="${not empty message}">
                                             <p style="color: red; font-size: 12px;">${message}</p>

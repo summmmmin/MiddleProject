@@ -77,10 +77,14 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public boolean findPassword(String userId, String newPassword) {
-		UserVO vo = new UserVO();
-		vo.setUserId(userId);
-		vo.setUserPw(newPassword);
-		return mapper.findPassword(vo) == 1;
+		UserVO user = mapper.getUserInfo(userId);
+		if (user != null) {
+			user.setUserPw(newPassword);
+			mapper.findPassword(user);
+			return true;
+		}
+		return false;
 	}
+
 
 }
