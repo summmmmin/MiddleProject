@@ -11,5 +11,8 @@ public interface UserService {
     public boolean deleteUser(UserVO user);
     public boolean modifyUser(UserVO user);
     public List<UserVO> users();
+    public UserVO getUserInfo(String userId);
+    public boolean kakaoSignUp(UserVO user);
+    public boolean findPassword(String userId, String newPassword);
 
 }
