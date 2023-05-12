@@ -165,12 +165,12 @@ pageEncoding="UTF-8"%>
         </div>
       </div>
     </div>
-    <div class="row mb-5">
+    <div class="row mb-5" style="display: none;">
       <div class="col-md-12">
         <h2 class="h3 mb-3 text-black">발송정보</h2>
         <div class="p-3 p-lg-5 border">
           <table class="table site-block-order-table mb-5">
-            <tbody id="delivery">
+            <tbody class="template">
               <tr>
                 <td class="text-black font-weight-bold" width="30%">
                   <strong>운송장번호</strong>
@@ -214,7 +214,7 @@ pageEncoding="UTF-8"%>
   })
   .then(resolve=>resolve.json())
   .then(result=>{
-	  //console.log(result);
+	  console.log(result);
 	  document.getElementById("sellNo").children[1].innerText=result.sellId;
 	  document.getElementById("sellNo").children[3].children[0].innerText=result.sellDate;
 	  document.getElementById("acct").children[1].children[1].innerText=result.sellAccount;
@@ -245,7 +245,7 @@ pageEncoding="UTF-8"%>
       btn = document.createElement('button');
       btn.classList.add('btn');
       btn.classList.add('btn-primary');
-      btn.innerText='취소신청'
+      btn.innerText='취소신청';
       document.getElementById("sellDetail").append(btn);
     }
     if(result.sellDlvy == '발송요청' && result.dlvNum ==0){
@@ -255,8 +255,10 @@ pageEncoding="UTF-8"%>
       btn.innerText='발송정보 등록'
       document.getElementById("sellDetail").append(btn);
     }
-    if(result.dlvNum != 0){
-      
+    if(result.dlvNum == 0){
+      let template = document.querySelector('.template').cloneNode(true);
+      console.log(template)
+      console.log(template.querySelector('td:nth-of-type(2)').innerText = result.result.dlvNm)
     }
   })
   .catch(err=>console.log(err))

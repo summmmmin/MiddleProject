@@ -46,5 +46,9 @@
 	UPDATE users
 	set user_pw=#{userPw}
 	WHERE user_id=#{userId}
+  </update>
+<!-- 포인트 -->
+<update id="updatePoint">
+	  update users set user_point = #{userPoint} where user_id=#{userId}
 </update>
 </mapper>

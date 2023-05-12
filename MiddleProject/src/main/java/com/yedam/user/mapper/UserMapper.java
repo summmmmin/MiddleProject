@@ -17,5 +17,5 @@ public interface UserMapper {
 	public int kakaoSignUp(UserVO vo);
 	public int findPassword(UserVO vo);
 
-
+	public int updatePoint(UserVO vo);
 }

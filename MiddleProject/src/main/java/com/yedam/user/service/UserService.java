@@ -14,5 +14,5 @@ public interface UserService {
     public UserVO getUserInfo(String userId);
     public boolean kakaoSignUp(UserVO user);
     public boolean findPassword(String userId, String newPassword);
-
+    public boolean updatePoint(UserVO user);
 }

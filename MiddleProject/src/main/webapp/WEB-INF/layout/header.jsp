@@ -30,12 +30,6 @@
                   <li><a href="wishList.do"><span class="icon icon-heart-o"></span></a></li>
                   <li><a href="noteList.do" class="site-cart"><span class="icon icon-send"></span>
                     <span class="count" >5</span></a></li>
-                  <li>
-                    <a href="#" class="site-cart">
-                      <span class="icon icon-message"></span>
-                      <span class="count">2</span>
-                    </a>
-                  </li> 
                   <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
                 </ul>
               </div> 
