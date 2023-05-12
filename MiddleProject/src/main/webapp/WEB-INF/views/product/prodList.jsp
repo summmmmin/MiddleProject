@@ -32,29 +32,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="row mb-5">
-					<c:forEach var="product" items="${list}">
-						<div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-							<div class="block-4 text-center border">
-								<figure class="block-4-image">
-									<a
-										href="getProd.do?&page=${pageInfo.pageNum}&pid=${product.pdtId}"><img
-										src="images/${product.pdtImg}" alt="Image placeholder"
-										class="img-fluid"></a>
-								</figure>
-								<div class="block-4-text p-4">
-									<h3>
-										<a
-											href="getProd.do?&page=${pageInfo.pageNum}&pid=${product.pdtId}">${product.pdtNm}</a>
-									</h3>
-									<p class="mb-0">${product.brdNm}</p>
-									<p class="text-primary font-weight-bold">${product.pdtPrice}</p>
-									<p>${product.pdtViews}</p>
-								</div>
-							</div>
-						</div>
-					</c:forEach>
-				</div>
+				<div class="row mb-5"></div>
 				<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 					<c:if test="${userinfo.userGrade == '관리자'}">
 						<button class="btn btn-primary me-md-2" type="button"
@@ -286,7 +264,28 @@
 		</div>
 	</div>
 </div>
+<div class="template" style="display: none;">
+	<div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+		<div class="block-4 text-center border">
+			<figure class="block-4-image">
+				<a href="getProd.do?&page=pageInfo.pageNum&pid=product.pdtId"><img
+					src="images/product.pdtImg" alt="Image placeholder"
+					class="img-fluid" id="pdtImg"></a>
+			</figure>
+			<div class="block-4-text p-4">
+				<h3>
+					<a href="getProd.do?&page=pageInfo.pageNum&pid=product.pdtId"
+						class="pdtNm" id="pdtNm">product.pdtNm</a>
+				</h3>
+				<p class="mb-0">product.brdNm</p>
+				<p class="text-primary font-weight-bold">product.pdtPrice</p>
+				<p class="pdtViews">product.pdtViews</p>
+			</div>
+		</div>
+	</div>
+</div>
 <script>
+	
 	document.querySelectorAll('.catId').forEach(item => {
 		item.addEventListener('click', function() {
 			let subcat = this.parentElement.parentElement.children[1];
@@ -331,4 +330,27 @@
 		});
 	}
 	
+	document.addEventListener('DOMContentLoaded', function () {
+		
+		fetch('prodList2.do?page=${param.page}') // 클릭했을때 창이 바뀌게 주소 더 넣어주기
+		.then(result => result.json())
+		.then(resolve => {
+			console.log(resolve)
+			resolve.forEach(item => {
+				let template = document.querySelector('.template>div').cloneNode(true);
+				template.querySelector('.img-fluid').innerHTML = item.pdtImg // 이미지 들어가게 바꿔야됨
+				template.querySelector('.pdtNm').innerText = item.pdtNm
+				template.querySelector('.mb-0').innerText = item.brdNm
+				template.querySelector('.font-weight-bold').innerText = item.pdtPrice
+				template.querySelector('.pdtViews').innerText = item.pdtViews
+				template.querySelector('img').id = 'pdtImg'+item.pdtId;
+				console.log(template);
+				console.log(template.querySelector('.pdtNm'));
+				document.querySelector('.col-md-9 .mb-5').append(template)
+				template.querySelector('a:nth-of-type(1)').href = "getProd.do?page=${param.page}&pid="+item.pdtId;
+				template.querySelector('.pdtNm').href = "getProd.do?page=${param.page}&pid="+item.pdtId;
+			})
+		})
+		.catch(err => console.log(err))
+	})
 </script>
