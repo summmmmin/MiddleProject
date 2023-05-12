@@ -10,8 +10,7 @@ pageEncoding="UTF-8"%>
   <div class="container">
     <div class="row">
       <div class="col-md-12 mb-0">
-        <a href="index.html">Home</a> <span class="mx-2 mb-0">/</span>
-        <a href="cart.html">Cart</a> <span class="mx-2 mb-0">/</span>
+        <a href="main.do">Home</a> <span class="mx-2 mb-0">/</span>
         <strong class="text-black">판매상세</strong>
       </div>
     </div>

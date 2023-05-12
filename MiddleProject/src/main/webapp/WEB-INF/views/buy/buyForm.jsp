@@ -17,7 +17,7 @@
                   <tbody>
                     <tr>
                       <td width="10%">
-                        <img src="images/"+"${prod.pdtImg }" width="100px"
+                        <img src="images/${prod.pdtImg }" width="100px"
                         height="100px" alt="" />
                       </td>
                       <td>${prod.pdtNm }</td>
