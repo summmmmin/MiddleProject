@@ -11,5 +11,5 @@ public interface UserService {
     public boolean deleteUser(UserVO user);
     public boolean modifyUser(UserVO user);
     public List<UserVO> users();
-
+    public boolean updatePoint(UserVO user);
 }

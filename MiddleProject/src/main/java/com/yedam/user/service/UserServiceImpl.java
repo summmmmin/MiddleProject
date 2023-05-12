@@ -67,6 +67,11 @@ public List<UserVO> users() {
 	return mapper.userList();
 }
 
+@Override
+public boolean updatePoint(UserVO user) {
+	return mapper.updatePoint(user) ==1;
+}
+
 
 
 	

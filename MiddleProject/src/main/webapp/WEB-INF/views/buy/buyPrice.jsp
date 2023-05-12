@@ -112,13 +112,14 @@ pageEncoding="UTF-8"%>
   function insertPrice(){
   	console.log(document.getElementById("inputPrice").value)
   	let inputPrice = document.getElementById("inputPrice").value
-
-  	if(Number(inputPrice) >= Number('${price.sellPrice}') && Number(inputPrice)>0){
-  		test1();
+	if('${price}'){
+  		if(Number(inputPrice) >= Number('${price.sellPrice}') && Number(inputPrice)>0){
+  			test1();
+		}
   	}else{
   		  price = inputPrice;
   		  calcul(price);
-  	}
+  	}		
   }
   // 가격계산
   function calcul(price){
@@ -134,7 +135,7 @@ pageEncoding="UTF-8"%>
 		  alert("입력하세요");
 		  
 	  }else{
-		  $('#form').attr("action","sellForm.do?pid=${prodId}&size=${size}").submit();		  
+		  $('#form').attr("action","buyForm.do?pid=${prodId}&size=${size}").submit();		  
 	  }
   }
 </script>

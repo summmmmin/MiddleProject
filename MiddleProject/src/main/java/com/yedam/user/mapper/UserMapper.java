@@ -14,5 +14,5 @@ public interface UserMapper {
 	
 	public List<UserVO> userList();
 
-
+	public int updatePoint(UserVO vo);
 }

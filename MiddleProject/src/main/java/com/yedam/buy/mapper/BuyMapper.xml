@@ -7,7 +7,7 @@
 	  insert all
 	  into deliver values(dlv_seq.nextval, #{dlvName}, #{dlvPhone}, #{dlvAddr}, #{dlvNum}, null)
 	  into buy(buy_id, user_id, sell_id, pdt_id, size_id, buy_price, buy_dlvy, buy_point, buy_fincost, dlv_id) 
-	  values(buy_seq.nextval, #{userId}, #{sellId}, #{pdtId}, #{sizeId}, #{buytPrice}, '구매입찰중', #{buyPoint}, #{buyFincost}, dlv_seq.currval) 
+	  values(buy_seq.nextval, #{userId}, #{sellId}, #{pdtId}, #{sizeId}, #{buyPrice}, '구매입찰중', #{buyPoint}, #{buyFincost}, dlv_seq.currval) 
 	  select * from dual
 	</insert>
 	<update id="setSellId">
@@ -18,7 +18,7 @@
 	  insert all
 	  into deliver values(dlv_seq.nextval, #{dlvName}, #{dlvPhone}, #{dlvAddr}, #{dlvNum}, null)
 	  into buy(buy_id, user_id, pdt_id, size_id, buy_price, buy_dlvy, buy_point, buy_fincost, dlv_id) 
-	  values(buy_seq.nextval, #{userId}, #{pdtId}, #{sizeId}, #{buytPrice}, '구매입찰중', #{buyPoint}, #{buyFincost}, dlv_seq.currval) 
+	  values(buy_seq.nextval, #{userId}, #{pdtId}, #{sizeId}, #{buyPrice}, '구매입찰중', #{buyPoint}, #{buyFincost}, dlv_seq.currval) 
 	  select * from dual
 	</insert>
 	
@@ -86,4 +86,6 @@
       		order by buy_price, buy_date)
 		where rownum=1
 	</select>
+	
+	
 </mapper>
