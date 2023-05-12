@@ -10,23 +10,19 @@ import javax.servlet.http.HttpSession;
 import com.yedam.common.Control;
 import com.yedam.note.service.NoteService;
 import com.yedam.note.service.NoteServiceImpl;
+import com.yedam.qna.service.QnaService;
+import com.yedam.qna.service.QnaServiceImpl;
 
 public class DelNoteControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String nid = req.getParameter("noteId");
+		String qid = req.getParameter("noteId");
 		NoteService service = new NoteServiceImpl();
-		String json = "";
+		service.delNote(Integer.parseInt(qid));
 		
-		if(service.delNote(Integer.parseInt(nid))){
-			json = "{\"retCode\":\"Success\"}";
-			
-		}else {
-			json = "{\"retCode\":\"Fail\"}";
-		}
-		return json + ".json";
-	}
+		return "noteList.do";
 
+}
 }

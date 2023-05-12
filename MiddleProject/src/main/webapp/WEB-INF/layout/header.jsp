@@ -28,7 +28,7 @@
                 <ul>
                   <li><a href="mypagePwForm.do"><span class="icon icon-person"></span></a></li>
                   <li><a href="wishList.do"><span class="icon icon-heart-o"></span></a></li>
-                  <li><a href="listNote.do" class="site-cart"><span class="icon icon-send"></span>
+                  <li><a href="noteList.do" class="site-cart"><span class="icon icon-send"></span>
                     <span class="count" >5</span></a></li>
                   <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
                 </ul>
@@ -58,7 +58,7 @@
               </ul>
             </li>
             <li class="has-children">
-              <a href="about.html">Ranking</a>
+              <a href="#">Ranking</a>
               <ul class="dropdown">
                 <li><a href="#">Menu One</a></li>
                 <li><a href="#">Menu Two</a></li>
