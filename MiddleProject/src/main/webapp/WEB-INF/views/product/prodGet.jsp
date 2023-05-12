@@ -40,7 +40,7 @@
 				</div>
 				<div class="mb-5">
 					<button class="btn btn-primary btn-sm" data-toggle="modal"
-						data-target="#exampleModal">구매하기</button>
+						data-target="#buyModal">구매하기</button>
 					<button class="btn btn-primary btn-sm" data-toggle="modal"
 						data-target="#sellModal">판매하기</button>
 					<button class="btn btn-sm btn-pink" data-toggle="modal"
@@ -55,46 +55,6 @@
 							onclick="location.href='delProd.do?pid=${prodInfo.pdtId}'">삭제하기</button>
 					</c:if>
 				</div>
-				<div class="modal fade" id="exampleModal" tabindex="-1"
-					aria-labelledby="exampleModalLabel" aria-hidden="true">
-					<div class="modal-dialog modal-dialog-centered">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">사이즈 선택</h5>
-								<button type="button" class="close" data-dismiss="modal"
-									aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<div class="row">
-									<div class="col-sm-4">
-										<button type="button" class="btn btn-primary btn-lg btn-block">사이즈</button>
-										<p></p>
-									</div>
-									<div class="col-sm-4">
-										<button type="button" class="btn btn-primary btn-lg btn-block">사이즈</button>
-									</div>
-									<div class="col-sm-4">
-										<button type="button" class="btn btn-primary btn-lg btn-block">사이즈</button>
-									</div>
-									<div class="col-sm-4">
-										<button type="button" class="btn btn-primary btn-lg btn-block">사이즈</button>
-									</div>
-									<div class="col-sm-4">
-										<button type="button" class="btn btn-primary btn-lg btn-block">사이즈</button>
-									</div>
-								</div>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary"
-									data-dismiss="modal">Close</button>
-								<button type="button" class="btn btn-primary">구매하기</button>
-							</div>
-						</div>
-					</div>
-				</div>
-
 			</div>
 		</div>
 	</div>
@@ -131,6 +91,57 @@
 						</div>
 					</c:forEach>
 				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 구매하기 -->
+<div class="modal fade" style="z-index: 2000;" id="buyModal"
+	tabindex="-1" aria-labelledby="buyModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="buyModalLabel">구매하기</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="container" id="sizeBuy">
+					<div class="row">
+						<c:forEach var="i" begin="0" end="${fn:length(sizeList)-1 }">
+							<div class="col-sm-4">
+								<button type="button" class="btn btn-primary btn-lg btn-block">
+									<c:choose>
+										<c:when test="var == 1">
+											<input type="radio" name="sizes" id="${sizeList[i].sizeId }"
+												checked>
+										</c:when>
+										<c:otherwise>
+											<input type="radio" name="sizes" id="${sizeList[i].sizeId }">
+										</c:otherwise>
+									</c:choose>
+									${sizeList[i].sizeSize }<br>
+									<c:choose>
+										<c:when test="${not empty priceBuy[i]}">
+											<span>${priceBuy[i].sellPrice }</span>
+										</c:when>
+										<c:otherwise>
+											<span>구매입찰</span>
+										</c:otherwise>
+									</c:choose>
+								</button>
+								<br />
+							</div>
+						</c:forEach>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="submit" class="btn btn-primary" onclick="sizeBuySelc()">
+					구매하기</button>
 			</div>
 		</div>
 	</div>
@@ -210,10 +221,21 @@
 	</div>
 </div>
 <script>
+	  function sizeBuySelc(){
+		  let radios = document.getElementsByName('sizes');
+    	  let size;
+    	  for (let radio of radios){
+    		  if (radio.checked) {
+      	        size = radio.id;
+      	        console.log(size)      	        
+      	      }
+    	  }
+    	  location.href='buyPrice.do?prodId=${prodInfo.pdtId}&size='+size;
+	  }
       function sizeSelc(){
-    	  var radios = document.getElementsByName('sizes');
-    	  var size;
-    	  for (var radio of radios){
+    	  let radios = document.getElementsByName('sizes');
+    	  let size;
+    	  for (let radio of radios){
     		  if (radio.checked) {
       	        size = radio.id;
       	        console.log(size)

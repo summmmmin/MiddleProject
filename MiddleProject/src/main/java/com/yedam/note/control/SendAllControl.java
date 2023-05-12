@@ -1,9 +1,6 @@
 package com.yedam.note.control;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -13,26 +10,25 @@ import com.yedam.common.Control;
 import com.yedam.note.domain.NoteVO;
 import com.yedam.note.service.NoteService;
 import com.yedam.note.service.NoteServiceImpl;
-import com.yedam.qna.domain.QCommentVO;
-import com.yedam.qna.service.QCommentService;
-import com.yedam.qna.service.QCommentServiceImpl;
 
-public class GetNoteControl implements Control {
+public class SendAllControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		String subject = req.getParameter("subject");
+		System.out.println(subject);
+		// 사용자의 입력값을 QnaVO 입력.
 		
-		String noteId = req.getParameter("noteId");
-		String page = req.getParameter("page");
 		NoteService service = new NoteServiceImpl();
-		NoteVO vo = service.getNote(Integer.parseInt(noteId));
-
-
-		req.setAttribute("noteInfo", vo);
-		req.setAttribute("pageNum", page);
-
-		
-		return "note/getNote.tiles";
-		
+		if(service.sendAll(subject)) {
+			System.out.println("성공");
+			return "main.do"; 
+		}else {
+			return "main.do";
 	}
+
+	}
+
 }
+

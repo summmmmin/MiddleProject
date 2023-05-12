@@ -8,4 +8,9 @@
 		from product_size
 		where cat_id=#{catId}
 	</select>
+	<select id="selectSize" resultType="size">
+		select *
+		from product_size
+		where size_id=#{sizeId}
+	</select>
 </mapper>

@@ -27,8 +27,10 @@
 	<select id="prodList3">
 		SELECT b.*
 		FROM (SELECT ROWNUM rn, a.*
-			  FROM (select * 
-			        from product 
+			  FROM (select pdt.pdt_id, pdt.cat_id, pdt.subcat_id, pdt.brd_id, pdt.gender_id,
+                    pdt.pdt_nm, pdt.pdt_price, pdt.pdt_img, pdt.pdt_views, pdt.pdt_del, brd.brd_nm 
+			        from product pdt
+			        left outer join brand brd on pdt.brd_id = brd.brd_id
 					where pdt_del = 'N' and 
 					(cat_id in (select product_size.cat_id from product_size 
 					                 	left join product on product_size.cat_id=product.cat_id
@@ -44,7 +46,7 @@
                     				 	</where>
                     				 	)
                     <foreach item="item" index="index" collection="list3"
-                     open="and brd_id in (" separator="," close=")">
+                     open="and brd.brd_id in (" separator="," close=")">
                      #{item}
                     </foreach>
                     <foreach item="item" index="index" collection="list4"
@@ -57,8 +59,8 @@
                     </foreach>)
                     ) a
 		<![CDATA[
-			  WHERE ROWNUM <= ${page} * 90) b
-		WHERE b.rn > (0 - 1) * 9
+			  WHERE ROWNUM <= ${page} * 9) b
+		WHERE b.rn > (${page} - 1) * 9
 		]]>
 	</select>
 
@@ -109,12 +111,12 @@
 		where pdt.pdt_id=#{pdtId}
 	</select>
 
-	<update id="updateViews" parameterType="int"> <!-- 조회수 -->
+	<update id="updateViews" parameterType="int"> <!-- 조회수 증가 -->
 		update product set
 		pdt_views=pdt_views+1 where pdt_id=#{pdtId}
 	</update>
 
-	<select id="getViews" resultType="int"> <!-- 조회수 증가 -->
+	<select id="getViews" resultType="int"> <!-- 조회수 -->
 		select count(*) from product
 	</select>
 

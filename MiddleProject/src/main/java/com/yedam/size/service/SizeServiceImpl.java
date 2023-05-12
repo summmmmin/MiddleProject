@@ -16,4 +16,9 @@ public class SizeServiceImpl implements SizeService {
 	public List<SizeVO> getSizeList(int catId) {
 		return mapper.selectSizeList(catId);
 	}
+
+	@Override
+	public SizeVO getSize(int sizeId) {
+		return mapper.selectSize(sizeId);
+	}
 }

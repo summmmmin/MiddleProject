@@ -69,6 +69,12 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return mapper.getUserInfo(userId);
 	}
+
+@Override
+public boolean updatePoint(UserVO user) {
+	return mapper.updatePoint(user) ==1;
+}
+
 	
 	@Override
 	public boolean kakaoSignUp(UserVO user) {

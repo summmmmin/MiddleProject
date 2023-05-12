@@ -6,4 +6,5 @@ import com.yedam.size.domain.SizeVO;
 
 public interface SizeMapper {
 	public List<SizeVO> selectSizeList(int catId);
+	public SizeVO selectSize(int sizeId);
 }
