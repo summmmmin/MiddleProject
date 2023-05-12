@@ -11,6 +11,7 @@ import com.yedam.common.Control;
 public class KakaoUserControl implements Control{
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		return "user/kakaoUser.tiles";
 	}
 

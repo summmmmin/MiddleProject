@@ -64,13 +64,15 @@ public class KakaoLoginControl implements Control {
 				UserVO kakaoUser = userService.loginCheck(userId, userNm);
 
 				session = request.getSession();
-				session.setAttribute("userinfo", newUser);
-				
-			    // 카카오 로그인 플래그 설정
-			    session.setAttribute("kakaoUser", true);
+				session.setAttribute("userinfo", kakaoUser);
 
-				return "user/kakaoUser.tiles";
+				// 카카오 로그인 플래그 설정
+				session.setAttribute("kakaoUser", true);
+
+				return gson + ".json";
+
 			} else {
+
 				System.out.println("회원가입 에러");
 				return "user/loginForm.tiles";
 			}

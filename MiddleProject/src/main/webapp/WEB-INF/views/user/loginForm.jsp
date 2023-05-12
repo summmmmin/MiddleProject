@@ -94,7 +94,8 @@
                                                                     //    .stringify(res));
                                                                    // alert(JSON
                                                                      // .stringify(authObj));
-
+                                                                   
+                                                                   location.href = "kakaoUser.do"
                                                                     console
                                                                         .log(res.id);
                                                                     console
@@ -133,28 +134,20 @@
                                                                     xhr.onreadystatechange = function() {
                                                                         if (xhr.readyState === 4 &&
                                                                             xhr.status === 200) {
-                                                                            // 서버 응답 처리
-                                                                            console
-                                                                                .log(xhr.responseText);
-                                                                            //window.location.href = 'main.do';
                                                                         }
                                                                     };
 
                                                                     xhr
                                                                         .send(JSON
                                                                             .stringify(data));
-
+                                                                    console
                                                                 },
                                                                 fail: function(
                                                                     error) {
-                                                               //     alert(JSON
-                                                                    //    .stringify(error));
                                                                 }
                                                             });
                                                     },
                                                     fail: function(err) {
-                                                 //       alert(JSON
-                                                          //  .stringify(err));
                                                     }
                                                 });
 
