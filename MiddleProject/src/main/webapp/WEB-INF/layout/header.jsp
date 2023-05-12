@@ -5,6 +5,19 @@
     String userId = (String)session.getAttribute("UserId");
     String userNm = (String)session.getAttribute("UserNm");
 %>
+<style>
+.count{	 
+          font-size: 16px;
+          width: 26px;
+          height: 26px;
+          line-height: 26px;
+          border-radius: 50%;
+          display: inline-block;
+          text-align: center;
+          background: #7971ea;
+          color: #fff;
+}
+</style>
 <header class="site-navbar" role="banner">
       <div class="site-navbar-top">
         <div class="container">
@@ -23,13 +36,21 @@
               </div>
             </div>
 
-            <div class="col-6 col-md-4 order-3 order-md-3 text-right">
+        <div class="col-6 col-md-4 order-3 order-md-3 text-right">
               <div class="site-top-icons">
                 <ul>
                   <li><a href="mypagePwForm.do"><span class="icon icon-person"></span></a></li>
                   <li><a href="wishList.do"><span class="icon icon-heart-o"></span></a></li>
+                  <c:if test="${userinfo != null}">
                   <li><a href="noteList.do" class="site-cart"><span class="icon icon-send"></span>
-                    <span class="count" >5</span></a></li>
+                    <span class="count" >${readInfo }</span></a></li>
+                   </c:if>
+                  <li>
+                    <a href="#" class="site-cart">
+                      <span class="icon icon-message"></span>
+                      <span class="count">2</span>
+                    </a>
+                  </li> 
                   <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
                 </ul>
               </div> 
@@ -65,7 +86,7 @@
                 <li><a href="#">Menu Three</a></li>
               </ul>
             </li>
-            <li><a href="prodList.do">Shop</a></li>
+            <li><a href="prodList.do?page=1">Shop</a></li>
             <li><a href="qnaList.do">Q&A</a></li>
             <c:choose>
               <c:when test="${userinfo == null }">

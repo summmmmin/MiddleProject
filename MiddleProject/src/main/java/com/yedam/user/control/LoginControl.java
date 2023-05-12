@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.yedam.common.Control;
+import com.yedam.note.service.NoteService;
+import com.yedam.note.service.NoteServiceImpl;
 import com.yedam.user.domain.UserVO;
 import com.yedam.user.service.UserService;
 import com.yedam.user.service.UserServiceImpl;
@@ -21,12 +23,18 @@ public class LoginControl implements Control {
 
         UserService service = UserServiceImpl.getInstance();
         UserVO vo = service.loginCheck(userId, userPw);
-
+       
+        NoteService service2 = new NoteServiceImpl();
+        int read = service2.readCount(userId);
+        
+        System.out.println(read);
+        
         System.out.println(vo);
         
         if (vo != null) {
             HttpSession session = req.getSession();    
             session.setAttribute("userinfo", vo);
+            session.setAttribute("readInfo", read);
 
             // 이전 URL이 저장된 세션 변수를 가져옴
             String returnUrl = (String) session.getAttribute("returnUrl");
