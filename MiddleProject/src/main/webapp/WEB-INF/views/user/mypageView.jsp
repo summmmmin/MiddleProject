@@ -27,7 +27,7 @@
 			</div>
 			<div class="row justify-content-md-center">
 				<div class="col-md-12">
-					<h2 class="h3 mb-3 text-black">내 정보</h2>
+					<h2 class="h3 mb-3 text-black">${userinfo.userNm }님의 정보</h2>
 
 					<form action="mypageView.do" method="post">
 						<div class="p-3 p-lg-5 border">
