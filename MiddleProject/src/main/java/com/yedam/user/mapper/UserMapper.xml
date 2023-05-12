@@ -1,49 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yedam.user.mapper.UserMapper">
-
-<!-- 로그인 -->
-<select id="loginCheck" parameterType="com.yedam.user.domain.UserVO" resultType="com.yedam.user.domain.UserVO">
+	<!-- 로그인 -->
+	<select id="loginCheck" parameterType="com.yedam.user.domain.UserVO" resultType="com.yedam.user.domain.UserVO">
     SELECT * FROM users WHERE user_Id=#{userId} AND user_Pw=#{userPw}
 </select>
-
-<!-- 회원단건체크 -->
-<select id="getUserInfo" parameterType="com.yedam.user.domain.UserVO" resultType="com.yedam.user.domain.UserVO">
+	<!-- 회원단건체크 -->
+	<select id="getUserInfo" parameterType="com.yedam.user.domain.UserVO" resultType="com.yedam.user.domain.UserVO">
   SELECT * FROM users WHERE user_id = #{userId}
 </select>
-
-<!-- addMember -->
-<insert id="addUser" parameterType="com.yedam.user.domain.UserVO">
+	<!-- addMember -->
+	<insert id="addUser" parameterType="com.yedam.user.domain.UserVO">
     INSERT INTO users (user_id, user_pw, user_nm, user_phone, user_add) 
     VALUES (#{userId}, #{userPw}, #{userNm}, #{userPhone}, #{userAdd})
 </insert>
-
-<!-- 이메일 중복체크(회원가입) -->
-<select id="checkEmail" resultType="int">
+	<!-- 이메일 중복체크(회원가입) -->
+	<select id="checkEmail" resultType="int">
     SELECT COUNT(*) FROM users WHERE user_id = #{userId}
 </select>
-
-<!-- 마이페이지 비밀번호 체크 -->
-<select id="checkPassword" parameterType="com.yedam.user.domain.UserVO" resultType="com.yedam.user.domain.UserVO">
+	<!-- 마이페이지 비밀번호 체크 -->
+	<select id="checkPassword" parameterType="com.yedam.user.domain.UserVO" resultType="com.yedam.user.domain.UserVO">
     SELECT * FROM users WHERE user_Id=#{userId} AND user_Pw=#{userPw}
 </select>
-
-<!-- 회원탈퇴 -->
-<delete id="deleteUser" parameterType="com.yedam.user.domain.UserVO">
+	<!-- 회원탈퇴 -->
+	<delete id="deleteUser" parameterType="com.yedam.user.domain.UserVO">
     DELETE FROM users WHERE user_id=#{userId}
 </delete>
-
-<!-- 회원정보 수정 -->
-<update id="modifyUser" parameterType="com.yedam.user.domain.UserVO">
+	<!-- 회원정보 수정 -->
+	<update id="modifyUser" parameterType="com.yedam.user.domain.UserVO">
     UPDATE users
     SET user_pw=#{userPw}, user_phone=#{userPhone}, user_add=#{userAdd}
     WHERE user_id=#{userId}
 </update>
-
-<!-- 유저리스트 -->
-<select id="userList">
-	select * from users;
+	<!-- 유저리스트 -->
+	<select id="userList">
+	select * from users
 </select>
+	<!-- 카카오 유저 회원가입 -->
+	<insert id="kakaoSignUp" parameterType="com.yedam.user.domain.UserVO">
+    INSERT INTO users (user_id, user_pw, user_nm, user_phone, user_add) 
+    VALUES (#{userId}, #{userPw}, #{userNm}, #{userPhone}, #{userAdd})
+</insert>
+	<!-- 비밀번호찾기 (재설정) -->
+	<update id="findPassword" parameterType="com.yedam.user.domain.UserVO">
+	UPDATE users
+	set user_pw=#{userPw}
+	WHERE user_id=#{userId}
+  </update>
 <!-- 포인트 -->
 <update id="updatePoint">
 	  update users set user_point = #{userPoint} where user_id=#{userId}

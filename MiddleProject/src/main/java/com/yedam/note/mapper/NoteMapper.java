@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.yedam.note.domain.NoteVO;
+import com.yedam.qna.domain.QnaVO;
 import com.yedam.user.domain.UserVO;
 
 public interface NoteMapper {

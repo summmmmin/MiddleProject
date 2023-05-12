@@ -18,6 +18,7 @@
    		<typeAlias alias="user" type="com.yedam.user.domain.UserVO" />
    		<typeAlias alias="note" type="com.yedam.note.domain.NoteVO" />
    		<typeAlias alias="wish" type="com.yedam.wish.domain.WishVO" />
+   		<typeAlias alias="kakao" type="com.yedam.user.domain.KakaoVO" />
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">

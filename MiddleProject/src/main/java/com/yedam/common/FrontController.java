@@ -51,6 +51,10 @@ import com.yedam.sell.control.SellListUControl;
 import com.yedam.sell.control.SellPriceControl;
 import com.yedam.user.control.DeleteUserControl;
 import com.yedam.user.control.DeleteUserFormControl;
+import com.yedam.user.control.FindPassWordFormControl;
+import com.yedam.user.control.FindPasswordControl;
+import com.yedam.user.control.KakaoLoginControl;
+import com.yedam.user.control.KakaoUserControl;
 import com.yedam.user.control.LoginControl;
 import com.yedam.user.control.LoginFormControl;
 import com.yedam.user.control.LogoutControl;
@@ -85,7 +89,7 @@ public class FrontController extends HttpServlet{
 		map.put("/delQna.do", new DelQnaControl());
 		map.put("/modifyQC.do", new ModifyQCControl());
 		map.put("/addQC.do", new AddQCControl());
-		map.put("myQna.do", new MyQnaControl());
+		map.put("/myQna.do", new MyQnaControl());
 		//product
 		map.put("/prodList.do", new ProdListControl());
 		map.put("/prodAddForm.do", new ProdAddForm());
@@ -101,6 +105,10 @@ public class FrontController extends HttpServlet{
 		map.put("/signUpForm.do", new SignUpFormControl());
 		map.put("/login.do", new LoginControl());
 		map.put("/signUp.do", new SignUpControl());
+		map.put("/kakaoLogin.do", new KakaoLoginControl());
+		map.put("/kakaoUser.do", new KakaoUserControl());
+		map.put("/findPassWord.do",  new FindPasswordControl());
+		map.put("/findPassWordForm.do", new FindPassWordFormControl());
 		//sell
 		map.put("/sellListU.do", new SellListUControl());
 		map.put("/sellGet.do", new SellGetControl());

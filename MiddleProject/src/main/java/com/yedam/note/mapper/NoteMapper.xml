@@ -41,6 +41,7 @@
   	 select count(*) from note where user_id=#{userId}
   	 </select>	
 	 
+	 
 	 <!-- 모든 아이디. -->
 	 <select id="allUser">
 	 select user_id from users

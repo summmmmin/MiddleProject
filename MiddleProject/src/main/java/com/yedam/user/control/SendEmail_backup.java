@@ -15,6 +15,10 @@ import javax.mail.internet.MimeMessage;
 
 public class SendEmail_backup {
 	
+										// 해당파일 수정하지마세요
+										// 필요하면 복사해서 쓰세요
+	
+	
 	public static void gmailSend() {
         String user = "qomo596@gmail.com"; // gmail 계정
         String password = "ddlgznoxtmfefivt";   // gmail 패스워드(2단계 앱보안 비밀번호)
