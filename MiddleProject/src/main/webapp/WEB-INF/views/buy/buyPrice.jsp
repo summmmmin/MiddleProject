@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<div class="site-section">
 <div class="container" id="priceSelec">
 <form method="post" id="form">
   <div class="row mb-5">
@@ -51,6 +52,7 @@ pageEncoding="UTF-8"%>
   </button>
 </form>
 </div>
+</div>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
   let price;
@@ -74,15 +76,14 @@ pageEncoding="UTF-8"%>
   		  $("#a").hide();
   		  $("#b").show();
   		  price = '${price.sellPrice}';
-  		  document.getElementById("inputPrice").value=''
+  		  document.getElementById("inputPrice").value='';
   		  calcul(price);
   	  }else if(event.target.id == '2'){ //구매입찰
   		  $("#a").show();
   		  $("#b").hide();
-  		  document.getElementById("fee").innerHTML='-'
-  		  document.getElementById("totalPrice").innerHTML='-'
-  		  document.getElementById("inputPrice").value=''
-
+  		  document.getElementById("fee").innerHTML='-';
+  		  document.getElementById("totalPrice").innerHTML='-';
+  		  document.getElementById("inputPrice").value='';
   	  }
     }
   // 즉시구매로 넘어가기
@@ -93,7 +94,7 @@ pageEncoding="UTF-8"%>
   	$("#a").hide();
   	$("#b").show();
   	price = '${price.sellPrice}';
-  	document.getElementById("inputPrice").value=''
+  	document.getElementById("inputPrice").value='';
   	calcul(price);
   }
   // 판매입찰만가능
@@ -115,10 +116,15 @@ pageEncoding="UTF-8"%>
 	if('${price}'){
   		if(Number(inputPrice) >= Number('${price.sellPrice}') && Number(inputPrice)>0){
   			test1();
-		}
+		}else{
+	  		  price = inputPrice;
+	  		  calcul(price);
+	  		  console.log('input:'+price)
+	  	}
   	}else{
   		  price = inputPrice;
   		  calcul(price);
+  		  console.log('input:'+price)
   	}		
   }
   // 가격계산
