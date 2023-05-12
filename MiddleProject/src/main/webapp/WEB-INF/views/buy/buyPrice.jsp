@@ -30,7 +30,7 @@ pageEncoding="UTF-8"%>
   <dl class="row" id="b">
     <dt class="col-sm-3">즉시구매가</dt>
     
-    <dd class="col-sm-9"><input type="text" id="price" name="price" value="${price.sellPrice}원" readonly></dd>
+    <dd class="col-sm-9"><input type="text" id="price" name="price" value="${price.sellPrice}" readonly>원</dd>
   </dl>
   <hr />
   <dl class="row">
