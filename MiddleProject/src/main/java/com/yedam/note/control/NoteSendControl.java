@@ -16,23 +16,20 @@ public class NoteSendControl implements Control {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String uid = req.getParameter("userId");
-		String subject = req.getParameter("noteCT");
-		
-		// 사용자의 입력값을 QnaVO 입력.
+		String subject = req.getParameter("subject");
+		String userId = req.getParameter("userId");
+		System.out.println();
 		NoteVO vo = new NoteVO();
 		vo.setNoteCT(subject);
-		vo.setUserId(uid);
+		vo.setUserId(userId);
 		
-		System.out.println(vo);
+		NoteServiceImpl service = new NoteServiceImpl();
 		
-		NoteService service = new NoteServiceImpl();
 		if(service.sendNote(vo)) {
-			return "noteList.do"; 
-		}else {
+			System.out.println("성공");
 			return "main.do";
-	}
-
+		}
+		return "main.do";
 	}
 
 }

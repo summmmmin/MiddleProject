@@ -22,18 +22,18 @@ public class NoteListControl implements Control {
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 
-		// TODO Auto-generated method stub
+		// 세션 아이디 정보 가져오기
 		HttpSession session = req.getSession();
 		UserVO userInfo = (UserVO) session.getAttribute("userinfo");
-		String id = userInfo.getUserId();
+		String id = userInfo.getUserId(); 
+		
 		NoteService service = new NoteServiceImpl();
-		System.out.println(id);
 		String pageStr = req.getParameter("page");	
 		pageStr = pageStr ==null ? "1" : pageStr;
 		int page = Integer.parseInt(pageStr);
-		int total = service.myNoteCount(id);
+		int total = service.myNoteCount(id); // 쪽지의 총 갯수
 		PageDTO dto = new PageDTO(page,total);
-		List<NoteVO> list = service.noteList(id,page);	
+		List<NoteVO> list = service.noteList(id,page);
 		req.setAttribute("noteList", list);
 		req.setAttribute("pageInfo", dto);
 		
