@@ -21,28 +21,33 @@ public class NoteServiceImpl implements NoteService {
 		return mapper.delNote(noteId);
 	}
 	@Override
-	public boolean delAllNote(String userId) {
+	public boolean delAllNote(String userId, int page) {
 		// TODO Auto-generated method stub
-		return mapper.delAllNote(userId);
+		return mapper.delAllNote(userId,page);
 	}
 	@Override
 	public NoteVO getNote(int noteId) {
-		// TODO Auto-generated method stub
+		mapper.updateViews(noteId);
 		return mapper.getNote(noteId);
 	}
 	@Override
 	public boolean sendNote(NoteVO vo) {
 		// TODO Auto-generated method stub
-		return mapper.sendNote(vo);
-	}
-	@Override
-	public UserVO allUser() {
-		// TODO Auto-generated method stub
-		return mapper.allUser();
+		return mapper.sendNote(vo) == 1;
 	}
 	@Override
 	public int myNoteCount(String uid) {
 		return mapper.getNoteCount(uid);
+	}
+	@Override
+	public int readCount(String uid) {
+		// TODO Auto-generated method stub
+		return mapper.readNote(uid);
+	}
+	@Override
+	public boolean sendAll(String noteCT) {
+		// TODO Auto-generated method stub
+		return mapper.sendAll(noteCT) >0;
 	}
 
 }

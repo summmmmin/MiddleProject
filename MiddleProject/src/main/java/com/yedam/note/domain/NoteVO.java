@@ -10,5 +10,5 @@ public class NoteVO {
 	private String userId;
 	private String noteCT;
 	private Date noteDate;
-	private int noteView;
+	private int noteViews;
 }

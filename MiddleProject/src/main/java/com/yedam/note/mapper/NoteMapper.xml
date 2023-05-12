@@ -21,8 +21,18 @@
 	 </delete>
 	 
 	 <!-- 쪽지 전체삭제. -->
-	 <delete id="delAllNote" parameterType="String" >
-	 delete from note where user_id=#{userId}
+	 <delete id="delAllNote">
+	 <![CDATA[
+	 delete from note
+	 where note_id in ( select b.note_id
+	 from(select rownum rn, a.*
+	 	  from (select * 
+	 	  		from note
+	 			where user_id=#{userId}
+	 			order by note_id desc) a
+	 	  where rownum <= #{page}*10 )b
+  	 where b.rn > (#{page} - 1) * 10)
+  	 ]]>
 	 </delete>
 	 
 	 <!-- 쪽지 상세보기. -->
@@ -32,19 +42,32 @@
 	  
 	 <!-- 쪽지 단일 보내기. -->
 	 <insert id="sendNote" parameterType='note'>
-	 insert into note(note_id,user_id,note,note_ct)
-  	 values(note_id_seq.nextval,#{userId},#{postCT})
+	 insert into note(note_id,user_id,note_ct)
+  	 values(note_id_seq.nextval,#{userId},#{noteCT})
 	 </insert>
 	 
+	 <!-- 모두에게 보내기. -->
+	 <insert id="sendAll">
+	 insert into note(note_id,user_id,note_ct)
+	 select note_id_seq.nextval, user_id,#{noteCT} from users
+	 </insert>
+	  	 
 	 <!-- 나의 쪽지 수. -->
 	 <select id="getNoteCount">
   	 select count(*) from note where user_id=#{userId}
   	 </select>	
+	  
+	 <!-- 읽은 쪽지 -->
+	 <update id="updateViews"> 
+	 update note set
+	 note_views=note_views+1 where note_id=#{noteId}
+	 </update>
 	 
-	 
-	 <!-- 모든 아이디. -->
-	 <select id="allUser">
-	 select user_id from users
+	 <!-- 안읽은 쪽지 갯수-->
+	 <select id="readNote">
+	  <![CDATA[
+	 select count(*)
+	 from note where note_views<1 and user_id=#{userId}
+	  ]]>
 	 </select>
-	 
 </mapper>
