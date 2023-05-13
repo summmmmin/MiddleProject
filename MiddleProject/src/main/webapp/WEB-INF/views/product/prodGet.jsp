@@ -95,6 +95,11 @@
 		</div>
 	</div>
 </div>
+<div class="row justify-content-center">
+	<div class="col-md-7 site-section-heading text-center pt-4">
+		<h2>리뷰</h2>
+	</div>
+</div>
 <!-- 구매하기 -->
 <div class="modal fade" style="z-index: 2000;" id="buyModal"
 	tabindex="-1" aria-labelledby="buyModalLabel" aria-hidden="true">
@@ -140,8 +145,8 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="submit" class="btn btn-primary" onclick="sizeBuySelc()">
-					구매하기</button>
+				<button type="submit" class="btn btn-primary"
+					onclick="sizeBuySelc()">구매하기</button>
 			</div>
 		</div>
 	</div>
