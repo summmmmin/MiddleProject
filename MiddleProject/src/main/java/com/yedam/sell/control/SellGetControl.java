@@ -20,7 +20,8 @@ public class SellGetControl implements Control {
 		
 		SellService service = new SellServiceImpl();
 		SellVO vo = service.getSellId(Integer.parseInt(sellId));
-		req.setAttribute("sellInfo", vo);
+		String str = vo.getSellAccount();
+		String[] array = str.split("/");
 		String json="";
 		json += "{\"sellId\":"+vo.getSellId()+",";
 		json += "\"userId\":\""+vo.getUserId()+"\",";
@@ -29,7 +30,8 @@ public class SellGetControl implements Control {
 		json += "\"sellPrice\":"+vo.getSellPrice()+",";
 		json += "\"sellDlvy\":\""+vo.getSellDlvy()+"\",";
 		json += "\"sellCancel\":\""+vo.getSellCancel()+"\",";
-		json += "\"sellAccount\":\""+vo.getSellAccount()+"\",";
+		json += "\"sellAccountNm\":\""+array[0]+"\",";
+		json += "\"sellAccount\":\""+array[1]+"\",";
 		json += "\"pdtNm\":\""+vo.getPdtNm()+"\",";
 		json += "\"pdtImg\":\""+vo.getPdtImg()+"\",";
 		json += "\"sizeSize\":\""+vo.getSizeSize()+"\",";

@@ -7,12 +7,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
+import com.yedam.sell.domain.SellVO;
+import com.yedam.sell.service.SellService;
+import com.yedam.sell.service.SellServiceImpl;
 
 public class SellDetailControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		return "sell/sellDetail.tiles";
 	}
 
