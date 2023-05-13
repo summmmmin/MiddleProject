@@ -72,7 +72,8 @@
 							<c:forEach var="i" begin="0" end="${fn:length(catlist)-1}">
 								<div>
 									<label class="d-flex"> <input type="checkbox"
-										id="${catlist[i].catId}" class="mr-2 mt-1 catId"> <span
+										id="${catlist[i].catId}" class="mr-2 mt-1 catId"
+										onclick="prod_categories(this)" value="${catlist[i].catId}"> <span
 										class="text-black">${catlist[i].catNm}</span> <span
 										class="text-black ml-auto">(${cntarr[i]})</span>
 									</label>
@@ -81,7 +82,8 @@
 											<c:choose>
 												<c:when test="${subcatlist[j].catId == catlist[i].catId}">
 													<label class="d-flex"> <input type="checkbox"
-														id="${subcatlist[j].subcatId}" class="mr-2 mt-1">
+														id="${subcatlist[j].subcatId}" class="mr-2 mt-1 subcatId"
+														onclick="prod_categories(this)" value="${subcatlist[j].subcatId}">
 														<span class="text-black">${subcatlist[j].subcatNm}</span>
 														<span class="text-black ml-auto">(${subcntarr[j]})</span>
 													</label>
@@ -107,7 +109,8 @@
 						<div class="closed-content3" style="display: none;">
 							<c:forEach var="i" begin="0" end="${fn:length(genderlist)-1}">
 								<label class="d-flex"> <input type="checkbox"
-									id="${genderlist[i].genderId}" class="mr-2 mt-1"> <span
+									id="${genderlist[i].genderId}" class="mr-2 mt-1 gender"
+									onclick="prod_categories(this)" value="${genderlist[i].genderId}"> <span
 									class="text-black">${genderlist[i].genderNm}</span> <span
 									class="text-black ml-auto">(${genderarr[i]})</span>
 								</label>
@@ -126,7 +129,8 @@
 						<div class="closed-content4" style="display: none;">
 							<c:forEach var="i" begin="0" end="${fn:length(brdlist)-1}">
 								<label class="d-flex"> <input type="checkbox"
-									id="${brdlist[i].brdId}" class="mr-2 mt-1"> <span
+									id="${brdlist[i].brdId}" class="mr-2 mt-1 brand"
+									onclick="prod_categories(this)" value="${brdlist[i].brdId}"> <span
 									class="text-black">${brdlist[i].brdNm}</span> <span
 									class="text-black ml-auto">(${brdarr[i]})</span>
 								</label>
@@ -145,7 +149,7 @@
 						<div class="closed-content5" style="display: none;">
 							<p>의류</p>
 							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
+								class="mr-2 mt-1 size">
 								<span class="text-black">XS</span>
 							</button>
 							<button type="button" class="btn btn-outline-primary" id="s_sm"
@@ -330,9 +334,38 @@
 		});
 	}
 	
-	document.addEventListener('DOMContentLoaded', function () {
+	document.addEventListener('DOMContentLoaded', prod_categories(this));
+	function prod_categories (prodcat) {
 		
-		fetch('prodList2.do?page=${param.page}') // 클릭했을때 창이 바뀌게 주소 더 넣어주기
+		let json;
+		let str;
+		if(prodcat.tagName == 'INPUT') {
+			let arr = ['catId', 'subcatId', 'gender', 'brand'];
+			let arr3 = [];
+			for(let category of arr) {
+				let prod = document.querySelectorAll('.'+category);
+				let arr2 = [];
+				for(let i = 0; i<prod.length; i++) {
+					if(prod[i].checked) {
+						arr2.push(prod[i].value);
+					}
+				}
+				arr3.push(arr2);
+			}
+			json = {...arr3};
+			str = JSON.stringify(json);
+			console.log(str);
+		} else {
+			
+		}
+		
+		fetch('prodList2.do', {
+            method: 'POST',
+            body: 'data='+str,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }) // 클릭했을때 창이 바뀌게 주소 더 넣어주기
 		.then(result => result.json())
 		.then(resolve => {
 			console.log(resolve)
@@ -352,5 +385,7 @@
 			})
 		})
 		.catch(err => console.log(err))
-	})
+	}
+	
+	
 </script>
