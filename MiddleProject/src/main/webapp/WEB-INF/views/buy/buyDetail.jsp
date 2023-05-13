@@ -21,6 +21,7 @@ prefix="c" %>
 <div class="site-section">
   <div class="container" id="buyDetail">
     <!--구매내역-->
+    <c:if test=""></c:if>
     <div class="row mb-5">
       <div class="col-md-12">
         <div class="border p-2 rounded">
