@@ -152,13 +152,11 @@
 							<c:forEach var="i" items="${sizeInfo}">
 								<c:if
 									test="${i.sizeId != 12 || i.sizeId != 13 || i.sizeId != 14}">
-									<div class="btn-group btn-group-toggle" data-toggle="buttons">
-										<label class="btn btn-outline-primary"> <input
-											type="checkbox" id="${i.sizeId}" class="mr-2 mt-1 size"
-											onclick="prod_categories(this)" value="${i.sizeSize}">
-											<span class="text-black">${i.sizeSize}</span>
-										</label>
-									</div>
+									<label> <input type="checkbox"
+										id="${i.sizeId}" class="mr-2 mt-1 size"
+										onclick="prod_categories(this)" value="${i.sizeSize}">
+										<span class="text-black">${i.sizeSize}</span>
+									</label>
 								</c:if>
 							</c:forEach>
 						</div>
@@ -287,5 +285,6 @@
 		.catch(err => console.log(err))
 	}
 	
-	
+	// 값에 따라 화면 출력 바뀌어야 한다(원래 있던 목록을 없애고 다시 출력?)
+	// 페이징 처리 해줘야한다(모든 페이지에 처음 9개의 목록만 나옴)
 </script>
