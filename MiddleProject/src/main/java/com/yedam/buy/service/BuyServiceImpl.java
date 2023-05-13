@@ -21,8 +21,9 @@ public class BuyServiceImpl implements BuyService {
 	@Override
 	public boolean addBuy(BuyVO vo) {
 		// 즉시구매
-		mapper.setSellId(vo);
-		return mapper.insertBuy(vo)==2;
+		int insert = mapper.insertBuy(vo);
+		int sell = mapper.setSellId(vo);
+		return insert==2 && sell==1;
 	}
 
 	@Override

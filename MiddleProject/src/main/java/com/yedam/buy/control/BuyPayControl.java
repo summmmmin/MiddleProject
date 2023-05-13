@@ -69,6 +69,7 @@ public class BuyPayControl implements Control {
 		    	//즉시구매
 		    	if(sell.getBuyId()==0) {
 		    		buy.setSellId(sell.getSellId());
+		    		System.out.println(sell.getSellId());
 		    		buyService.addBuy(buy);
 		    		userService.updatePoint(userpoint);
 		    	}else {
