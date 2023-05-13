@@ -7,6 +7,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.yedam.common.Control;
 import com.yedam.product.domain.PageDTO;
 import com.yedam.product.domain.ProdVO;
@@ -19,58 +24,27 @@ public class ProdList2Control implements Control {
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String pageStr = req.getParameter("page");
+		String data = req.getParameter("data");
 		pageStr = pageStr == null ? "1" : pageStr;
 		int page = Integer.parseInt(pageStr);
 		
 		ProdService service = new ProdServiceImpl();
 		int total = service.totalViews();
 		List<ProdVO> list = service.prodList3(page);
-		System.out.println(list);
 		
 		PageDTO dto = new PageDTO(page, total);
 		req.setAttribute("list", list);
 		req.setAttribute("pageInfo", dto);
 		
-		String json = "[";
-		for(int i = 0; i < list.size(); i++) {
-			json += "{\"pdtId\":" + list.get(i).getPdtId() + ",";
-			json += "\"catId\":" + list.get(i).getCatId() + ",";
-			json += "\"subcatId\":" + list.get(i).getSubcatId() + ",";
-			json += "\"brdId\":" + list.get(i).getBrdId() + ",";
-			json += "\"genderId\":" + list.get(i).getGenderId() + ",";
-			json += "\"pdtNm\":\"" + list.get(i).getPdtNm() + "\",";
-			json += "\"pdtPrice\":" + list.get(i).getPdtPrice() + ",";
-			json += "\"pdtImg\":\"" + list.get(i).getPdtImg() + "\",";
-			json += "\"pdtViews\":" + list.get(i).getPdtViews() + ",";
-			json += "\"pdtDel\":\"" + list.get(i).getPdtDel() + "\",";
-			json += "\"catNm\":\"" + list.get(i).getCatNm() + "\",";
-			json += "\"subcatNm\":\"" + list.get(i).getSubcatNm() + "\",";
-			json += "\"brdNm\":\"" + list.get(i).getBrdNm() + "\",";
-			json += "\"genderNm\":\"" + list.get(i).getGenderNm() + "\",";
-			json += "\"sizeNm\":\"" + list.get(i).getSizeNm() + "\"}";
-			System.out.println(json);
+		System.out.println(data);
+		if(!data.equals("undefined")) {
+			JSONObject jsonObject = new JSONObject(data);
+			JSONArray jArray = jsonObject.getJSONArray("0");
 			
-			if(i+1 != list.size()) {
-				json += ",";
-			}
-//			String cat = "";
-//			for(i = 0; i<list.size(); i++) {
-//				cat += list.get(i).getCatId();
-//				if(i != list.size() -1) {
-//					cat += ",";
-//				}
-//			}
-//			
-//			String[] catArr = new String[list.size()];
-//			cat = "";
-//			for(i = 0; i<catArr.length; i++) {
-//				cat += catArr[i];
-//				if(i != catArr.length -1) {
-//					cat += ",";
-//				}
-//			}
 		}
-		json += "]";
+		Gson gson = new GsonBuilder().create();
+		String json = gson.toJson(list);
+		
 		return json + ".json";
 	}
 
