@@ -1,5 +1,7 @@
 package com.yedam.review.service;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.yedam.common.DataSource;
@@ -23,6 +25,13 @@ public class ReviewServiceImpl implements ReviewService {
 	public ReviewVO searchReview(int reviewId) {
 		return mapper.searchReview(reviewId);
 	}
-	
+	@Override
+	public List<ReviewVO> prodReview(int pdtId) {
+		return mapper.prodReview(pdtId);
+	}
+	@Override
+	public List<ReviewVO> myReview(String userId, int page) {
+		return mapper.myReview(userId, page);
+	}
 	
 }

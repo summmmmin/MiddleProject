@@ -10,4 +10,5 @@ public class ReviewVO {
 	private String reviewDate;
 	private String reviewTitle;
 	private String reviewImg;
+	private String reviewWriter;
 }
