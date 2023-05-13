@@ -13,4 +13,8 @@
 		from product_size
 		where size_id=#{sizeId}
 	</select>
+	<select id="sizeList">
+		select *
+		from product_size
+	</select>
 </mapper>

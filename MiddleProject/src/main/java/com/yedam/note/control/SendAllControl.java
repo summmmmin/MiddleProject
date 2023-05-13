@@ -18,7 +18,6 @@ public class SendAllControl implements Control {
 
 		String subject = req.getParameter("subject");
 		System.out.println(subject);
-		// 사용자의 입력값을 QnaVO 입력.
 		
 		NoteService service = new NoteServiceImpl();
 		if(service.sendAll(subject)) {

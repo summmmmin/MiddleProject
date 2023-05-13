@@ -12,6 +12,9 @@ import com.yedam.product.domain.PageDTO;
 import com.yedam.product.domain.ProdVO;
 import com.yedam.product.service.ProdService;
 import com.yedam.product.service.ProdServiceImpl;
+import com.yedam.size.domain.SizeVO;
+import com.yedam.size.service.SizeService;
+import com.yedam.size.service.SizeServiceImpl;
 
 public class ProdListControl implements Control {
 
@@ -25,7 +28,6 @@ public class ProdListControl implements Control {
 		ProdService service = new ProdServiceImpl();
 		int total = service.totalViews();
 		List<ProdVO> list = service.prodList(page);
-		System.out.println(list);
 		
 		PageDTO dto = new PageDTO(page, total);
 		req.setAttribute("list", list);
@@ -70,6 +72,10 @@ public class ProdListControl implements Control {
 		}
 		req.setAttribute("brdlist", brdlist);
 		req.setAttribute("brdarr", brdarr);
+		
+		SizeService sizeService = new SizeServiceImpl();
+		List<SizeVO> size = sizeService.sizeList();
+		req.setAttribute("sizeInfo", size);
 		
 		return "product/prodList.tiles";
 	}

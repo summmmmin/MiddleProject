@@ -72,8 +72,9 @@
 							<c:forEach var="i" begin="0" end="${fn:length(catlist)-1}">
 								<div>
 									<label class="d-flex"> <input type="checkbox"
-										id="${catlist[i].catId}" class="mr-2 mt-1 catId"> <span
-										class="text-black">${catlist[i].catNm}</span> <span
+										id="${catlist[i].catId}" class="mr-2 mt-1 catId"
+										onclick="prod_categories(this)" value="${catlist[i].catId}">
+										<span class="text-black">${catlist[i].catNm}</span> <span
 										class="text-black ml-auto">(${cntarr[i]})</span>
 									</label>
 									<div style="display: none;">
@@ -81,9 +82,11 @@
 											<c:choose>
 												<c:when test="${subcatlist[j].catId == catlist[i].catId}">
 													<label class="d-flex"> <input type="checkbox"
-														id="${subcatlist[j].subcatId}" class="mr-2 mt-1">
-														<span class="text-black">${subcatlist[j].subcatNm}</span>
-														<span class="text-black ml-auto">(${subcntarr[j]})</span>
+														id="${subcatlist[j].subcatId}" class="mr-2 mt-1 subcatId"
+														onclick="prod_categories(this)"
+														value="${subcatlist[j].subcatId}"> <span
+														class="text-black">${subcatlist[j].subcatNm}</span> <span
+														class="text-black ml-auto">(${subcntarr[j]})</span>
 													</label>
 												</c:when>
 												<c:otherwise>
@@ -107,7 +110,9 @@
 						<div class="closed-content3" style="display: none;">
 							<c:forEach var="i" begin="0" end="${fn:length(genderlist)-1}">
 								<label class="d-flex"> <input type="checkbox"
-									id="${genderlist[i].genderId}" class="mr-2 mt-1"> <span
+									id="${genderlist[i].genderId}" class="mr-2 mt-1 gender"
+									onclick="prod_categories(this)"
+									value="${genderlist[i].genderId}"> <span
 									class="text-black">${genderlist[i].genderNm}</span> <span
 									class="text-black ml-auto">(${genderarr[i]})</span>
 								</label>
@@ -126,8 +131,9 @@
 						<div class="closed-content4" style="display: none;">
 							<c:forEach var="i" begin="0" end="${fn:length(brdlist)-1}">
 								<label class="d-flex"> <input type="checkbox"
-									id="${brdlist[i].brdId}" class="mr-2 mt-1"> <span
-									class="text-black">${brdlist[i].brdNm}</span> <span
+									id="${brdlist[i].brdId}" class="mr-2 mt-1 brand"
+									onclick="prod_categories(this)" value="${brdlist[i].brdId}">
+									<span class="text-black">${brdlist[i].brdNm}</span> <span
 									class="text-black ml-auto">(${brdarr[i]})</span>
 								</label>
 							</c:forEach>
@@ -143,120 +149,18 @@
 								data-target=".closed-content5" onclick="size()">사이즈</a>
 						</h3>
 						<div class="closed-content5" style="display: none;">
-							<p>의류</p>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">XS</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">S</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">M</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">L</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">XL</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">44</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">55</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">66</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">77</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">88</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">110</span>
-							</button>
-							<p>신발</p>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">220</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">225</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">230</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">235</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">240</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">245</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">250</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">255</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">260</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">265</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">270</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">275</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">280</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">285</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">290</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">295</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">300</span>
-							</button>
+							<c:forEach var="i" items="${sizeInfo}">
+								<c:if
+									test="${i.sizeId != 12 || i.sizeId != 13 || i.sizeId != 14}">
+									<div class="btn-group btn-group-toggle" data-toggle="buttons">
+										<label class="btn btn-outline-primary"> <input
+											type="checkbox" id="${i.sizeId}" class="mr-2 mt-1 size"
+											onclick="prod_categories(this)" value="${i.sizeSize}">
+											<span class="text-black">${i.sizeSize}</span>
+										</label>
+									</div>
+								</c:if>
+							</c:forEach>
 						</div>
 					</div>
 				</div>
@@ -330,9 +234,38 @@
 		});
 	}
 	
-	document.addEventListener('DOMContentLoaded', function () {
+	document.addEventListener('DOMContentLoaded', prod_categories(this));
+	function prod_categories (prodcat) {
 		
-		fetch('prodList2.do?page=${param.page}') // 클릭했을때 창이 바뀌게 주소 더 넣어주기
+		let json;
+		let str;
+		if(prodcat.tagName == 'INPUT') {
+			let arr = ['catId', 'subcatId', 'gender', 'brand', 'size'];
+			let arr3 = [];
+			for(let category of arr) {
+				let prod = document.querySelectorAll('.'+category);
+				let arr2 = [];
+				for(let i = 0; i<prod.length; i++) {
+					if(prod[i].checked) {
+						arr2.push(prod[i].value);
+					}
+				}
+				arr3.push(arr2);
+			}
+			json = {...arr3};
+			str = JSON.stringify(json);
+			console.log(str);
+		} else {
+			
+		}
+		
+		fetch('prodList2.do', {
+            method: 'POST',
+            body: 'data='+str,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
 		.then(result => result.json())
 		.then(resolve => {
 			console.log(resolve)
@@ -352,5 +285,7 @@
 			})
 		})
 		.catch(err => console.log(err))
-	})
+	}
+	
+	
 </script>

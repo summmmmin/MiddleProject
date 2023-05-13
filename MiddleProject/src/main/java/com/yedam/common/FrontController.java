@@ -44,7 +44,14 @@ import com.yedam.qna.control.ModifyQCControl;
 import com.yedam.qna.control.MyQnaControl;
 import com.yedam.qna.control.QnaAddControl;
 import com.yedam.qna.control.QnaListControl;
+
+import com.yedam.review.control.AddReviewControl;
+import com.yedam.review.control.DelReviewControl;
+import com.yedam.review.control.GetReviewControl;
+import com.yedam.review.control.ProdReviewControl;
+
 import com.yedam.sell.control.ModifyAccControl;
+
 import com.yedam.sell.control.SellCancelControl;
 import com.yedam.sell.control.SellDetailControl;
 import com.yedam.sell.control.SellFormControl;
@@ -68,9 +75,9 @@ import com.yedam.user.control.MypageViewControl;
 import com.yedam.user.control.SignUpControl;
 import com.yedam.user.control.SignUpFormControl;
 import com.yedam.user.control.UserListControl;
-import com.yedam.wish.control.WishListControl;
-import com.yedam.wish.control.DeletewishList;
 import com.yedam.wish.control.AddwishList;
+import com.yedam.wish.control.DeletewishList;
+import com.yedam.wish.control.WishListControl;
 
 public class FrontController extends HttpServlet{
 	private Map<String, Control> map;
@@ -156,6 +163,12 @@ public class FrontController extends HttpServlet{
 		map.put("/wishList.do",  new WishListControl());
 		map.put("/deletewishList.do", new DeletewishList());
 		map.put("/addwishList.do", new AddwishList());
+		
+		//review
+		map.put("/prodReview.do", new ProdReviewControl());
+		map.put("/addReview.do", new AddReviewControl());
+		map.put("/delReview.do", new DelReviewControl());
+		map.put("/getReview.do", new GetReviewControl());
 
 	}
 	@Override
