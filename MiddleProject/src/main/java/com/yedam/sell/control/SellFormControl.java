@@ -52,7 +52,7 @@ public class SellFormControl implements Control {
 			buy = buyService.getBuyPrice(buy);
 			if(buy.getBuyPrice()==Integer.parseInt(price)) {
 				if(buy.getSellId()==0) {
-					sell.setBuyId(buy.getSellId());
+					sell.setBuyId(buy.getBuyId());
 					sellService.addSell(sell);
 					userService.updatePoint(userpoint);
 				}else {

@@ -49,7 +49,7 @@ pageEncoding="UTF-8"%>
           </label>
         </div>
       </div>
-
+	  <div class="form-group">
       <dl class="row" id="a">
         <dt class="col-sm-3">판매희망가</dt>
         <dd class="col-sm-9">
@@ -63,7 +63,8 @@ pageEncoding="UTF-8"%>
           <span>원</span>
         </dd>
       </dl>
-
+      </div>
+	  <div class="form-group">
       <dl class="row" id="b">
         <dt class="col-sm-3">즉시판매가</dt>
         <dd class="col-sm-9">
@@ -75,7 +76,8 @@ pageEncoding="UTF-8"%>
             readonly
           />원
         </dd>
-      </dl>
+      </dl>	  
+	  </div>
       <hr />
       <dl class="row">
         <dt class="col-sm-3">검수비</dt>
@@ -94,9 +96,8 @@ pageEncoding="UTF-8"%>
         <dt class="col-sm-3">정산금액</dt>
         <dd class="col-sm-9"><span id="totalPrice">-</span></dd>
       </dl>
-      <button class="btn btn-primary btn-block" onclick="sellBtn()">
-        판매하기
-      </button>
+      <input class="btn btn-primary btn-block" type="button" value="판매하기" onclick="sellBtn()">
+      
     </div>
   </div>
   <div class="container" id="sellForm">
