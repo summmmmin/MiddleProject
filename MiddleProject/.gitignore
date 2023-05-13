@@ -123,3 +123,4 @@ $RECYCLE.BIN/
 /target/
 *.classpath
 *.component
+/.settings/
