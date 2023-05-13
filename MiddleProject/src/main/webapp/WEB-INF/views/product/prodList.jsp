@@ -6,11 +6,6 @@
 .js-open-target, .js-close-target {
 	cursor: pointer;
 }
-
-.mr-2 mt-1 size {
-	display: hidden;
-	z-index: 0;
-}
 </style>
 
 <div class="bg-light py-3">
