@@ -12,4 +12,6 @@ public interface ReviewMapper {
 	public ReviewVO searchReview(int reviewId);
 	public List<ReviewVO> prodReview(int pdtId);
 	public List<ReviewVO> myReview(@Param("userId") String userId, @Param("page") int page);
+	public int getCount();
+	public int getMyReviewCount(String userId, int pdtId);
 }

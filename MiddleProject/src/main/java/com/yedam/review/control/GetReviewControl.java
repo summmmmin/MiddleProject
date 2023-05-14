@@ -8,11 +8,13 @@ import java.nio.file.Paths;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.yedam.common.Control;
 import com.yedam.review.domain.ReviewVO;
 import com.yedam.review.service.ReviewService;
 import com.yedam.review.service.ReviewServiceImpl;
+import com.yedam.user.domain.UserVO;
 
 public class GetReviewControl implements Control {
 
