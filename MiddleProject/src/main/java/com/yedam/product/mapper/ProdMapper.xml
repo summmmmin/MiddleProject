@@ -117,7 +117,35 @@
 	</update>
 
 	<select id="getViews" resultType="int"> <!-- 조회수 -->
-		select count(*) from product
+		select count(*)
+		from product pdt
+		left outer join brand brd on pdt.brd_id = brd.brd_id
+		where pdt_del = 'N' and 
+		(cat_id in (select product_size.cat_id from product_size 
+					left join product on product_size.cat_id=product.cat_id
+					<where>
+					<foreach item="item" index="index" collection="list"
+                    open="product_size.size_size in (" separator="," close=")">
+                    #{item}
+                    </foreach>
+                    <foreach item="item" index="index" collection="list2"
+                    open="and product.cat_id in (" separator="," close=")">
+                    #{item}
+                    </foreach>
+                    </where>
+                    ))
+        <foreach item="item" index="index" collection="list3"
+        open="and brd.brd_id in (" separator="," close=")">
+        #{item}
+        </foreach>
+        <foreach item="item" index="index" collection="list4"
+        open="and gender_id in (" separator="," close=")">
+        #{item}
+        </foreach>
+        <foreach item="item" index="index" collection="list5"
+        open="and subcat_id in (" separator="," close=")">
+        #{item}
+        </foreach>
 	</select>
 
 	<select id="getCount" resultType="int"> <!-- 갯수 -->
