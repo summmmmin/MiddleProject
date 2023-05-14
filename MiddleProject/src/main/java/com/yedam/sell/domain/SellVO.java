@@ -17,7 +17,7 @@ public class SellVO {
 	private String sellConfirm;	//검수
 	private String sellAccount;	//정산계좌
 	private String sellPay;		//정산상태
-
+	private String sellAccountNm;
 	private String pdtNm;		//상품이름
 	private String brdNm;	//브랜드
 	private String sizeSize;	//사이즈

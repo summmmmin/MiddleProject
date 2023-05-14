@@ -27,12 +27,13 @@ public class SellCancelControl implements Control {
 		sell.setSellId(Integer.parseInt(sellId));
 		sell.setSellCancel(cancel);
 		boolean result = service.cancelSell(sell);
-		
+		System.out.println(result);
 		String json = "";
 		Map<String, Object> map = new HashMap<>();
 		
 		if(result) {
 			sell = service.getSellId(sell.getSellId());
+			System.out.println(sell);
 			map.put("retCode", "Success");
 			map.put("data", sell);
 		}else {
