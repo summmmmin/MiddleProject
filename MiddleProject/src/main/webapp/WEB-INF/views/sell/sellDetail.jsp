@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <style>
   .btn{
     float:right;
@@ -42,6 +43,56 @@ pageEncoding="UTF-8"%>
         </div>
       </div>
     </div>
+    
+    <c:if test="${userinfo.userGrade == '관리자'}">
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <h2 class="h3 mb-3 text-black">배송 상세</h2>
+        <div class="p-3 p-lg-5 border">
+          <table class="table site-block-order-table mb-5" id="table1">
+             <thead id="delivery1">
+     			<th>배송</th>
+      			<th>취소</th>
+    </thead>
+    <tbody>
+      <tr id="prod">
+      	<td>
+        	<div class="form-group">
+				<select id="dlvy_state" class="form-control" name="form">
+				<option selected id="sdlv">${sellInfo.sellDlvy}</option>
+				<option value="구매입찰중">구매입찰중</option>
+				<option value="입고대기">입고대기</option>
+				<option value="입고완료">입고완료</option>
+				<option value="검수중">검수중</option>
+				<option value="검수합격">검수합격</option>
+				<option value="검수불합격">검수불합격</option>
+				<option value="거래실패">거래실패</option>
+				<option value="배송준비중">배송준비중</option>
+				<option value="배송중">배송중</option>
+				<option value="배송완료">배송완료</option>
+				<option value="구매취소">구매취소</option>
+				</select>
+			</div>
+		</td>
+		<td>
+			<div class="form-group">
+				<select id="cancel_state" class="form-control">
+				<option id="scanc" selected>${sellInfo.sellCancel}</option>
+				<option value="취소신청">취소신청</option>
+				<option value="취소완료">취소완료</option>
+				<option value="취소실패">취소실패</option>
+				</select>
+			</div>
+		</td>
+     </tr>
+   	</tbody>
+          </table>
+           <button type="button" class="btn btn-primary" onclick="updatedlv()">수정</button>
+        </div>
+      </div>
+    </div>	
+	</c:if>
+    
     <div class="row mb-5">
       <div class="col-md-12">
         <h2 class="h3 mb-3 text-black">정산 계좌</h2>
@@ -444,4 +495,30 @@ pageEncoding="UTF-8"%>
 	  dlvyinfo.children[1].children[0].children[0].children[3].children[1].innerText = dlv.dlvAddr;
 	  return dlvyinfo;
   }
+  
+  function updatedlv(){
+	   let seldlvy = document.getElementById("dlvy_state");
+	   let dlvy_state = seldlvy.options[seldlvy.selectedIndex].value;
+	   
+	   let selcanc = document.getElementById("cancel_state");
+	   let cancel_state = selcanc.options[selcanc.selectedIndex].value;
+
+   	fetch('sellUpdate.do',{
+   		     method:'POST',
+   		     headers:{'Content-Type':'application/x-www-form-urlencoded'},
+   		     body: 'sellId='+${sellInfo.sellId} +'&dlvy='+dlvy_state+'&cancel='+cancel_state
+   		   })
+   	.then(resolve=>resolve.json())
+   	.then(result=>{
+   		if(result.retCode == 'Success'){
+         document.getElementById("sdlv").innerText=result.data.sellDlvy;
+         document.getElementById("scanc").innerText=result.data.sellCancel;
+         document.getElementById("prod").children[5].innerText=result.data.sellDlvy;
+   			}else if(result.retCode =='Fail'){
+      	    alert('처리 중 에러')
+      	  }else{
+      	    alert('알 수 없는 반환값')
+      	  }
+   	})
+	}		 
 </script>
