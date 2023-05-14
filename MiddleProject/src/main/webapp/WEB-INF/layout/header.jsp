@@ -130,29 +130,8 @@
           <ul class="site-menu js-clone-nav d-none d-md-block">
             <li class="has-children active">
               <a href="main.do">Main</a>
-              <ul class="dropdown">
-                <li><a href="#">Menu One</a></li>
-                <li><a href="#">Menu Two</a></li>
-                <li><a href="#">Menu Three</a></li>
-                <li class="has-children">
-                  <a href="#">Sub Menu</a>
-                  <ul class="dropdown">
-                    <li><a href="#">Menu One</a></li>
-                    <li><a href="#">Menu Two</a></li>
-                    <li><a href="#">Menu Three</a></li>
-                  </ul>
-                </li>
-              </ul>
             </li>
-            <li class="has-children">
-              <a href="#">Ranking</a>
-              <ul class="dropdown">
-                <li><a href="#">Menu One</a></li>
-                <li><a href="#">Menu Two</a></li>
-                <li><a href="#">Menu Three</a></li>
-              </ul>
-            </li>
-            <li><a href="prodList.do?page=1">Shop</a></li>
+            <li><a href="prodList.do">Shop</a></li>
             <li><a href="qnaList.do">Q&A</a></li>
             <c:choose>
               <c:when test="${userinfo == null }">
