@@ -18,7 +18,7 @@ public class DelReviewControl implements Control {
 		ReviewService service = new ReviewServiceImpl();
 		service.removeReview(Integer.parseInt(rid));
 		
-		return ""; // 마이페이지 내 리뷰로 가게 하기
+		return "review/myReviewList.tiles";
 	}
 
 }

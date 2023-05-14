@@ -25,9 +25,10 @@ public class ProdReviewControl implements Control {
 		int page = Integer.parseInt(pageStr);
 		
 		ReviewService service = new ReviewServiceImpl();
+		int total = service.totalCount();
 		List<ReviewVO> list = service.prodReview(page);
 		
-		PageDTO dto = new PageDTO(page, 10); // 고쳐야함
+		PageDTO dto = new PageDTO(page, total);
 		req.setAttribute("list", list);
 		req.setAttribute("pageInfo", dto);
 		
