@@ -174,6 +174,7 @@
 		</div>
 	</div>
 </div>
+<a onclick="prod_categories(this)" id="test11"></a>
 <script>
 	
 	document.querySelectorAll('.catId').forEach(item => {
@@ -278,32 +279,30 @@
 				let ul = page.querySelector('ul');
 				ul.innerHTML = ''; // 초기화
 				let li = document.createElement('li');
-				let a = document.createElement('a');
+				let a = document.querySelector('#test11').cloneNode(true);
 				if (resolve.pageInfo.prev) {
 					a.className = (resolve.pageInfo.startPage-1);
-					a.onclick = "prod_categories('this')";
+					
 					li.append(a);
-					a.innerText = '&lt';
+					a.innerText = '<';
 				}
 				ul.append(li);
 				for (let i = resolve.pageInfo.startPage; i<resolve.pageInfo.endPage; i++) {
 					li = document.createElement('li'); // 초기화
-					a = document.createElement('a'); // 초기화
+					a = document.querySelector('#test11').cloneNode(true); // 초기화
 					li.className = (i == resolve.pageInfo.pageNum ? 'active' : '');
 					a.className = (i);
 					a.innerText = (i);
-					a.onclick = "prod_categories('this')";
-					a.href = "prodList.do?page="+i+"&data="+str;
 					li.append(a);
 					ul.append(li);
 				}
 				li = document.createElement('li');
-				a = document.createElement('a');
+				a = document.querySelector('#test11').cloneNode(true);
 				if (resolve.pageInfo.next) {
 					a.className = (resolve.pageInfo.endPage+1);
-					a.onclick = "prod_categories('this')";
+					
 					li.append(a);
-					a.innerText = '&gt';
+					a.innerText = '>';
 				}
 				ul.append(li);
 		})
