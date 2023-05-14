@@ -51,6 +51,7 @@ public class BuyFormControl implements Control {
     			req.setAttribute("price", price);
     		}else {
     			req.setAttribute("price", inprice);
+    			System.out.println(inprice);
     		}	    	 
 	    	return "buy/buyForm.tiles";	    	
 	    }

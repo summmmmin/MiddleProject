@@ -1,11 +1,15 @@
 package com.yedam.sell.control;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.yedam.common.Control;
 import com.yedam.sell.domain.SellVO;
 import com.yedam.sell.service.SellService;
@@ -22,9 +26,22 @@ public class SellCancelControl implements Control {
 		SellVO sell = new SellVO();
 		sell.setSellId(Integer.parseInt(sellId));
 		sell.setSellCancel(cancel);
-		service.cancelSell(sell);
+		boolean result = service.cancelSell(sell);
+		System.out.println(result);
+		String json = "";
+		Map<String, Object> map = new HashMap<>();
 		
-		return "sellListU.do";
+		if(result) {
+			sell = service.getSellId(sell.getSellId());
+			System.out.println(sell);
+			map.put("retCode", "Success");
+			map.put("data", sell);
+		}else {
+			map.put("retCode", "Fail");
+		}
+		Gson gson = new GsonBuilder().create();
+		json = gson.toJson(map);
+		return json+".json";
 	}
 
 }

@@ -15,10 +15,12 @@ import com.yedam.buy.control.BuyCancelControl;
 import com.yedam.buy.control.BuyDetailControl;
 import com.yedam.buy.control.BuyFormControl;
 import com.yedam.buy.control.BuyGetControl;
+import com.yedam.buy.control.BuyListControl;
 import com.yedam.buy.control.BuyListUControl;
 import com.yedam.buy.control.BuyPayControl;
 import com.yedam.buy.control.BuyPriceControl;
 import com.yedam.buy.control.BuyReturnControl;
+import com.yedam.buy.control.BuyUpdateControl;
 import com.yedam.buy.control.ModifyDlvy;
 import com.yedam.note.control.DelAllNoteControl;
 import com.yedam.note.control.DelNoteControl;
@@ -26,6 +28,7 @@ import com.yedam.note.control.GetNoteControl;
 import com.yedam.note.control.ListNoteControl;
 import com.yedam.note.control.NoteListControl;
 import com.yedam.note.control.NoteSendControl;
+import com.yedam.note.control.SendAllControl;
 import com.yedam.note.control.SendNoteControl;
 import com.yedam.product.control.AddProdControl;
 import com.yedam.product.control.DelProdControl;
@@ -43,12 +46,24 @@ import com.yedam.qna.control.ModifyQCControl;
 import com.yedam.qna.control.MyQnaControl;
 import com.yedam.qna.control.QnaAddControl;
 import com.yedam.qna.control.QnaListControl;
+
+
+import com.yedam.review.control.AddReviewControl;
+import com.yedam.review.control.DelReviewControl;
+import com.yedam.review.control.GetReviewControl;
+import com.yedam.review.control.MyReviewControl;
+import com.yedam.review.control.ProdReviewControl;
+
+
+import com.yedam.sell.control.ModifyAccControl;
+
 import com.yedam.sell.control.SellCancelControl;
 import com.yedam.sell.control.SellDetailControl;
 import com.yedam.sell.control.SellFormControl;
 import com.yedam.sell.control.SellGetControl;
 import com.yedam.sell.control.SellListUControl;
 import com.yedam.sell.control.SellPriceControl;
+import com.yedam.sell.control.SellUpdateControl;
 import com.yedam.user.control.DeleteUserControl;
 import com.yedam.user.control.DeleteUserFormControl;
 import com.yedam.user.control.FindPassWordFormControl;
@@ -66,9 +81,9 @@ import com.yedam.user.control.MypageViewControl;
 import com.yedam.user.control.SignUpControl;
 import com.yedam.user.control.SignUpFormControl;
 import com.yedam.user.control.UserListControl;
-import com.yedam.wish.control.WishListControl;
-import com.yedam.wish.control.DeletewishList;
 import com.yedam.wish.control.AddwishList;
+import com.yedam.wish.control.DeletewishList;
+import com.yedam.wish.control.WishListControl;
 
 public class FrontController extends HttpServlet{
 	private Map<String, Control> map;
@@ -116,8 +131,8 @@ public class FrontController extends HttpServlet{
 		map.put("/sellForm.do", new SellFormControl());
 		map.put("/sellCancel.do", new SellCancelControl());
 		map.put("/sellDetail.do", new SellDetailControl());
-    
-    
+		map.put("/modifyAcc.do", new ModifyAccControl());
+		map.put("/sellUpdate.do", new SellUpdateControl());
 		map.put("/mypagePw.do", new MypageControl());
 		map.put("/mypageView.do", new MypageViewControl());
 		map.put("/deleteUserForm.do", new DeleteUserFormControl());
@@ -135,6 +150,7 @@ public class FrontController extends HttpServlet{
 		map.put("/delAllNote.do",new DelAllNoteControl());
 		map.put("/listNote.do", new ListNoteControl());
 		map.put("/sendNote.do", new SendNoteControl());
+		map.put("/sendAll.do", new SendAllControl());
 
 		
 		//buy
@@ -147,13 +163,22 @@ public class FrontController extends HttpServlet{
 		map.put("/buyPrice.do", new BuyPriceControl());
 		map.put("/buyForm.do", new BuyFormControl());
         map.put("/buyPay.do", new BuyPayControl());
-    
+        map.put("/buyUpdate.do", new BuyUpdateControl());
+        map.put("/buyList.do", new BuyListControl());
 		
 		//wish(관심상품)
 		map.put("/wishList.do",  new WishListControl());
 		map.put("/deletewishList.do", new DeletewishList());
 		map.put("/addwishList.do", new AddwishList());
+		
+		//review
+		map.put("/prodReview.do", new ProdReviewControl());
+		map.put("/addReview.do", new AddReviewControl());
+		map.put("/delReview.do", new DelReviewControl());
+		map.put("/getReview.do", new GetReviewControl());
+		map.put("/myReview.do", new MyReviewControl());
 
+    
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

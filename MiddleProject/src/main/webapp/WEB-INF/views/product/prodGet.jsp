@@ -64,7 +64,7 @@
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-7 site-section-heading text-center pt-4">
-				<h2>Featured Products</h2>
+				<h2>추천 상품</h2>
 			</div>
 		</div>
 		<div class="row">
@@ -93,6 +93,11 @@
 				</div>
 			</div>
 		</div>
+	</div>
+</div>
+<div class="row justify-content-center">
+	<div class="col-md-7 site-section-heading text-center pt-4">
+		<h2>리뷰</h2>
 	</div>
 </div>
 <!-- 구매하기 -->
@@ -140,8 +145,8 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="submit" class="btn btn-primary" onclick="sizeBuySelc()">
-					구매하기</button>
+				<button type="submit" class="btn btn-primary"
+					onclick="sizeBuySelc()">구매하기</button>
 			</div>
 		</div>
 	</div>

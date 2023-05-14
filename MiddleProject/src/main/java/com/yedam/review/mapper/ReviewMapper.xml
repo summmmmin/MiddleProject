@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.product.mapper.ProdMapper">
+	<insert id="insertReview" parameterType="review"> <!-- 등록 -->
+		insert into review
+		(review_id, review_title, buy_id, review_ct, review_img, review_date)
+		values(review_id_seq.nextval, #{reviewTitle}, #{buyId}, #{reviewCt}, #{reviewImg}, sysdate)
+	</insert>
+	
+	<delete id="deleteReview" parameterType="int"> <!-- 삭제 -->
+		delete from review
+		where review_id = ${reviewId}
+	</delete>
+	
+	<select id="searchReview"> <!-- 상세조회 -->
+		select * from review where review_id = #{reviewId}
+	</select>
+	
+	<select id="prodReview"> <!-- 상품상세 밑에 들어갈 리뷰 리스트 -->
+		select * from review natural join buy where pdt_id = #{pdtId}
+	</select>
+	
+	<select id="myReview"> <!-- 내가 쓴 리뷰 리스트 -->
+		<![CDATA[
+		SELECT b.*
+		FROM (SELECT ROWNUM rn, a.*
+			  FROM (SELECT * FROM review
+			  		left outer join buy using(buy_id)
+			  		where user_id=#{userId}
+			  		and pdt_id=#{pdtId}
+					ORDER BY 1 DESC) a
+			  WHERE ROWNUM <= ${page} * 10) b
+		WHERE b.rn > (${page} - 1) * 10
+		]]>
+	</select>
+	
+	<select id="getCount" resultType="int">
+		select count(*) from review
+	</select>
+	
+	<select id="getMyReviewCount">
+		select count(*) from review 
+		left outer join buy using(buy_id)
+		where user_id = #{userId}
+	</select>
+</mapper>

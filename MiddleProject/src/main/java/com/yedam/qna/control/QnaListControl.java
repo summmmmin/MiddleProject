@@ -36,6 +36,8 @@ public class QnaListControl implements Control {
 		return "qna/qnalist.tiles";
 		
 
+		
+		
 	}
 
 }

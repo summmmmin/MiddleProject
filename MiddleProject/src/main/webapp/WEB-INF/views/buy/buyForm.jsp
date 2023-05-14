@@ -17,7 +17,7 @@
                   <tbody>
                     <tr>
                       <td width="10%">
-                        <img src="images/"+"${prod.pdtImg }" width="100px"
+                        <img src="images/${prod.pdtImg }" width="100px"
                         height="100px" alt="" />
                       </td>
                       <td>${prod.pdtNm }</td>
@@ -218,7 +218,7 @@
     $(document).on("click", "#button-addon2", function () {
     	
     	let point = document.getElementById("pointu").value;
-    	if(point>0 && point<=${user.userPoint}){
+    	if(point>=0 && point<=${user.userPoint}){
     	document.getElementById("usePoint").innerText = '-'+point
     	let sum = Number(price) + Number(fee) + 2500 - Number(point)
     	document.getElementById("totalPrice").value = Number(price) + Number(fee) + 2500 - Number(point);

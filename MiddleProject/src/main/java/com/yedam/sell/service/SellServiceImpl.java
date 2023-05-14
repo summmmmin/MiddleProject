@@ -42,8 +42,9 @@ public class SellServiceImpl implements SellService {
 	@Override
 	public boolean addSell(SellVO vo) {
 		//즉시판매
-		mapper.setBuyId(vo);
-		return mapper.insertSell(vo)==2;
+		int sell= mapper.insertSell(vo);
+		int buy = mapper.setBuyId(vo);
+		return sell==2 && buy==1;
 	}
 	@Override
 	public boolean addSellBid(SellVO vo) {

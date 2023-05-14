@@ -39,21 +39,10 @@
 							onclick="location.href='prodAddForm.do'">게시글 등록</button>
 					</c:if>
 				</div>
-				<div class="row" data-aos="fade-up">
+				<div class="row" id="page" data-aos="fade-up">
 					<div class="col-md-12 text-center">
 						<div class="site-block-27">
 							<ul>
-								<li><c:if test="${pageInfo.prev}">
-										<a href="prodList.do?page=${pageInfo.startPage-1}">&lt;</a>
-									</c:if></li>
-								<c:forEach var="i" begin="${pageInfo.startPage}"
-									end="${pageInfo.endPage}">
-									<li class="${i == pageInfo.pageNum ? 'active' : ''}"><a
-										href="prodList.do?page=${i}">${i}</a></li>
-								</c:forEach>
-								<li><c:if test="${pageInfo.next}">
-										<a href="prodList.do?page=${pageInfo.endPage+1}">&gt;</a>
-									</c:if></li>
 							</ul>
 						</div>
 					</div>
@@ -72,8 +61,9 @@
 							<c:forEach var="i" begin="0" end="${fn:length(catlist)-1}">
 								<div>
 									<label class="d-flex"> <input type="checkbox"
-										id="${catlist[i].catId}" class="mr-2 mt-1 catId"> <span
-										class="text-black">${catlist[i].catNm}</span> <span
+										id="${catlist[i].catId}" class="mr-2 mt-1 catId"
+										onclick="prod_categories(this)" value="${catlist[i].catId}">
+										<span class="text-black">${catlist[i].catNm}</span> <span
 										class="text-black ml-auto">(${cntarr[i]})</span>
 									</label>
 									<div style="display: none;">
@@ -81,9 +71,11 @@
 											<c:choose>
 												<c:when test="${subcatlist[j].catId == catlist[i].catId}">
 													<label class="d-flex"> <input type="checkbox"
-														id="${subcatlist[j].subcatId}" class="mr-2 mt-1">
-														<span class="text-black">${subcatlist[j].subcatNm}</span>
-														<span class="text-black ml-auto">(${subcntarr[j]})</span>
+														id="${subcatlist[j].subcatId}" class="mr-2 mt-1 subcatId"
+														onclick="prod_categories(this)"
+														value="${subcatlist[j].subcatId}"> <span
+														class="text-black">${subcatlist[j].subcatNm}</span> <span
+														class="text-black ml-auto">(${subcntarr[j]})</span>
 													</label>
 												</c:when>
 												<c:otherwise>
@@ -107,7 +99,9 @@
 						<div class="closed-content3" style="display: none;">
 							<c:forEach var="i" begin="0" end="${fn:length(genderlist)-1}">
 								<label class="d-flex"> <input type="checkbox"
-									id="${genderlist[i].genderId}" class="mr-2 mt-1"> <span
+									id="${genderlist[i].genderId}" class="mr-2 mt-1 gender"
+									onclick="prod_categories(this)"
+									value="${genderlist[i].genderId}"> <span
 									class="text-black">${genderlist[i].genderNm}</span> <span
 									class="text-black ml-auto">(${genderarr[i]})</span>
 								</label>
@@ -126,8 +120,9 @@
 						<div class="closed-content4" style="display: none;">
 							<c:forEach var="i" begin="0" end="${fn:length(brdlist)-1}">
 								<label class="d-flex"> <input type="checkbox"
-									id="${brdlist[i].brdId}" class="mr-2 mt-1"> <span
-									class="text-black">${brdlist[i].brdNm}</span> <span
+									id="${brdlist[i].brdId}" class="mr-2 mt-1 brand"
+									onclick="prod_categories(this)" value="${brdlist[i].brdId}">
+									<span class="text-black">${brdlist[i].brdNm}</span> <span
 									class="text-black ml-auto">(${brdarr[i]})</span>
 								</label>
 							</c:forEach>
@@ -143,120 +138,15 @@
 								data-target=".closed-content5" onclick="size()">사이즈</a>
 						</h3>
 						<div class="closed-content5" style="display: none;">
-							<p>의류</p>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">XS</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">S</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">M</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">L</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">XL</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">44</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">55</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">66</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">77</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">88</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">110</span>
-							</button>
-							<p>신발</p>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">220</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">225</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">230</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">235</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">240</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">245</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">250</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">255</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">260</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">265</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">270</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">275</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">280</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">285</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">290</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">295</span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" id="s_sm"
-								class="mr-2 mt-1">
-								<span class="text-black">300</span>
-							</button>
+							<c:forEach var="i" items="${sizeInfo}">
+								<c:if
+									test="${i.sizeId != 12 || i.sizeId != 13 || i.sizeId != 14}">
+									<label> <input type="checkbox" id="${i.sizeId}"
+										class="mr-2 mt-1 size" onclick="prod_categories(this)"
+										value="${i.sizeSize}"> <span class="text-black">${i.sizeSize}</span>
+									</label>
+								</c:if>
+							</c:forEach>
 						</div>
 					</div>
 				</div>
@@ -284,6 +174,7 @@
 		</div>
 	</div>
 </div>
+<a onclick="prod_categories(this)" id="test11"></a>
 <script>
 	
 	document.querySelectorAll('.catId').forEach(item => {
@@ -330,27 +221,91 @@
 		});
 	}
 	
-	document.addEventListener('DOMContentLoaded', function () {
+	document.addEventListener('DOMContentLoaded', prod_categories(this));
+	function prod_categories (prodcat) {
 		
-		fetch('prodList2.do?page=${param.page}') // 클릭했을때 창이 바뀌게 주소 더 넣어주기
+		console.log(prodcat);
+		let json;
+		let str;
+		let page = '${param.page}';
+		if(prodcat.tagName == 'INPUT' || prodcat.tagName == 'A') {
+			let arr = ['catId', 'subcatId', 'gender', 'brand', 'size'];
+			let arr3 = [];
+			for(let category of arr) {
+				let prod = document.querySelectorAll('.'+category);
+				let arr2 = [];
+				for(let i = 0; i<prod.length; i++) {
+					if(prod[i].checked) {
+						arr2.push(prod[i].value);
+					}
+				}
+				arr3.push(arr2);
+			}
+			json = {...arr3};
+			str = JSON.stringify(json);
+			page = 1;
+			if(prodcat.tagName == 'A') {
+				page = prodcat.className;
+			}
+			console.log(str);
+		} else {
+			
+		}
+		
+		fetch('prodList2.do', {
+            method: 'POST',
+            body: 'data='+str+ '&page='+page,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
 		.then(result => result.json())
 		.then(resolve => {
 			console.log(resolve)
-			resolve.forEach(item => {
+			document.querySelector('.col-md-9 .mb-5').innerHTML = '';
+			resolve.list.forEach(item => {
 				let template = document.querySelector('.template>div').cloneNode(true);
-				template.querySelector('.img-fluid').innerHTML = item.pdtImg // 이미지 들어가게 바꿔야됨
+				template.querySelector('.img-fluid').src = "./images/"+item.pdtImg;
 				template.querySelector('.pdtNm').innerText = item.pdtNm
 				template.querySelector('.mb-0').innerText = item.brdNm
 				template.querySelector('.font-weight-bold').innerText = item.pdtPrice
 				template.querySelector('.pdtViews').innerText = item.pdtViews
 				template.querySelector('img').id = 'pdtImg'+item.pdtId;
-				console.log(template);
-				console.log(template.querySelector('.pdtNm'));
-				document.querySelector('.col-md-9 .mb-5').append(template)
 				template.querySelector('a:nth-of-type(1)').href = "getProd.do?page=${param.page}&pid="+item.pdtId;
-				template.querySelector('.pdtNm').href = "getProd.do?page=${param.page}&pid="+item.pdtId;
+				template.querySelector('.pdtNm').href = "getProd.do?pid="+item.pdtId;
+				document.querySelector('.col-md-9 .mb-5').append(template);
 			})
+				let page = document.querySelector('#page');
+				let ul = page.querySelector('ul');
+				ul.innerHTML = ''; // 초기화
+				let li = document.createElement('li');
+				let a = document.querySelector('#test11').cloneNode(true);
+				if (resolve.pageInfo.prev) {
+					a.className = (resolve.pageInfo.startPage-1);
+					
+					li.append(a);
+					a.innerText = '<';
+				}
+				ul.append(li);
+				for (let i = resolve.pageInfo.startPage; i<resolve.pageInfo.endPage; i++) {
+					li = document.createElement('li'); // 초기화
+					a = document.querySelector('#test11').cloneNode(true); // 초기화
+					li.className = (i == resolve.pageInfo.pageNum ? 'active' : '');
+					a.className = (i);
+					a.innerText = (i);
+					li.append(a);
+					ul.append(li);
+				}
+				li = document.createElement('li');
+				a = document.querySelector('#test11').cloneNode(true);
+				if (resolve.pageInfo.next) {
+					a.className = (resolve.pageInfo.endPage+1);
+					
+					li.append(a);
+					a.innerText = '>';
+				}
+				ul.append(li);
 		})
 		.catch(err => console.log(err))
-	})
+	}
 </script>

@@ -1,19 +1,20 @@
 package com.yedam.qna.control;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.yedam.common.Control;
+import com.yedam.note.domain.NoteVO;
+import com.yedam.note.service.NoteServiceImpl;
 import com.yedam.qna.domain.QCommentVO;
+import com.yedam.qna.domain.QnaVO;
 import com.yedam.qna.service.QCommentService;
 import com.yedam.qna.service.QCommentServiceImpl;
+import com.yedam.qna.service.QnaService;
+import com.yedam.qna.service.QnaServiceImpl;
 
 public class AddQCControl implements Control {
 
@@ -27,11 +28,22 @@ public class AddQCControl implements Control {
 		QCommentVO vo = new QCommentVO();
 		vo.setPostId(Integer.parseInt(id));
 		vo.setCommentCT(comment);
-		System.out.println(vo);
+		
 		
 		QCommentService service = new QCommentServiceImpl();
+		QnaService service3 = new QnaServiceImpl();
+		QnaVO vo3 = service3.getQna(Integer.parseInt(id));
+		
+		NoteVO vo2 = new NoteVO();
+		vo2.setNoteCT("관리자가 답변을 보냈습니다.<a href=\"http://localhost:8081/MiddleProject/getQna.do?postId="+id+"\">Q&A 답변 보러가기</a>");
+		vo2.setUserId(vo3.getUserId());
+		
+		NoteServiceImpl service2 = new NoteServiceImpl();
+		System.out.println(vo);
+		
 		
 		if(service.addComment(vo)) {
+			service2.sendNote(vo2);
 			return "getQna.do?postId="+id;
 		}else {
 			return "main.do";
