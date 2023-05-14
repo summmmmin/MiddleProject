@@ -85,11 +85,12 @@
       </div>
       </form>
      </div>    
-    
   </body>  
 <script>
 function addQC(){
-	$('#form').attr("action","addQC.do?postId=${qnaInfo.postId }").submit();
+	var note = document.querySelector('#note1').innerHTML
+	
+	$('#form').attr("action","addQC.do?postId=${qnaInfo.postId }").submit(); //답변달기
 }
 function modifyQC(){
 	$('#form').attr("action","modifyQC.do?postId=${qnaInfo.postId}").submit();

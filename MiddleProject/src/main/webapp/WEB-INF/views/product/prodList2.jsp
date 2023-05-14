@@ -287,16 +287,6 @@
 	</div>
 </div>
 <script>
-	let xhtp = new XMLHttpRequest();
-	xhtp.open('get', 'prodList2.do');
-	xhtp.send();
-	xhtp.onload = function () {
-		console.log(xhtp.response);
-		let  = document.querySelector('');
-		
-		let data = JSON.parse(xhtp.response);
-		for (let )
-	}
 	
 	document.querySelectorAll('.catId').forEach(item => {
 		item.addEventListener('click', function() {

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="site-blocks-cover"
 	style="background-image: url(images/hero_1.jpg);" data-aos="fade">
 	<div class="container">
@@ -68,81 +69,26 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="nonloop-block-3 owl-carousel">
-					<div class="item">
-						<div class="block-4 text-center">
-							<figure class="block-4-image">
-								<img src="images/cloth_1.jpg" alt="Image placeholder"
-									class="img-fluid">
-							</figure>
-							<div class="block-4-text p-4">
-								<h3>
-									<a href="#">Tank Top</a>
-								</h3>
-								<p class="mb-0">Finding perfect t-shirt</p>
-								<p class="text-primary font-weight-bold">$50</p>
+					<c:forEach var="product2" items="${product2}" begin="0" end="4">
+						<div class="item">
+							<div class="block-4 text-center">
+								<figure class="block-4-image">
+									<a href="getProd.do?&pid=${product2.pdtId}"> <img
+										src="images/${product2.pdtImg}" alt="Image placeholder"
+										class="img-fluid">
+									</a>
+								</figure>
+								<div class="block-4-text p-4">
+									<h3>
+										<a href="getProd.do?&pid=${product2.pdtId}">${product2.pdtNm}</a>
+									</h3>
+									<p class="mb-0">${product2.brdId}</p>
+									<p class="text-primary font-weight-bold">${product2.pdtPrice}</p>
+									<p>${product2.pdtViews}</p>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="item">
-						<div class="block-4 text-center">
-							<figure class="block-4-image">
-								<img src="images/shoe_1.jpg" alt="Image placeholder"
-									class="img-fluid">
-							</figure>
-							<div class="block-4-text p-4">
-								<h3>
-									<a href="#">Corater</a>
-								</h3>
-								<p class="mb-0">Finding perfect products</p>
-								<p class="text-primary font-weight-bold">$50</p>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="block-4 text-center">
-							<figure class="block-4-image">
-								<img src="images/cloth_2.jpg" alt="Image placeholder"
-									class="img-fluid">
-							</figure>
-							<div class="block-4-text p-4">
-								<h3>
-									<a href="#">Polo Shirt</a>
-								</h3>
-								<p class="mb-0">Finding perfect products</p>
-								<p class="text-primary font-weight-bold">$50</p>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="block-4 text-center">
-							<figure class="block-4-image">
-								<img src="images/cloth_3.jpg" alt="Image placeholder"
-									class="img-fluid">
-							</figure>
-							<div class="block-4-text p-4">
-								<h3>
-									<a href="#">T-Shirt Mockup</a>
-								</h3>
-								<p class="mb-0">Finding perfect products</p>
-								<p class="text-primary font-weight-bold">$50</p>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="block-4 text-center">
-							<figure class="block-4-image">
-								<img src="images/shoe_1.jpg" alt="Image placeholder"
-									class="img-fluid">
-							</figure>
-							<div class="block-4-text p-4">
-								<h3>
-									<a href="#">Corater</a>
-								</h3>
-								<p class="mb-0">Finding perfect products</p>
-								<p class="text-primary font-weight-bold">$50</p>
-							</div>
-						</div>
-					</div>
+					</c:forEach>
 				</div>
 			</div>
 		</div>
@@ -172,7 +118,7 @@
 					Quisquam iste dolor accusantium facere corporis ipsum animi
 					deleniti fugiat. Ex, veniam?</p>
 				<p>
-					<a href="#" class="btn btn-primary btn-sm">지금 쇼핑하기</a>
+					<a href="prodList.do" class="btn btn-primary btn-sm">지금 쇼핑하기</a>
 				</p>
 			</div>
 		</div>

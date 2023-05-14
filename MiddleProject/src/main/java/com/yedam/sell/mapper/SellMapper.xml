@@ -54,7 +54,7 @@
 	  select * from dual
 	</insert>
 	<update id="setBuyId">
-	  update buy set buy_dlvy='입고대기',sell_id=#{sellId} where buy_id=#{buyId}
+	  update buy set buy_dlvy='입고대기',sell_id=sell_seq.currval where buy_id=#{buyId}
 	</update>
 	
 	<insert id="insertSellBid">

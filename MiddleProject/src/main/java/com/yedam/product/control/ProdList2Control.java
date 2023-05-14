@@ -1,12 +1,20 @@
 package com.yedam.product.control;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.yedam.common.Control;
 import com.yedam.product.domain.PageDTO;
 import com.yedam.product.domain.ProdVO;
@@ -17,60 +25,84 @@ public class ProdList2Control implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 		String pageStr = req.getParameter("page");
-		pageStr = pageStr == null ? "1" : pageStr;
+		String data = req.getParameter("data");
+		pageStr = pageStr == "" ? "1" : pageStr;
 		int page = Integer.parseInt(pageStr);
-		
+		List<String> list1 = new ArrayList<>();
+		List<Integer> list2 = new ArrayList<>();
+		List<Integer> list3 = new ArrayList<>();
+		List<Integer> list4 = new ArrayList<>();
+		List<Integer> list5 = new ArrayList<>();
 		ProdService service = new ProdServiceImpl();
-		int total = service.totalViews();
-		List<ProdVO> list = service.prodList3(page);
-		System.out.println(list);
-		
-		PageDTO dto = new PageDTO(page, total);
-		req.setAttribute("list", list);
-		req.setAttribute("pageInfo", dto);
-		
-		String json = "[";
-		for(int i = 0; i < list.size(); i++) {
-			json += "{\"pdtId\":" + list.get(i).getPdtId() + ",";
-			json += "\"catId\":" + list.get(i).getCatId() + ",";
-			json += "\"subcatId\":" + list.get(i).getSubcatId() + ",";
-			json += "\"brdId\":" + list.get(i).getBrdId() + ",";
-			json += "\"genderId\":" + list.get(i).getGenderId() + ",";
-			json += "\"pdtNm\":\"" + list.get(i).getPdtNm() + "\",";
-			json += "\"pdtPrice\":" + list.get(i).getPdtPrice() + ",";
-			json += "\"pdtImg\":\"" + list.get(i).getPdtImg() + "\",";
-			json += "\"pdtViews\":" + list.get(i).getPdtViews() + ",";
-			json += "\"pdtDel\":\"" + list.get(i).getPdtDel() + "\",";
-			json += "\"catNm\":\"" + list.get(i).getCatNm() + "\",";
-			json += "\"subcatNm\":\"" + list.get(i).getSubcatNm() + "\",";
-			json += "\"brdNm\":\"" + list.get(i).getBrdNm() + "\",";
-			json += "\"genderNm\":\"" + list.get(i).getGenderNm() + "\",";
-			json += "\"sizeNm\":\"" + list.get(i).getSizeNm() + "\"}";
-			System.out.println(json);
-			
-			if(i+1 != list.size()) {
-				json += ",";
+
+		if (!data.equals("undefined")) {
+			JSONObject jsonObject = new JSONObject(data);
+			JSONArray jArray = jsonObject.getJSONArray("4");
+			JSONArray jArray1 = jsonObject.getJSONArray("0");
+			JSONArray jArray2 = jsonObject.getJSONArray("3");
+			JSONArray jArray3 = jsonObject.getJSONArray("2");
+			JSONArray jArray4 = jsonObject.getJSONArray("1");
+
+			if (jArray != null) {
+
+				for (int i = 0; i < jArray.length(); i++) {
+
+					list1.add(jArray.getString(i));
+
+				}
+
 			}
-//			String cat = "";
-//			for(i = 0; i<list.size(); i++) {
-//				cat += list.get(i).getCatId();
-//				if(i != list.size() -1) {
-//					cat += ",";
-//				}
-//			}
-//			
-//			String[] catArr = new String[list.size()];
-//			cat = "";
-//			for(i = 0; i<catArr.length; i++) {
-//				cat += catArr[i];
-//				if(i != catArr.length -1) {
-//					cat += ",";
-//				}
-//			}
+			if (jArray1 != null) {
+
+				for (int i = 0; i < jArray1.length(); i++) {
+
+					list2.add(jArray1.getInt(i));
+
+				}
+
+			}
+			if (jArray2 != null) {
+
+				for (int i = 0; i < jArray2.length(); i++) {
+
+					list3.add(jArray2.getInt(i));
+
+				}
+
+			}
+			if (jArray3 != null) {
+
+				for (int i = 0; i < jArray3.length(); i++) {
+
+					list4.add(jArray3.getInt(i));
+
+				}
+
+			}
+			if (jArray4 != null) {
+
+				for (int i = 0; i < jArray4.length(); i++) {
+
+					list5.add(jArray4.getInt(i));
+
+				}
+
+			}
 		}
-		json += "]";
+
+		int total = service.totalViews(list1,list2,list3,list4,list5);
+		List<ProdVO> list = service.prodList3(page, list1,list2,list3,list4,list5);
+
+		PageDTO dto = new PageDTO(page, total);
+		Map<String, Object> map = new HashMap<>();
+		map.put("list", list);
+		map.put("pageInfo", dto);
+
+		Gson gson = new GsonBuilder().create();
+		String json = gson.toJson(map);
+
 		return json + ".json";
 	}
 

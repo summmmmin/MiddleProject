@@ -41,8 +41,8 @@ public class ProdServiceImpl implements ProdService {
 	}
 
 	@Override
-	public int totalViews() {
-		return mapper.getViews();
+	public int totalViews(List<String> list,List<Integer> list2,List<Integer> list3,List<Integer> list4,List<Integer> list5) {
+		return mapper.getViews(list, list2, list3, list4, list5);
 	}
 
 	@Override
@@ -76,23 +76,7 @@ public class ProdServiceImpl implements ProdService {
 	}
 
 	@Override
-	public List<ProdVO> prodList3(int page) {
-		List<String> list = new ArrayList<>();
-//		list.add("L");
-//		list.add("230");
-//		list.add("XL");
-
-		List<Integer> list2 = new ArrayList<>();
-//		list2.add(4);
-
-		List<Integer> list3 = new ArrayList<>();
-//		list3.add(2);
-
-		List<Integer> list4 = new ArrayList<>();
-//		list4.add(1);
-
-		List<Integer> list5 = new ArrayList<>();
-//		list5.add(17);
+	public List<ProdVO> prodList3(int page,List<String> list,List<Integer> list2,List<Integer> list3,List<Integer> list4,List<Integer> list5) {
 
 		return mapper.prodList3(page, list, list2, list3, list4, list5);
 	}
