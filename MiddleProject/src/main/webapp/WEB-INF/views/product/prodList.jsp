@@ -39,21 +39,10 @@
 							onclick="location.href='prodAddForm.do'">게시글 등록</button>
 					</c:if>
 				</div>
-				<div class="row" data-aos="fade-up">
+				<div class="row" id="page" data-aos="fade-up">
 					<div class="col-md-12 text-center">
 						<div class="site-block-27">
 							<ul>
-								<li><c:if test="${pageInfo.prev}">
-										<a href="prodList.do?page=${pageInfo.startPage-1}">&lt;</a>
-									</c:if></li>
-								<c:forEach var="i" begin="${pageInfo.startPage}"
-									end="${pageInfo.endPage}">
-									<li class="${i == pageInfo.pageNum ? 'active' : ''}"><a
-										href="prodList.do?page=${i}">${i}</a></li>
-								</c:forEach>
-								<li><c:if test="${pageInfo.next}">
-										<a href="prodList.do?page=${pageInfo.endPage+1}">&gt;</a>
-									</c:if></li>
 							</ul>
 						</div>
 					</div>
@@ -152,10 +141,9 @@
 							<c:forEach var="i" items="${sizeInfo}">
 								<c:if
 									test="${i.sizeId != 12 || i.sizeId != 13 || i.sizeId != 14}">
-									<label> <input type="checkbox"
-										id="${i.sizeId}" class="mr-2 mt-1 size"
-										onclick="prod_categories(this)" value="${i.sizeSize}">
-										<span class="text-black">${i.sizeSize}</span>
+									<label> <input type="checkbox" id="${i.sizeId}"
+										class="mr-2 mt-1 size" onclick="prod_categories(this)"
+										value="${i.sizeSize}"> <span class="text-black">${i.sizeSize}</span>
 									</label>
 								</c:if>
 							</c:forEach>
@@ -235,9 +223,11 @@
 	document.addEventListener('DOMContentLoaded', prod_categories(this));
 	function prod_categories (prodcat) {
 		
+		console.log(prodcat);
 		let json;
 		let str;
-		if(prodcat.tagName == 'INPUT') {
+		let page = '${param.page}';
+		if(prodcat.tagName == 'INPUT' || prodcat.tagName == 'A') {
 			let arr = ['catId', 'subcatId', 'gender', 'brand', 'size'];
 			let arr3 = [];
 			for(let category of arr) {
@@ -252,6 +242,10 @@
 			}
 			json = {...arr3};
 			str = JSON.stringify(json);
+			page = 1;
+			if(prodcat.tagName == 'A') {
+				page = prodcat.className;
+			}
 			console.log(str);
 		} else {
 			
@@ -259,7 +253,7 @@
 		
 		fetch('prodList2.do', {
             method: 'POST',
-            body: 'data='+str,
+            body: 'data='+str+ '&page='+page,
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
@@ -267,24 +261,52 @@
 		.then(result => result.json())
 		.then(resolve => {
 			console.log(resolve)
-			resolve.forEach(item => {
+			document.querySelector('.col-md-9 .mb-5').innerHTML = '';
+			resolve.list.forEach(item => {
 				let template = document.querySelector('.template>div').cloneNode(true);
-				template.querySelector('.img-fluid').innerHTML = item.pdtImg // 이미지 들어가게 바꿔야됨
+				template.querySelector('.img-fluid').src = "./images/"+item.pdtImg;
 				template.querySelector('.pdtNm').innerText = item.pdtNm
 				template.querySelector('.mb-0').innerText = item.brdNm
 				template.querySelector('.font-weight-bold').innerText = item.pdtPrice
 				template.querySelector('.pdtViews').innerText = item.pdtViews
 				template.querySelector('img').id = 'pdtImg'+item.pdtId;
-				console.log(template);
-				console.log(template.querySelector('.pdtNm'));
-				document.querySelector('.col-md-9 .mb-5').append(template)
 				template.querySelector('a:nth-of-type(1)').href = "getProd.do?page=${param.page}&pid="+item.pdtId;
 				template.querySelector('.pdtNm').href = "getProd.do?page=${param.page}&pid="+item.pdtId;
+				document.querySelector('.col-md-9 .mb-5').append(template);
 			})
+				let page = document.querySelector('#page');
+				let ul = page.querySelector('ul');
+				ul.innerHTML = ''; // 초기화
+				let li = document.createElement('li');
+				let a = document.createElement('a');
+				if (resolve.pageInfo.prev) {
+					a.className = (resolve.pageInfo.startPage-1);
+					a.onclick = "prod_categories('this')";
+					li.append(a);
+					a.innerText = '&lt';
+				}
+				ul.append(li);
+				for (let i = resolve.pageInfo.startPage; i<resolve.pageInfo.endPage; i++) {
+					li = document.createElement('li'); // 초기화
+					a = document.createElement('a'); // 초기화
+					li.className = (i == resolve.pageInfo.pageNum ? 'active' : '');
+					a.className = (i);
+					a.innerText = (i);
+					a.onclick = "prod_categories('this')";
+					a.href = "prodList.do?page="+i+"&data="+str;
+					li.append(a);
+					ul.append(li);
+				}
+				li = document.createElement('li');
+				a = document.createElement('a');
+				if (resolve.pageInfo.next) {
+					a.className = (resolve.pageInfo.endPage+1);
+					a.onclick = "prod_categories('this')";
+					li.append(a);
+					a.innerText = '&gt';
+				}
+				ul.append(li);
 		})
 		.catch(err => console.log(err))
 	}
-	
-	// 값에 따라 화면 출력 바뀌어야 한다(원래 있던 목록을 없애고 다시 출력?)
-	// 페이징 처리 해줘야한다(모든 페이지에 처음 9개의 목록만 나옴)
 </script>

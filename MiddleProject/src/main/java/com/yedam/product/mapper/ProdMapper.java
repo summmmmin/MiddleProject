@@ -13,7 +13,8 @@ public interface ProdMapper {
 	public int updateProd(ProdVO vo);
 	public ProdVO searchProd(int pdtId);
 	public int updateViews(int pdtId);
-	public int getViews();
+	public int getViews(@Param("list") List<String> list, @Param("list2") List<Integer> list2, 
+			@Param("list3") List<Integer> list3, @Param("list4") List<Integer> list4, @Param("list5") List<Integer> list5);
 	
 	public List<ProdVO> catList();
 	public List<ProdVO> subcatList();
