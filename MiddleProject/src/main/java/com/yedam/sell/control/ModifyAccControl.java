@@ -27,12 +27,16 @@ public class ModifyAccControl implements Control {
 		vo.setSellAccount(sellAcc);
 		SellService service = new SellServiceImpl();
 		boolean result = service.modifyAcct(vo);
-		
+		System.out.println(result);
 		String json = "";
 		Map<String, Object> map = new HashMap<>();
-		
+		vo= service.getSellId(vo.getSellId());
+		String str = vo.getSellAccount();
+		String[] array = str.split("/");
+		vo.setSellAccountNm(array[0]);
+		vo.setSellAccount(array[1]);
 		if(result) {
-			vo= service.getSellId(vo.getBuyId());	
+			System.out.println(vo);
 			map.put("retCode", "Success");
 			map.put("data", vo);
 			

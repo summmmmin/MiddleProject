@@ -45,10 +45,7 @@ import com.yedam.qna.control.MyQnaControl;
 import com.yedam.qna.control.QnaAddControl;
 import com.yedam.qna.control.QnaListControl;
 
-import com.yedam.review.control.AddReviewControl;
-import com.yedam.review.control.DelReviewControl;
-import com.yedam.review.control.GetReviewControl;
-import com.yedam.review.control.ProdReviewControl;
+
 
 import com.yedam.sell.control.ModifyAccControl;
 
@@ -165,10 +162,10 @@ public class FrontController extends HttpServlet{
 		map.put("/addwishList.do", new AddwishList());
 		
 		//review
-		map.put("/prodReview.do", new ProdReviewControl());
-		map.put("/addReview.do", new AddReviewControl());
-		map.put("/delReview.do", new DelReviewControl());
-		map.put("/getReview.do", new GetReviewControl());
+//		map.put("/prodReview.do", new ProdReviewControl());
+//		map.put("/addReview.do", new AddReviewControl());
+//		map.put("/delReview.do", new DelReviewControl());
+//		map.put("/getReview.do", new GetReviewControl());
 
 	}
 	@Override

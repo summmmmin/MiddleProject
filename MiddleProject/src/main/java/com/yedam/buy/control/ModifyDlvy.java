@@ -14,6 +14,9 @@ import com.yedam.buy.domain.BuyVO;
 import com.yedam.buy.service.BuyService;
 import com.yedam.buy.service.BuyServiceImpl;
 import com.yedam.common.Control;
+import com.yedam.sell.domain.SellVO;
+import com.yedam.sell.service.SellService;
+import com.yedam.sell.service.SellServiceImpl;
 
 public class ModifyDlvy implements Control {
 
@@ -33,7 +36,8 @@ public class ModifyDlvy implements Control {
 		vo.setDlvNum(Integer.parseInt(dlvNum));
 		vo.setDlvId(Integer.parseInt(dlvId));
 		vo.setBuyId(Integer.parseInt(bid));
-		
+		SellVO vo1 = new SellVO();
+		SellService sellservice = new SellServiceImpl();
 		BuyService service = new BuyServiceImpl();
 		boolean result = service.modifyDlvy(vo);
 		
@@ -41,9 +45,11 @@ public class ModifyDlvy implements Control {
 		Map<String, Object> map = new HashMap<>();
 		
 		if(result) {
-			vo= service.getBuyId(vo.getBuyId());	
+			vo= service.getBuyId(vo.getBuyId());
+			vo1=sellservice.getSellId(Integer.parseInt(bid));
 			map.put("retCode", "Success");
 			map.put("data", vo);
+			map.put("data1", vo1);
 			
 		}else {
 			map.put("retCode", "Fail");
