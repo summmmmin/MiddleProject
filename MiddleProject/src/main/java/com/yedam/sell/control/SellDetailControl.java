@@ -15,7 +15,11 @@ public class SellDetailControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String sellId = req.getParameter("sellId");
 		
+		SellService service = new SellServiceImpl();
+		SellVO vo = service.getSellId(Integer.parseInt(sellId));
+		req.setAttribute("sellInfo", vo);
 		return "sell/sellDetail.tiles";
 	}
 
