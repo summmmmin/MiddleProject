@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <style>
   .btn{
     float:right;
@@ -42,6 +43,56 @@ pageEncoding="UTF-8"%>
         </div>
       </div>
     </div>
+    
+    <c:if test="${userinfo.userGrade == '관리자'}">
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <h2 class="h3 mb-3 text-black">배송 상세</h2>
+        <div class="p-3 p-lg-5 border">
+          <table class="table site-block-order-table mb-5" id="table1">
+             <thead id="delivery1">
+     			<th>배송</th>
+      			<th>취소</th>
+    </thead>
+    <tbody>
+      <tr id="prod">
+      	<td>
+        	<div class="form-group">
+				<select id="dlvy_state" class="form-control" name="form">
+				<option selected id="sdlv">${sellInfo.sellDlvy}</option>
+				<option value="구매입찰중">구매입찰중</option>
+				<option value="입고대기">입고대기</option>
+				<option value="입고완료">입고완료</option>
+				<option value="검수중">검수중</option>
+				<option value="검수합격">검수합격</option>
+				<option value="검수불합격">검수불합격</option>
+				<option value="거래실패">거래실패</option>
+				<option value="배송준비중">배송준비중</option>
+				<option value="배송중">배송중</option>
+				<option value="배송완료">배송완료</option>
+				<option value="구매취소">구매취소</option>
+				</select>
+			</div>
+		</td>
+		<td>
+			<div class="form-group">
+				<select id="cancel_state" class="form-control">
+				<option id="scanc" selected>${sellInfo.sellCancel}</option>
+				<option value="취소신청">취소신청</option>
+				<option value="취소완료">취소완료</option>
+				<option value="취소실패">취소실패</option>
+				</select>
+			</div>
+		</td>
+     </tr>
+   	</tbody>
+          </table>
+           <button type="button" class="btn btn-primary" onclick="updatedlv()">수정</button>
+        </div>
+      </div>
+    </div>	
+	</c:if>
+    
     <div class="row mb-5">
       <div class="col-md-12">
         <h2 class="h3 mb-3 text-black">정산 계좌</h2>
@@ -134,41 +185,43 @@ pageEncoding="UTF-8"%>
         </div>
       </div>
     </div>
+    <div class="row mb-5" id="dlvyadd">
     <div class="row mb-5" style="display: none;">
-      <div class="col-md-12">
+      <div class="col-md-12" id="dlvyinfo">
         <h2 class="h3 mb-3 text-black">발송정보</h2>
         <div class="p-3 p-lg-5 border">
           <table class="table site-block-order-table mb-5">
-            <tbody class="template">
+            <tbody class="delivery">
               <tr>
                 <td class="text-black font-weight-bold" width="30%">
                   <strong>운송장번호</strong>
                 </td>
-                <td class="text-black">000000</td>
+                <td class="text-black">-</td>
               </tr>
               <tr>
                 <td class="text-black font-weight-bold" width="30%">
                   <strong>보내는분</strong>
                 </td>
-                <td class="text-black">변백현</td>
+                <td class="text-black">-</td>
               </tr>
               <tr>
                 <td class="text-black font-weight-bold">
                   <strong>휴대폰</strong>
                 </td>
-                <td class="text-black">010-1992-0506</td>
+                <td class="text-black">010---0506</td>
               </tr>
               <tr>
                 <td class="text-black font-weight-bold">
                   <strong>주소</strong>
                 </td>
-                <td class="text-black">대구시 중구</td>
+                <td class="text-black">-</td>
               </tr>
             </tbody>
           </table>
-          <button class="btn btn-primary">수정</button>
+          <!-- <button class="btn btn-primary">수정</button> -->
         </div>
       </div>
+    </div>
     </div>
   </div>
 </div>
@@ -188,6 +241,53 @@ pageEncoding="UTF-8"%>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
         <button type="button" class="btn btn-primary" id="cancelCheck">취소하기</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" style="top:200px;" id="dlvModal" tabindex="-1" aria-labelledby="dlvModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="dlvModalLabel">발송정보등록</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <table class="table">
+        <tbody>
+      <tr>
+        <td class="text-black font-weight-bold" width="30%">
+          <strong>운송장번호</strong>
+        </td>
+        <td class="text-black"><input type="text" id="dlvno"/></td>
+      </tr>
+      <tr>
+        <td class="text-black font-weight-bold" width="30%">
+          <strong>받는분</strong>
+        </td>
+        <td class="text-black"><input type="text" id="dlvnm"/></td>
+      </tr>
+      <tr>
+        <td class="text-black font-weight-bold">
+          <strong>휴대폰</strong>
+        </td>
+        <td class="text-black"><input type="text" id="dlvph"/></td>
+      </tr>
+      <tr>
+        <td class="text-black font-weight-bold">
+          <strong>배송지주소</strong>
+        </td>
+        <td class="text-black"><input type="text" id="dlvaddr"/></td>
+      </tr>
+    </tbody>
+    </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary" id="addDlv">등록하기</button>
       </div>
     </div>
   </div>
@@ -222,6 +322,7 @@ pageEncoding="UTF-8"%>
   .then(resolve=>resolve.json())
   .then(result=>{
 	  console.log(result);
+	  
 	  document.getElementById("sellNo").children[1].innerText=result.sellId;
 	  document.getElementById("sellNo").children[3].children[0].innerText=result.sellDate;
 	  /* document.getElementById("acct").children[0].children[1].innerText=result.sellAccountNm;
@@ -257,12 +358,12 @@ pageEncoding="UTF-8"%>
     payment.children[1].children[1].innerText='-'+result.sellPrice*0.02+'원';
     payment.children[3].children[1].innerText=result.sellPrice*1.02+'원';
     if((result.sellDlvy == '발송요청' || result.sellDlvy == '판매입찰중') && result.sellCancel == 'N'){
-      btn = document.createElement('button');
-      btn.classList.add('btn');
-      btn.classList.add('btn-primary');
-      btn.innerText='취소신청';
-      document.getElementById("sellDetail").append(btn);
-      btn.addEventListener('click', function(e){
+      let btnc = document.createElement('button');
+      btnc.classList.add('btn');
+      btnc.classList.add('btn-primary');
+      btnc.innerText='취소신청';
+      document.getElementById("sellDetail").append(btnc);
+      btnc.addEventListener('click', function(e){
     	  $('#cancelModal').modal("show");
     	  $("#cancelCheck").on("click", function(){
   	    	
@@ -276,7 +377,7 @@ pageEncoding="UTF-8"%>
   	    	.then(result=>{
   	    		if(result.retCode == 'Success'){
   	    			$('#cancelModal').modal("hide");
-  	    			document.getElementById(cancelId).children[8].innerText='취소신청';
+  	    			btnc.remove();
   	    		} else if(result.retCode == 'Fail'){
   	    			alert('처리 중 에러');
   	    		} else{
@@ -288,16 +389,46 @@ pageEncoding="UTF-8"%>
       })
     }
     if(result.sellDlvy == '발송요청' && result.dlvNum ==0){
-      btn = document.createElement('button');
-      btn.classList.add('btn');
-      btn.classList.add('btn-primary');
-      btn.innerText='발송정보 등록'
-      document.getElementById("sellDetail").append(btn);
+      let btnd = document.createElement('button');
+      btnd.classList.add('btn');
+      btnd.classList.add('btn-primary');
+      btnd.innerText='발송정보 등록'
+      document.getElementById("sellDetail").append(btnd);
+      btnd.addEventListener('click', function(e){
+    	  $('#dlvModal').modal("show");
+    	  $("#addDlv").on("click", function(){
+    	    	let num = document.querySelector('#dlvno').value;
+    	    	let nm = document.querySelector('#dlvnm').value;
+    	    	let ph = document.querySelector('#dlvph').value;
+    	    	let addr = document.querySelector('#dlvaddr').value;
+    	    	fetch('modifyDlvy.do',{
+    	    		method:'POST',
+    	    		headers:{
+    	    		  'Content-Type':'application/x-www-form-urlencoded'
+    	    		}, body : 'dlvName='+nm+'&dlvPhone='+ph+'&dlvAddr='+addr+'&dlvNum='+num+'&dlvId='+result.dlvId+'&bid='+result.sellId
+    	    	})
+    	    	.then(resolve=>resolve.json())
+    	    	.then(result=>{
+    	    		if(result.retCode == 'Success'){
+    	    			$('#dlvModal').modal("hide");
+    	    			btnd.remove();
+    	    			console.log(result.data);
+    	    			document.querySelector('#dlvyadd').append(makeDlvyInfo(result.data));
+    	    		} else if(result.retCode == 'Fail'){
+    	    			alert('처리 중 에러');
+    	    		} else{
+    	    			alert('알 수 없는 반환값')
+    	    		}
+    	    	})
+    	    	
+    	    })
+      })
     }
-    if(result.dlvNum == 0){
-      let template = document.querySelector('.template').cloneNode(true);
-      
-      
+    if(result.dlvNum != 0){
+      let dlvadd = document.querySelector('#dlvyadd');
+      let dlvinfo = makeDlvyInfo(result);
+      dlvadd.append(dlvinfo);
+           
     }
   })
   .catch(err=>console.log(err))
@@ -356,5 +487,38 @@ pageEncoding="UTF-8"%>
 	   	return tbody;
 	   	}
   
+  function makeDlvyInfo(dlv){
+	  let dlvyinfo = document.querySelector('#dlvyinfo').cloneNode(true);
+	  dlvyinfo.children[1].children[0].children[0].children[0].children[1].innerText = dlv.dlvNum;
+	  dlvyinfo.children[1].children[0].children[0].children[1].children[1].innerText = dlv.dlvName;
+	  dlvyinfo.children[1].children[0].children[0].children[2].children[1].innerText = dlv.dlvPhone;
+	  dlvyinfo.children[1].children[0].children[0].children[3].children[1].innerText = dlv.dlvAddr;
+	  return dlvyinfo;
+  }
   
+  function updatedlv(){
+	   let seldlvy = document.getElementById("dlvy_state");
+	   let dlvy_state = seldlvy.options[seldlvy.selectedIndex].value;
+	   
+	   let selcanc = document.getElementById("cancel_state");
+	   let cancel_state = selcanc.options[selcanc.selectedIndex].value;
+
+   	fetch('sellUpdate.do',{
+   		     method:'POST',
+   		     headers:{'Content-Type':'application/x-www-form-urlencoded'},
+   		     body: 'sellId='+${sellInfo.sellId} +'&dlvy='+dlvy_state+'&cancel='+cancel_state
+   		   })
+   	.then(resolve=>resolve.json())
+   	.then(result=>{
+   		if(result.retCode == 'Success'){
+         document.getElementById("sdlv").innerText=result.data.sellDlvy;
+         document.getElementById("scanc").innerText=result.data.sellCancel;
+         document.getElementById("prod").children[5].innerText=result.data.sellDlvy;
+   			}else if(result.retCode =='Fail'){
+      	    alert('처리 중 에러')
+      	  }else{
+      	    alert('알 수 없는 반환값')
+      	  }
+   	})
+	}		 
 </script>

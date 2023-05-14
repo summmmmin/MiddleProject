@@ -15,37 +15,47 @@ import com.yedam.sell.domain.SellVO;
 import com.yedam.sell.service.SellService;
 import com.yedam.sell.service.SellServiceImpl;
 
-public class ModifyAccControl implements Control {
+public class SellUpdateControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		String sellId = req.getParameter("sellId");
-		String sellAcc = req.getParameter("sellAcc");
 		SellVO vo = new SellVO();
+		String sellId = req.getParameter("sellId");
+		String dlvy = req.getParameter("dlvy");
+		String cancel = req.getParameter("cancel");
+		
 		vo.setSellId(Integer.parseInt(sellId));
-		vo.setSellAccount(sellAcc);
+		vo.setSellDlvy(dlvy);
+		vo.setSellCancel(cancel);
+		
 		SellService service = new SellServiceImpl();
-		boolean result = service.modifyAcct(vo);
-		System.out.println(result);
+		boolean result = false;
+		
 		String json = "";
+		
 		Map<String, Object> map = new HashMap<>();
-		vo= service.getSellId(vo.getSellId());
-		String str = vo.getSellAccount();
-		String[] array = str.split("/");
-		vo.setSellAccountNm(array[0]);
-		vo.setSellAccount(array[1]);
-		if(result) {
-			System.out.println(vo);
-			map.put("retCode", "Success");
-			map.put("data", vo);
+		
+		if(cancel != null) {
+			result= service.cancelSell(vo);
 			
-		}else {
-			map.put("retCode", "Fail");
 		}
 		
-		Gson gson = new GsonBuilder().create();  //gson 객체
+		if( dlvy != null) {
+			result = service.dlvySell(vo);
+			
+		}
+		
+		if(result) {
+			vo = service.getSellId(vo.getSellId());
+			map.put("retCode", "Success");
+			map.put("data", vo);
+		}else {
+			map.put("retCode","Fail");
+		}
+			
+		Gson gson = new GsonBuilder().create();//gson 객체
 		json = gson.toJson(map);
+	
 		return json + ".json";
 	}
 

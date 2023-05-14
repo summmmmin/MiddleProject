@@ -10,4 +10,6 @@ public interface ReviewService {
 	public ReviewVO searchReview(int reviewId);
 	public List<ReviewVO> prodReview(int pdtId);
 	public List<ReviewVO> myReview(String userId, int page);
+	public int totalCount();
+	public int getMyReviewCount(String userId, int pdtId);
 }

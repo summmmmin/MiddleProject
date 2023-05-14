@@ -54,54 +54,55 @@ prefix="c" %>
       </div>
     </div>
 	
-	<!-- 자동사냥 -->
+	
+	<c:if test="${userinfo.userGrade == '관리자'}">
     <div class="row mb-5">
       <div class="col-md-12">
         <h2 class="h3 mb-3 text-black">배송 상세</h2>
         <div class="p-3 p-lg-5 border">
           <table class="table site-block-order-table mb-5" id="table1">
              <thead id="delivery1">
-     <th>배송</th>
-      <th>취소</th>
-      <th>반품</th>
+     			<th>배송</th>
+      			<th>취소</th>
+      			<th>반품</th>
     </thead>
     <tbody>
       <tr id="prod">
       	<td>
         	<div class="form-group">
-				<select id="dlvy_state" onchange="changeFn()" class="form-control" name="form">
-				<option selected >선택</option>
-				<option value="1">구매입찰중</option>
-				<option value="2">입고대기</option>
-				<option value="3">입고완료</option>
-				<option value="4">검수중</option>
-				<option value="5">검수합격</option>
-				<option value="6">검수불합격</option>
-				<option value="7">거래실패</option>
-				<option value="8">배송준비중</option>
-				<option value="9">배송중</option>
-				<option value="9">배송완료</option>
-				<option value="10">구매취소</option>
+				<select id="dlvy_state" class="form-control" name="form">
+				<option selected id="bdlv">${buyInfo.buyDlvy}</option>
+				<option value="구매입찰중">구매입찰중</option>
+				<option value="입고대기">입고대기</option>
+				<option value="입고완료">입고완료</option>
+				<option value="검수중">검수중</option>
+				<option value="검수합격">검수합격</option>
+				<option value="검수불합격">검수불합격</option>
+				<option value="거래실패">거래실패</option>
+				<option value="배송준비중">배송준비중</option>
+				<option value="배송중">배송중</option>
+				<option value="배송완료">배송완료</option>
+				<option value="구매취소">구매취소</option>
 				</select>
 			</div>
 		</td>
 		<td>
 			<div class="form-group">
 				<select id="cancel_state" class="form-control">
-				<option id="choose1" selected>선택</option>
-				<option value="1">취소신청</option>
-				<option value="2">취소완료</option>
-				<option value="3">취소실패</option>
+				<option id="bcanc" selected>${buyInfo.buyCancel}</option>
+				<option value="취소신청">취소신청</option>
+				<option value="취소완료">취소완료</option>
+				<option value="취소실패">취소실패</option>
 				</select>
 			</div>
 		</td>
 		<td>
 			<div class="form-group">
 				<select id="return_state" class="form-control">
-				<option selected>선택</option>
-				<option value="1">반품신청</option>
-				<option value="2">반품완료</option>
-				<option value="3">반품거부</option>
+				<option selected id="brtn">${buyInfo.buyReturn}</option>
+				<option value="반품신청">반품신청</option>
+				<option value="반품완료">반품완료</option>
+				<option value="반품거부">반품거부</option>
 				</select>
 			</div>
 		</td>
@@ -111,9 +112,8 @@ prefix="c" %>
            <button type="button" class="btn btn-primary" onclick="updatedlv()">수정</button>
         </div>
       </div>
-    </div>
-	
-	<!-- /자동사냥 -->
+    </div>	
+	</c:if>
 		
     <div class="row mb-5">
       <div class="col-md-12">
@@ -138,7 +138,7 @@ prefix="c" %>
                 <td>${buyInfo.sizeSize}</td>
                 <td>${buyInfo.brdNm}</td>
                 <td>${buyInfo.buyPrice}</td>
-                <td>${buyInfo.buyDlvy}</td>
+                <td id="bdlvy">${buyInfo.buyDlvy}</td>
               </tr>
             </tbody>
           </table>
@@ -383,7 +383,7 @@ prefix="c" %>
    let price = '${buyInfo.buyPrice}';
    let fee = Math.round(price * 0.01);
    document.getElementById("fee").innerHTML='+'+fee+'원';
-   const arr = ['구매입찰중','입고대기','검수중','검수합격','상품준비중','배송준비중']
+   const arr = ['구매입찰중','입고대기','입고완료','검수중','검수합격','상품준비중','배송준비중']
 
    console.log(document.querySelector('#delivery'))
 
@@ -462,42 +462,42 @@ prefix="c" %>
    	tbody.children[3].children[1].innerText=dlv.dlvAddr;
    	return tbody;
    	}
-   
-    
-   
-   
-   /* 자동사냥 */
-   		function changeFn(){
-	    var dlvy_state  = document.getElementById("dlvy_state");
-		var value = (dlvy_state.options[dlvy_state.selectedIndex]);   
-   		console.log(value.value);
-   }
-   
-	   let updlvy=$("#dlvy_state option:selected").value();
-	   let upcancle=$("#cancle_state option:selected").value();
-	   let upreturn=$("#return_state option:selected").value();
-	   console.log(updlvy);
-	   console.log(upcancle);
-	   console.log(upreturn);
 	    
-	   
-	   function updatedlv(){
-	    	  fetch('buyUpdate.do',{
+		//배송 상태 변경
+	  function updatedlv(){
+		   let seldlvy = document.getElementById("dlvy_state");
+		   let dlvy_state = seldlvy.options[seldlvy.selectedIndex].value;
+		   
+		   let selcanc = document.getElementById("cancel_state");
+		   let cancel_state = selcanc.options[selcanc.selectedIndex].value;
+
+       let selrtn = document.getElementById("return_state");
+		   let return_state = selrtn.options[selrtn.selectedIndex].value;
+       console.log(dlvy_state)
+       console.log(cancel_state)
+       console.log(return_state)
+       console.log(seldlvy.options[seldlvy.selectedIndex].value)
+	    	fetch('buyUpdate.do',{
 	    		     method:'POST',
 	    		     headers:{'Content-Type':'application/x-www-form-urlencoded'},
-	    		     body: 'buyId='+${param.buyId} +'dlvy='+upcancle+'&dlvy='+updlvy+'&return='+upreturn
+	    		     body: 'buyId='+${buyInfo.buyId} +'&dlvy='+dlvy_state+'&cancel='+cancel_state+'&buyreturn='+return_state
 	    		   })
-	    		   .then(resolve=>resolve.json())
-	    		   .then(result=>{
-	    			   if(result.retCode == 'Success'){
-	    			   }else if(result.retCode =='Fail'){
-	       	    	    	  alert('처리 중 에러')
-	       	    	      }else{
-	       	    	    	  alert('알 수 없는 반환값')
-	       	    	      }
+	    	.then(resolve=>resolve.json())
+	    	.then(result=>{
+	    		if(result.retCode == 'Success'){
+              console.log(result.data)
+              document.getElementById("bdlv").innerText=result.data.buyDlvy;
+              document.getElementById("bcanc").innerText=result.data.buyCancel;
+              document.getElementById("brtn").innerText=result.data.buyReturn;
+              document.getElementById("bdlvy").innerText=result.data.buyDlvy;
+	    			}else if(result.retCode =='Fail'){
+	       	    alert('처리 중 에러')
+	       	  }else{
+	       	    alert('알 수 없는 반환값')
+	       	  }
 	      
-	    		   }) 
-	    		   
+	    	})
+		}		   
 	    		   /*/자동사냥 */
 	   
 	   

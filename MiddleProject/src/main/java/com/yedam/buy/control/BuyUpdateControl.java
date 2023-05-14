@@ -21,10 +21,11 @@ public class BuyUpdateControl implements Control {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		BuyVO vo = new BuyVO();
+		String buyId = req.getParameter("buyId");
 		String cancel = req.getParameter("cancel");
 		String dlvy = req.getParameter("dlvy");
 		String buyreturn = req.getParameter("return");
-		
+		System.out.println(buyId+cancel+dlvy+buyreturn);
 		vo.setBuyId(Integer.parseInt(req.getParameter(("buyId"))));
 		vo.setBuyCancel(req.getParameter("cancel"));
 		vo.setBuyDlvy(req.getParameter("dlvy"));
@@ -32,7 +33,7 @@ public class BuyUpdateControl implements Control {
 
 		BuyService service = new BuyServiceImpl();
 		
-		boolean result= service.cancelBuy(vo);
+		boolean result = false;
 		
 		
 		String json = "";
