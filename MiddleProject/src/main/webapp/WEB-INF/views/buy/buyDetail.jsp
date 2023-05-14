@@ -53,7 +53,68 @@ prefix="c" %>
         </div>
       </div>
     </div>
-
+	
+	<!-- 자동사냥 -->
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <h2 class="h3 mb-3 text-black">배송 상세</h2>
+        <div class="p-3 p-lg-5 border">
+          <table class="table site-block-order-table mb-5" id="table1">
+             <thead id="delivery1">
+     <th>배송</th>
+      <th>취소</th>
+      <th>반품</th>
+    </thead>
+    <tbody>
+      <tr id="prod">
+      	<td>
+        	<div class="form-group">
+				<select id="dlvy_state" onchange="changeFn()" class="form-control" name="form">
+				<option selected >선택</option>
+				<option value="1">구매입찰중</option>
+				<option value="2">입고대기</option>
+				<option value="3">입고완료</option>
+				<option value="4">검수중</option>
+				<option value="5">검수합격</option>
+				<option value="6">검수불합격</option>
+				<option value="7">거래실패</option>
+				<option value="8">배송준비중</option>
+				<option value="9">배송중</option>
+				<option value="9">배송완료</option>
+				<option value="10">구매취소</option>
+				</select>
+			</div>
+		</td>
+		<td>
+			<div class="form-group">
+				<select id="cancel_state" class="form-control">
+				<option id="choose1" selected>선택</option>
+				<option value="1">취소신청</option>
+				<option value="2">취소완료</option>
+				<option value="3">취소실패</option>
+				</select>
+			</div>
+		</td>
+		<td>
+			<div class="form-group">
+				<select id="return_state" class="form-control">
+				<option selected>선택</option>
+				<option value="1">반품신청</option>
+				<option value="2">반품완료</option>
+				<option value="3">반품거부</option>
+				</select>
+			</div>
+		</td>
+     </tr>
+   	</tbody>
+          </table>
+           <button type="button" class="btn btn-primary" onclick="updatedlv()">수정</button>
+        </div>
+      </div>
+    </div>
+	
+	<!-- /자동사냥 -->
+		
     <div class="row mb-5">
       <div class="col-md-12">
         <h2 class="h3 mb-3 text-black">구매상품</h2>
@@ -401,6 +462,46 @@ prefix="c" %>
    	tbody.children[3].children[1].innerText=dlv.dlvAddr;
    	return tbody;
    	}
+   
+    
+   
+   
+   /* 자동사냥 */
+   		function changeFn(){
+	    var dlvy_state  = document.getElementById("dlvy_state");
+		var value = (dlvy_state.options[dlvy_state.selectedIndex]);   
+   		console.log(value.value);
+   }
+   
+	   let updlvy=$("#dlvy_state option:selected").value();
+	   let upcancle=$("#cancle_state option:selected").value();
+	   let upreturn=$("#return_state option:selected").value();
+	   console.log(updlvy);
+	   console.log(upcancle);
+	   console.log(upreturn);
+	    
+	   
+	   function updatedlv(){
+	    	  fetch('buyUpdate.do',{
+	    		     method:'POST',
+	    		     headers:{'Content-Type':'application/x-www-form-urlencoded'},
+	    		     body: 'buyId='+${param.buyId} +'dlvy='+upcancle+'&dlvy='+updlvy+'&return='+upreturn
+	    		   })
+	    		   .then(resolve=>resolve.json())
+	    		   .then(result=>{
+	    			   if(result.retCode == 'Success'){
+	    			   }else if(result.retCode =='Fail'){
+	       	    	    	  alert('처리 중 에러')
+	       	    	      }else{
+	       	    	    	  alert('알 수 없는 반환값')
+	       	    	      }
+	      
+	    		   }) 
+	    		   
+	    		   /*/자동사냥 */
+	   
+	   
+
    
    $(document).on("click", ".cancelBtn", function () {
 	    let cancelId = $(this).data('id');

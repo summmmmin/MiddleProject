@@ -19,6 +19,7 @@ import com.yedam.buy.control.BuyListUControl;
 import com.yedam.buy.control.BuyPayControl;
 import com.yedam.buy.control.BuyPriceControl;
 import com.yedam.buy.control.BuyReturnControl;
+import com.yedam.buy.control.BuyUpdateControl;
 import com.yedam.buy.control.ModifyDlvy;
 import com.yedam.note.control.DelAllNoteControl;
 import com.yedam.note.control.DelNoteControl;
@@ -158,6 +159,7 @@ public class FrontController extends HttpServlet{
 		map.put("/buyPrice.do", new BuyPriceControl());
 		map.put("/buyForm.do", new BuyFormControl());
         map.put("/buyPay.do", new BuyPayControl());
+        map.put("/buyUpdate.do", new BuyUpdateControl());
     
 		
 		//wish(관심상품)

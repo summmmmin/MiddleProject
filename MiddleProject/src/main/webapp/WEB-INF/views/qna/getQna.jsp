@@ -85,15 +85,12 @@
       </div>
       </form>
      </div>    
-    <p style="display:hidden;" id="note1">관리자가 답변을 보냈습니다.</p>
-    <p style="display:hidden;" id="note2">관리자가 답변을 수정했습니다.></p>
   </body>  
 <script>
 function addQC(){
 	var note = document.querySelector('#note1').innerHTML
 	
-	$('#form').attr("action","addQC.do?postId=${qnaInfo.postId }").submit();
-	$('#form').attr("action","noteSend.do?userId=${qnaInfo.userId}&subject="+note).submit();
+	$('#form').attr("action","addQC.do?postId=${qnaInfo.postId }").submit(); //답변달기
 }
 function modifyQC(){
 	$('#form').attr("action","modifyQC.do?postId=${qnaInfo.postId}").submit();
