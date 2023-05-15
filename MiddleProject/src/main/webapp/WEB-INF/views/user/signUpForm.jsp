@@ -34,7 +34,10 @@
 									<label for="c_email" class="text-black">이메일 <span
 										class="text-danger">*</span></label> <input type="email"
 										class="form-control" id="user_id" name="user_id"
-										placeholder="" required>
+										placeholder="" required value="${empty user ? '' : user.userId}">
+									<c:if test="${not empty errorMessage}">
+										<p style="color: red; font-size: 12px;">${errorMessage}</p>
+									</c:if>
 									<div id="email-duplicate-message" style="color: red;"></div>
 								</div>
 							</div>
@@ -72,13 +75,13 @@
 							<div class="form-group row">
 								<div class="col-md-6">
 									<label for="c_name" class="text-black">이름 </label> <input
-										type="text" class="form-control" id="user_name" name="user_nm">
+										type="text" class="form-control" id="user_name" name="user_nm" value="${empty user ? '' : user.userNm}">
 								</div>
 							</div>
 							<div class="form-group row">
 								<div class="col-md-12">
 									<label for="c_addr" class="text-black">주소 </label> <input
-										type="text" class="form-control" id="user_add" name="user_add">
+										type="text" class="form-control" id="user_add" name="user_add" value="${empty user ? '' : user.userAdd}">
 								</div>
 							</div>
 							<div class="form-group row">
@@ -86,7 +89,7 @@
 									<label for="user_phone" class="text-black">전화번호</label> <input
 										type="text" class="form-control" id="user_phone"
 										name="user_phone" oninput="formatPhoneNumber(this)"
-										maxlength="13">
+										maxlength="13" value="${empty user ? '' : user.userPhone}">
 								</div>
 							</div>
 							<div class="form-group row">

@@ -29,6 +29,14 @@ public class SignUpControl implements Control {
         user.setUserPhone(userPhone);
         user.setUserAdd(userAdd);
         
+        // 아이디 중복 체크
+        boolean isDuplicate = userService.getUserInfo(userId) != null;
+        if (isDuplicate) {
+            req.setAttribute("errorMessage", "이미 존재하는 아이디입니다.");
+            req.setAttribute("user", user); // 입력한 사용자 정보를 다시 저장
+            return "user/signUpForm.tiles";
+        }
+        
         System.out.println(user);
 
         boolean isSuccess = userService.addUser(user);
