@@ -81,6 +81,7 @@ import com.yedam.user.control.MypageViewControl;
 import com.yedam.user.control.SignUpControl;
 import com.yedam.user.control.SignUpFormControl;
 import com.yedam.user.control.UserListControl;
+import com.yedam.user.control.userViewControl;
 import com.yedam.wish.control.AddwishList;
 import com.yedam.wish.control.DeletewishList;
 import com.yedam.wish.control.WishListControl;
@@ -179,6 +180,9 @@ public class FrontController extends HttpServlet{
 
 		map.put("/sellList.do", new SellListControl());
 		map.put("/getSellList.do", new GetSellListControl());
+		
+		
+		map.put("/userView.do", new userViewControl());
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
