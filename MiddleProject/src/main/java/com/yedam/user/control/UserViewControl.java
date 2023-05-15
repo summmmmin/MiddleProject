@@ -22,17 +22,19 @@ public class UserViewControl implements Control {
             return "user/accessDenied.tiles";
         }
         
-        String userId = req.getParameter("userId"); // 입력받은 특정 유저의 아이디
+        String userId = req.getParameter("user_id"); // 입력받은 특정 유저의 아이디
+        System.out.println(userId);
         
         UserService userService = new UserServiceImpl();
         UserVO userInfo = userService.getUserInfo(userId);
+        System.out.println(userInfo);
         
         if (userInfo == null) {
             // 유저 정보가 없을 경우, 에러 처리 또는 다른 처리 로직을 추가해야 합니다.
-            return "errorPage.do";
+            return "user/loginForm.tiles";
         }
         
         req.setAttribute("userInfo", userInfo);
-        return "mypageView.do"; // 관리자용 마이페이지 조회 페이지로 이동
+        return "user/userInfoView.tiles"; // 관리자용 마이페이지 조회 페이지로 이동
     }
 }

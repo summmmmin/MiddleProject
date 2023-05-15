@@ -46,7 +46,7 @@
 						</div>
 						<div class="form-group row">
 							<div class="col-md-12">
-								<form method="post" action="#">
+								<form method="post" action="userView.do">
 									<label for="user_id" class="text-black"
 										style="font-weight: bold; font-size: 15px;">회원 아이디</label> <input
 										type="email" id="user_id" name="user_id" class="form-control"
