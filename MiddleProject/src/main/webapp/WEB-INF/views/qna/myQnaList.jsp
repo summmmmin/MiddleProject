@@ -11,7 +11,7 @@
 					<c:when test="${userinfo.userGrade == '관리자'}">
 						<!-- 관리자 메뉴 -->
 						<div style="color: red; font-weight: bold;">-- 관리자 메뉴 --</div>
-						<a href="userView.do">유저정보 조회</a>
+						<a href="userViewForm.do">유저정보 조회</a>
 						<a href="sellList.do">판매내역 조회</a>
 						<a href="buyList.do">구매내역 조회</a>
 						<a href="sendNote.do">쪽지보내기</a>
