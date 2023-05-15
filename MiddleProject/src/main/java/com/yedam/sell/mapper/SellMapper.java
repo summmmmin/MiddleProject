@@ -15,9 +15,9 @@ public interface SellMapper {
 	public SellVO searchSell(int sellId);
 	
 	//판매내역(관리자)
-	public List<SellVO> SellList(int page);
+	public List<SellVO> SellList(@Param("page") int page,@Param("list") List<String> list,@Param("list2") List<String> list2);
 	//총데이터수
-	public int getCountSell();
+	public int getCountSell(@Param("list") List<String> list,@Param("list2") List<String> list2);
 	
 	//즉시판매
 	public int insertSell(SellVO vo);
