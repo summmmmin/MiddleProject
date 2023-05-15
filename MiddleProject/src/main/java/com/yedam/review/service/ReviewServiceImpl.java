@@ -26,20 +26,20 @@ public class ReviewServiceImpl implements ReviewService {
 		return mapper.searchReview(reviewId);
 	}
 	@Override
-	public List<ReviewVO> prodReview(int pdtId) {
-		return mapper.prodReview(pdtId);
+	public List<ReviewVO> prodReview(int pdtId, int page) {
+		return mapper.prodReview(pdtId, page);
 	}
 	@Override
 	public List<ReviewVO> myReview(String userId, int page) {
 		return mapper.myReview(userId, page);
 	}
 	@Override
-	public int totalCount() {
-		return mapper.getCount();
+	public int totalCount(int pdtId) {
+		return mapper.getCountReview(pdtId);
 	}
 	@Override
-	public int getMyReviewCount(String userId, int pdtId) {
-		return mapper.getMyReviewCount(userId, pdtId);
+	public int getMyReviewCount(String userId) {
+		return mapper.getMyReviewCount(userId);
 	}
 	
 }

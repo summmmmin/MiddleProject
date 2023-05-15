@@ -95,9 +95,22 @@
 		</div>
 	</div>
 </div>
-<div class="row justify-content-center">
-	<div class="col-md-7 site-section-heading text-center pt-4">
-		<h2>¸®ºä</h2>
+<div class="site-section block-3 site-blocks-2 bg-light">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-2 site-section-heading text-center pt-4">
+				<h2>¸®ºä</h2>
+			</div>
+		</div>
+		<div class="row" id="reviewrow"></div>
+	</div>
+</div>
+<div class="row" id="page" data-aos="fade-up">
+	<div class="col-md-12 text-center">
+		<div class="site-block-27">
+			<ul>
+			</ul>
+		</div>
 	</div>
 </div>
 <!-- ±¸¸ÅÇÏ±â -->
@@ -225,6 +238,28 @@
 		</div>
 	</div>
 </div>
+<a onclick="pageSelc(this)" id="test11"></a>
+<div class="row" id="template" style="display: none;">
+	<div class="col-sm-3">
+		<div class="block-4 text-center">
+			<figure class="block-4-image">
+				<a href="getProd.do?&pid=prodInfo.pdtId"> <img
+					src="images/product2.pdtImg" alt="Image placeholder"
+					class="img-fluid" id="reviewImg">
+				</a>
+			</figure>
+			<div class="block-4-text p-4">
+				<h3>
+					<a href="getProd.do?&pid=prodInfo.pdtId" class="reviewTitle"
+						id="reviewTitle">product2.pdtNm</a>
+				</h3>
+				<p class="mb-0">product2.brdId</p>
+				<p class="text-primary font-weight-bold">product2.pdtPrice</p>
+			</div>
+		</div>
+	</div>
+
+</div>
 <script>
 	  function sizeBuySelc(){
 		  let radios = document.getElementsByName('sizes');
@@ -248,6 +283,71 @@
       	      }
     	  }
     	  location.href='sellPrice.do?prodId=${prodInfo.pdtId}&size='+size;
+      }
+      document.addEventListener('DOMContentLoaded', pageSelc(this));
+      function pageSelc(pg){
+    	  let page = '${param.page}';
+    	  page = 1;
+			if(pg.tagName == 'A') {
+				page = pg.className;
+			}
+			
+      fetch('prodReview.do', {
+    	  method: 'POST',
+    	  body: 'pdtId='+${prodInfo.pdtId}+ '&page='+page,
+    	  headers: {
+    		  'Content-Type': 'application/x-www-form-urlencoded'
+    	  }
+      })
+      .then(result => result.json())
+      .then(resolve => {
+    	  console.log(resolve)
+    	  document.querySelector('#reviewrow').innerHTML = '';
+    	  console.log(document.querySelector('#template>div'));
+    	  resolve.list.forEach(item => {
+    		  let template = document.querySelector('#template>div').cloneNode(true);
+    		  template.querySelector('.img-fluid').src = "./images/"+item.reviewImg;
+    		  template.querySelector('.reviewTitle').innerText = item.reviewTitle
+    		  template.querySelector('.mb-0').innerText = item.reviewCt
+    		  template.querySelector('.font-weight-bold').innerText = item.userNm
+    		  template.querySelector('img').id = 'reviewImg'+item.reviewId;
+    		  template.querySelector('a:nth-of-type(1)').href = "getReview.do?page=${param.page}&rid="+item.reviewId;
+    		  template.querySelector('.reviewTitle').href = "getReview.do?page=${param.page}&rid="+item.reviewId;
+    		  document.querySelector('#reviewrow').append(template);
+    	  })
+    	  let page = document.querySelector('#page');
+    	  let ul = page.querySelector('ul');
+    	  console.log(page)
+    	  ul.innerHTML = '';
+    	  let li = document.createElement('li');
+    	  let a = document.querySelector('#test11').cloneNode(true);
+    	  if (resolve.pageInfo.prev) {
+    		  a.className = (resolve.pageInfo.startPage-1);
+    		  
+    		  li.append(a);
+    		  a.innerText = '<';
+    	  }
+    	  ul.append(li);
+    	  for (let i = resolve.pageInfo.startPage; i<=resolve.pageInfo.endPage; i++) {
+    		  li = document.createElement('li');
+    		  a = document.querySelector('#test11').cloneNode(true);
+    		  li.className = (i == resolve.pageInfo.pageNum ? 'active' : '');
+    		  a.className = (i);
+    		  a.innerText = (i);
+    		  li.append(a);
+    		  ul.append(li);
+    	  }
+    	  li = document.createElement('li');
+    	  a = document.querySelector('#test11').cloneNode(true);
+    	  if (resolve.pageInfo.next) {
+    		  a.className = (resolve.pageInfo.endPage+1);
+    		  
+    		  li.append(a);
+    		  a.innerText = '>';
+    	  }
+    	  ul.append(li);
+      })
+      .catch(err => console.log(err))
       }
 </script>
 <script src="js/AddWishList.js"></script>

@@ -91,4 +91,10 @@ public class BuyServiceImpl implements BuyService {
 		// 배송완료
 		return mapper.completeDlvy()==1;
 	}
+
+	@Override
+	public int reviewWrite(int buyId) {
+		return mapper.reviewWrite(buyId);
+	}
+	
 }

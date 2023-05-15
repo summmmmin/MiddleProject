@@ -115,5 +115,8 @@
 		where rownum=1
 	</select>
 	
+	<select id="reviewWrite">
+		select count(*) from review where buy_id = #{buyId}
+	</select>
 	
 </mapper>

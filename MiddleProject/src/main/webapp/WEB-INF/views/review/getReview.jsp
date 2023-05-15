@@ -4,7 +4,7 @@
 <div class="stie-section">
 	<div class="container">
 		<div class="row justify-content-md-center">
-			<div class="row mb-5">
+			
 				<div class="col-md-12">
 					<h2 class="h3 mb-3 text-black">구매상품</h2>
 					<div class="p-3 p-lg-5 border">
@@ -27,7 +27,7 @@
 						</table>
 					</div>
 				</div>
-			</div>
+			
 			<div class="col-md-12">
 				<h2 class="h3 mb-3 text-black">리뷰</h2>
 				<div class="p-3 p-lg-5 border">
@@ -39,11 +39,8 @@
 						</tr>
 						<tr>
 							<td scope="col" class="text-primary">작성자</td>
-							<td colspan="2">${userinfo.userNm}</td>
+							<td colspan="2">${reviewInfo.userNm}</td>
 						</tr>
-						<tr>
-							<td scope="col" class="text-primary">산 제품</td>
-							<td colspan="2">${prodInfo.prodNm}</td>
 						<tr>
 							<td colspan="2"><img src="images/${reviewInfo.reviewImg}"
 								alt="Image" class="img-fluid"></td>
@@ -53,9 +50,9 @@
 						</tr>
 					</table>
 					<div class="d-flex justify-content-end">
-						<c:if test="${buyInfo.buyId == reviewInfo.buyId}">
+						<c:if test="${buyInfo.userId == userinfo.userId}">
 							<button type="button"
-								onclick="location.href='delReview.do?reviewId=${reviewInfo.reviewId}'"
+								onclick="location.href='delReview.do?rid=${reviewInfo.reviewId}'"
 								class="btn btn-danger btn-sm">삭제</button>
 						</c:if>
 						<button class="btn btn-outline-dark btn-sm"

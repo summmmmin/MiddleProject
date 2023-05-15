@@ -17,11 +17,11 @@
 			<c:forEach var="i" items="${myReview}">
 				<tr>
 					<td><c:out value="${i.reviewId}"></c:out></td>
-					<td><a href="#">${i.reviewTitle}</a></td>
-					<td><c:out value="${prodInfo.pdtId}"><a href="#">${prodInfo.pdtNm}</a></c:out></td>
+					<td><a href="getReview.do?rid=${i.reviewId}">${i.reviewTitle}</a></td>
+					<td>${i.pdtNm}</td>
 					<td>${userinfo.userNm}</td>
 					<td>${i.reviewDate}</td>
-					<td><button type="button" onclick="location.href='delReview.do?reviewId=${i.reviewId}'" class="btn btn-danger btn-sm4">삭제</button></td>
+					<td><button type="button" onclick="location.href='delReview.do?rid=${i.reviewId}'" class="btn btn-danger btn-sm4">삭제</button></td>
 				</tr>
 			</c:forEach>
 		</table>

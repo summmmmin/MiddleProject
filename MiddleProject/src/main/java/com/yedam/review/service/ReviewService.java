@@ -8,8 +8,8 @@ public interface ReviewService {
 	public boolean addReview(ReviewVO vo);
 	public boolean removeReview(int reviewId);
 	public ReviewVO searchReview(int reviewId);
-	public List<ReviewVO> prodReview(int pdtId);
+	public List<ReviewVO> prodReview(int pdtId, int page);
 	public List<ReviewVO> myReview(String userId, int page);
-	public int totalCount();
-	public int getMyReviewCount(String userId, int pdtId);
+	public int totalCount(int pdtId);
+	public int getMyReviewCount(String userId);
 }

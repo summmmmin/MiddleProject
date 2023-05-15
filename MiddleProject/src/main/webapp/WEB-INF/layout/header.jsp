@@ -128,7 +128,7 @@
       <nav class="site-navigation text-right text-md-left" role="navigation">
         <div class="container">
           <ul class="site-menu js-clone-nav d-none d-md-block">
-            <li class="has-children active">
+            <li>
               <a href="main.do">Main</a>
             </li>
             <li><a href="prodList.do">Shop</a></li>

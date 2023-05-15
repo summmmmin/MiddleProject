@@ -18,7 +18,7 @@ public class DelReviewControl implements Control {
 		ReviewService service = new ReviewServiceImpl();
 		service.removeReview(Integer.parseInt(rid));
 		
-		return "review/myReviewList.tiles";
+		return "myReview.do";
 	}
 
 }

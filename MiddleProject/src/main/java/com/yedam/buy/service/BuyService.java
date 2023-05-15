@@ -28,4 +28,5 @@ public interface BuyService {
 	public boolean modifyDlvy(BuyVO vo);
 	//배송완료
 	public boolean completeDlvy();
+	public int reviewWrite(int buyId);
 }
