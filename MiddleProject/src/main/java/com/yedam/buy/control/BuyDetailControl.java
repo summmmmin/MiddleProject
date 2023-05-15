@@ -22,8 +22,11 @@ public class BuyDetailControl implements Control {
 	    UserVO user = (UserVO) session.getAttribute("userinfo"); //로그인된 정보
 		String buyId = req.getParameter("buyId");
 		BuyService service = new BuyServiceImpl();
-		BuyVO buy = service.getBuyId(Integer.parseInt(buyId));		
+		BuyVO buy = service.getBuyId(Integer.parseInt(buyId));
+		int review = service.reviewWrite(Integer.parseInt(buyId));
+		System.out.println(review);
 		req.setAttribute("buyInfo", buy);
+		req.setAttribute("reviewInfo", review);
 		return "buy/buyDetail.tiles";			
 		
 		

@@ -232,14 +232,10 @@ prefix="c" %>
       </c:otherwise>
     </c:choose>
     <c:choose>
-      <c:when test="${buyInfo.buyReturn == 'N' && buyInfo.buyDlvy == '배송완료' && buyInfo.buyReturn == 'N'}">
+      <c:when test="${buyInfo.buyCancel != '취소완료' && buyInfo.buyDlvy == '배송완료' && buyInfo.buyReturn != '반품완료' && reviewInfo == 0}">
         <td>
-          <button
-            class="reviewBtn btn btn-sm btn-primary"
-            data-id="${buyInfo.buyId }"
-            data-toggle="modal"
-            data-target="#reviewModal"
-          >
+          <button class="reviewBtn btn btn-sm btn-primary"
+          onclick="location.href='addReview.do?bid=${buyInfo.buyId}'">
             리뷰쓰기
           </button>
         </td>
@@ -528,28 +524,6 @@ prefix="c" %>
 	    })
 	    
 	    
-	});
-	$(document).on("click", ".reviewBtn", function () {
-	    let returnId = $(this).data('id');
-	    $("#returnCheck").on("click", function(){
-	    	fetch('review.do',{
-	    		method:'POST',
-	    		headers:{
-	    		  'Content-Type':'application/x-www-form-urlencoded'
-	    		}, body : 'id='+returnId
-	    	})
-	    	.then(resolve=>resolve.json())
-	    	.then(result=>{
-	    		if(result.retCode == 'Success'){
-	    			$('#reviewModal').modal("hide");
-	    			
-	    		} else if(result.retCode == 'Fail'){
-	    			alert('처리 중 에러');
-	    		} else{
-	    			alert('알 수 없는 반환값')
-	    		}
-	    	})
-	    })
 	});
 	
 </script>
