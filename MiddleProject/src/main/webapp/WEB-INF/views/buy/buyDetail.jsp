@@ -60,6 +60,7 @@ prefix="c" %>
       <div class="col-md-12">
         <h2 class="h3 mb-3 text-black">배송 상세</h2>
         <div class="p-3 p-lg-5 border">
+          <p>체결 판매번호 : ${buyInfo.sellId}</p>
           <table class="table site-block-order-table mb-5" id="table1">
              <thead id="delivery1">
      			<th>배송</th>
@@ -280,7 +281,7 @@ prefix="c" %>
         <td class="text-black font-weight-bold" width="30%">
           <strong>운송장번호</strong>
         </td>
-        <td class="text-black">${buyInfo.dlvNum}(${buyInfo.buyDlvy})</td>
+        <td class="text-black"><input type="text" /></td>
       </tr>
       <tr>
         <td class="text-black font-weight-bold" width="30%">
@@ -413,6 +414,7 @@ prefix="c" %>
    	      btn.addEventListener('click', function(e){
 
    	    	  let template = document.querySelector('#template').cloneNode(true);
+   	    	  template.children[0].children[1].children[0].value = dlv.dlvNum + "(" + dlv.buyDlvy + ")";
    	    	  template.children[1].children[1].children[0].value = dlv.dlvName;
    	    	  template.children[2].children[1].children[0].value = dlv.dlvPhone;
    	    	  template.children[3].children[1].children[0].value = dlv.dlvAddr;
@@ -423,14 +425,14 @@ prefix="c" %>
        	      btn1.innerText='등록';
        	      document.getElementById("table").parentElement.append(btn1);
        	      btn1.addEventListener('click',function(e){
-
+       	    	  let num = this.parentElement.children[0].children[0].children[0].children[1].children[0].value;
        	    	  let nm = this.parentElement.children[0].children[0].children[1].children[1].children[0].value;
        	    	  let ph = this.parentElement.children[0].children[0].children[2].children[1].children[0].value;
        	    	  let addr = this.parentElement.children[0].children[0].children[3].children[1].children[0].value;
        	    	  fetch('modifyDlvy.do',{
        	    	      method:'POST',
        	    	      headers:{'Content-Type':'application/x-www-form-urlencoded'},
-       	    	      body: 'dlvName='+nm+'&dlvPhone='+ph+'&dlvAddr='+addr+'&dlvNum='+dlv.dlvNum+'&dlvId='+dlv.dlvId+'&bid='+dlv.buyId
+       	    	      body: 'dlvName='+nm+'&dlvPhone='+ph+'&dlvAddr='+addr+'&dlvNum='+num+'&dlvId='+dlv.dlvId+'&bid='+dlv.buyId
        	    	    })
        	    	    .then(resolve=>resolve.json())
        	    	    .then(result=>{
@@ -453,6 +455,7 @@ prefix="c" %>
    	if(dlv.buyDlvy == '배송완료'){
 
    	}
+   	tbody.children[0].children[1].innerText=dlv.dlvNum;
    	tbody.children[1].children[1].innerText=dlv.dlvName;
    	tbody.children[2].children[1].innerText=dlv.dlvPhone;
    	tbody.children[3].children[1].innerText=dlv.dlvAddr;

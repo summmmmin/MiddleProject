@@ -20,14 +20,19 @@ public class BuyDetailControl implements Control {
 		
 		HttpSession session = req.getSession();
 	    UserVO user = (UserVO) session.getAttribute("userinfo"); //로그인된 정보
-		String buyId = req.getParameter("buyId");
+	    if(user == null) {
+	    	return "loginForm.do";
+	    }
+	    
+	    String buyId = req.getParameter("buyId");
 		BuyService service = new BuyServiceImpl();
-		BuyVO buy = service.getBuyId(Integer.parseInt(buyId));
-		int review = service.reviewWrite(Integer.parseInt(buyId));
-		System.out.println(review);
+		BuyVO buy = service.getBuyId(Integer.parseInt(buyId));		
 		req.setAttribute("buyInfo", buy);
-		req.setAttribute("reviewInfo", review);
-		return "buy/buyDetail.tiles";			
+		if(user.getUserId().equals(buy.getUserId()) || user.getUserGrade().equals("관리자")) {
+			return "buy/buyDetail.tiles";						
+		}else {
+			return "loginForm.do";
+		}
 		
 		
 	}
