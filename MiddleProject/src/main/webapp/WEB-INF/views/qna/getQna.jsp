@@ -88,7 +88,6 @@
   </body>  
 <script>
 function addQC(){
-	var note = document.querySelector('#note1').innerHTML
 	
 	$('#form').attr("action","addQC.do?postId=${qnaInfo.postId }").submit(); //답변달기
 }
