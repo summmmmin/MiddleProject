@@ -22,9 +22,12 @@ prefix="c" %>
     <c:when test="${userinfo.userGrade == '관리자'}">
       <!-- 관리자 메뉴 -->
       <div style="color: red; font-weight: bold;">-- 관리자 메뉴 --</div>
+      <a href="mypageView.do">내 정보 보기</a>
       <a href="userViewForm.do">유저정보 조회</a>
-      <a href="sellList.do">판매내역 조회</a>
-      <a href="buyList.do">구매내역 조회</a>
+      <a href="sellList.do">판매내역 전체 조회</a>
+      <a href="userSellForm.do">판매내역 단건 조회</a>
+      <a href="buyList.do">구매내역 전체 조회</a>
+      <a href="userBuyForm.do">구매내역 단건 조회</a>
       <a href="sendNote.do">쪽지보내기</a>
     </c:when>
     <c:otherwise>
