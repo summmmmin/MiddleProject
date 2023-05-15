@@ -159,7 +159,7 @@
 		<div class="block-4 text-center border">
 			<figure class="block-4-image">
 				<a href="getProd.do?&page=pageInfo.pageNum&pid=product.pdtId"><img
-					src="images/product.pdtImg" alt="Image placeholder"
+					src="images/nike.png" alt="Image placeholder"
 					class="img-fluid" id="pdtImg"></a>
 			</figure>
 			<div class="block-4-text p-4">
