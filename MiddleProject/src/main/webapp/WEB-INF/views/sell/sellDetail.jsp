@@ -55,7 +55,7 @@ pageEncoding="UTF-8"%>
       			<th>취소</th>
     </thead>
     <tbody>
-      <tr id="prod">
+      <tr id="statetr">
       	<td>
         	<div class="form-group">
 				<select id="dlvy_state" class="form-control" name="form">

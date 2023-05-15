@@ -21,6 +21,7 @@ import com.yedam.buy.control.BuyPayControl;
 import com.yedam.buy.control.BuyPriceControl;
 import com.yedam.buy.control.BuyReturnControl;
 import com.yedam.buy.control.BuyUpdateControl;
+import com.yedam.buy.control.GetBuyListControl;
 import com.yedam.buy.control.ModifyDlvy;
 import com.yedam.note.control.DelAllNoteControl;
 import com.yedam.note.control.DelNoteControl;
@@ -53,14 +54,14 @@ import com.yedam.review.control.DelReviewControl;
 import com.yedam.review.control.GetReviewControl;
 import com.yedam.review.control.MyReviewControl;
 import com.yedam.review.control.ProdReviewControl;
-
-
+import com.yedam.sell.control.GetSellListControl;
 import com.yedam.sell.control.ModifyAccControl;
 
 import com.yedam.sell.control.SellCancelControl;
 import com.yedam.sell.control.SellDetailControl;
 import com.yedam.sell.control.SellFormControl;
 import com.yedam.sell.control.SellGetControl;
+import com.yedam.sell.control.SellListControl;
 import com.yedam.sell.control.SellListUControl;
 import com.yedam.sell.control.SellPriceControl;
 import com.yedam.sell.control.SellUpdateControl;
@@ -141,7 +142,7 @@ public class FrontController extends HttpServlet{
 		map.put("/deleteUser.do", new DeleteUserControl());
 		map.put("/userList.do", new UserListControl());
 		map.put("/mypagePwForm.do", new MypagePwFormControl());
-
+		
 		//note
 		map.put("/noteSend.do", new NoteSendControl());
 		map.put("/noteList.do", new NoteListControl());
@@ -165,7 +166,7 @@ public class FrontController extends HttpServlet{
         map.put("/buyPay.do", new BuyPayControl());
         map.put("/buyUpdate.do", new BuyUpdateControl());
         map.put("/buyList.do", new BuyListControl());
-		
+		map.put("/getBuyList.do", new GetBuyListControl());
 		//wish(관심상품)
 		map.put("/wishList.do",  new WishListControl());
 		map.put("/deletewishList.do", new DeletewishList());
@@ -178,7 +179,8 @@ public class FrontController extends HttpServlet{
 		map.put("/getReview.do", new GetReviewControl());
 		map.put("/myReview.do", new MyReviewControl());
 
-    
+		map.put("/sellList.do", new SellListControl());
+		map.put("/getSellList.do", new GetSellListControl());
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
