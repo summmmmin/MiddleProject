@@ -6,6 +6,9 @@
 .js-open-target, .js-close-target {
 	cursor: pointer;
 }
+#test11 {
+	cursor: pointer;
+}
 </style>
 
 <div class="bg-light py-3">
