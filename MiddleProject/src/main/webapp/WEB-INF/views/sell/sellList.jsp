@@ -90,6 +90,7 @@
                 <th scope="col">판매일자</th>
                 <th scope="col">상태</th>
                 <th scope="col">취소</th>
+                <th scope="col">판매자</th>
                 <th scope="col">상품</th>
                 <th scope="col">브랜드</th>
                 <th scope="col">사이즈</th>
@@ -121,7 +122,7 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', state(this));
-let showFields = ['sellDate','sellDlvy','sellCancel','pdtNm','brdNm','sizeSize','sellPrice']
+let showFields = ['sellDate','sellDlvy','sellCancel','userId','pdtNm','brdNm','sizeSize','sellPrice']
 function state(stt){
 	let json;
 	let str;
