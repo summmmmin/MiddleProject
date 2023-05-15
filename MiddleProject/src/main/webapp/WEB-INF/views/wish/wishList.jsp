@@ -29,7 +29,7 @@
 			</div>
 			<div class="col-md-9">
 				<div class="row mb-5">
-					<h2 class="h3 mb-4 text-black">${userinfo.userNm }님의관심상품</h2>
+					<h2 class="h3 mb-4 text-black">${userinfo.userNm }님의 관심상품</h2>
 					<form class="col-md-12" method="post">
 						<div class="site-blocks-table">
 							<table class="table table-bordered">
