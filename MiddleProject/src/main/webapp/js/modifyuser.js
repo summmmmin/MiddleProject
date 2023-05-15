@@ -14,20 +14,38 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // 회원정보 변경 - 비밀번호
-const passwordInput = document.getElementById('user_pw');
-const passwordConfirmInput = document.getElementById('c_pw');
-const passwordWarning = document.getElementById('password-warning');
+//const passwordInput = document.getElementById('user_pw');
+//const passwordConfirmInput = document.getElementById('c_pw');
+//const passwordWarning = document.getElementById('password-warning');
+//
+//function checkPasswordValidity() {
+//  const passwordValue = passwordInput.value;
+//  const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+])[\w!@#$%^&*()_+]{8,}$/;
+//
+//  if (!passwordValue) {
+//    passwordWarning.textContent = '비밀번호를 입력해주세요.';
+//    return false;
+//  } else if (!passwordRegex.test(passwordValue)) {
+//    passwordWarning.textContent = '영어 대소문자, 특수문자를 모두 사용하고 8자 이상으로 입력하세요.';
+//    alert("영어 대소문자, 특수문자를 모두 사용하고 8자 이상으로 입력하세요.")
+//    return false;
+//  } else {
+//    passwordWarning.textContent = '';
+//  }
+//  
+//  return true;
+//}
 
 function checkPasswordValidity() {
-  const passwordValue = passwordInput.value;
+  const passwordValue = newPasswordInput.value;
   const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+])[\w!@#$%^&*()_+]{8,}$/;
 
   if (!passwordValue) {
-    passwordWarning.textContent = '비밀번호를 입력해주세요.';
-    return false;
+    passwordWarning.textContent = '';	// 입력값이 없으면 (수정하지 않으면) 알람x
+    return true; // 입력값이 없으므로 유효성 검사를 통과 (필수입력이 아님)
   } else if (!passwordRegex.test(passwordValue)) {
     passwordWarning.textContent = '영어 대소문자, 특수문자를 모두 사용하고 8자 이상으로 입력하세요.';
-    alert("영어 대소문자, 특수문자를 모두 사용하고 8자 이상으로 입력하세요.")
+    alert("영어 대소문자, 특수문자를 모두 사용하고 8자 이상으로 입력하세요.");
     return false;
   } else {
     passwordWarning.textContent = '';
@@ -37,11 +55,21 @@ function checkPasswordValidity() {
 }
 
 // 비밀번호 함수 false면 변경 중단
-const submitButton = document.getElementById('submit-button');
+//const submitButton = document.getElementById('submit-button');
+//
+//submitButton.addEventListener('click', function(event) {
+//  if (!validatePassword()) {
+//    event.preventDefault();
+//  }
+//});
 
-submitButton.addEventListener('click', function(event) {
-  if (!validatePassword()) {
-    event.preventDefault();
+submitBtn.addEventListener('click', function() {
+  phoneInput.readOnly = false;
+  addressInput.readOnly = false;
+  newPasswordInput.style.display = 'block';
+  
+  if (!checkPasswordValidity()) {
+    passwordInput.value = ''; // 입력값이 없으면 기존 비밀번호 유지
   }
 });
 
