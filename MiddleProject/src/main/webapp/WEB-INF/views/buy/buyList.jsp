@@ -119,6 +119,9 @@
                 <th scope="col">반품</th>
               </tr>
             </thead>
+            <tbody id="tbody">
+            
+            </tbody>
             <tbody class="template" style="display:none;">
               
                 <tr id="${buy.buyId }">
@@ -171,6 +174,7 @@
 </div>
 <script>
 document.addEventListener('DOMContentLoaded', state(this));
+let showFields = ['buyDate','buyDlvy','buyCancel','buyReturn','pdtNm','brdNm','sizeSize','buyPrice']
 function state(stt){
 	let json;
 	let str;
@@ -206,7 +210,58 @@ function state(stt){
 	})
 	.then(result => result.json())
 	.then(resolve => {
-		
-	})
+		document.querySelector('#tbody').innerHTML = '';
+		let i = 1
+		resolve.list.forEach(item => {
+			let tr = document.createElement('tr');
+			let th = document.createElement('th');				
+			let td = document.createElement('td');
+			th = document.createElement('th');	
+			th.innerText = i;
+			tr.append(th);
+			i+=1;
+			td = document.createElement('td');
+			td.innerText = '<a href = '
+			tr.append(td);
+			for(let prop of showFields){
+				td = document.createElement('td');
+				td.innerText = item[prop];
+				tr.append(td);
+				
+			}
+			document.querySelector('#tbody').append(tr);	
+		})
+		let page = document.querySelector('#page');
+		let ul = page.querySelector('ul');
+		ul.innerHTML = ''; // 초기화
+		let li = document.createElement('li');
+		let a = document.querySelector('#test11').cloneNode(true);
+		if (resolve.pageInfo.prev) {
+			a.className = (resolve.pageInfo.startPage-1);
+			
+			li.append(a);
+			a.innerText = '<';
+		}
+		ul.append(li);
+		for (let i = resolve.pageInfo.startPage; i<resolve.pageInfo.endPage; i++) {
+			li = document.createElement('li'); // 초기화
+			a = document.querySelector('#test11').cloneNode(true); // 초기화
+			li.className = (i == resolve.pageInfo.pageNum ? 'active' : '');
+			a.className = (i);
+			a.innerText = (i);
+			li.append(a);
+			ul.append(li);
+		}
+		li = document.createElement('li');
+		a = document.querySelector('#test11').cloneNode(true);
+		if (resolve.pageInfo.next) {
+			a.className = (resolve.pageInfo.endPage+1);
+			
+			li.append(a);
+			a.innerText = '>';
+		}
+		ul.append(li);
+})
+.catch(err => console.log(err))
 }
 </script>
