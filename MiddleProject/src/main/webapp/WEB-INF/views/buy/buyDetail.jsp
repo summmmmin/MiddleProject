@@ -60,6 +60,7 @@ prefix="c" %>
       <div class="col-md-12">
         <h2 class="h3 mb-3 text-black">배송 상세</h2>
         <div class="p-3 p-lg-5 border">
+          <p>체결 판매번호 : ${buyInfo.sellId}</p>
           <table class="table site-block-order-table mb-5" id="table1">
              <thead id="delivery1">
      			<th>배송</th>

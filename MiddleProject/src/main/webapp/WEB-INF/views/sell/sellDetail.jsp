@@ -49,6 +49,7 @@ pageEncoding="UTF-8"%>
       <div class="col-md-12">
         <h2 class="h3 mb-3 text-black">배송 상세</h2>
         <div class="p-3 p-lg-5 border">
+          <p>체결 구매번호 : ${sellInfo.buyId}</p>
           <table class="table site-block-order-table mb-5" id="table1">
              <thead id="delivery1">
      			<th>배송</th>
@@ -60,17 +61,16 @@ pageEncoding="UTF-8"%>
         	<div class="form-group">
 				<select id="dlvy_state" class="form-control" name="form">
 				<option selected id="sdlv">${sellInfo.sellDlvy}</option>
-				<option value="구매입찰중">구매입찰중</option>
+				<option value="판매입찰중">판매입찰중</option>
+				<option value="발송요청">발송요청</option>
+				<option value="발송완료">발송완료</option>
 				<option value="입고대기">입고대기</option>
 				<option value="입고완료">입고완료</option>
 				<option value="검수중">검수중</option>
 				<option value="검수합격">검수합격</option>
 				<option value="검수불합격">검수불합격</option>
 				<option value="거래실패">거래실패</option>
-				<option value="배송준비중">배송준비중</option>
-				<option value="배송중">배송중</option>
-				<option value="배송완료">배송완료</option>
-				<option value="구매취소">구매취소</option>
+				<option value="정산완료">정산완료</option>
 				</select>
 			</div>
 		</td>
