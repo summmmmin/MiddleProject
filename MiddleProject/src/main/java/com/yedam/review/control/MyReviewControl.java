@@ -22,18 +22,15 @@ public class MyReviewControl implements Control {
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		UserVO userInfo = (UserVO) session.getAttribute("userinfo");
-		ProdVO prodInfo = (ProdVO) session.getAttribute("prodInfo");
+
 		String userId = userInfo.getUserId();
-		int prodId = prodInfo.getPdtId();
-		
-		System.out.println(userId);
+
 		String pageStr = req.getParameter("page");
-		System.out.println(pageStr);
 		pageStr = pageStr == null ? "1" : pageStr;
 		int page = Integer.parseInt(pageStr);
 		
 		ReviewService service = new ReviewServiceImpl();
-		int total = service.getMyReviewCount(userId, prodId);
+		int total = service.getMyReviewCount(userId);
 		PageDTO dto = new PageDTO(page, total);
 		List<ReviewVO> list = service.myReview(userId, page);
 		req.setAttribute("myReview", list);

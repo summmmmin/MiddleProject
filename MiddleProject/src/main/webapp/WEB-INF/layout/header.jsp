@@ -89,7 +89,7 @@
   <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
   <div class="overlay-content">
     <form action="/action_page.php">
-      <input type="text" placeholder="Search.." name="search">
+      <input type="text" placeholder="상품명,브랜드명" name="search">
       <button type="submit"><i class="fa fa-search"></i></button>
     </form>
   </div>
@@ -128,7 +128,7 @@
       <nav class="site-navigation text-right text-md-left" role="navigation">
         <div class="container">
           <ul class="site-menu js-clone-nav d-none d-md-block">
-            <li class="has-children active">
+            <li>
               <a href="main.do">Main</a>
             </li>
             <li><a href="prodList.do">Shop</a></li>

@@ -1,7 +1,9 @@
 package com.yedam.review.control;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,20 +23,23 @@ public class ProdReviewControl implements Control {
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String pageStr = req.getParameter("page");
+		String pdtId = req.getParameter("pdtId");
 		pageStr = pageStr == null ? "1" : pageStr;
 		int page = Integer.parseInt(pageStr);
+		int pdtId2 = Integer.parseInt(pdtId);
 		
 		ReviewService service = new ReviewServiceImpl();
-		int total = service.totalCount();
-		List<ReviewVO> list = service.prodReview(page);
+		int total = service.totalCount(pdtId2);
+		List<ReviewVO> list = service.prodReview(pdtId2, page);
 		
 		PageDTO dto = new PageDTO(page, total);
-		req.setAttribute("list", list);
-		req.setAttribute("pageInfo", dto);
-		
+		Map<String, Object> map = new HashMap<>();
+		map.put("list", list);
+		map.put("pageInfo", dto);
+
 		Gson gson = new GsonBuilder().create();
-		String json = gson.toJson(list);
-		
+		String json = gson.toJson(map);
+
 		return json + ".json";
 	}
 

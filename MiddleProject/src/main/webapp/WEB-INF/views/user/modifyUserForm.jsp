@@ -7,7 +7,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 mb-0">
-					<a href="main.do">Home</a> <span class="mx-2 mb-0">/</span> <strong
+					<a href="main.do">Main</a> <span class="mx-2 mb-0">/</span> <strong
 						class="text-black">ModifyInfo</strong>
 				</div>
 			</div>
@@ -20,9 +20,12 @@
 		<div class="row">
 			<div class="col-md-3">
 				<div class="sidebar">
-					<a href="mypageView.do">내 정보 보기</a> <a href="wishList.do">관심상품</a> <a href="#">구매내역</a>
-					<a href="#">판매내역</a> <a href="#">나의 Q&A</a> <a href="#">받은 쪽지함</a>
-					<a href="#">나의 리뷰</a>
+					<a href="mypageView.do">내 정보 보기</a> <a href="wishList.do">관심상품</a>
+					<a href="#">구매내역</a> <a href="#">판매내역</a> <a href="myQna.do">나의 Q&A</a> <a
+						href="noteList.do">받은 쪽지함</a> <a href="#">나의 리뷰</a>
+					<c:if test="${userinfo.userGrade == '관리자'}">
+						<a href="sendNote.do">쪽지보내기</a>
+					</c:if>
 				</div>
 			</div>
 			<div class="row justify-content-md-center">

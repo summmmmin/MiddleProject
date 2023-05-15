@@ -43,4 +43,4 @@ applyButton.addEventListener("click", function() {
   });
 });
 
-<script src="js/buyDetail.js"></script>
+//<script src="js/buyDetail.js"></script>

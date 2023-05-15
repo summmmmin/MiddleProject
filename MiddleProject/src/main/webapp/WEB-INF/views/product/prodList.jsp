@@ -159,7 +159,7 @@
 		<div class="block-4 text-center border">
 			<figure class="block-4-image">
 				<a href="getProd.do?&page=pageInfo.pageNum&pid=product.pdtId"><img
-					src="images/product.pdtImg" alt="Image placeholder"
+					src="images/nike.png" alt="Image placeholder"
 					class="img-fluid" id="pdtImg"></a>
 			</figure>
 			<div class="block-4-text p-4">
@@ -224,6 +224,7 @@
 	document.addEventListener('DOMContentLoaded', prod_categories(this));
 	function prod_categories (prodcat) {
 		
+		console.log(document.querySelector('.col-md-9 .mb-5'));
 		console.log(prodcat);
 		let json;
 		let str;
@@ -271,7 +272,7 @@
 				template.querySelector('.font-weight-bold').innerText = item.pdtPrice
 				template.querySelector('.pdtViews').innerText = item.pdtViews
 				template.querySelector('img').id = 'pdtImg'+item.pdtId;
-				template.querySelector('a:nth-of-type(1)').href = "getProd.do?page=${param.page}&pid="+item.pdtId;
+				template.querySelector('a:nth-of-type(1)').href = "getProd.do?pid="+item.pdtId;
 				template.querySelector('.pdtNm').href = "getProd.do?pid="+item.pdtId;
 				document.querySelector('.col-md-9 .mb-5').append(template);
 			})
@@ -287,9 +288,9 @@
 					a.innerText = '<';
 				}
 				ul.append(li);
-				for (let i = resolve.pageInfo.startPage; i<resolve.pageInfo.endPage; i++) {
-					li = document.createElement('li'); // 초기화
-					a = document.querySelector('#test11').cloneNode(true); // 초기화
+				for (let i = resolve.pageInfo.startPage; i<=resolve.pageInfo.endPage; i++) {
+					li = document.createElement('li');
+					a = document.querySelector('#test11').cloneNode(true);
 					li.className = (i == resolve.pageInfo.pageNum ? 'active' : '');
 					a.className = (i);
 					a.innerText = (i);
