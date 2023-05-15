@@ -12,7 +12,7 @@
     </div>
   </div>
 </div>
-
+<c:if test="${userinfo.userGrade == '관리자'}">
 <div class="site-section">
   <div class="container">
     <div class="row">
@@ -110,67 +110,41 @@
                 <th scope="col"></th>
                 <th scope="col">구매번호</th>
                 <th scope="col">구매일자</th>
+                <th scope="col">상태</th>
+                <th scope="col">취소</th>
+                <th scope="col">반품</th>
                 <th scope="col">상품</th>
                 <th scope="col">브랜드</th>
                 <th scope="col">사이즈</th>
                 <th scope="col">가격</th>
-                <th scope="col">상태</th>
-                <th scope="col">취소</th>
-                <th scope="col">반품</th>
               </tr>
             </thead>
-            <tbody class="template" style="display:none;">
-              
-                <tr id="${buy.buyId }">
-                  <th scope="row"> </th>
-                  <td><a href="buyDetail.do?buyId=${buy.buyId }">${buy.buyId }</a></td>
-                  <td>${buy.buyDate }</td>
-                  <td>${buy.pdtNm }</td>
-                  <td>${buy.brdNm }</td>
-                  <td>${buy.sizeSize }</td>
-                  <td>${buy.buyPrice }</td>
-                  <td>${buy.buyDlvy }</td>
-                  <td>${buy.buyCancel }</td>
-                  <td>${buy.buyReturn }</td>
-                </tr>
-              
+            <tbody id="tbody">
+            
             </tbody>
+            
           </table>
         </div>
       </div>
     </div>
     
-    <div class="row" data-aos="fade-up">
+    <div class="row" id="page" data-aos="fade-up">
       <div class="col-md-12 text-center">
         <div class="site-block-27">
           <ul>
-            <li>
-              <c:if test="${pageInfo.prev}">
-                <a href="buyListU.do?page=${pageInfo.startPage-1}">&lt;</a>
-              </c:if>
-            </li>
-            <c:forEach
-              var="i"
-              begin="${pageInfo.startPage}"
-              end="${pageInfo.endPage}"
-            >
-              <li class="${i == pageInfo.pageNum ? 'active' : ''}">
-                <a href="buyListU.do?page=${i}">${i}</a>
-              </li>
-            </c:forEach>
-            <li>
-              <c:if test="${pageInfo.next}">
-                <a href="buyListU.do?page=${pageInfo.endPage+1}">&gt;</a>
-              </c:if>
-            </li>
+            <!-- 페이지 -->
           </ul>
         </div>
       </div>
     </div>
   </div>
 </div>
+</c:if>
+<a onclick="state(this)" id="test11"></a>
+
 <script>
 document.addEventListener('DOMContentLoaded', state(this));
+let showFields = ['buyDate','buyDlvy','buyCancel','buyReturn','pdtNm','brdNm','sizeSize','buyPrice']
 function state(stt){
 	let json;
 	let str;
@@ -206,7 +180,62 @@ function state(stt){
 	})
 	.then(result => result.json())
 	.then(resolve => {
-		
-	})
+		document.querySelector('#tbody').innerHTML = '';
+		let i = 1
+		resolve.list.forEach(item => {
+			let tr = document.createElement('tr');
+			let th = document.createElement('th');				
+			let td = document.createElement('td');
+			th = document.createElement('th');	
+			th.innerText = i;
+			tr.append(th);
+			i+=1;
+			td = document.createElement('td');
+			//td.innerText = '<a href="buyDetail.do?buyId='+item.buyId+'">'+item.buyId+'</a>';
+			let a = document.createElement('a');
+			a.href = "buyDetail.do?buyId="+item.buyId;
+			a.innerText = item.buyId;
+			td.append(a);
+			tr.append(td);
+			for(let prop of showFields){
+				td = document.createElement('td');
+				td.innerText = item[prop];
+				tr.append(td);
+				
+			}
+			document.querySelector('#tbody').append(tr);	
+		})
+		let page = document.querySelector('#page');
+		let ul = page.querySelector('ul');
+		ul.innerHTML = ''; // 초기화
+		let li = document.createElement('li');
+		let a = document.querySelector('#test11').cloneNode(true);
+		if (resolve.pageInfo.prev) {
+			a.className = (resolve.pageInfo.startPage-1);
+			
+			li.append(a);
+			a.innerText = '<';
+		}
+		ul.append(li);
+		for (let i = resolve.pageInfo.startPage; i<resolve.pageInfo.endPage; i++) {
+			li = document.createElement('li'); // 초기화
+			a = document.querySelector('#test11').cloneNode(true); // 초기화
+			li.className = (i == resolve.pageInfo.pageNum ? 'active' : '');
+			a.className = (i);
+			a.innerText = (i);
+			li.append(a);
+			ul.append(li);
+		}
+		li = document.createElement('li');
+		a = document.querySelector('#test11').cloneNode(true);
+		if (resolve.pageInfo.next) {
+			a.className = (resolve.pageInfo.endPage+1);
+			
+			li.append(a);
+			a.innerText = '>';
+		}
+		ul.append(li);
+})
+.catch(err => console.log(err))
 }
 </script>

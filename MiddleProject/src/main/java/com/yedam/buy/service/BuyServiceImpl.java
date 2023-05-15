@@ -45,15 +45,15 @@ public class BuyServiceImpl implements BuyService {
 	}
 
 	@Override
-	public List<BuyVO> BuyList(int page) {
+	public List<BuyVO> BuyList(int page,List<String> list,List<String> list2,List<String> list3) {
 		// 전체구매내역
-		return mapper.BuyList(page);
+		return mapper.BuyList(page,list,list2,list3);
 	}
 
 	@Override
-	public int buyTotalCount() {
+	public int buyTotalCount(List<String> list,List<String> list2,List<String> list3) {
 		// 전체 구매수
-		return mapper.getCountBuy();
+		return mapper.getCountBuy(list,list2,list3);
 	}
 
 	@Override

@@ -40,17 +40,45 @@
 	</select>
 	
 	<select id="BuyList">
-	  <![CDATA[
 	  select b.*
     	from (select rownum rn, a.*
-         	 from (select * from buy natural join product natural join product_size natural join brand
+         	 from (select * 
+         	 	   from buy natural join product natural join product_size natural join brand
+				   where buy_id is not null
+				   <foreach item="item" index="index" collection="list"
+                     open="and buy_dlvy in (" separator="," close=")">
+                     #{item}
+                    </foreach>
+                    <foreach item="item" index="index" collection="list2"
+                     open="and buy_cancel in (" separator="," close=")">
+                     #{item}
+                    </foreach>
+                    <foreach item="item" index="index" collection="list3"
+                     open="and buy_return in (" separator="," close=")">
+                     #{item}
+                    </foreach>
 				   order by buy_date desc) a
+	  <![CDATA[
           	where rownum <= #{page} * 10) b
     	where b.rn > (#{page}-1) * 10	  
       ]]>
 	</select>
 	<select id="getCountBuy">
-	  select count(*) from buy
+	  select count(*)
+      from buy natural join product natural join product_size natural join brand
+	  where buy_id is not null
+	  <foreach item="item" index="index" collection="list"
+      open="and buy_dlvy in (" separator="," close=")">
+      #{item}
+      </foreach>
+      <foreach item="item" index="index" collection="list2"
+      open="and buy_cancel in (" separator="," close=")">
+      #{item}
+      </foreach>
+      <foreach item="item" index="index" collection="list3"
+      open="and buy_return in (" separator="," close=")">
+      #{item}
+      </foreach>
 	</select>
 	
 	<select id="selectBuy">

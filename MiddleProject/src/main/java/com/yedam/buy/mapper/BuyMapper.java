@@ -15,8 +15,8 @@ public interface BuyMapper {
 	public List<BuyVO> selectBuyList(@Param("userId") String userId, @Param("page") int page);
 	public int countBuy(String userId);
 	//구매내역
-	public List<BuyVO> BuyList(int page);
-	public int getCountBuy();
+	public List<BuyVO> BuyList(@Param("page") int page,@Param("list") List<String> list,@Param("list2") List<String> list2, @Param("list3") List<String> list3);
+	public int getCountBuy(@Param("list") List<String> list,@Param("list2") List<String> list2, @Param("list3") List<String> list3);
 	//즉시판매가
 	public BuyVO selectBuyPrice(BuyVO vo);
 	//구매상세

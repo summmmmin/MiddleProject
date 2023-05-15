@@ -29,14 +29,14 @@ public class SellServiceImpl implements SellService {
 	}
 
 	@Override
-	public List<SellVO> SellList(int page) {
+	public List<SellVO> SellList(int page,List<String> list,List<String> list2) {
 		//판매내역관리
-		return mapper.SellList(page);
+		return mapper.SellList(page,list,list2);
 	}
 	@Override
-	public int sellTotalCount() {
+	public int sellTotalCount(List<String> list,List<String> list2) {
 		// 총판매수
-		return mapper.getCountSell();
+		return mapper.getCountSell(list,list2);
 	}
 
 	@Override
