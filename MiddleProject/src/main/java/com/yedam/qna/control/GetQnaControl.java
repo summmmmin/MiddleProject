@@ -29,17 +29,21 @@ public class GetQnaControl implements Control {
 		QCommentService service2 = new QCommentServiceImpl();
 		QCommentVO vo2 = service2.getComment(Integer.parseInt(qid));
 		
-
+		System.out.println(vo);
 		req.setAttribute("qnaInfo", vo);
 		req.setAttribute("pageNum", page);
 		req.setAttribute("commentInfo", vo2);
-		if(vo.getQnaImg() != null) {
-			String imgPath =  req.getServletContext().getRealPath("images");
-			Path file = Paths.get(imgPath + "/" + vo.getQnaImg());
-			System.out.println(Files.probeContentType(file));
-			// image/jpg, image/png, text/plain
-			String fileType = Files.probeContentType(file);
-			req.setAttribute("fileType", fileType.substring(0,fileType.indexOf("/")));
+		try {
+			if(vo.getQnaImg() != null) {
+				String imgPath =  req.getServletContext().getRealPath("images");
+				Path file = Paths.get(imgPath + "/" + vo.getQnaImg());
+				System.out.println(Files.probeContentType(file));
+				// image/jpg, image/png, text/plain
+				String fileType = Files.probeContentType(file);
+				req.setAttribute("fileType", fileType.substring(0,fileType.indexOf("/")));
+			}			
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
 		
 		return "qna/getQna.tiles";

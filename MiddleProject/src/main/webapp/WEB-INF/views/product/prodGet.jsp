@@ -74,16 +74,16 @@
 						<div class="item">
 							<div class="block-4 text-center">
 								<figure class="block-4-image">
-									<a href="getProd.do?&pid=${prodInfo.pdtId}"> <img
+									<a href="getProd.do?&pid=${product2.pdtId}"> <img
 										src="images/${product2.pdtImg}" alt="Image placeholder"
 										class="img-fluid">
 									</a>
 								</figure>
 								<div class="block-4-text p-4">
 									<h3>
-										<a href="getProd.do?&pid=${prodInfo.pdtId}">${product2.pdtNm}</a>
+										<a href="getProd.do?&pid=${product2.pdtId}">${product2.pdtNm}</a>
 									</h3>
-									<p class="mb-0">${product2.brdId}</p>
+									<p class="mb-0">${product2.brdNm}</p>
 									<p class="text-primary font-weight-bold">${product2.pdtPrice}</p>
 									<p>${product2.pdtViews}</p>
 								</div>
