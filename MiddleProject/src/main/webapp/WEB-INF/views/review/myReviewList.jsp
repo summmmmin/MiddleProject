@@ -3,6 +3,33 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="site-section">
 	<div class=container>
+		<div class="col-md-3">
+<div class="sidebar">
+  <c:choose>
+    <c:when test="${userinfo.userGrade == '관리자'}">
+      <!-- 관리자 메뉴 -->
+      <div style="color: red; font-weight: bold;">-- 관리자 메뉴 --</div>
+      <a href="mypageView.do">내 정보 보기</a>
+      <a href="userViewForm.do">유저정보 조회</a>
+      <a href="sellList.do">판매내역 전체 조회</a>
+      <a href="userSellForm.do">판매내역 단건 조회</a>
+      <a href="buyList.do">구매내역 전체 조회</a>
+      <a href="userBuyForm.do">구매내역 단건 조회</a>
+      <a href="sendNote.do">쪽지보내기</a>
+    </c:when>
+    <c:otherwise>
+      <!-- 일반 사용자 메뉴 -->
+      <a href="mypageView.do">내 정보 보기</a>
+      <a href="wishList.do">관심상품</a>
+      <a href="sellListU.do">나의 판매내역</a>
+      <a href="buyListU.do">나의 구매내역</a>
+      <a href="myQna.do">나의 Q&A</a>
+      <a href="noteList.do">받은 쪽지함</a>
+      <a href="myReview.do">나의 리뷰</a>
+    </c:otherwise>
+  </c:choose>
+</div>
+		</div>
 		<h3>내가 쓴 리뷰</h3>
 		<table class="table">
 			<thead>
@@ -21,7 +48,9 @@
 					<td>${i.pdtNm}</td>
 					<td>${userinfo.userNm}</td>
 					<td>${i.reviewDate}</td>
-					<td><button type="button" onclick="location.href='delReview.do?rid=${i.reviewId}'" class="btn btn-danger btn-sm4">삭제</button></td>
+					<td><button type="button"
+							onclick="location.href='delReview.do?rid=${i.reviewId}'"
+							class="btn btn-danger btn-sm4">삭제</button></td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -29,7 +58,8 @@
 		<div class="center">
 			<div class="pagination justify-content-center">
 				<c:if test="${pageInfo.prev}">
-					<a class="page-link" href="myReview.do?page=${pageInfo.startPage-1}">Previous</a>
+					<a class="page-link"
+						href="myReview.do?page=${pageInfo.startPage-1}">Previous</a>
 				</c:if>
 				<c:forEach var="i" begin="${pageInfo.startPage }"
 					end="${pageInfo.endPage}">
