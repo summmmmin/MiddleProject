@@ -23,7 +23,8 @@ public class SellPriceControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		
+		
 		String prodId = req.getParameter("prodId");
 		String sizeId = req.getParameter("size");
 		
@@ -32,7 +33,9 @@ public class SellPriceControl implements Control {
 	    ProdService prodService = new ProdServiceImpl();
 	    SizeService sizeService = new SizeServiceImpl();	    
 		BuyService buyService = new BuyServiceImpl();
-		
+		if(user == null) {
+	    	return "loginForm.do";
+	    }
 		BuyVO buy = new BuyVO();
 		buy.setPdtId(Integer.parseInt(prodId));
 		buy.setSizeId(Integer.parseInt(sizeId));
