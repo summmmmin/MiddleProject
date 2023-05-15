@@ -15,6 +15,17 @@
 
 <div class="site-section">
 <div class= container>
+    			<div class="col-md-3">
+				<div class="sidebar">
+					<a href="mypageView.do">내 정보 보기</a> <a href="wishList.do">관심상품</a>
+					<a href="sellListU.do">판매내역</a> <a href="buyListU.do">구매내역</a> <a
+						href="myQna.do">나의 Q&A</a> <a href="noteList.do">받은 쪽지함</a> <a
+						href="myReview.do">나의 리뷰</a>
+					<c:if test="${userinfo.userGrade == '관리자'}">
+						<a href="sendNote.do">쪽지보내기</a>
+					</c:if>
+				</div>
+			</div>
 <c:set var = "no" value="0"></c:set>
 <h3 >쪽지함 </h3>
 <p >안 읽은 쪽지: ${readInfo }</p>
