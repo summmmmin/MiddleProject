@@ -18,10 +18,9 @@
 					</table>
 
             			<div class="d-flex justify-content-center">
-							<input type="text" name="userId" class="form-control" placeholder="이메일을 입력해주세요" style="width:220px; margin-left:43px;">
+							<input type="text" id="all" name="userId" class="form-control" placeholder="이메일을 입력해주세요" style="width:220px; margin-left:43px;">
 							<label for="myCheck" style="margin-top:4px; margin-left:10px;">모두에게 보내기:</label> 
 							<input type="checkbox"  name ="checkbox1" id="myCheck" onclick="myFunction()" style="margin-bottom:10px; margin-left:5px;">
-							<p id="text" style="display:none">모두 선택됨!</p>
 						</div>
 						
 						<div class="d-flex justify-content-end" style="margin-top:50px;">
@@ -40,7 +39,9 @@
 	function myFunction() {
 		  var checkBox = document.getElementById("myCheck");
 		  tmp = $('[name=checkbox1]').is(':checked')
-		  var text = document.getElementById("text");
+		  let all =document.getElementById('all')
+		  all.readOnly = true;
+		  all.placeholder = "모두 선택됨!";
 		  if (checkBox.checked == true){
 		    text.style.display = "block";
 		    

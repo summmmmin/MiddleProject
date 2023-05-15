@@ -8,13 +8,14 @@ import java.nio.file.Paths;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import com.yedam.buy.domain.BuyVO;
+import com.yedam.buy.service.BuyService;
+import com.yedam.buy.service.BuyServiceImpl;
 import com.yedam.common.Control;
 import com.yedam.review.domain.ReviewVO;
 import com.yedam.review.service.ReviewService;
 import com.yedam.review.service.ReviewServiceImpl;
-import com.yedam.user.domain.UserVO;
 
 public class GetReviewControl implements Control {
 
@@ -27,7 +28,10 @@ public class GetReviewControl implements Control {
 		ReviewVO vo = service.searchReview(Integer.parseInt(rid));
 		
 		req.setAttribute("reviewInfo", vo);
-		
+		System.out.println(vo);
+		BuyService buyservice = new BuyServiceImpl();
+		BuyVO buy = buyservice.getBuyId(vo.getBuyId());
+		req.setAttribute("buyInfo", buy);
 		try {
 			if (vo.getReviewImg() != null) {
 				String imgPath = req.getServletContext().getRealPath("images");

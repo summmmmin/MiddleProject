@@ -26,8 +26,11 @@ public class BuyDetailControl implements Control {
 	    
 	    String buyId = req.getParameter("buyId");
 		BuyService service = new BuyServiceImpl();
-		BuyVO buy = service.getBuyId(Integer.parseInt(buyId));		
+		BuyVO buy = service.getBuyId(Integer.parseInt(buyId));
+		int review = service.reviewWrite(Integer.parseInt(buyId));
+		System.out.println(review);
 		req.setAttribute("buyInfo", buy);
+		req.setAttribute("reviewInfo", review);
 		if(user.getUserId().equals(buy.getUserId()) || user.getUserGrade().equals("관리자")) {
 			return "buy/buyDetail.tiles";						
 		}else {

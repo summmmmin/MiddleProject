@@ -31,4 +31,5 @@ public interface BuyMapper {
 	public int deliveBuy(BuyVO vo);
 	public int updateDlvy(BuyVO vo);
 	public int completeDlvy();
+	public int reviewWrite(int buyId);
 }
