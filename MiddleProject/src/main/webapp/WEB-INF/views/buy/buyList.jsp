@@ -113,6 +113,7 @@
                 <th scope="col">상태</th>
                 <th scope="col">취소</th>
                 <th scope="col">반품</th>
+                <th scope="col">구매자</th>
                 <th scope="col">상품</th>
                 <th scope="col">브랜드</th>
                 <th scope="col">사이즈</th>
@@ -144,7 +145,7 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', state(this));
-let showFields = ['buyDate','buyDlvy','buyCancel','buyReturn','pdtNm','brdNm','sizeSize','buyPrice']
+let showFields = ['buyDate','buyDlvy','buyCancel','buyReturn','userId','pdtNm','brdNm','sizeSize','buyPrice']
 function state(stt){
 	let json;
 	let str;
