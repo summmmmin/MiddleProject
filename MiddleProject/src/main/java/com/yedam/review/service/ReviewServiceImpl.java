@@ -33,5 +33,13 @@ public class ReviewServiceImpl implements ReviewService {
 	public List<ReviewVO> myReview(String userId, int page) {
 		return mapper.myReview(userId, page);
 	}
+	@Override
+	public int totalCount() {
+		return mapper.getCount();
+	}
+	@Override
+	public int getMyReviewCount(String userId, int pdtId) {
+		return mapper.getMyReviewCount(userId, pdtId);
+	}
 	
 }

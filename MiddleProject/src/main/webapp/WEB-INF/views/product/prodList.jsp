@@ -272,7 +272,7 @@
 				template.querySelector('.pdtViews').innerText = item.pdtViews
 				template.querySelector('img').id = 'pdtImg'+item.pdtId;
 				template.querySelector('a:nth-of-type(1)').href = "getProd.do?page=${param.page}&pid="+item.pdtId;
-				template.querySelector('.pdtNm').href = "getProd.do?page=${param.page}&pid="+item.pdtId;
+				template.querySelector('.pdtNm').href = "getProd.do?pid="+item.pdtId;
 				document.querySelector('.col-md-9 .mb-5').append(template);
 			})
 				let page = document.querySelector('#page');

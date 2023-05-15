@@ -36,7 +36,7 @@ public class AddReviewControl implements Control {
 		
 		ReviewService service = new ReviewServiceImpl();
 		if (service.addReview(vo)) {
-			return ""; // 마이페이지 내 리뷰로 가게하기 or 리뷰 쓴 제품 상세 페이지로 가게하기
+			return "review/myReviewList.tiles";
 		} else {
 			return "main.do";
 		}
