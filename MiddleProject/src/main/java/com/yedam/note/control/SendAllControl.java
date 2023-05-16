@@ -22,7 +22,7 @@ public class SendAllControl implements Control {
 		NoteService service = new NoteServiceImpl();
 		if(service.sendAll(subject)) {
 			System.out.println("성공");
-			return "main.do"; 
+			return "mypageView.do"; 
 		}else {
 			return "main.do";
 	}
