@@ -49,7 +49,7 @@
   
   <!-- QNA상세조회. -->
   <select id="searchQna" resultType="qna" parameterType="int">
-  	select *from qna_post join users using(user_id) where post_id=#{postId}
+    select * from qna_post q left outer join users u on q.user_id = u.user_id where q.post_id=#{postId}
   </select>
   
   <!-- QNA 총 개수. -->

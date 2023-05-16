@@ -19,7 +19,7 @@
 	</select>
 
 	<select id="prodList2"> <!-- 추천상품 리스트 -->
-		select * from product
+		select * from product natural join brand
 		where pdt_del = 'N'
 		order by pdt_views desc
 	</select>
