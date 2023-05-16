@@ -24,4 +24,7 @@ public interface ProdMapper {
 	public int getCount(int catId);
 	public List<ProdVO> prodList3(@Param("page") int page, @Param("list") List<String> list, @Param("list2") List<Integer> list2, 
 			  						@Param("list3") List<Integer> list3, @Param("list4") List<Integer> list4, @Param("list5") List<Integer> list5);
+	public int getSubcatCount(int subcatId);
+	public int getBrdCount(int brdId);
+	public int getGenderCount(int genderId);
 }

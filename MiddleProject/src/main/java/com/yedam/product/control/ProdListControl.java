@@ -43,7 +43,7 @@ public class ProdListControl implements Control {
 		int subcattotal;
 		int[] subcntarr = new int[subcatlist.size()];
 		for(int i = 0; i < subcatlist.size(); i++) {
-			subcattotal = service.getCount(subcatlist.get(i).getSubcatId());
+			subcattotal = service.getSubcatCount(subcatlist.get(i).getSubcatId());
 			subcntarr[i] = subcattotal;
 		}
 		req.setAttribute("subcatlist", subcatlist);
@@ -53,7 +53,7 @@ public class ProdListControl implements Control {
 		int gendertotal;
 		int[] genderarr = new int[genderlist.size()];
 		for(int i = 0; i < genderlist.size(); i++) {
-			gendertotal = service.getCount(genderlist.get(i).getGenderId());
+			gendertotal = service.getGenderCount(genderlist.get(i).getGenderId());
 			genderarr[i] = gendertotal;
 		}
 		req.setAttribute("genderlist", genderlist);
@@ -63,7 +63,7 @@ public class ProdListControl implements Control {
 		int brdtotal;
 		int[] brdarr = new int[brdlist.size()];
 		for(int i = 0; i < brdlist.size(); i++) {
-			brdtotal = service.getCount(brdlist.get(i).getBrdId());
+			brdtotal = service.getBrdCount(brdlist.get(i).getBrdId());
 			brdarr[i] = brdtotal;
 		}
 		req.setAttribute("brdlist", brdlist);
