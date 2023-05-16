@@ -45,7 +45,7 @@
 				<tr>
 					<td><c:out value="${i.reviewId}"></c:out></td>
 					<td><a href="getReview.do?rid=${i.reviewId}">${i.reviewTitle}</a></td>
-					<td>${i.pdtNm}</td>
+					<td><a href="getReview.do?rid=${i.reviewId}">${i.pdtNm}</a></td>
 					<td>${userinfo.userNm}</td>
 					<td>${i.reviewDate}</td>
 					<td><button type="button"
