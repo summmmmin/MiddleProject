@@ -32,11 +32,11 @@ public class AddQCControl implements Control {
 		System.out.println(vo);
 		
 		QCommentService service = new QCommentServiceImpl();
-		NoteServiceImpl service2 = new NoteServiceImpl();
 		QnaService service3 = new QnaServiceImpl();
 		
 		
 	
+		NoteServiceImpl service2 = new NoteServiceImpl();
 		NoteVO vo2 = new NoteVO();
 		vo2.setNoteCT("관리자가 답변을 보냈습니다.<a href=\"http://localhost:8081/MiddleProject/getQna.do?postId="+id+"\">Q&A 답변 보러가기</a>");
 		
