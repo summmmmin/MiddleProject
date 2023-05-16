@@ -64,16 +64,20 @@
                                 var tmp;
                                 function myFunction() {
                                 var checkBox = document.getElementById("myCheck");
-                                tmp = $('[name=checkbox1]').is(':checked')
-                                let all =document.getElementById('all')
-                                all.readOnly = true;
-                                all.placeholder = "모두 선택됨!";
-                                if (checkBox.checked == true){
-                                text.style.display = "block";
-
-                                } else {
-                                text.style.display = "none";
+                                var tmp = $('[name=checkbox1]').is(':checked');
+                                let all =document.getElementById('all');
+                                console.log(tmp);
+                               
+                                	all.value = "";
+                              
+                                $('#all').prop('readonly', true);
+                                all.placeholder = "모두 선택됨!";                                
+                                if(tmp == false){
+                                $('#all').prop('readonly', false);
+                                all.placeholder = "";
                                 }
+                                
+
                                 }
 
                                 function send(){
