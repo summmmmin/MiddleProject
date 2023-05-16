@@ -18,15 +18,26 @@ public class ModifyUserControl implements Control {
 
         HttpSession session = req.getSession();
         UserVO user = (UserVO) session.getAttribute("userinfo");
+        System.out.println(user);
         
 		if (user == null) { // 로그인되어있지 않은 경우
 			// session.setAttribute("returnUrl", request.getRequestURI()); // 이전 URL 저장,
 			// 비회원이 마이페이지를 누르고 로그인했을 때 바로 마이페이지로 이동하게
 			return "user/loginForm.tiles";
 		}
+		
+        String userOriginalPw = user.getUserPw();
         String userPw = req.getParameter("newPassword");
         String userPhone = req.getParameter("newPhone");
         String userAdd = req.getParameter("newAdd");
+        
+        if (userPw == null || userPw.trim().isEmpty()) {
+            userPw = userOriginalPw; // 기존 비밀번호 유지
+        } else {
+            user.setUserPw(userPw); // 입력받은 비밀번호로 업데이트
+        }
+        
+        System.out.println(userPw);
 
         UserService service = UserServiceImpl.getInstance();
 
@@ -34,6 +45,7 @@ public class ModifyUserControl implements Control {
         user.setUserPhone(userPhone);
         user.setUserAdd(userAdd);
 
+        System.out.println(userPw);
         System.out.println(user);
         
         boolean result = service.modifyUser(user);
