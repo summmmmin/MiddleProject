@@ -62,14 +62,12 @@
 	</div>
 	<script src=" https://code.jquery.com/jquery-3.4.1.js"> </script> <script>
                                 var tmp;
-                                function myFunction() {
+								function myFunction() {
+                                tmp = $('[name=checkbox1]').is(':checked');
                                 var checkBox = document.getElementById("myCheck");
-                                var tmp = $('[name=checkbox1]').is(':checked');
                                 let all =document.getElementById('all');
-                                console.log(tmp);
-                               
-                                	all.value = "";
-                              
+                                console.log(tmp);              
+                               	all.value = "";
                                 $('#all').prop('readonly', true);
                                 all.placeholder = "모두 선택됨!";                                
                                 if(tmp == false){
@@ -83,7 +81,7 @@
                                 function send(){
                                 if( tmp ){
                                 console.log(tmp);
-                                $('#form').attr("action","sendAllNote.do").submit();
+                                $('#form').attr("action","sendAll.do").submit();
 
                                 }else{
                                 $('#form').attr("action","noteSend.do").submit();
