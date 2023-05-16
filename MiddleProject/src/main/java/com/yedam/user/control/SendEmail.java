@@ -17,7 +17,7 @@ import javax.mail.internet.MimeMessage;
 public class SendEmail {
 	public static void gmailSend(String userId, String newPassword) {
         String user = "qomo596@gmail.com"; // 발신 gmail 계정
-        String password = "sapeztxrwvalurio";   // gmail 패스워드(2단계 앱보안 비밀번호)
+        String password = "";   // gmail 패스워드(2단계 앱보안 비밀번호)
 
         // SMTP 서버 정보를 설정한다.
         Properties prop = new Properties();
@@ -41,7 +41,7 @@ public class SendEmail {
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(userId)); 
 
             // 메일제목
-            message.setSubject("크림발라드림 사이트의 비밀번호 찾기를 요청하셨습니다");
+            message.setSubject("OWNULL 사이트의 비밀번호 찾기를 요청하셨습니다");
 
             // 내용
             String emailContent = "안녕하세요,\n\n새로운 비밀번호로 재설정되었습니다.\n\n새 비밀번호: " + newPassword;

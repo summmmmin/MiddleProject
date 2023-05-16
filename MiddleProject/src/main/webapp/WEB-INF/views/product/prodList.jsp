@@ -76,7 +76,7 @@
 													<label class="d-flex"> <input type="checkbox"
 														id="${subcatlist[j].subcatId}" class="mr-2 mt-1 subcatId"
 														onclick="prod_categories(this)"
-														value="${subcatlist[j].subcatId}"> <span
+														value="${subcatlist[j].subcatId}" style="margin-left: 20px;"> <span
 														class="text-black">${subcatlist[j].subcatNm}</span> <span
 														class="text-black ml-auto">(${subcntarr[j]})</span>
 													</label>
