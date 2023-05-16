@@ -11,6 +11,8 @@ import com.yedam.buy.domain.BuyVO;
 import com.yedam.buy.service.BuyService;
 import com.yedam.buy.service.BuyServiceImpl;
 import com.yedam.common.Control;
+import com.yedam.note.domain.NoteVO;
+import com.yedam.note.service.NoteServiceImpl;
 import com.yedam.sell.domain.SellVO;
 import com.yedam.sell.service.SellService;
 import com.yedam.sell.service.SellServiceImpl;
@@ -46,6 +48,11 @@ public class BuyPayControl implements Control {
 	    
 	    BuyService buyService = new BuyServiceImpl();
 		BuyVO buy = new BuyVO();
+		
+		NoteServiceImpl service2 = new NoteServiceImpl();
+		NoteVO vo2 = new NoteVO();
+		vo2.setNoteCT("구매 완료되었습니다.<a href=\"http://localhost:8081/MiddleProject/buyListU.do\">구매내역 보러가기</a>");
+		vo2.setUserId(user.getUserId());
 	    //판매번호
 	    SellService sellService = new SellServiceImpl();
 	    SellVO sell = new SellVO();
@@ -72,6 +79,8 @@ public class BuyPayControl implements Control {
 		    		System.out.println(sell.getSellId());
 		    		buyService.addBuy(buy);
 		    		userService.updatePoint(userpoint);
+		    		service2.sendNote(vo2);
+		    		System.out.println("완료");
 		    	}else {
 		    		System.out.println("오류(체결됨)");
 		    		return "";
@@ -81,6 +90,8 @@ public class BuyPayControl implements Control {
 	    	//구매입찰
 	    	buyService.addBuyBid(buy);
 	    	userService.updatePoint(userpoint);
+	    	service2.sendNote(vo2);
+	    	System.out.println("완료");
 	    }
 	    
 		return "buy/complete.tiles";
