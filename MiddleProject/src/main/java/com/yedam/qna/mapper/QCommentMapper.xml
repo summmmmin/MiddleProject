@@ -11,7 +11,7 @@
   
   <!-- comment 조회. -->
   <select id="getcomment" resultType="qcomment">
-  select * from qna_comment where post_id=#{postId}
+  select * from qna_comment where post_id=#{postId} and rownum=1
   </select>
   
   <!-- comment 등록. -->

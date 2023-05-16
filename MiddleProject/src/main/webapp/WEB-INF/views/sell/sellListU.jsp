@@ -16,7 +16,7 @@ prefix="c" %>
 <div class="site-section">
   <div class="container">
     <div class="row">
-    			<div class="col-md-3">
+<div class="col-md-3">
 <div class="sidebar">
   <c:choose>
     <c:when test="${userinfo.userGrade == '관리자'}">
@@ -42,8 +42,10 @@ prefix="c" %>
     </c:otherwise>
   </c:choose>
 </div>
-			</div>
+</div>
+
       <div class="col-md-12">
+        <div class="row">
         <div class="site-blocks-table">
           <c:set var="no" value="0"></c:set>
           <table class="table table-hover">
@@ -88,7 +90,6 @@ prefix="c" %>
           </table>
         </div>
       </div>
-    </div>
     <div class="row" data-aos="fade-up">
       <div class="col-md-12 text-center">
         <div class="site-block-27">
@@ -114,6 +115,8 @@ prefix="c" %>
             </li>
           </ul>
         </div>
+      </div>
+    </div>
       </div>
     </div>
   </div>

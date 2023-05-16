@@ -27,7 +27,7 @@ public class NoteSendControl implements Control {
 		
 		if(service.sendNote(vo)) {
 			System.out.println("성공");
-			return "main.do";
+			return "mypageView.do";
 		}
 		return "main.do";
 	}
