@@ -32,8 +32,12 @@
 			</div>
 			<div class="col-md-6">
 				<h2 class="text-black">${prodInfo.pdtNm}</h2>
-				<p class="mb-4">${prodInfo.brdNm}</p>
 				<p>
+					<strong class="mb-4">브랜드<br></strong>
+					<strong class="text-primary h4">${prodInfo.brdNm}</strong>
+				</p>
+				<p>
+					<strong class="mb-4">출고가<br></strong>
 					<strong class="text-primary h4">${prodInfo.pdtPrice}</strong>
 				</p>
 

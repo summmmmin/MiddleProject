@@ -18,4 +18,7 @@ public interface ProdService {
 	public List<ProdVO> prodList2();
 	public int getCount(int catId);
 	public List<ProdVO> prodList3(int page,List<String> list,List<Integer> list2,List<Integer> list3,List<Integer> list4,List<Integer> list5);
+	public int getSubcatCount(int subcatId);
+	public int getBrdCount(int brdId);
+	public int getGenderCount(int genderId);
 }

@@ -151,5 +151,17 @@
 	<select id="getCount" resultType="int"> <!-- 갯수 -->
 		select count(*) from product where cat_id=#{catId}
 	</select>
+	
+	<select id="getSubcatCount" resultType="int">
+		select count(*) from product where subcat_id=#{subcatId}
+	</select>
+	
+	<select id="getBrdCount" resultType="int">
+		select count(*) from product where brd_id=#{brdId}
+	</select>
+	
+	<select id="getGenderCount" resultType="int">
+		select count(*) from product where gender_id=#{genderId}
+	</select>
 
 </mapper>

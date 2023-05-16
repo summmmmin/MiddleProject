@@ -81,4 +81,19 @@ public class ProdServiceImpl implements ProdService {
 		return mapper.prodList3(page, list, list2, list3, list4, list5);
 	}
 
+	@Override
+	public int getSubcatCount(int subcatId) {
+		return mapper.getSubcatCount(subcatId);
+	}
+
+	@Override
+	public int getBrdCount(int brdId) {
+		return mapper.getBrdCount(brdId);
+	}
+
+	@Override
+	public int getGenderCount(int genderId) {
+		return mapper.getGenderCount(genderId);
+	}
+	
 }
