@@ -56,7 +56,7 @@
 								class="btn btn-danger btn-sm">삭제</button>
 						</c:if>
 						<button class="btn btn-outline-dark btn-sm"
-							onclick="location.href='getProd.do?pid=${prodInfo.pdtId}'">이전으로</button>
+							onclick="location.href='getProd.do?pid=${buyInfo.pdtId}'">상품상세</button>
 					</div>
 				</div>
 			</div>
