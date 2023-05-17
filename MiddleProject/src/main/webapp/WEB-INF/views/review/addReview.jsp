@@ -18,8 +18,8 @@
 								</thead>
 								<tbody>
 									<tr id="prod">
-										<td width="10%"><img src="images/"
-											+"${buyInfo.pdtImg}" width="100px" height="100px" alt="" /></td>
+										<td width="10%"><img src="images/
+											+${buyInfo.pdtImg}" width="100px" height="100px" alt="" /></td>
 										<td>${buyInfo.pdtNm}</td>
 										<td>${buyInfo.sizeSize}</td>
 										<td>${buyInfo.brdNm}</td>
