@@ -17,7 +17,7 @@ import javax.mail.internet.MimeMessage;
 public class SendEmail {
 	public static void gmailSend(String userId, String newPassword) {
         String user = "qomo596@gmail.com"; // 발신 gmail 계정
-        String password = "sapeztxrwvalurio";   // gmail 패스워드(2단계 앱보안 비밀번호)
+        String password = "";   // gmail 패스워드(2단계 앱보안 비밀번호)
 
         // SMTP 서버 정보를 설정한다.
         Properties prop = new Properties();
