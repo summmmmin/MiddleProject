@@ -41,7 +41,7 @@ public class SendEmail {
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(userId)); 
 
             // 메일제목
-            message.setSubject("크림발라드림 사이트의 비밀번호 찾기를 요청하셨습니다");
+            message.setSubject("OWNULL 사이트의 비밀번호 찾기를 요청하셨습니다");
 
             // 내용
             String emailContent = "안녕하세요,\n\n새로운 비밀번호로 재설정되었습니다.\n\n새 비밀번호: " + newPassword;
